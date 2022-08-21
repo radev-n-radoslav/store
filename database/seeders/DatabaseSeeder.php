@@ -13,6 +13,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        
+        // Seeders called only for development
+        if (app()->isLocal()) {
+            $this->call(AdminSeeder::class);
+            $this->call(UserSeeder::class);
+        }
     }
 }
