@@ -1,0 +1,114 @@
+{
+    "logo":{
+        "url":"https://galenia.bg/uploaded/files/Logo/logo-transparent.png",
+        "memo":"lorem ipsum dolor sit amed"
+    },
+    "header":{
+        
+    },
+    "footer":{
+        "socials":[
+            {
+                "name":"Instagram",
+                "href":"https://instagram.com",
+                "icon":"fab fa-instagram"
+            },
+            {
+                "name":"Facebook",
+                "href":"https://facebook.com",
+                "icon":"fab fa-facebook"
+            },
+            {
+                "name":"YouTube",
+                "href":"https://youtube.com",
+                "icon":"fab fa-youtube"
+            }
+        ],
+        "navigation":[
+            {
+                "title":"НАВИГАЦИЯ",
+                "links":[
+                    {
+                        "name":"Начало",
+                        "href":"/"
+                    },
+                    {
+                        "name":"Каталог",
+                        "href":"/"
+                    },
+                    {
+                        "name":"Съвети",
+                        "href":"/"
+                    },
+                    {
+                        "name":"Новини",
+                        "href":"/"
+                    },
+                    {
+                        "name":"Контакти",
+                        "href":"/"
+                    }
+                ]
+            },
+            {
+                "title":"ПОЛЕЗНИ ВРЪЗКИ",
+                "links":[
+                    {
+                        "name":"Български Фармацевтичен съюз",
+                        "href":"http://bphu.bg/"
+                    },
+                    {
+                        "name":"Изпълнителна агенция по лекарствата",
+                        "href":"http://bda.bg/"
+                    },
+                    {
+                        "name":"Комисия за защита на потребителите",
+                        "href":"http://kzp.bg/"
+                    },
+                    {
+                        "name":"Министерство на здравеопазването",
+                        "href":"http://www.mh.government.bg/bg/"
+                    },
+                    {
+                        "name":"Общи условия",
+                        "href":"https://galenia.bg/terms-and-conditions"
+                    }
+                ]
+            },
+            {
+                "title":"ИНФОРМАЦИЯ",
+                "links":[
+                    {
+                        "name":"Доставка",
+                        "href":"/"
+                    },
+                    {
+                        "name":"Намаления",
+                        "href":"/"
+                    },
+                    {
+                        "name":"Документи",
+                        "href":"/"
+                    }
+                ]
+            },
+            {
+                "title":"КОНТАКТИ",
+                "links":[
+                    {
+                        "name":"Стара Загора бул. Цар Симеон Велики 168 А",
+                        "href":""
+                    },
+                    {
+                        "name":"0879003334",
+                        "href":""
+                    },
+                    {
+                        "name":"galenia5sz@abv.bg",
+                        "href":""
+                    }
+                ]
+            }
+        ]
+    }
+}

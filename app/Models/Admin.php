@@ -10,7 +10,7 @@ use App\Models\Traits\HashPassword;
 
 class Admin extends Authenticatable
 {
-    use HasFactory, Notifiable, HashPassword;
+    use HasFactory, Notifiable, HashPassword, SoftDeletes;
 
     protected $table = "admins";
 
