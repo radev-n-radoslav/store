@@ -11,7 +11,7 @@
     import { ref, reactive, onMounted, computed } from 'vue';
 
     import Navbar from './components/Navbar/Navbar';
-    import Footer from './components/Footer';
+    import Footer from './components/Footer/Footer';
 
     export default {
         name: "Ui",

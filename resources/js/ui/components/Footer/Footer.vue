@@ -13,8 +13,8 @@
 	                    </a>
 	                </div>
 	            </div>
-	            <div class="mt-12 grid grid-cols-4 gap-8 xl:mt-0 xl:col-span-2">
-	                <div class="md:grid md:grid-cols-2 md:gap-8" v-for="column in navigation" :key="column.title">
+	            <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-8 xl:mt-0 col-span-6 xl:col-span-2">
+	                <div class="md:gap-8" v-for="column in navigation" :key="column.title">
 	                    <div>
 	                        <h3 class="text-base font-medium text-white">{{ column.title }}</h3>
 	                        <ul role="list" class="mt-4 space-y-4">

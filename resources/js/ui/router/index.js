@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
 import Home from '../views/Home';
-import BlogCategory from '../views/BlogCategory';
-import BlogArticle from '../views/BlogArticle';
+import BlogCategory from '../views/Blog/BlogCategory';
+import BlogArticle from '../views/Blog/BlogArticle';
 
 const routes = [
 	{
