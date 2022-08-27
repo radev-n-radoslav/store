@@ -11,17 +11,17 @@
             {
                 "name":"Instagram",
                 "href":"https://instagram.com",
-                "icon":"fab fa-instagram"
+                "icon":"fab fa-instagram fa-2x"
             },
             {
                 "name":"Facebook",
                 "href":"https://facebook.com",
-                "icon":"fab fa-facebook"
+                "icon":"fab fa-facebook fa-2x"
             },
             {
                 "name":"YouTube",
                 "href":"https://youtube.com",
-                "icon":"fab fa-youtube"
+                "icon":"fab fa-youtube fa-2x"
             }
         ],
         "navigation":[
