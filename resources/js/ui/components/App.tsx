@@ -1,42 +1,29 @@
-import React, { useState } from "react";
+import axios from 'axios';
+import { PageStaticData } from './App.d';
+import React, { useState, useEffect } from "react";
 
-export interface PageStaticData {
-    logo: Object,
-    header: Object,
-    footer: Object
-}
+export const App = () => {
 
-const App = () => {
+    const [pageStatics, setPageStatics] = useState<PageStaticData[]>([]);
 
     const getPageStatics = () => {
+        axios.get('/api/page-statics')
+            .then((response) => {
+                setPageStatics(response.data);
+            })
+            .catch((error) => {
 
+            });
     };
 
-    const [users, setUsers] = useState<IUser[]>([
-        {
-            name: "Bijaya",
-            age: 25,
-        },
-        {
-            name: "Ram",
-            age: 25,
-        },
-    ]);
+    useEffect(() => {
+        getPageStatics();
+    });
 
     return (
         <div>
             <h1>Users list</h1>
-            <ul>
-                {users.map((user: IUser) => {
-                    return (
-                        <li key={user.name}>
-                            {user.name} is {user.age} years old
-                        </li>
-                    );
-                })}
-            </ul>
+            
         </div>
     );
 };
-
-export default App;

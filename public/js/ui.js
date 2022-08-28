@@ -2079,9 +2079,9 @@ var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/r
 
 var react_dom_1 = __importDefault(__webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js"));
 
-var App_1 = __importDefault(__webpack_require__(/*! ./components/App */ "./resources/js/ui/components/App.tsx"));
+var App_1 = __webpack_require__(/*! ./components/App */ "./resources/js/ui/components/App.tsx");
 
-react_dom_1["default"].render(react_1["default"].createElement(react_1["default"].StrictMode, null, react_1["default"].createElement(App_1["default"], null)), document.getElementById("app"));
+react_dom_1["default"].render(react_1["default"].createElement(react_1["default"].StrictMode, null, react_1["default"].createElement(App_1.App, null)), document.getElementById("app"));
 
 /***/ }),
 
@@ -2146,34 +2146,40 @@ var __importStar = this && this.__importStar || function (mod) {
   return result;
 };
 
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
+exports.App = void 0;
+
+var axios_1 = __importDefault(__webpack_require__(/*! axios */ "./node_modules/axios/index.js"));
 
 var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
 var App = function App() {
-  var getPageStatics = function getPageStatics() {};
-
-  var _ref = (0, react_1.useState)([{
-    name: "Bijaya",
-    age: 25
-  }, {
-    name: "Ram",
-    age: 25
-  }]),
+  var _ref = (0, react_1.useState)([]),
       _ref2 = _slicedToArray(_ref, 2),
-      users = _ref2[0],
-      setUsers = _ref2[1];
+      pageStatics = _ref2[0],
+      setPageStatics = _ref2[1];
 
-  return react_1["default"].createElement("div", null, react_1["default"].createElement("h1", null, "Users list"), react_1["default"].createElement("ul", null, users.map(function (user) {
-    return react_1["default"].createElement("li", {
-      key: user.name
-    }, user.name, " is ", user.age, " years old");
-  })));
+  var getPageStatics = function getPageStatics() {
+    axios_1["default"].get('/api/page-statics').then(function (response) {
+      setPageStatics(response.data);
+    })["catch"](function (error) {});
+  };
+
+  (0, react_1.useEffect)(function () {
+    getPageStatics();
+  });
+  return react_1["default"].createElement("div", null, react_1["default"].createElement("h1", null, "Users list"));
 };
 
-exports["default"] = App;
+exports.App = App;
 
 /***/ }),
 
