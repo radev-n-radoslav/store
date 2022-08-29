@@ -9,18 +9,19 @@ export interface Socials {
     icon: string
 }
 
-export interface NavigationLinks{
+export interface NavigationLink{
     name: string,
     href: string
 }
 
 export interface Navigation {
     title: string,
-    links: NavigationLinks
+    links: NavigationLink[]
 }
 
 export interface Footer {
-    socials: Socials[]
+    socials: Socials[],
+    navigation: Navigation[]
 }
 
 export interface PageStaticData {

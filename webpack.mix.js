@@ -17,7 +17,7 @@ mix.ts('resources/js/admin/app.tsx', 'public/js/admin.js')
         require('tailwindcss'),
     ]);
 
-mix.ts('resources/js/ui/app.tsx', 'public/js/ui.js')
+mix.ts('resources/js/ui/index.tsx', 'public/js/ui.js')
 	.react()
     .postCss('resources/css/ui/app.css', 'public/css/ui.css', [
         require('tailwindcss'),
