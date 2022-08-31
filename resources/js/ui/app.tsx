@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 
 import { Router } from './router/index';
 import { Footer } from './components/Footer/Footer';
+import { Navbar } from './components/Navbar/Navbar';
 
 export const App = () => {
 
@@ -26,7 +27,7 @@ export const App = () => {
     return (
         <>
             {typeof pageStatics != 'undefined' ? (
-                <div>navbar</div>
+                <Navbar logo={pageStatics?.logo} footer={pageStatics?.footer}/>
             ): (
                 <div></div>
             )}
