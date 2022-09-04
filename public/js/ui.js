@@ -2324,6 +2324,73 @@ exports.Footer = Footer;
 
 /***/ }),
 
+/***/ "./resources/js/ui/components/Navbar/Breadcrumbs.tsx":
+/*!***********************************************************!*\
+  !*** ./resources/js/ui/components/Navbar/Breadcrumbs.tsx ***!
+  \***********************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.Breadcrumbs = void 0;
+
+var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var breadcrumbs = [{
+  id: 1,
+  name: 'Men',
+  href: '#'
+}];
+
+var Breadcrumbs = function Breadcrumbs() {
+  return react_1["default"].createElement("div", {
+    className: "border-b border-gray-200"
+  }, react_1["default"].createElement("nav", {
+    "aria-label": "Breadcrumb",
+    className: "mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
+  }, react_1["default"].createElement("ol", {
+    role: "list",
+    className: "flex items-center space-x-4 py-4"
+  }, breadcrumbs.map(function (breadcrumb) {
+    return react_1["default"].createElement("li", {
+      key: breadcrumb.id
+    }, react_1["default"].createElement("div", {
+      className: "flex items-center"
+    }, react_1["default"].createElement("a", {
+      href: breadcrumb.href,
+      className: "mr-4 text-sm font-medium text-gray-900"
+    }, breadcrumb.name), react_1["default"].createElement("svg", {
+      viewBox: "0 0 6 20",
+      xmlns: "http://www.w3.org/2000/svg",
+      "aria-hidden": "true",
+      className: "h-5 w-auto text-gray-300"
+    }, react_1["default"].createElement("path", {
+      d: "M4.878 4.34H3.551L.27 16.532h1.327l3.281-12.19z",
+      fill: "currentColor"
+    }))));
+  }), react_1["default"].createElement("li", {
+    className: "text-sm"
+  }, react_1["default"].createElement("a", {
+    href: "#",
+    "aria-current": "page",
+    className: "font-medium text-gray-500 hover:text-gray-600"
+  }, "New Arrivals")))));
+};
+
+exports.Breadcrumbs = Breadcrumbs;
+
+/***/ }),
+
 /***/ "./resources/js/ui/components/Navbar/Navbar.tsx":
 /*!******************************************************!*\
   !*** ./resources/js/ui/components/Navbar/Navbar.tsx ***!
@@ -2395,6 +2462,8 @@ var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/reac
 var react_2 = __webpack_require__(/*! @headlessui/react */ "./node_modules/@headlessui/react/dist/index.cjs");
 
 var outline_1 = __webpack_require__(/*! @heroicons/react/24/outline */ "./node_modules/@heroicons/react/24/outline/esm/index.js");
+
+var Breadcrumbs_1 = __webpack_require__(/*! ./Breadcrumbs */ "./resources/js/ui/components/Navbar/Breadcrumbs.tsx");
 
 var navigation = {
   categories: [{
@@ -2965,7 +3034,7 @@ var Navbar = function Navbar(props) {
     className: "ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800"
   }, "0"), react_1["default"].createElement("span", {
     className: "sr-only"
-  }, "items in cart, view bag")))))))));
+  }, "items in cart, view bag")))))))), react_1["default"].createElement(Breadcrumbs_1.Breadcrumbs, null));
 };
 
 exports.Navbar = Navbar;
@@ -3145,10 +3214,56 @@ exports.BlogCategory = BlogCategory;
 "use strict";
 
 
-var __importDefault = this && this.__importDefault || function (mod) {
-  return mod && mod.__esModule ? mod : {
-    "default": mod
-  };
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  var desc = Object.getOwnPropertyDescriptor(m, k);
+
+  if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+    desc = {
+      enumerable: true,
+      get: function get() {
+        return m[k];
+      }
+    };
+  }
+
+  Object.defineProperty(o, k2, desc);
+} : function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  o[k2] = m[k];
+});
+
+var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
+  Object.defineProperty(o, "default", {
+    enumerable: true,
+    value: v
+  });
+} : function (o, v) {
+  o["default"] = v;
+});
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+  }
+
+  __setModuleDefault(result, mod);
+
+  return result;
 };
 
 Object.defineProperty(exports, "__esModule", ({
@@ -3156,10 +3271,411 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports.Category = void 0;
 
-var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var solid_1 = __webpack_require__(/*! @heroicons/react/20/solid */ "./node_modules/@heroicons/react/20/solid/esm/index.js");
+
+var navigation = {
+  categories: [{
+    id: 'women',
+    name: 'Women',
+    featured: [{
+      name: 'New Arrivals',
+      href: '#',
+      imageSrc: 'https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg',
+      imageAlt: 'Models sitting back to back, wearing Basic Tee in black and bone.'
+    }, {
+      name: 'Basic Tees',
+      href: '#',
+      imageSrc: 'https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg',
+      imageAlt: 'Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.'
+    }],
+    sections: [{
+      id: 'clothing',
+      name: 'Clothing',
+      items: [{
+        name: 'Tops',
+        href: '#'
+      }, {
+        name: 'Dresses',
+        href: '#'
+      }, {
+        name: 'Pants',
+        href: '#'
+      }, {
+        name: 'Denim',
+        href: '#'
+      }, {
+        name: 'Sweaters',
+        href: '#'
+      }, {
+        name: 'T-Shirts',
+        href: '#'
+      }, {
+        name: 'Jackets',
+        href: '#'
+      }, {
+        name: 'Activewear',
+        href: '#'
+      }, {
+        name: 'Browse All',
+        href: '#'
+      }]
+    }, {
+      id: 'accessories',
+      name: 'Accessories',
+      items: [{
+        name: 'Watches',
+        href: '#'
+      }, {
+        name: 'Wallets',
+        href: '#'
+      }, {
+        name: 'Bags',
+        href: '#'
+      }, {
+        name: 'Sunglasses',
+        href: '#'
+      }, {
+        name: 'Hats',
+        href: '#'
+      }, {
+        name: 'Belts',
+        href: '#'
+      }]
+    }, {
+      id: 'brands',
+      name: 'Brands',
+      items: [{
+        name: 'Full Nelson',
+        href: '#'
+      }, {
+        name: 'My Way',
+        href: '#'
+      }, {
+        name: 'Re-Arranged',
+        href: '#'
+      }, {
+        name: 'Counterfeit',
+        href: '#'
+      }, {
+        name: 'Significant Other',
+        href: '#'
+      }]
+    }]
+  }, {
+    id: 'men',
+    name: 'Men',
+    featured: [{
+      name: 'New Arrivals',
+      href: '#',
+      imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg',
+      imageAlt: 'Drawstring top with elastic loop closure and textured interior padding.'
+    }, {
+      name: 'Artwork Tees',
+      href: '#',
+      imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-02-image-card-06.jpg',
+      imageAlt: 'Three shirts in gray, white, and blue arranged on table with same line drawing of hands and shapes overlapping on front of shirt.'
+    }],
+    sections: [{
+      id: 'clothing',
+      name: 'Clothing',
+      items: [{
+        name: 'Tops',
+        href: '#'
+      }, {
+        name: 'Pants',
+        href: '#'
+      }, {
+        name: 'Sweaters',
+        href: '#'
+      }, {
+        name: 'T-Shirts',
+        href: '#'
+      }, {
+        name: 'Jackets',
+        href: '#'
+      }, {
+        name: 'Activewear',
+        href: '#'
+      }, {
+        name: 'Browse All',
+        href: '#'
+      }]
+    }, {
+      id: 'accessories',
+      name: 'Accessories',
+      items: [{
+        name: 'Watches',
+        href: '#'
+      }, {
+        name: 'Wallets',
+        href: '#'
+      }, {
+        name: 'Bags',
+        href: '#'
+      }, {
+        name: 'Sunglasses',
+        href: '#'
+      }, {
+        name: 'Hats',
+        href: '#'
+      }, {
+        name: 'Belts',
+        href: '#'
+      }]
+    }, {
+      id: 'brands',
+      name: 'Brands',
+      items: [{
+        name: 'Re-Arranged',
+        href: '#'
+      }, {
+        name: 'Counterfeit',
+        href: '#'
+      }, {
+        name: 'Full Nelson',
+        href: '#'
+      }, {
+        name: 'My Way',
+        href: '#'
+      }]
+    }]
+  }],
+  pages: [{
+    name: 'Company',
+    href: '#'
+  }, {
+    name: 'Stores',
+    href: '#'
+  }]
+};
+var filters = [{
+  id: 'color',
+  name: 'Color',
+  options: [{
+    value: 'white',
+    label: 'White'
+  }, {
+    value: 'beige',
+    label: 'Beige'
+  }, {
+    value: 'blue',
+    label: 'Blue'
+  }, {
+    value: 'brown',
+    label: 'Brown'
+  }, {
+    value: 'green',
+    label: 'Green'
+  }, {
+    value: 'purple',
+    label: 'Purple'
+  }]
+}, {
+  id: 'category',
+  name: 'Category',
+  options: [{
+    value: 'new-arrivals',
+    label: 'All New Arrivals'
+  }, {
+    value: 'tees',
+    label: 'Tees'
+  }, {
+    value: 'crewnecks',
+    label: 'Crewnecks'
+  }, {
+    value: 'sweatshirts',
+    label: 'Sweatshirts'
+  }, {
+    value: 'pants-shorts',
+    label: 'Pants & Shorts'
+  }]
+}, {
+  id: 'sizes',
+  name: 'Sizes',
+  options: [{
+    value: 'xs',
+    label: 'XS'
+  }, {
+    value: 's',
+    label: 'S'
+  }, {
+    value: 'm',
+    label: 'M'
+  }, {
+    value: 'l',
+    label: 'L'
+  }, {
+    value: 'xl',
+    label: 'XL'
+  }, {
+    value: '2xl',
+    label: '2XL'
+  }]
+}];
+var products = [{
+  id: 1,
+  name: 'Basic Tee 8-Pack',
+  href: '#',
+  price: '$256',
+  description: 'Get the full lineup of our Basic Tees. Have a fresh shirt all week, and an extra for laundry day.',
+  options: '8 colors',
+  imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-02-image-card-01.jpg',
+  imageAlt: 'Eight shirts arranged on table in black, olive, grey, blue, white, red, mustard, and green.'
+}, {
+  id: 2,
+  name: 'Basic Tee',
+  href: '#',
+  price: '$32',
+  description: 'Look like a visionary CEO and wear the same black t-shirt every day.',
+  options: 'Black',
+  imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-02-image-card-02.jpg',
+  imageAlt: 'Front of plain black t-shirt.'
+}, {
+  id: 1,
+  name: 'Basic Tee 8-Pack',
+  href: '#',
+  price: '$256',
+  description: 'Get the full lineup of our Basic Tees. Have a fresh shirt all week, and an extra for laundry day.',
+  options: '8 colors',
+  imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-02-image-card-01.jpg',
+  imageAlt: 'Eight shirts arranged on table in black, olive, grey, blue, white, red, mustard, and green.'
+}, {
+  id: 2,
+  name: 'Basic Tee',
+  href: '#',
+  price: '$32',
+  description: 'Look like a visionary CEO and wear the same black t-shirt every day.',
+  options: 'Black',
+  imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-02-image-card-02.jpg',
+  imageAlt: 'Front of plain black t-shirt.'
+}, {
+  id: 1,
+  name: 'Basic Tee 8-Pack',
+  href: '#',
+  price: '$256',
+  description: 'Get the full lineup of our Basic Tees. Have a fresh shirt all week, and an extra for laundry day.',
+  options: '8 colors',
+  imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-02-image-card-01.jpg',
+  imageAlt: 'Eight shirts arranged on table in black, olive, grey, blue, white, red, mustard, and green.'
+}, {
+  id: 2,
+  name: 'Basic Tee',
+  href: '#',
+  price: '$32',
+  description: 'Look like a visionary CEO and wear the same black t-shirt every day.',
+  options: 'Black',
+  imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-02-image-card-02.jpg',
+  imageAlt: 'Front of plain black t-shirt.'
+} // More products...
+];
+
+var classNames = function classNames() {
+  for (var _len = arguments.length, classes = new Array(_len), _key = 0; _key < _len; _key++) {
+    classes[_key] = arguments[_key];
+  }
+
+  return classes.filter(Boolean).join(' ');
+};
 
 var Category = function Category() {
-  return react_1["default"].createElement(react_1["default"].Fragment, null);
+  var _ref = (0, react_1.useState)(false),
+      _ref2 = _slicedToArray(_ref, 2),
+      mobileMenuOpen = _ref2[0],
+      setMobileMenuOpen = _ref2[1];
+
+  var _ref3 = (0, react_1.useState)(false),
+      _ref4 = _slicedToArray(_ref3, 2),
+      mobileFiltersOpen = _ref4[0],
+      setMobileFiltersOpen = _ref4[1];
+
+  var heroSectionStyle = {
+    backgroundImage: 'url(https://images.pexels.com/photos/5452255/pexels-photo-5452255.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)'
+  };
+  return react_1["default"].createElement("div", {
+    className: "bg-gray-50"
+  }, react_1["default"].createElement("div", null, react_1["default"].createElement("main", {
+    className: "mx-auto max-w-2xl px-4 lg:max-w-7xl lg:px-8"
+  }, react_1["default"].createElement("div", {
+    className: "pt-12 pb-24 lg:grid lg:grid-cols-3 lg:gap-x-8 xl:grid-cols-4"
+  }, react_1["default"].createElement("aside", null, react_1["default"].createElement("h2", {
+    className: "sr-only"
+  }, "Filters"), react_1["default"].createElement("button", {
+    type: "button",
+    className: "inline-flex items-center lg:hidden",
+    onClick: function onClick() {
+      return setMobileFiltersOpen(true);
+    }
+  }, react_1["default"].createElement("span", {
+    className: "text-sm font-medium text-gray-700"
+  }, "Filters"), react_1["default"].createElement(solid_1.PlusIcon, {
+    className: "ml-1 h-5 w-5 flex-shrink-0 text-gray-400",
+    "aria-hidden": "true"
+  })), react_1["default"].createElement("div", {
+    className: "hidden lg:block"
+  }, react_1["default"].createElement("form", {
+    className: "space-y-10 divide-y divide-gray-200"
+  }, filters.map(function (section, sectionIdx) {
+    return react_1["default"].createElement("div", {
+      key: section.name,
+      className: sectionIdx === 0 ? '' : 'pt-10'
+    }, react_1["default"].createElement("fieldset", null, react_1["default"].createElement("legend", {
+      className: "block text-sm font-medium text-gray-900"
+    }, section.name), react_1["default"].createElement("div", {
+      className: "space-y-3 pt-6"
+    }, section.options.map(function (option, optionIdx) {
+      return react_1["default"].createElement("div", {
+        key: option.value,
+        className: "flex items-center"
+      }, react_1["default"].createElement("input", {
+        id: "".concat(section.id, "-").concat(optionIdx),
+        name: "".concat(section.id, "[]"),
+        defaultValue: option.value,
+        type: "checkbox",
+        className: "h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+      }), react_1["default"].createElement("label", {
+        htmlFor: "".concat(section.id, "-").concat(optionIdx),
+        className: "ml-3 text-sm text-gray-600"
+      }, option.label));
+    }))));
+  })))), react_1["default"].createElement("section", {
+    "aria-labelledby": "product-heading",
+    className: "mt-6 lg:col-span-2 lg:mt-0 xl:col-span-3"
+  }, react_1["default"].createElement("h2", {
+    id: "product-heading",
+    className: "sr-only"
+  }, "Products"), react_1["default"].createElement("div", {
+    className: "grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 lg:gap-x-8 xl:grid-cols-3"
+  }, products.map(function (product) {
+    return react_1["default"].createElement("div", {
+      key: product.id,
+      className: "group relative flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white"
+    }, react_1["default"].createElement("div", {
+      className: "aspect-w-3 aspect-h-4 bg-gray-200 group-hover:opacity-75 sm:aspect-none sm:h-96"
+    }, react_1["default"].createElement("img", {
+      src: product.imageSrc,
+      alt: product.imageAlt,
+      className: "h-full w-full object-cover object-center sm:h-full sm:w-full"
+    })), react_1["default"].createElement("div", {
+      className: "flex flex-1 flex-col space-y-2 p-4"
+    }, react_1["default"].createElement("h3", {
+      className: "text-sm font-medium text-gray-900"
+    }, react_1["default"].createElement("a", {
+      href: product.href
+    }, react_1["default"].createElement("span", {
+      "aria-hidden": "true",
+      className: "absolute inset-0"
+    }), product.name)), react_1["default"].createElement("p", {
+      className: "text-sm text-gray-500"
+    }, product.description), react_1["default"].createElement("div", {
+      className: "flex flex-1 flex-col justify-end"
+    }, react_1["default"].createElement("p", {
+      className: "text-sm italic text-gray-500"
+    }, product.options), react_1["default"].createElement("p", {
+      className: "text-base font-medium text-gray-900"
+    }, product.price))));
+  })))))));
 };
 
 exports.Category = Category;

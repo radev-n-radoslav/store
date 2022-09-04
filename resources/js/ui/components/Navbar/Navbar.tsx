@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from 'react'
 import { Dialog, Popover, Tab, Transition } from '@headlessui/react'
 import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, UserIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Breadcrumbs } from './Breadcrumbs';
 
 const navigation = {
         categories: [
@@ -529,6 +530,7 @@ export const Navbar = (props: any) => {
                     </div>
                 </nav>
             </header>
+            <Breadcrumbs />
         </div>
     )
 };
