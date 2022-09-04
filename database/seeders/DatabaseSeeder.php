@@ -17,6 +17,8 @@ class DatabaseSeeder extends Seeder
         if (app()->isLocal()) {
             $this->call(AdminSeeder::class);
             $this->call(UserSeeder::class);
+            $this->call(BlogSeeder::class);
+            $this->call(CatalogCategorySeeder::class);
         }
     }
 }
