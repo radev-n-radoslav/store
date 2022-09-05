@@ -16,6 +16,8 @@ class CreateCatalogCategoryFilterValuesTable extends Migration
         Schema::create('catalog_category_filter_values', function (Blueprint $table) {
             $table->id();
             $table->string('name', 255);
+            $table->unsignedBigInteger('filter_id')
+                ->index();
             $table->timestamps();
         });
     }

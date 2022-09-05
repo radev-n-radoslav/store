@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class CatalogProductImageFactory extends Factory
+class CatalogCategoryFilterValueFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -14,16 +14,14 @@ class CatalogProductImageFactory extends Factory
     public function definition()
     {
         return [
-            'url' => $this->faker->imageUrl(1920, 1080, 'doctor', true),
-            'is_thumbnail' => 0,
-            'order_place' => 0
+            'name' => $this->faker->word()
         ];
     }
 
-    public function withProduct($productId)
+    public function withParent($filterId)
     {
         return $this->state([
-            'product_id' => $productId
+            'filter_id' => $filterId
         ]);
     }
 }

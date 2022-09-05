@@ -16,6 +16,7 @@ class CatalogCategoryFilterValue extends Model
      * Assignable fields
      */
     protected $fillable = [
-        'name'
+        'name',
+        'filter_id'
     ];
 }
