@@ -21,4 +21,12 @@ class CatalogProductImage extends Model
         'order_place',
         'product_id',
     ];
+
+    /**
+     * Return parent product
+     */
+    public function product()
+    {
+        return $this->belongsTo('App/Models/CatalogProduct', 'product_id');
+    }
 }

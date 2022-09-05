@@ -19,4 +19,24 @@ class CatalogProductCategory extends Model
         'product_id',
         'category_id'
     ];
+
+    /**
+     * Return the products assosiated with the record
+     * 
+     * @return Illuminate\Database\Eloquent\Collection
+     */
+    public function product()
+    {
+        return $this->belongsTo('App\CatalogProduct', 'product_id');
+    }
+
+    /**
+     * Return the categories assosiated with the record
+     * 
+     * @return Illuminate\Database\Eloquent\Collection
+     */
+    public function category()
+    {
+        return $this->belongsTo('App\CatalogCategory', 'category_id');
+    }
 }

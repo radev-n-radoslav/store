@@ -21,4 +21,12 @@ class BlogCategory extends Model
         'description',
         'thumbnail_url'
     ];
+
+    /**
+     * Return child articles
+     */
+    public function articles()
+    {
+        return $this->hasMany('App/Models/BlogArticle', 'category_id');
+    }
 }

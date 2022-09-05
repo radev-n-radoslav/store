@@ -22,4 +22,12 @@ class BlogArticle extends Model
         'category_id',
         'views'
     ];
+
+    /**
+     * Get parent category
+     */
+    public function category()
+    {
+        return $this->belongsTo('App/Models/BlogCategory', 'category_id');
+    }
 }

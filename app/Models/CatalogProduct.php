@@ -22,4 +22,27 @@ class CatalogProduct extends Model
         'quantity',
         'gross_price'
     ];
+
+    /**
+     * Return product images
+     */
+    public function images()
+    {
+        return $this->hasMany('App/Models/CatalogProductImage', 'product_id');
+    }
+
+    /**
+     * Return the categories, to which the product belongs to
+     * 
+     * @return Illuminate\Database\Eloquent\Collection
+     */
+    public function categories()
+    {
+        return $this->belongsToMany(
+            'App\Models\CatalogCategory', 
+            'catalog_product_categories', 
+            'product_id', 
+            'category_id'
+        );
+    }
 }

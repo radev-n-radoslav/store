@@ -22,4 +22,12 @@ class CatalogCategoryFilter extends Model
         'has_multiple',
         'category_id'
     ];
+
+    /**
+     * Return parent category
+     */
+    public function category()
+    {
+        return $this->belongsTo('App/Models/CatalogCategory', 'category_id');
+    }
 }

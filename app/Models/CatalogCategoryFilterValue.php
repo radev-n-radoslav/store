@@ -19,4 +19,12 @@ class CatalogCategoryFilterValue extends Model
         'name',
         'filter_id'
     ];
+
+    /**
+     * Return parent filter
+     */
+    public function filter()
+    {
+        return $this->belongsTo('App/Models/CatalogCategoryFilter', 'filter_id');
+    }
 }
