@@ -37,7 +37,8 @@ class OrderItemSeeder extends Seeder
             for ($j=0; $j < rand(1, 10); $j++) { 
                 OrderItem::create([
                     'order_id' => $i,
-                    'product_id' => $getProduct($usedProductIds, $products)
+                    'product_id' => $getProduct($usedProductIds, $products),
+                    'quantity' => rand(0, 20)
                 ]);
             }
         }
