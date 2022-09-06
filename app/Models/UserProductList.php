@@ -44,6 +44,14 @@ class UserProductList extends Model
     }
 
     /**
+     * Get raw data from pivot table
+     */
+    public function rawItems()
+    {
+        return $this->hasMany('App\Models\UserProductListItem', 'list_id');
+    }
+
+    /**
      * Set a list as primary and remove primary flag from others
      */
     public function setListPrimary($model)
