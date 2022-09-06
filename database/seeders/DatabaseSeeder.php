@@ -15,13 +15,18 @@ class DatabaseSeeder extends Seeder
     {
         // Seeders called only for development
         if (app()->isLocal()) {
-            $this->call(AdminSeeder::class);
-            $this->call(UserSeeder::class);
-            $this->call(BlogSeeder::class);
             $this->call(CatalogCategorySeeder::class);
             $this->call(CatalogProductSeeder::class);
             $this->call(CatalogProductImageSeeder::class);
             $this->call(CatalogProductCategorySeeder::class);
+
+            $this->call(AdminSeeder::class);
+            $this->call(UserSeeder::class);
+
+            $this->call(UserProductListSeeder::class);
+            $this->call(UserProductListItemSeeder::class);
+
+            $this->call(BlogSeeder::class);
         }
     }
 }

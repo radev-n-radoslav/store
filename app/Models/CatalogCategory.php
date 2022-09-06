@@ -62,7 +62,7 @@ class CatalogCategory extends Model
     {
         if ($active_only) {
             return $this->belongsToMany(
-                'App\CatalogProduct', 
+                'App\Models\CatalogProduct', 
                 'catalog_product_categories', 
                 'category_id', 
                 'product_id'
@@ -76,7 +76,7 @@ class CatalogCategory extends Model
                 });
         }else{
             return $this->belongsToMany(
-                'App\CatalogProduct', 
+                'App\Models\CatalogProduct', 
                 'catalog_product_categories', 
                 'category_id', 
                 'product_id'
