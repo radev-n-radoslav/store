@@ -20,7 +20,7 @@ class CreateOrderItemsTable extends Migration
             $table->unsignedBigInteger('product_id')
                 ->index();
             $table->unsignedInteger('quantity');
-            $table->double('gross_price', 8, 2);
+            $table->double('price', 8, 2);
             $table->timestamps();
         });
     }
