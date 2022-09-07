@@ -38,7 +38,7 @@ class CartItemSeeder extends Seeder
                 CartItem::create([
                     'user_id' => $i,
                     'product_id' => $getProduct($usedProductIds, $products),
-                    'quantity' => rand(0, 20)
+                    'quantity' => rand(1, 20)
                 ]);
             }
         }
