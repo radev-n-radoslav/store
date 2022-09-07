@@ -3,11 +3,11 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\CartItem;
 use App\Models\CatalogProduct;
-use App\Models\Order;
-use App\Models\OrderItem;
+use App\Models\User;
 
-class OrderItemSeeder extends Seeder
+class CartItemSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,9 +16,9 @@ class OrderItemSeeder extends Seeder
      */
     public function run()
     {
-        OrderItem::truncate();
+        CartItem::truncate();
 
-        $orders = Order::count();
+        $users = User::count();
         $products = CatalogProduct::count();
 
         $usedProductIds = [];
@@ -32,14 +32,13 @@ class OrderItemSeeder extends Seeder
             return $id;
         };
 
-        for ($i=1; $i <= $orders; $i++) {
+        for ($i=1; $i <= $users; $i++) {
             $usedProductIds = [];
             for ($j=0; $j < rand(1, 10); $j++) { 
-                OrderItem::create([
-                    'order_id' => $i,
+                CartItem::create([
+                    'user_id' => $i,
                     'product_id' => $getProduct($usedProductIds, $products),
-                    'quantity' => rand(0, 20),
-                    'price' => rand(100, 100000) / 100
+                    'quantity' => rand(0, 20)
                 ]);
             }
         }

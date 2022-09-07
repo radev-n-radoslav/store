@@ -55,6 +55,35 @@ class User extends Authenticatable
         ]);
     }
 
+    /**
+     * Cart items
+     */
+    public function cart()
+    {
+        return $this->belongsToMany(
+            CatalogProduct::class,
+            'cart_items',
+            'user_id',
+            'product_id'
+        );
+    }
+
+    /**
+     * Cart items raw
+     */
+    public function cartRaw()
+    {
+        return $this->belongsTo(CartItem::class, 'user_id');
+    }
+
+    /**
+     * Orders
+     */
+    public function orders()
+    {
+        return $this->hasMany(Order::class, 'user_id');
+    }
+
     public static function boot()
     {
         parent::boot();
