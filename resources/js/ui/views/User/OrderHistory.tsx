@@ -130,7 +130,7 @@ export const OrderHistory = () => {
                                                 <td className="hidden py-6 pr-8 sm:table-cell">${ 2 * parseFloat(product.price) }</td>
                                                 <td className="whitespace-nowrap py-6 text-right font-medium">
                                                     <a href={product.href} className="text-indigo-600">
-                                                        View<span className="hidden lg:inline">Product</span>
+                                                        View <span className="hidden lg:inline">Product</span>
                                                         <span className="sr-only">, {product.name}</span>
                                                     </a>
                                                 </td>

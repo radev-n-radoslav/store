@@ -3198,7 +3198,110 @@ exports.BlogArticle = void 0;
 var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
 var BlogArticle = function BlogArticle() {
-  return react_1["default"].createElement(react_1["default"].Fragment, null);
+  return react_1["default"].createElement("div", {
+    className: "relative overflow-hidden bg-white py-16"
+  }, react_1["default"].createElement("div", {
+    className: "hidden lg:absolute lg:inset-y-0 lg:block lg:h-full lg:w-full"
+  }, react_1["default"].createElement("div", {
+    className: "relative mx-auto h-full max-w-prose text-lg",
+    "aria-hidden": "true"
+  }, react_1["default"].createElement("svg", {
+    className: "absolute top-12 left-full translate-x-32 transform",
+    width: 404,
+    height: 384,
+    fill: "none",
+    viewBox: "0 0 404 384"
+  }, react_1["default"].createElement("defs", null, react_1["default"].createElement("pattern", {
+    id: "74b3fd99-0a6f-4271-bef2-e80eeafdf357",
+    x: 0,
+    y: 0,
+    width: 20,
+    height: 20,
+    patternUnits: "userSpaceOnUse"
+  }, react_1["default"].createElement("rect", {
+    x: 0,
+    y: 0,
+    width: 4,
+    height: 4,
+    className: "text-gray-200",
+    fill: "currentColor"
+  }))), react_1["default"].createElement("rect", {
+    width: 404,
+    height: 384,
+    fill: "url(#74b3fd99-0a6f-4271-bef2-e80eeafdf357)"
+  })), react_1["default"].createElement("svg", {
+    className: "absolute top-1/2 right-full -translate-y-1/2 -translate-x-32 transform",
+    width: 404,
+    height: 384,
+    fill: "none",
+    viewBox: "0 0 404 384"
+  }, react_1["default"].createElement("defs", null, react_1["default"].createElement("pattern", {
+    id: "f210dbf6-a58d-4871-961e-36d5016a0f49",
+    x: 0,
+    y: 0,
+    width: 20,
+    height: 20,
+    patternUnits: "userSpaceOnUse"
+  }, react_1["default"].createElement("rect", {
+    x: 0,
+    y: 0,
+    width: 4,
+    height: 4,
+    className: "text-gray-200",
+    fill: "currentColor"
+  }))), react_1["default"].createElement("rect", {
+    width: 404,
+    height: 384,
+    fill: "url(#f210dbf6-a58d-4871-961e-36d5016a0f49)"
+  })), react_1["default"].createElement("svg", {
+    className: "absolute bottom-12 left-full translate-x-32 transform",
+    width: 404,
+    height: 384,
+    fill: "none",
+    viewBox: "0 0 404 384"
+  }, react_1["default"].createElement("defs", null, react_1["default"].createElement("pattern", {
+    id: "d3eb07ae-5182-43e6-857d-35c643af9034",
+    x: 0,
+    y: 0,
+    width: 20,
+    height: 20,
+    patternUnits: "userSpaceOnUse"
+  }, react_1["default"].createElement("rect", {
+    x: 0,
+    y: 0,
+    width: 4,
+    height: 4,
+    className: "text-gray-200",
+    fill: "currentColor"
+  }))), react_1["default"].createElement("rect", {
+    width: 404,
+    height: 384,
+    fill: "url(#d3eb07ae-5182-43e6-857d-35c643af9034)"
+  })))), react_1["default"].createElement("div", {
+    className: "relative px-4 sm:px-6 lg:px-8"
+  }, react_1["default"].createElement("div", {
+    className: "mx-auto max-w-prose text-lg"
+  }, react_1["default"].createElement("h1", null, react_1["default"].createElement("span", {
+    className: "block text-center text-lg font-semibold text-indigo-600"
+  }, "Introducing"), react_1["default"].createElement("span", {
+    className: "mt-2 block text-center text-3xl font-bold leading-8 tracking-tight text-gray-900 sm:text-4xl"
+  }, "JavaScript for Beginners")), react_1["default"].createElement("p", {
+    className: "mt-8 text-xl leading-8 text-gray-500"
+  }, "Aliquet nec orci mattis amet quisque ullamcorper neque, nibh sem. At arcu, sit dui mi, nibh dui, diam eget aliquam. Quisque id at vitae feugiat egestas ac. Diam nulla orci at in viverra scelerisque eget. Eleifend egestas fringilla sapien.")), react_1["default"].createElement("div", {
+    className: "prose prose-lg prose-indigo mx-auto mt-6 text-gray-500"
+  }, react_1["default"].createElement("p", null, "Faucibus commodo massa rhoncus, volutpat. ", react_1["default"].createElement("strong", null, "Dignissim"), " sed ", react_1["default"].createElement("strong", null, "eget risus enim"), ". Mattis mauris semper sed amet vitae sed turpis id. Id dolor praesent donec est. Odio penatibus risus viverra tellus varius sit neque erat velit. Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus enim.", ' ', react_1["default"].createElement("a", {
+    href: "#"
+  }, "Mattis mauris semper"), " sed amet vitae sed turpis id."), react_1["default"].createElement("ul", {
+    role: "list"
+  }, react_1["default"].createElement("li", null, "Quis elit egestas venenatis mattis dignissim."), react_1["default"].createElement("li", null, "Cras cras lobortis vitae vivamus ultricies facilisis tempus."), react_1["default"].createElement("li", null, "Orci in sit morbi dignissim metus diam arcu pretium.")), react_1["default"].createElement("p", null, "Quis semper vulputate aliquam venenatis egestas sagittis quisque orci. Donec commodo sit viverra aliquam porttitor ultrices gravida eu. Tincidunt leo, elementum mattis elementum ut nisl, justo, amet, mattis. Nunc purus, diam commodo tincidunt turpis. Amet, duis sed elit interdum dignissim."), react_1["default"].createElement("h2", null, "From beginner to expert in 30 days"), react_1["default"].createElement("p", null, "Id orci tellus laoreet id ac. Dolor, aenean leo, ac etiam consequat in. Convallis arcu ipsum urna nibh. Pharetra, euismod vitae interdum mauris enim, consequat vulputate nibh. Maecenas pellentesque id sed tellus mauris, ultrices mauris. Tincidunt enim cursus ridiculus mi. Pellentesque nam sed nullam sed diam turpis ipsum eu a sed convallis diam."), react_1["default"].createElement("blockquote", null, react_1["default"].createElement("p", null, "Sagittis scelerisque nulla cursus in enim consectetur quam. Dictum urna sed consectetur neque tristique pellentesque. Blandit amet, sed aenean erat arcu morbi.")), react_1["default"].createElement("p", null, "Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus enim. Mattis mauris semper sed amet vitae sed turpis id. Id dolor praesent donec est. Odio penatibus risus viverra tellus varius sit neque erat velit."), react_1["default"].createElement("figure", null, react_1["default"].createElement("img", {
+    className: "w-full rounded-lg",
+    src: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=facearea&w=1310&h=873&q=80&facepad=3",
+    alt: "",
+    width: 1310,
+    height: 873
+  }), react_1["default"].createElement("figcaption", null, "Sagittis scelerisque nulla cursus in enim consectetur quam.")), react_1["default"].createElement("h2", null, "Everything you need to get up and running"), react_1["default"].createElement("p", null, "Purus morbi dignissim senectus mattis ", react_1["default"].createElement("a", {
+    href: "#"
+  }, "adipiscing"), ". Amet, massa quam varius orci dapibus volutpat cras. In amet eu ridiculus leo sodales cursus tristique. Tincidunt sed tempus ut viverra ridiculus non molestie. Gravida quis fringilla amet eget dui tempor dignissim. Facilisis auctor venenatis varius nunc, congue erat ac. Cras fermentum convallis quam."), react_1["default"].createElement("p", null, "Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus enim. Mattis mauris semper sed amet vitae sed turpis id. Id dolor praesent donec est. Odio penatibus risus viverra tellus varius sit neque erat velit."))));
 };
 
 exports.BlogArticle = BlogArticle;
@@ -3227,8 +3330,129 @@ exports.BlogCategory = void 0;
 
 var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
+var posts = [{
+  title: 'Boost your conversion rate',
+  href: '#',
+  category: {
+    name: 'Article',
+    href: '#'
+  },
+  description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, ut atque fuga culpa, similique sequi cum eos quis dolorum.',
+  date: 'Mar 16, 2020',
+  datetime: '2020-03-16',
+  imageUrl: 'https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
+  readingTime: '6 min',
+  author: {
+    name: 'Roel Aufderehar',
+    href: '#',
+    imageUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'
+  }
+}, {
+  title: 'How to use search engine optimization to drive sales',
+  href: '#',
+  category: {
+    name: 'Video',
+    href: '#'
+  },
+  description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit facilis asperiores porro quaerat doloribus, eveniet dolore. Adipisci tempora aut inventore optio animi., tempore temporibus quo laudantium.',
+  date: 'Mar 10, 2020',
+  datetime: '2020-03-10',
+  imageUrl: 'https://images.unsplash.com/photo-1547586696-ea22b4d4235d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
+  readingTime: '4 min',
+  author: {
+    name: 'Brenna Goyette',
+    href: '#',
+    imageUrl: 'https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'
+  }
+}, {
+  title: 'Improve your customer experience',
+  href: '#',
+  category: {
+    name: 'Case Study',
+    href: '#'
+  },
+  description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint harum rerum voluptatem quo recusandae magni placeat saepe molestiae, sed excepturi cumque corporis perferendis hic.',
+  date: 'Feb 12, 2020',
+  datetime: '2020-02-12',
+  imageUrl: 'https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80',
+  readingTime: '11 min',
+  author: {
+    name: 'Daniela Metz',
+    href: '#',
+    imageUrl: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'
+  }
+}];
+
 var BlogCategory = function BlogCategory() {
-  return react_1["default"].createElement(react_1["default"].Fragment, null);
+  return react_1["default"].createElement("div", {
+    className: "relative bg-gray-50 px-4 pt-16 pb-20 sm:px-6 lg:px-8 lg:pt-24 lg:pb-28"
+  }, react_1["default"].createElement("div", {
+    className: "absolute inset-0"
+  }, react_1["default"].createElement("div", {
+    className: "h-1/3 bg-white sm:h-2/3"
+  })), react_1["default"].createElement("div", {
+    className: "relative mx-auto max-w-7xl"
+  }, react_1["default"].createElement("div", {
+    className: "text-center"
+  }, react_1["default"].createElement("h2", {
+    className: "text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
+  }, "From the blog"), react_1["default"].createElement("p", {
+    className: "mx-auto mt-3 max-w-2xl text-xl text-gray-500 sm:mt-4"
+  }, "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque, ducimus sed.")), react_1["default"].createElement("div", {
+    className: "mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3"
+  }, posts.map(function (post) {
+    return react_1["default"].createElement("div", {
+      key: post.title,
+      className: "flex flex-col overflow-hidden rounded-lg shadow-lg"
+    }, react_1["default"].createElement("div", {
+      className: "flex-shrink-0"
+    }, react_1["default"].createElement("img", {
+      className: "h-48 w-full object-cover",
+      src: post.imageUrl,
+      alt: ""
+    })), react_1["default"].createElement("div", {
+      className: "flex flex-1 flex-col justify-between bg-white p-6"
+    }, react_1["default"].createElement("div", {
+      className: "flex-1"
+    }, react_1["default"].createElement("p", {
+      className: "text-sm font-medium text-indigo-600"
+    }, react_1["default"].createElement("a", {
+      href: post.category.href,
+      className: "hover:underline"
+    }, post.category.name)), react_1["default"].createElement("a", {
+      href: post.href,
+      className: "mt-2 block"
+    }, react_1["default"].createElement("p", {
+      className: "text-xl font-semibold text-gray-900"
+    }, post.title), react_1["default"].createElement("p", {
+      className: "mt-3 text-base text-gray-500"
+    }, post.description))), react_1["default"].createElement("div", {
+      className: "mt-6 flex items-center"
+    }, react_1["default"].createElement("div", {
+      className: "flex-shrink-0"
+    }, react_1["default"].createElement("a", {
+      href: post.author.href
+    }, react_1["default"].createElement("span", {
+      className: "sr-only"
+    }, post.author.name), react_1["default"].createElement("img", {
+      className: "h-10 w-10 rounded-full",
+      src: post.author.imageUrl,
+      alt: ""
+    }))), react_1["default"].createElement("div", {
+      className: "ml-3"
+    }, react_1["default"].createElement("p", {
+      className: "text-sm font-medium text-gray-900"
+    }, react_1["default"].createElement("a", {
+      href: post.author.href,
+      className: "hover:underline"
+    }, post.author.name)), react_1["default"].createElement("div", {
+      className: "flex space-x-1 text-sm text-gray-500"
+    }, react_1["default"].createElement("time", {
+      dateTime: post.datetime
+    }, post.date), react_1["default"].createElement("span", {
+      "aria-hidden": "true"
+    }, "\xB7"), react_1["default"].createElement("span", null, post.readingTime, " read"))))));
+  }))));
 };
 
 exports.BlogCategory = BlogCategory;
@@ -3721,10 +3945,56 @@ exports.Category = Category;
 "use strict";
 
 
-var __importDefault = this && this.__importDefault || function (mod) {
-  return mod && mod.__esModule ? mod : {
-    "default": mod
-  };
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  var desc = Object.getOwnPropertyDescriptor(m, k);
+
+  if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+    desc = {
+      enumerable: true,
+      get: function get() {
+        return m[k];
+      }
+    };
+  }
+
+  Object.defineProperty(o, k2, desc);
+} : function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  o[k2] = m[k];
+});
+
+var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
+  Object.defineProperty(o, "default", {
+    enumerable: true,
+    value: v
+  });
+} : function (o, v) {
+  o["default"] = v;
+});
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+  }
+
+  __setModuleDefault(result, mod);
+
+  return result;
 };
 
 Object.defineProperty(exports, "__esModule", ({
@@ -3732,10 +4002,216 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports.Product = void 0;
 
-var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var react_2 = __webpack_require__(/*! @headlessui/react */ "./node_modules/@headlessui/react/dist/index.cjs");
+
+var solid_1 = __webpack_require__(/*! @heroicons/react/20/solid */ "./node_modules/@heroicons/react/20/solid/esm/index.js");
+
+var outline_1 = __webpack_require__(/*! @heroicons/react/24/outline */ "./node_modules/@heroicons/react/24/outline/esm/index.js");
+
+var product = {
+  name: 'Zip Tote Basket',
+  price: '$140',
+  rating: 4,
+  images: [{
+    id: 1,
+    name: 'Angled view',
+    src: 'https://tailwindui.com/img/ecommerce-images/product-page-03-product-01.jpg',
+    alt: 'Angled front view with bag zipped and handles upright.'
+  } // More images...
+  ],
+  colors: [{
+    name: 'Washed Black',
+    bgColor: 'bg-gray-700',
+    selectedColor: 'ring-gray-700'
+  }, {
+    name: 'White',
+    bgColor: 'bg-white',
+    selectedColor: 'ring-gray-400'
+  }, {
+    name: 'Washed Gray',
+    bgColor: 'bg-gray-500',
+    selectedColor: 'ring-gray-500'
+  }],
+  description: "\n        <p>The Zip Tote Basket is the perfect midpoint between shopping tote and comfy backpack. With convertible straps, you can hand carry, should sling, or backpack this convenient and spacious bag. The zip top and durable canvas construction keeps your goods protected for all-day use.</p>\n    ",
+  details: [{
+    name: 'Features',
+    items: ['Multiple strap configurations', 'Spacious interior with top zip', 'Leather handle and tabs', 'Interior dividers', 'Stainless strap loops', 'Double stitched construction', 'Water-resistant']
+  } // More sections...
+  ]
+};
+
+function classNames() {
+  for (var _len = arguments.length, classes = new Array(_len), _key = 0; _key < _len; _key++) {
+    classes[_key] = arguments[_key];
+  }
+
+  return classes.filter(Boolean).join(' ');
+}
 
 var Product = function Product() {
-  return react_1["default"].createElement(react_1["default"].Fragment, null);
+  var _ref = (0, react_1.useState)(product.colors[0]),
+      _ref2 = _slicedToArray(_ref, 2),
+      selectedColor = _ref2[0],
+      setSelectedColor = _ref2[1];
+
+  return react_1["default"].createElement("div", {
+    className: "bg-white"
+  }, react_1["default"].createElement("div", {
+    className: "mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8"
+  }, react_1["default"].createElement("div", {
+    className: "lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8"
+  }, react_1["default"].createElement(react_2.Tab.Group, {
+    as: "div",
+    className: "flex flex-col-reverse"
+  }, react_1["default"].createElement("div", {
+    className: "mx-auto mt-6 hidden w-full max-w-2xl sm:block lg:max-w-none"
+  }, react_1["default"].createElement(react_2.Tab.List, {
+    className: "grid grid-cols-4 gap-6"
+  }, product.images.map(function (image) {
+    return react_1["default"].createElement(react_2.Tab, {
+      key: image.id,
+      className: "relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-offset-4"
+    }, function (_ref3) {
+      var selected = _ref3.selected;
+      return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("span", {
+        className: "sr-only"
+      }, " ", image.name, " "), react_1["default"].createElement("span", {
+        className: "absolute inset-0 overflow-hidden rounded-md"
+      }, react_1["default"].createElement("img", {
+        src: image.src,
+        alt: "",
+        className: "h-full w-full object-cover object-center"
+      })), react_1["default"].createElement("span", {
+        className: classNames(selected ? 'ring-indigo-500' : 'ring-transparent', 'pointer-events-none absolute inset-0 rounded-md ring-2 ring-offset-2'),
+        "aria-hidden": "true"
+      }));
+    });
+  }))), react_1["default"].createElement(react_2.Tab.Panels, {
+    className: "aspect-w-1 aspect-h-1 w-full"
+  }, product.images.map(function (image) {
+    return react_1["default"].createElement(react_2.Tab.Panel, {
+      key: image.id
+    }, react_1["default"].createElement("img", {
+      src: image.src,
+      alt: image.alt,
+      className: "h-full w-full object-cover object-center sm:rounded-lg"
+    }));
+  }))), react_1["default"].createElement("div", {
+    className: "mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0"
+  }, react_1["default"].createElement("h1", {
+    className: "text-3xl font-bold tracking-tight text-gray-900"
+  }, product.name), react_1["default"].createElement("div", {
+    className: "mt-3"
+  }, react_1["default"].createElement("h2", {
+    className: "sr-only"
+  }, "Product information"), react_1["default"].createElement("p", {
+    className: "text-3xl tracking-tight text-gray-900"
+  }, product.price)), react_1["default"].createElement("div", {
+    className: "mt-3"
+  }, react_1["default"].createElement("h3", {
+    className: "sr-only"
+  }, "Reviews"), react_1["default"].createElement("div", {
+    className: "flex items-center"
+  }, react_1["default"].createElement("div", {
+    className: "flex items-center"
+  }, [0, 1, 2, 3, 4].map(function (rating) {
+    return react_1["default"].createElement(solid_1.StarIcon, {
+      key: rating,
+      className: classNames(product.rating > rating ? 'text-indigo-500' : 'text-gray-300', 'h-5 w-5 flex-shrink-0'),
+      "aria-hidden": "true"
+    });
+  })), react_1["default"].createElement("p", {
+    className: "sr-only"
+  }, product.rating, " out of 5 stars"))), react_1["default"].createElement("div", {
+    className: "mt-6"
+  }, react_1["default"].createElement("h3", {
+    className: "sr-only"
+  }, "Description"), react_1["default"].createElement("div", {
+    className: "space-y-6 text-base text-gray-700",
+    dangerouslySetInnerHTML: {
+      __html: product.description
+    }
+  })), react_1["default"].createElement("form", {
+    className: "mt-6"
+  }, react_1["default"].createElement("div", null, react_1["default"].createElement("h3", {
+    className: "text-sm text-gray-600"
+  }, "Color"), react_1["default"].createElement(react_2.RadioGroup, {
+    value: selectedColor,
+    onChange: setSelectedColor,
+    className: "mt-2"
+  }, react_1["default"].createElement(react_2.RadioGroup.Label, {
+    className: "sr-only"
+  }, " Choose a color "), react_1["default"].createElement("span", {
+    className: "flex items-center space-x-3"
+  }, product.colors.map(function (color) {
+    return react_1["default"].createElement(react_2.RadioGroup.Option, {
+      key: color.name,
+      value: color,
+      className: function className(_ref4) {
+        var active = _ref4.active,
+            checked = _ref4.checked;
+        return classNames(color.selectedColor, active && checked ? 'ring ring-offset-1' : '', !active && checked ? 'ring-2' : '', '-m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none');
+      }
+    }, react_1["default"].createElement(react_2.RadioGroup.Label, {
+      as: "span",
+      className: "sr-only"
+    }, ' ', color.name, ' '), react_1["default"].createElement("span", {
+      "aria-hidden": "true",
+      className: classNames(color.bgColor, 'h-8 w-8 border border-black border-opacity-10 rounded-full')
+    }));
+  })))), react_1["default"].createElement("div", {
+    className: "sm:flex-col1 mt-10 flex"
+  }, react_1["default"].createElement("button", {
+    type: "submit",
+    className: "flex max-w-xs flex-1 items-center justify-center rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full"
+  }, "Add to bag"), react_1["default"].createElement("button", {
+    type: "button",
+    className: "ml-4 flex items-center justify-center rounded-md py-3 px-3 text-gray-400 hover:bg-gray-100 hover:text-gray-500"
+  }, react_1["default"].createElement(outline_1.HeartIcon, {
+    className: "h-6 w-6 flex-shrink-0",
+    "aria-hidden": "true"
+  }), react_1["default"].createElement("span", {
+    className: "sr-only"
+  }, "Add to favorites")))), react_1["default"].createElement("section", {
+    "aria-labelledby": "details-heading",
+    className: "mt-12"
+  }, react_1["default"].createElement("h2", {
+    id: "details-heading",
+    className: "sr-only"
+  }, "Additional details"), react_1["default"].createElement("div", {
+    className: "divide-y divide-gray-200 border-t"
+  }, product.details.map(function (detail) {
+    return react_1["default"].createElement(react_2.Disclosure, {
+      as: "div",
+      key: detail.name
+    }, function (_ref5) {
+      var open = _ref5.open;
+      return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("h3", null, react_1["default"].createElement(react_2.Disclosure.Button, {
+        className: "group relative flex w-full items-center justify-between py-6 text-left"
+      }, react_1["default"].createElement("span", {
+        className: classNames(open ? 'text-indigo-600' : 'text-gray-900', 'text-sm font-medium')
+      }, detail.name), react_1["default"].createElement("span", {
+        className: "ml-6 flex items-center"
+      }, open ? react_1["default"].createElement(outline_1.MinusIcon, {
+        className: "block h-6 w-6 text-indigo-400 group-hover:text-indigo-500",
+        "aria-hidden": "true"
+      }) : react_1["default"].createElement(outline_1.PlusIcon, {
+        className: "block h-6 w-6 text-gray-400 group-hover:text-gray-500",
+        "aria-hidden": "true"
+      })))), react_1["default"].createElement(react_2.Disclosure.Panel, {
+        as: "div",
+        className: "prose prose-sm pb-6"
+      }, react_1["default"].createElement("ul", {
+        role: "list"
+      }, detail.items.map(function (item) {
+        return react_1["default"].createElement("li", {
+          key: item
+        }, item);
+      }))));
+    });
+  })))))));
 };
 
 exports.Product = Product;
@@ -5993,7 +6469,7 @@ var OrderHistory = function OrderHistory() {
       }, react_1["default"].createElement("a", {
         href: product.href,
         className: "text-indigo-600"
-      }, "View", react_1["default"].createElement("span", {
+      }, "View ", react_1["default"].createElement("span", {
         className: "hidden lg:inline"
       }, "Product"), react_1["default"].createElement("span", {
         className: "sr-only"
