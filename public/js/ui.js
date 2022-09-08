@@ -3112,6 +3112,16 @@ var Article_1 = __webpack_require__(/*! ../views/Blog/Article */ "./resources/js
 
 var NoPage_1 = __webpack_require__(/*! ../views/NoPage */ "./resources/js/ui/views/NoPage.tsx");
 
+var Cart_1 = __webpack_require__(/*! ../views/User/Cart */ "./resources/js/ui/views/User/Cart.tsx");
+
+var Checkout_1 = __webpack_require__(/*! ../views/User/Checkout */ "./resources/js/ui/views/User/Checkout.tsx");
+
+var CheckoutAnonymous_1 = __webpack_require__(/*! ../views/User/CheckoutAnonymous */ "./resources/js/ui/views/User/CheckoutAnonymous.tsx");
+
+var OrderConfirmation_1 = __webpack_require__(/*! ../views/User/OrderConfirmation */ "./resources/js/ui/views/User/OrderConfirmation.tsx");
+
+var OrderDetails_1 = __webpack_require__(/*! ../views/User/OrderDetails */ "./resources/js/ui/views/User/OrderDetails.tsx");
+
 var Router = function Router() {
   return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement(react_router_dom_1.Routes, null, react_1["default"].createElement(react_router_dom_1.Route, {
     path: '/'
@@ -3133,6 +3143,21 @@ var Router = function Router() {
     path: "article/:slug",
     element: react_1["default"].createElement(Article_1.BlogArticle, null)
   })), react_1["default"].createElement(react_router_dom_1.Route, {
+    path: "cart",
+    element: react_1["default"].createElement(Cart_1.Cart, null)
+  }), react_1["default"].createElement(react_router_dom_1.Route, {
+    path: "checkout",
+    element: react_1["default"].createElement(Checkout_1.Checkout, null)
+  }), react_1["default"].createElement(react_router_dom_1.Route, {
+    path: "nologin/checkout",
+    element: react_1["default"].createElement(CheckoutAnonymous_1.CheckoutAnonymous, null)
+  }), react_1["default"].createElement(react_router_dom_1.Route, {
+    path: "confirmation",
+    element: react_1["default"].createElement(OrderConfirmation_1.OrderConfirmation, null)
+  }), react_1["default"].createElement(react_router_dom_1.Route, {
+    path: "order/:id/details",
+    element: react_1["default"].createElement(OrderDetails_1.OrderDetails, null)
+  }), react_1["default"].createElement(react_router_dom_1.Route, {
     path: "contacts",
     element: react_1["default"].createElement(Home_1.Home, null)
   }), react_1["default"].createElement(react_router_dom_1.Route, {
@@ -3850,6 +3875,1909 @@ var NoPage = function NoPage() {
 };
 
 exports.NoPage = NoPage;
+
+/***/ }),
+
+/***/ "./resources/js/ui/views/User/Cart.tsx":
+/*!*********************************************!*\
+  !*** ./resources/js/ui/views/User/Cart.tsx ***!
+  \*********************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  var desc = Object.getOwnPropertyDescriptor(m, k);
+
+  if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+    desc = {
+      enumerable: true,
+      get: function get() {
+        return m[k];
+      }
+    };
+  }
+
+  Object.defineProperty(o, k2, desc);
+} : function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  o[k2] = m[k];
+});
+
+var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
+  Object.defineProperty(o, "default", {
+    enumerable: true,
+    value: v
+  });
+} : function (o, v) {
+  o["default"] = v;
+});
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+  }
+
+  __setModuleDefault(result, mod);
+
+  return result;
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.Cart = void 0;
+
+var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var solid_1 = __webpack_require__(/*! @heroicons/react/20/solid */ "./node_modules/@heroicons/react/20/solid/esm/index.js");
+
+var products = [{
+  id: 1,
+  name: 'Basic Tee',
+  href: '#',
+  price: '$32.00',
+  color: 'Sienna',
+  inStock: true,
+  size: 'Large',
+  imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-01-product-01.jpg',
+  imageAlt: "Front of men's Basic Tee in sienna."
+}, {
+  id: 2,
+  name: 'Basic Tee',
+  href: '#',
+  price: '$32.00',
+  color: 'Black',
+  inStock: false,
+  leadTime: '3–4 weeks',
+  size: 'Large',
+  imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-01-product-02.jpg',
+  imageAlt: "Front of men's Basic Tee in black."
+}, {
+  id: 3,
+  name: 'Nomad Tumbler',
+  href: '#',
+  price: '$35.00',
+  color: 'White',
+  inStock: true,
+  imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-01-product-03.jpg',
+  imageAlt: 'Insulated bottle with white base and black snap lid.'
+}];
+var policies = [{
+  name: 'Free returns',
+  imageUrl: 'https://tailwindui.com/img/ecommerce/icons/icon-returns-light.svg',
+  description: 'Not what you expected? Place it back in the parcel and attach the pre-paid postage stamp.'
+}, {
+  name: 'Same day delivery',
+  imageUrl: 'https://tailwindui.com/img/ecommerce/icons/icon-calendar-light.svg',
+  description: 'We offer a delivery service that has never been done before. Checkout today and receive your products within hours.'
+}, {
+  name: 'All year discount',
+  imageUrl: 'https://tailwindui.com/img/ecommerce/icons/icon-gift-card-light.svg',
+  description: 'Looking for a deal? You can use the code "ALLYEAR" at checkout and get money off all year round.'
+}, {
+  name: 'For the planet',
+  imageUrl: 'https://tailwindui.com/img/ecommerce/icons/icon-planet-light.svg',
+  description: 'We’ve pledged 1% of sales to the preservation and restoration of the natural environment.'
+}];
+var relatedProducts = [{
+  id: 1,
+  name: 'Billfold Wallet',
+  href: '#',
+  imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-01-related-product-01.jpg',
+  imageAlt: 'Front of Billfold Wallet in natural leather.',
+  price: '$118',
+  color: 'Natural'
+} // More products...
+];
+
+function classNames() {
+  for (var _len = arguments.length, classes = new Array(_len), _key = 0; _key < _len; _key++) {
+    classes[_key] = arguments[_key];
+  }
+
+  return classes.filter(Boolean).join(' ');
+}
+
+var Cart = function Cart() {
+  var _ref = (0, react_1.useState)(false),
+      _ref2 = _slicedToArray(_ref, 2),
+      open = _ref2[0],
+      setOpen = _ref2[1];
+
+  return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("div", {
+    className: "bg-white"
+  }, react_1["default"].createElement("main", {
+    className: "mx-auto max-w-2xl px-4 pt-16 pb-24 sm:px-6 lg:max-w-7xl lg:px-8"
+  }, react_1["default"].createElement("h1", {
+    className: "text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
+  }, "Shopping Cart"), react_1["default"].createElement("form", {
+    className: "mt-12 lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-12 xl:gap-x-16"
+  }, react_1["default"].createElement("section", {
+    "aria-labelledby": "cart-heading",
+    className: "lg:col-span-7"
+  }, react_1["default"].createElement("h2", {
+    id: "cart-heading",
+    className: "sr-only"
+  }, "Items in your shopping cart"), react_1["default"].createElement("ul", {
+    role: "list",
+    className: "divide-y divide-gray-200 border-t border-b border-gray-200"
+  }, products.map(function (product, productIdx) {
+    return react_1["default"].createElement("li", {
+      key: product.id,
+      className: "flex py-6 sm:py-10"
+    }, react_1["default"].createElement("div", {
+      className: "flex-shrink-0"
+    }, react_1["default"].createElement("img", {
+      src: product.imageSrc,
+      alt: product.imageAlt,
+      className: "h-24 w-24 rounded-md object-cover object-center sm:h-48 sm:w-48"
+    })), react_1["default"].createElement("div", {
+      className: "ml-4 flex flex-1 flex-col justify-between sm:ml-6"
+    }, react_1["default"].createElement("div", {
+      className: "relative pr-9 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:pr-0"
+    }, react_1["default"].createElement("div", null, react_1["default"].createElement("div", {
+      className: "flex justify-between"
+    }, react_1["default"].createElement("h3", {
+      className: "text-sm"
+    }, react_1["default"].createElement("a", {
+      href: product.href,
+      className: "font-medium text-gray-700 hover:text-gray-800"
+    }, product.name))), react_1["default"].createElement("div", {
+      className: "mt-1 flex text-sm"
+    }, react_1["default"].createElement("p", {
+      className: "text-gray-500"
+    }, product.color), product.size ? react_1["default"].createElement("p", {
+      className: "ml-4 border-l border-gray-200 pl-4 text-gray-500"
+    }, product.size) : null), react_1["default"].createElement("p", {
+      className: "mt-1 text-sm font-medium text-gray-900"
+    }, product.price)), react_1["default"].createElement("div", {
+      className: "mt-4 sm:mt-0 sm:pr-9"
+    }, react_1["default"].createElement("label", {
+      htmlFor: "quantity-".concat(productIdx),
+      className: "sr-only"
+    }, "Quantity, ", product.name), react_1["default"].createElement("select", {
+      id: "quantity-".concat(productIdx),
+      name: "quantity-".concat(productIdx),
+      className: "max-w-full rounded-md border border-gray-300 py-1.5 text-left text-base font-medium leading-5 text-gray-700 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm"
+    }, react_1["default"].createElement("option", {
+      value: 1
+    }, "1"), react_1["default"].createElement("option", {
+      value: 2
+    }, "2"), react_1["default"].createElement("option", {
+      value: 3
+    }, "3"), react_1["default"].createElement("option", {
+      value: 4
+    }, "4"), react_1["default"].createElement("option", {
+      value: 5
+    }, "5"), react_1["default"].createElement("option", {
+      value: 6
+    }, "6"), react_1["default"].createElement("option", {
+      value: 7
+    }, "7"), react_1["default"].createElement("option", {
+      value: 8
+    }, "8")), react_1["default"].createElement("div", {
+      className: "absolute top-0 right-0"
+    }, react_1["default"].createElement("button", {
+      type: "button",
+      className: "-m-2 inline-flex p-2 text-gray-400 hover:text-gray-500"
+    }, react_1["default"].createElement("span", {
+      className: "sr-only"
+    }, "Remove"), react_1["default"].createElement(solid_1.XMarkIcon, {
+      className: "h-5 w-5",
+      "aria-hidden": "true"
+    }))))), react_1["default"].createElement("p", {
+      className: "mt-4 flex space-x-2 text-sm text-gray-700"
+    }, product.inStock ? react_1["default"].createElement(solid_1.CheckIcon, {
+      className: "h-5 w-5 flex-shrink-0 text-green-500",
+      "aria-hidden": "true"
+    }) : react_1["default"].createElement(solid_1.ClockIcon, {
+      className: "h-5 w-5 flex-shrink-0 text-gray-300",
+      "aria-hidden": "true"
+    }), react_1["default"].createElement("span", null, product.inStock ? 'In stock' : "Ships in ".concat(product.leadTime)))));
+  }))), react_1["default"].createElement("section", {
+    "aria-labelledby": "summary-heading",
+    className: "mt-16 rounded-lg bg-gray-50 px-4 py-6 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8"
+  }, react_1["default"].createElement("h2", {
+    id: "summary-heading",
+    className: "text-lg font-medium text-gray-900"
+  }, "Order summary"), react_1["default"].createElement("dl", {
+    className: "mt-6 space-y-4"
+  }, react_1["default"].createElement("div", {
+    className: "flex items-center justify-between"
+  }, react_1["default"].createElement("dt", {
+    className: "text-sm text-gray-600"
+  }, "Subtotal"), react_1["default"].createElement("dd", {
+    className: "text-sm font-medium text-gray-900"
+  }, "$99.00")), react_1["default"].createElement("div", {
+    className: "flex items-center justify-between border-t border-gray-200 pt-4"
+  }, react_1["default"].createElement("dt", {
+    className: "flex items-center text-sm text-gray-600"
+  }, react_1["default"].createElement("span", null, "Shipping estimate"), react_1["default"].createElement("a", {
+    href: "#",
+    className: "ml-2 flex-shrink-0 text-gray-400 hover:text-gray-500"
+  }, react_1["default"].createElement("span", {
+    className: "sr-only"
+  }, "Learn more about how shipping is calculated"), react_1["default"].createElement(solid_1.QuestionMarkCircleIcon, {
+    className: "h-5 w-5",
+    "aria-hidden": "true"
+  }))), react_1["default"].createElement("dd", {
+    className: "text-sm font-medium text-gray-900"
+  }, "$5.00")), react_1["default"].createElement("div", {
+    className: "flex items-center justify-between border-t border-gray-200 pt-4"
+  }, react_1["default"].createElement("dt", {
+    className: "flex text-sm text-gray-600"
+  }, react_1["default"].createElement("span", null, "Tax estimate"), react_1["default"].createElement("a", {
+    href: "#",
+    className: "ml-2 flex-shrink-0 text-gray-400 hover:text-gray-500"
+  }, react_1["default"].createElement("span", {
+    className: "sr-only"
+  }, "Learn more about how tax is calculated"), react_1["default"].createElement(solid_1.QuestionMarkCircleIcon, {
+    className: "h-5 w-5",
+    "aria-hidden": "true"
+  }))), react_1["default"].createElement("dd", {
+    className: "text-sm font-medium text-gray-900"
+  }, "$8.32")), react_1["default"].createElement("div", {
+    className: "flex items-center justify-between border-t border-gray-200 pt-4"
+  }, react_1["default"].createElement("dt", {
+    className: "text-base font-medium text-gray-900"
+  }, "Order total"), react_1["default"].createElement("dd", {
+    className: "text-base font-medium text-gray-900"
+  }, "$112.32"))), react_1["default"].createElement("div", {
+    className: "mt-6"
+  }, react_1["default"].createElement("button", {
+    type: "submit",
+    className: "w-full rounded-md border border-transparent bg-indigo-600 py-3 px-4 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
+  }, "Checkout")))), react_1["default"].createElement("section", {
+    "aria-labelledby": "related-heading",
+    className: "mt-24"
+  }, react_1["default"].createElement("h2", {
+    id: "related-heading",
+    className: "text-lg font-medium text-gray-900"
+  }, "You may also like\u2026"), react_1["default"].createElement("div", {
+    className: "mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8"
+  }, relatedProducts.map(function (relatedProduct) {
+    return react_1["default"].createElement("div", {
+      key: relatedProduct.id,
+      className: "group relative"
+    }, react_1["default"].createElement("div", {
+      className: "min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md group-hover:opacity-75 lg:aspect-none lg:h-80"
+    }, react_1["default"].createElement("img", {
+      src: relatedProduct.imageSrc,
+      alt: relatedProduct.imageAlt,
+      className: "h-full w-full object-cover object-center lg:h-full lg:w-full"
+    })), react_1["default"].createElement("div", {
+      className: "mt-4 flex justify-between"
+    }, react_1["default"].createElement("div", null, react_1["default"].createElement("h3", {
+      className: "text-sm text-gray-700"
+    }, react_1["default"].createElement("a", {
+      href: relatedProduct.href
+    }, react_1["default"].createElement("span", {
+      "aria-hidden": "true",
+      className: "absolute inset-0"
+    }), relatedProduct.name)), react_1["default"].createElement("p", {
+      className: "mt-1 text-sm text-gray-500"
+    }, relatedProduct.color)), react_1["default"].createElement("p", {
+      className: "text-sm font-medium text-gray-900"
+    }, relatedProduct.price)));
+  }))), react_1["default"].createElement("section", {
+    "aria-labelledby": "policies-heading",
+    className: "mt-24 border-t border-gray-200 bg-gray-50"
+  }, react_1["default"].createElement("h2", {
+    id: "policies-heading",
+    className: "sr-only"
+  }, "Our policies"), react_1["default"].createElement("div", {
+    className: "mx-auto max-w-7xl py-24 px-4 sm:px-6 sm:py-32 lg:px-8"
+  }, react_1["default"].createElement("div", {
+    className: "grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 lg:gap-x-8 lg:gap-y-0"
+  }, policies.map(function (policy) {
+    return react_1["default"].createElement("div", {
+      key: policy.name,
+      className: "text-center md:flex md:items-start md:text-left lg:block lg:text-center"
+    }, react_1["default"].createElement("div", {
+      className: "md:flex-shrink-0"
+    }, react_1["default"].createElement("div", {
+      className: "flow-root"
+    }, react_1["default"].createElement("img", {
+      className: "-my-1 mx-auto h-24 w-auto",
+      src: policy.imageUrl,
+      alt: ""
+    }))), react_1["default"].createElement("div", {
+      className: "mt-6 md:mt-0 md:ml-4 lg:mt-6 lg:ml-0"
+    }, react_1["default"].createElement("h3", {
+      className: "text-base font-medium text-gray-900"
+    }, policy.name), react_1["default"].createElement("p", {
+      className: "mt-3 text-sm text-gray-500"
+    }, policy.description)));
+  })))))));
+};
+
+exports.Cart = Cart;
+
+/***/ }),
+
+/***/ "./resources/js/ui/views/User/Checkout.tsx":
+/*!*************************************************!*\
+  !*** ./resources/js/ui/views/User/Checkout.tsx ***!
+  \*************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  var desc = Object.getOwnPropertyDescriptor(m, k);
+
+  if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+    desc = {
+      enumerable: true,
+      get: function get() {
+        return m[k];
+      }
+    };
+  }
+
+  Object.defineProperty(o, k2, desc);
+} : function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  o[k2] = m[k];
+});
+
+var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
+  Object.defineProperty(o, "default", {
+    enumerable: true,
+    value: v
+  });
+} : function (o, v) {
+  o["default"] = v;
+});
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+  }
+
+  __setModuleDefault(result, mod);
+
+  return result;
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.Checkout = void 0;
+
+var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var react_2 = __webpack_require__(/*! @headlessui/react */ "./node_modules/@headlessui/react/dist/index.cjs");
+
+var outline_1 = __webpack_require__(/*! @heroicons/react/24/outline */ "./node_modules/@heroicons/react/24/outline/esm/index.js");
+
+var solid_1 = __webpack_require__(/*! @heroicons/react/20/solid */ "./node_modules/@heroicons/react/20/solid/esm/index.js");
+
+var steps = [{
+  name: 'Cart',
+  href: '#',
+  status: 'complete'
+}, {
+  name: 'Billing Information',
+  href: '#',
+  status: 'current'
+}, {
+  name: 'Confirmation',
+  href: '#',
+  status: 'upcoming'
+}];
+var products = [{
+  id: 1,
+  title: 'Basic Tee',
+  href: '#',
+  price: '$32.00',
+  color: 'Black',
+  size: 'Large',
+  imageSrc: 'https://tailwindui.com/img/ecommerce-images/checkout-page-02-product-01.jpg',
+  imageAlt: "Front of men's Basic Tee in black."
+}];
+var deliveryMethods = [{
+  id: 1,
+  title: 'Standard',
+  turnaround: '4–10 business days',
+  price: '$5.00'
+}, {
+  id: 2,
+  title: 'Express',
+  turnaround: '2–5 business days',
+  price: '$16.00'
+}];
+var paymentMethods = [{
+  id: 'credit-card',
+  title: 'Credit card'
+}, {
+  id: 'paypal',
+  title: 'PayPal'
+}, {
+  id: 'etransfer',
+  title: 'eTransfer'
+}];
+
+function classNames() {
+  for (var _len = arguments.length, classes = new Array(_len), _key = 0; _key < _len; _key++) {
+    classes[_key] = arguments[_key];
+  }
+
+  return classes.filter(Boolean).join(' ');
+}
+
+var Checkout = function Checkout() {
+  var _ref = (0, react_1.useState)(false),
+      _ref2 = _slicedToArray(_ref, 2),
+      open = _ref2[0],
+      setOpen = _ref2[1];
+
+  var _ref3 = (0, react_1.useState)(deliveryMethods[0]),
+      _ref4 = _slicedToArray(_ref3, 2),
+      selectedDeliveryMethod = _ref4[0],
+      setSelectedDeliveryMethod = _ref4[1];
+
+  return react_1["default"].createElement("div", {
+    className: "bg-gray-50"
+  }, react_1["default"].createElement("header", {
+    className: "relative border-b border-gray-200 bg-white text-sm font-medium text-gray-700"
+  }, react_1["default"].createElement("div", {
+    className: "mx-auto max-w-7xl py-8 px-4 sm:px-6 lg:px-8"
+  }, react_1["default"].createElement("div", {
+    className: "relative flex justify-end sm:justify-center"
+  }, react_1["default"].createElement("nav", {
+    "aria-label": "Progress",
+    className: "hidden sm:block"
+  }, react_1["default"].createElement("ol", {
+    role: "list",
+    className: "flex space-x-4"
+  }, steps.map(function (step, stepIdx) {
+    return react_1["default"].createElement("li", {
+      key: step.name,
+      className: "flex items-center"
+    }, step.status === 'current' ? react_1["default"].createElement("a", {
+      href: step.href,
+      "aria-current": "page",
+      className: "text-indigo-600"
+    }, step.name) : react_1["default"].createElement("a", {
+      href: step.href
+    }, step.name), stepIdx !== steps.length - 1 ? react_1["default"].createElement(outline_1.ChevronRightIcon, {
+      className: "ml-4 h-5 w-5 text-gray-300",
+      "aria-hidden": "true"
+    }) : null);
+  }))), react_1["default"].createElement("p", {
+    className: "sm:hidden"
+  }, "Step 2 of 4")))), react_1["default"].createElement("main", {
+    className: "mx-auto max-w-7xl px-4 pt-16 pb-24 sm:px-6 lg:px-8"
+  }, react_1["default"].createElement("div", {
+    className: "mx-auto max-w-2xl lg:max-w-none"
+  }, react_1["default"].createElement("h1", {
+    className: "sr-only"
+  }, "Checkout"), react_1["default"].createElement("form", {
+    className: "lg:grid lg:grid-cols-2 lg:gap-x-12 xl:gap-x-16"
+  }, react_1["default"].createElement("div", null, react_1["default"].createElement("div", null, react_1["default"].createElement("h2", {
+    className: "text-lg font-medium text-gray-900"
+  }, "Contact information"), react_1["default"].createElement("div", {
+    className: "mt-4"
+  }, react_1["default"].createElement("label", {
+    htmlFor: "email-address",
+    className: "block text-sm font-medium text-gray-700"
+  }, "Email address"), react_1["default"].createElement("div", {
+    className: "mt-1"
+  }, react_1["default"].createElement("input", {
+    type: "email",
+    id: "email-address",
+    name: "email-address",
+    autoComplete: "email",
+    className: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+  })))), react_1["default"].createElement("div", {
+    className: "mt-10 border-t border-gray-200 pt-10"
+  }, react_1["default"].createElement("h2", {
+    className: "text-lg font-medium text-gray-900"
+  }, "Shipping information"), react_1["default"].createElement("div", {
+    className: "mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4"
+  }, react_1["default"].createElement("div", null, react_1["default"].createElement("label", {
+    htmlFor: "first-name",
+    className: "block text-sm font-medium text-gray-700"
+  }, "First name"), react_1["default"].createElement("div", {
+    className: "mt-1"
+  }, react_1["default"].createElement("input", {
+    type: "text",
+    id: "first-name",
+    name: "first-name",
+    autoComplete: "given-name",
+    className: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+  }))), react_1["default"].createElement("div", null, react_1["default"].createElement("label", {
+    htmlFor: "last-name",
+    className: "block text-sm font-medium text-gray-700"
+  }, "Last name"), react_1["default"].createElement("div", {
+    className: "mt-1"
+  }, react_1["default"].createElement("input", {
+    type: "text",
+    id: "last-name",
+    name: "last-name",
+    autoComplete: "family-name",
+    className: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+  }))), react_1["default"].createElement("div", {
+    className: "sm:col-span-2"
+  }, react_1["default"].createElement("label", {
+    htmlFor: "company",
+    className: "block text-sm font-medium text-gray-700"
+  }, "Company"), react_1["default"].createElement("div", {
+    className: "mt-1"
+  }, react_1["default"].createElement("input", {
+    type: "text",
+    name: "company",
+    id: "company",
+    className: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+  }))), react_1["default"].createElement("div", {
+    className: "sm:col-span-2"
+  }, react_1["default"].createElement("label", {
+    htmlFor: "address",
+    className: "block text-sm font-medium text-gray-700"
+  }, "Address"), react_1["default"].createElement("div", {
+    className: "mt-1"
+  }, react_1["default"].createElement("input", {
+    type: "text",
+    name: "address",
+    id: "address",
+    autoComplete: "street-address",
+    className: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+  }))), react_1["default"].createElement("div", {
+    className: "sm:col-span-2"
+  }, react_1["default"].createElement("label", {
+    htmlFor: "apartment",
+    className: "block text-sm font-medium text-gray-700"
+  }, "Apartment, suite, etc."), react_1["default"].createElement("div", {
+    className: "mt-1"
+  }, react_1["default"].createElement("input", {
+    type: "text",
+    name: "apartment",
+    id: "apartment",
+    className: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+  }))), react_1["default"].createElement("div", null, react_1["default"].createElement("label", {
+    htmlFor: "city",
+    className: "block text-sm font-medium text-gray-700"
+  }, "City"), react_1["default"].createElement("div", {
+    className: "mt-1"
+  }, react_1["default"].createElement("input", {
+    type: "text",
+    name: "city",
+    id: "city",
+    autoComplete: "address-level2",
+    className: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+  }))), react_1["default"].createElement("div", null, react_1["default"].createElement("label", {
+    htmlFor: "country",
+    className: "block text-sm font-medium text-gray-700"
+  }, "Country"), react_1["default"].createElement("div", {
+    className: "mt-1"
+  }, react_1["default"].createElement("select", {
+    id: "country",
+    name: "country",
+    autoComplete: "country-name",
+    className: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+  }, react_1["default"].createElement("option", null, "United States"), react_1["default"].createElement("option", null, "Canada"), react_1["default"].createElement("option", null, "Mexico")))), react_1["default"].createElement("div", null, react_1["default"].createElement("label", {
+    htmlFor: "region",
+    className: "block text-sm font-medium text-gray-700"
+  }, "State / Province"), react_1["default"].createElement("div", {
+    className: "mt-1"
+  }, react_1["default"].createElement("input", {
+    type: "text",
+    name: "region",
+    id: "region",
+    autoComplete: "address-level1",
+    className: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+  }))), react_1["default"].createElement("div", null, react_1["default"].createElement("label", {
+    htmlFor: "postal-code",
+    className: "block text-sm font-medium text-gray-700"
+  }, "Postal code"), react_1["default"].createElement("div", {
+    className: "mt-1"
+  }, react_1["default"].createElement("input", {
+    type: "text",
+    name: "postal-code",
+    id: "postal-code",
+    autoComplete: "postal-code",
+    className: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+  }))), react_1["default"].createElement("div", {
+    className: "sm:col-span-2"
+  }, react_1["default"].createElement("label", {
+    htmlFor: "phone",
+    className: "block text-sm font-medium text-gray-700"
+  }, "Phone"), react_1["default"].createElement("div", {
+    className: "mt-1"
+  }, react_1["default"].createElement("input", {
+    type: "text",
+    name: "phone",
+    id: "phone",
+    autoComplete: "tel",
+    className: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+  }))))), react_1["default"].createElement("div", {
+    className: "mt-10 border-t border-gray-200 pt-10"
+  }, react_1["default"].createElement(react_2.RadioGroup, {
+    value: selectedDeliveryMethod,
+    onChange: setSelectedDeliveryMethod
+  }, react_1["default"].createElement(react_2.RadioGroup.Label, {
+    className: "text-lg font-medium text-gray-900"
+  }, "Delivery method"), react_1["default"].createElement("div", {
+    className: "mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4"
+  }, deliveryMethods.map(function (deliveryMethod) {
+    return react_1["default"].createElement(react_2.RadioGroup.Option, {
+      key: deliveryMethod.id,
+      value: deliveryMethod,
+      className: function className(_ref5) {
+        var checked = _ref5.checked,
+            active = _ref5.active;
+        return classNames(checked ? 'border-transparent' : 'border-gray-300', active ? 'ring-2 ring-indigo-500' : '', 'relative flex cursor-pointer rounded-lg border bg-white p-4 shadow-sm focus:outline-none');
+      }
+    }, function (_ref6) {
+      var checked = _ref6.checked,
+          active = _ref6.active;
+      return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("span", {
+        className: "flex flex-1"
+      }, react_1["default"].createElement("span", {
+        className: "flex flex-col"
+      }, react_1["default"].createElement(react_2.RadioGroup.Label, {
+        as: "span",
+        className: "block text-sm font-medium text-gray-900"
+      }, deliveryMethod.title), react_1["default"].createElement(react_2.RadioGroup.Description, {
+        as: "span",
+        className: "mt-1 flex items-center text-sm text-gray-500"
+      }, deliveryMethod.turnaround), react_1["default"].createElement(react_2.RadioGroup.Description, {
+        as: "span",
+        className: "mt-6 text-sm font-medium text-gray-900"
+      }, deliveryMethod.price))), checked ? react_1["default"].createElement(solid_1.CheckCircleIcon, {
+        className: "h-5 w-5 text-indigo-600",
+        "aria-hidden": "true"
+      }) : null, react_1["default"].createElement("span", {
+        className: classNames(active ? 'border' : 'border-2', checked ? 'border-indigo-500' : 'border-transparent', 'pointer-events-none absolute -inset-px rounded-lg'),
+        "aria-hidden": "true"
+      }));
+    });
+  })))), react_1["default"].createElement("div", {
+    className: "mt-10 border-t border-gray-200 pt-10"
+  }, react_1["default"].createElement("h2", {
+    className: "text-lg font-medium text-gray-900"
+  }, "Payment"), react_1["default"].createElement("fieldset", {
+    className: "mt-4"
+  }, react_1["default"].createElement("legend", {
+    className: "sr-only"
+  }, "Payment type"), react_1["default"].createElement("div", {
+    className: "space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10"
+  }, paymentMethods.map(function (paymentMethod, paymentMethodIdx) {
+    return react_1["default"].createElement("div", {
+      key: paymentMethod.id,
+      className: "flex items-center"
+    }, paymentMethodIdx === 0 ? react_1["default"].createElement("input", {
+      id: paymentMethod.id,
+      name: "payment-type",
+      type: "radio",
+      defaultChecked: true,
+      className: "h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500"
+    }) : react_1["default"].createElement("input", {
+      id: paymentMethod.id,
+      name: "payment-type",
+      type: "radio",
+      className: "h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500"
+    }), react_1["default"].createElement("label", {
+      htmlFor: paymentMethod.id,
+      className: "ml-3 block text-sm font-medium text-gray-700"
+    }, paymentMethod.title));
+  }))), react_1["default"].createElement("div", {
+    className: "mt-6 grid grid-cols-4 gap-y-6 gap-x-4"
+  }, react_1["default"].createElement("div", {
+    className: "col-span-4"
+  }, react_1["default"].createElement("label", {
+    htmlFor: "card-number",
+    className: "block text-sm font-medium text-gray-700"
+  }, "Card number"), react_1["default"].createElement("div", {
+    className: "mt-1"
+  }, react_1["default"].createElement("input", {
+    type: "text",
+    id: "card-number",
+    name: "card-number",
+    autoComplete: "cc-number",
+    className: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+  }))), react_1["default"].createElement("div", {
+    className: "col-span-4"
+  }, react_1["default"].createElement("label", {
+    htmlFor: "name-on-card",
+    className: "block text-sm font-medium text-gray-700"
+  }, "Name on card"), react_1["default"].createElement("div", {
+    className: "mt-1"
+  }, react_1["default"].createElement("input", {
+    type: "text",
+    id: "name-on-card",
+    name: "name-on-card",
+    autoComplete: "cc-name",
+    className: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+  }))), react_1["default"].createElement("div", {
+    className: "col-span-3"
+  }, react_1["default"].createElement("label", {
+    htmlFor: "expiration-date",
+    className: "block text-sm font-medium text-gray-700"
+  }, "Expiration date (MM/YY)"), react_1["default"].createElement("div", {
+    className: "mt-1"
+  }, react_1["default"].createElement("input", {
+    type: "text",
+    name: "expiration-date",
+    id: "expiration-date",
+    autoComplete: "cc-exp",
+    className: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+  }))), react_1["default"].createElement("div", null, react_1["default"].createElement("label", {
+    htmlFor: "cvc",
+    className: "block text-sm font-medium text-gray-700"
+  }, "CVC"), react_1["default"].createElement("div", {
+    className: "mt-1"
+  }, react_1["default"].createElement("input", {
+    type: "text",
+    name: "cvc",
+    id: "cvc",
+    autoComplete: "csc",
+    className: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+  })))))), react_1["default"].createElement("div", {
+    className: "mt-10 lg:mt-0"
+  }, react_1["default"].createElement("h2", {
+    className: "text-lg font-medium text-gray-900"
+  }, "Order summary"), react_1["default"].createElement("div", {
+    className: "mt-4 rounded-lg border border-gray-200 bg-white shadow-sm"
+  }, react_1["default"].createElement("h3", {
+    className: "sr-only"
+  }, "Items in your cart"), react_1["default"].createElement("ul", {
+    role: "list",
+    className: "divide-y divide-gray-200"
+  }, products.map(function (product) {
+    return react_1["default"].createElement("li", {
+      key: product.id,
+      className: "flex py-6 px-4 sm:px-6"
+    }, react_1["default"].createElement("div", {
+      className: "flex-shrink-0"
+    }, react_1["default"].createElement("img", {
+      src: product.imageSrc,
+      alt: product.imageAlt,
+      className: "w-20 rounded-md"
+    })), react_1["default"].createElement("div", {
+      className: "ml-6 flex flex-1 flex-col"
+    }, react_1["default"].createElement("div", {
+      className: "flex"
+    }, react_1["default"].createElement("div", {
+      className: "min-w-0 flex-1"
+    }, react_1["default"].createElement("h4", {
+      className: "text-sm"
+    }, react_1["default"].createElement("a", {
+      href: product.href,
+      className: "font-medium text-gray-700 hover:text-gray-800"
+    }, product.title)), react_1["default"].createElement("p", {
+      className: "mt-1 text-sm text-gray-500"
+    }, product.color), react_1["default"].createElement("p", {
+      className: "mt-1 text-sm text-gray-500"
+    }, product.size)), react_1["default"].createElement("div", {
+      className: "ml-4 flow-root flex-shrink-0"
+    }, react_1["default"].createElement("button", {
+      type: "button",
+      className: "-m-2.5 flex items-center justify-center bg-white p-2.5 text-gray-400 hover:text-gray-500"
+    }, react_1["default"].createElement("span", {
+      className: "sr-only"
+    }, "Remove"), react_1["default"].createElement(solid_1.TrashIcon, {
+      className: "h-5 w-5",
+      "aria-hidden": "true"
+    })))), react_1["default"].createElement("div", {
+      className: "flex flex-1 items-end justify-between pt-2"
+    }, react_1["default"].createElement("p", {
+      className: "mt-1 text-sm font-medium text-gray-900"
+    }, product.price), react_1["default"].createElement("div", {
+      className: "ml-4"
+    }, react_1["default"].createElement("label", {
+      htmlFor: "quantity",
+      className: "sr-only"
+    }, "Quantity"), react_1["default"].createElement("select", {
+      id: "quantity",
+      name: "quantity",
+      className: "rounded-md border border-gray-300 text-left text-base font-medium text-gray-700 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm"
+    }, react_1["default"].createElement("option", {
+      value: 1
+    }, "1"), react_1["default"].createElement("option", {
+      value: 2
+    }, "2"), react_1["default"].createElement("option", {
+      value: 3
+    }, "3"), react_1["default"].createElement("option", {
+      value: 4
+    }, "4"), react_1["default"].createElement("option", {
+      value: 5
+    }, "5"), react_1["default"].createElement("option", {
+      value: 6
+    }, "6"), react_1["default"].createElement("option", {
+      value: 7
+    }, "7"), react_1["default"].createElement("option", {
+      value: 8
+    }, "8"))))));
+  })), react_1["default"].createElement("dl", {
+    className: "space-y-6 border-t border-gray-200 py-6 px-4 sm:px-6"
+  }, react_1["default"].createElement("div", {
+    className: "flex items-center justify-between"
+  }, react_1["default"].createElement("dt", {
+    className: "text-sm"
+  }, "Subtotal"), react_1["default"].createElement("dd", {
+    className: "text-sm font-medium text-gray-900"
+  }, "$64.00")), react_1["default"].createElement("div", {
+    className: "flex items-center justify-between"
+  }, react_1["default"].createElement("dt", {
+    className: "text-sm"
+  }, "Shipping"), react_1["default"].createElement("dd", {
+    className: "text-sm font-medium text-gray-900"
+  }, "$5.00")), react_1["default"].createElement("div", {
+    className: "flex items-center justify-between"
+  }, react_1["default"].createElement("dt", {
+    className: "text-sm"
+  }, "Taxes"), react_1["default"].createElement("dd", {
+    className: "text-sm font-medium text-gray-900"
+  }, "$5.52")), react_1["default"].createElement("div", {
+    className: "flex items-center justify-between border-t border-gray-200 pt-6"
+  }, react_1["default"].createElement("dt", {
+    className: "text-base font-medium"
+  }, "Total"), react_1["default"].createElement("dd", {
+    className: "text-base font-medium text-gray-900"
+  }, "$75.52"))), react_1["default"].createElement("div", {
+    className: "border-t border-gray-200 py-6 px-4 sm:px-6"
+  }, react_1["default"].createElement("button", {
+    type: "submit",
+    className: "w-full rounded-md border border-transparent bg-indigo-600 py-3 px-4 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
+  }, "Confirm order"))))))));
+};
+
+exports.Checkout = Checkout;
+
+/***/ }),
+
+/***/ "./resources/js/ui/views/User/CheckoutAnonymous.tsx":
+/*!**********************************************************!*\
+  !*** ./resources/js/ui/views/User/CheckoutAnonymous.tsx ***!
+  \**********************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  var desc = Object.getOwnPropertyDescriptor(m, k);
+
+  if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+    desc = {
+      enumerable: true,
+      get: function get() {
+        return m[k];
+      }
+    };
+  }
+
+  Object.defineProperty(o, k2, desc);
+} : function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  o[k2] = m[k];
+});
+
+var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
+  Object.defineProperty(o, "default", {
+    enumerable: true,
+    value: v
+  });
+} : function (o, v) {
+  o["default"] = v;
+});
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+  }
+
+  __setModuleDefault(result, mod);
+
+  return result;
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.CheckoutAnonymous = void 0;
+
+var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var outline_1 = __webpack_require__(/*! @heroicons/react/24/outline */ "./node_modules/@heroicons/react/24/outline/esm/index.js");
+
+var solid_1 = __webpack_require__(/*! @heroicons/react/20/solid */ "./node_modules/@heroicons/react/20/solid/esm/index.js");
+
+var steps = [{
+  name: 'Cart',
+  href: '#',
+  status: 'complete'
+}, {
+  name: 'Billing Information',
+  href: '#',
+  status: 'current'
+}, {
+  name: 'Confirmation',
+  href: '#',
+  status: 'upcoming'
+}];
+var products = [{
+  id: 1,
+  title: 'Basic Tee',
+  href: '#',
+  price: '$32.00',
+  color: 'Black',
+  size: 'Large',
+  imageSrc: 'https://tailwindui.com/img/ecommerce-images/checkout-page-02-product-01.jpg',
+  imageAlt: "Front of men's Basic Tee in black."
+}];
+var deliveryMethods = [{
+  id: 1,
+  title: 'Standard',
+  turnaround: '4–10 business days',
+  price: '$5.00'
+}, {
+  id: 2,
+  title: 'Express',
+  turnaround: '2–5 business days',
+  price: '$16.00'
+}];
+var paymentMethods = [{
+  id: 'credit-card',
+  title: 'Credit card'
+}, {
+  id: 'paypal',
+  title: 'PayPal'
+}, {
+  id: 'etransfer',
+  title: 'eTransfer'
+}];
+
+function classNames() {
+  for (var _len = arguments.length, classes = new Array(_len), _key = 0; _key < _len; _key++) {
+    classes[_key] = arguments[_key];
+  }
+
+  return classes.filter(Boolean).join(' ');
+}
+
+var CheckoutAnonymous = function CheckoutAnonymous() {
+  var _ref = (0, react_1.useState)(false),
+      _ref2 = _slicedToArray(_ref, 2),
+      open = _ref2[0],
+      setOpen = _ref2[1];
+
+  var _ref3 = (0, react_1.useState)(deliveryMethods[0]),
+      _ref4 = _slicedToArray(_ref3, 2),
+      selectedDeliveryMethod = _ref4[0],
+      setSelectedDeliveryMethod = _ref4[1];
+
+  return react_1["default"].createElement("div", {
+    className: "bg-gray-50"
+  }, react_1["default"].createElement("div", {
+    className: "border-b border-gray-200 bg-white text-sm font-medium text-gray-700"
+  }, react_1["default"].createElement("div", {
+    className: "mx-auto max-w-7xl py-8 px-4 sm:px-6 lg:px-8"
+  }, react_1["default"].createElement("div", {
+    className: "flex justify-end sm:justify-center"
+  }, react_1["default"].createElement("nav", {
+    "aria-label": "Progress",
+    className: "hidden sm:block"
+  }, react_1["default"].createElement("ol", {
+    role: "list",
+    className: "flex space-x-4"
+  }, steps.map(function (step, stepIdx) {
+    return react_1["default"].createElement("li", {
+      key: step.name,
+      className: "flex items-center"
+    }, step.status === 'current' ? react_1["default"].createElement("a", {
+      href: step.href,
+      "aria-current": "page",
+      className: "text-indigo-600"
+    }, step.name) : react_1["default"].createElement("a", {
+      href: step.href
+    }, step.name), stepIdx !== steps.length - 1 ? react_1["default"].createElement(outline_1.ChevronRightIcon, {
+      className: "ml-4 h-5 w-5 text-gray-300",
+      "aria-hidden": "true"
+    }) : null);
+  }))), react_1["default"].createElement("p", {
+    className: "sm:hidden"
+  }, "Step 2 of 4")))), react_1["default"].createElement("main", {
+    className: "mx-auto max-w-7xl px-4 pt-16 pb-24 sm:px-6 lg:px-8"
+  }, react_1["default"].createElement("div", {
+    className: "mx-auto max-w-2xl lg:max-w-none"
+  }, react_1["default"].createElement("h1", {
+    className: "sr-only"
+  }, "Checkout"), react_1["default"].createElement("form", {
+    className: "lg:grid lg:grid-cols-2 lg:gap-x-12 xl:gap-x-16"
+  }, react_1["default"].createElement("div", null, react_1["default"].createElement("div", null, react_1["default"].createElement("h2", {
+    className: "text-lg font-medium text-gray-900"
+  }, "Contact information"), react_1["default"].createElement("div", {
+    className: "mt-4"
+  }, react_1["default"].createElement("label", {
+    htmlFor: "email-address",
+    className: "block text-sm font-medium text-gray-700"
+  }, "Email address"), react_1["default"].createElement("div", {
+    className: "mt-1"
+  }, react_1["default"].createElement("input", {
+    type: "email",
+    id: "email-address",
+    name: "email-address",
+    autoComplete: "email",
+    className: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+  })))), react_1["default"].createElement("div", {
+    className: "mt-10 border-t border-gray-200 pt-10"
+  }, react_1["default"].createElement("h2", {
+    className: "text-lg font-medium text-gray-900"
+  }, "Shipping information"), react_1["default"].createElement("div", {
+    className: "mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4"
+  }, react_1["default"].createElement("div", null, react_1["default"].createElement("label", {
+    htmlFor: "first-name",
+    className: "block text-sm font-medium text-gray-700"
+  }, "First name"), react_1["default"].createElement("div", {
+    className: "mt-1"
+  }, react_1["default"].createElement("input", {
+    type: "text",
+    id: "first-name",
+    name: "first-name",
+    autoComplete: "given-name",
+    className: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+  }))), react_1["default"].createElement("div", null, react_1["default"].createElement("label", {
+    htmlFor: "last-name",
+    className: "block text-sm font-medium text-gray-700"
+  }, "Last name"), react_1["default"].createElement("div", {
+    className: "mt-1"
+  }, react_1["default"].createElement("input", {
+    type: "text",
+    id: "last-name",
+    name: "last-name",
+    autoComplete: "family-name",
+    className: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+  }))), react_1["default"].createElement("div", {
+    className: "sm:col-span-2"
+  }, react_1["default"].createElement("label", {
+    htmlFor: "company",
+    className: "block text-sm font-medium text-gray-700"
+  }, "Company"), react_1["default"].createElement("div", {
+    className: "mt-1"
+  }, react_1["default"].createElement("input", {
+    type: "text",
+    name: "company",
+    id: "company",
+    className: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+  }))), react_1["default"].createElement("div", {
+    className: "sm:col-span-2"
+  }, react_1["default"].createElement("label", {
+    htmlFor: "address",
+    className: "block text-sm font-medium text-gray-700"
+  }, "Address"), react_1["default"].createElement("div", {
+    className: "mt-1"
+  }, react_1["default"].createElement("input", {
+    type: "text",
+    name: "address",
+    id: "address",
+    autoComplete: "street-address",
+    className: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+  }))), react_1["default"].createElement("div", {
+    className: "sm:col-span-2"
+  }, react_1["default"].createElement("label", {
+    htmlFor: "apartment",
+    className: "block text-sm font-medium text-gray-700"
+  }, "Apartment, suite, etc."), react_1["default"].createElement("div", {
+    className: "mt-1"
+  }, react_1["default"].createElement("input", {
+    type: "text",
+    name: "apartment",
+    id: "apartment",
+    className: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+  }))), react_1["default"].createElement("div", null, react_1["default"].createElement("label", {
+    htmlFor: "city",
+    className: "block text-sm font-medium text-gray-700"
+  }, "City"), react_1["default"].createElement("div", {
+    className: "mt-1"
+  }, react_1["default"].createElement("input", {
+    type: "text",
+    name: "city",
+    id: "city",
+    autoComplete: "address-level2",
+    className: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+  }))), react_1["default"].createElement("div", null, react_1["default"].createElement("label", {
+    htmlFor: "country",
+    className: "block text-sm font-medium text-gray-700"
+  }, "Country"), react_1["default"].createElement("div", {
+    className: "mt-1"
+  }, react_1["default"].createElement("select", {
+    id: "country",
+    name: "country",
+    autoComplete: "country-name",
+    className: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+  }, react_1["default"].createElement("option", null, "United States"), react_1["default"].createElement("option", null, "Canada"), react_1["default"].createElement("option", null, "Mexico")))), react_1["default"].createElement("div", null, react_1["default"].createElement("label", {
+    htmlFor: "region",
+    className: "block text-sm font-medium text-gray-700"
+  }, "State / Province"), react_1["default"].createElement("div", {
+    className: "mt-1"
+  }, react_1["default"].createElement("input", {
+    type: "text",
+    name: "region",
+    id: "region",
+    autoComplete: "address-level1",
+    className: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+  }))), react_1["default"].createElement("div", null, react_1["default"].createElement("label", {
+    htmlFor: "postal-code",
+    className: "block text-sm font-medium text-gray-700"
+  }, "Postal code"), react_1["default"].createElement("div", {
+    className: "mt-1"
+  }, react_1["default"].createElement("input", {
+    type: "text",
+    name: "postal-code",
+    id: "postal-code",
+    autoComplete: "postal-code",
+    className: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+  }))), react_1["default"].createElement("div", {
+    className: "sm:col-span-2"
+  }, react_1["default"].createElement("label", {
+    htmlFor: "phone",
+    className: "block text-sm font-medium text-gray-700"
+  }, "Phone"), react_1["default"].createElement("div", {
+    className: "mt-1"
+  }, react_1["default"].createElement("input", {
+    type: "text",
+    name: "phone",
+    id: "phone",
+    autoComplete: "tel",
+    className: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+  }))))), react_1["default"].createElement("div", {
+    className: "mt-10 border-t border-gray-200 pt-10"
+  }, react_1["default"].createElement("h2", {
+    className: "text-lg font-medium text-gray-900"
+  }, "Payment"), react_1["default"].createElement("fieldset", {
+    className: "mt-4"
+  }, react_1["default"].createElement("legend", {
+    className: "sr-only"
+  }, "Payment type"), react_1["default"].createElement("div", {
+    className: "space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10"
+  }, paymentMethods.map(function (paymentMethod, paymentMethodIdx) {
+    return react_1["default"].createElement("div", {
+      key: paymentMethod.id,
+      className: "flex items-center"
+    }, paymentMethodIdx === 0 ? react_1["default"].createElement("input", {
+      id: paymentMethod.id,
+      name: "payment-type",
+      type: "radio",
+      defaultChecked: true,
+      className: "h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500"
+    }) : react_1["default"].createElement("input", {
+      id: paymentMethod.id,
+      name: "payment-type",
+      type: "radio",
+      className: "h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500"
+    }), react_1["default"].createElement("label", {
+      htmlFor: paymentMethod.id,
+      className: "ml-3 block text-sm font-medium text-gray-700"
+    }, paymentMethod.title));
+  }))), react_1["default"].createElement("div", {
+    className: "mt-6 grid grid-cols-4 gap-y-6 gap-x-4"
+  }, react_1["default"].createElement("div", {
+    className: "col-span-4"
+  }, react_1["default"].createElement("label", {
+    htmlFor: "card-number",
+    className: "block text-sm font-medium text-gray-700"
+  }, "Card number"), react_1["default"].createElement("div", {
+    className: "mt-1"
+  }, react_1["default"].createElement("input", {
+    type: "text",
+    id: "card-number",
+    name: "card-number",
+    autoComplete: "cc-number",
+    className: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+  }))), react_1["default"].createElement("div", {
+    className: "col-span-4"
+  }, react_1["default"].createElement("label", {
+    htmlFor: "name-on-card",
+    className: "block text-sm font-medium text-gray-700"
+  }, "Name on card"), react_1["default"].createElement("div", {
+    className: "mt-1"
+  }, react_1["default"].createElement("input", {
+    type: "text",
+    id: "name-on-card",
+    name: "name-on-card",
+    autoComplete: "cc-name",
+    className: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+  }))), react_1["default"].createElement("div", {
+    className: "col-span-3"
+  }, react_1["default"].createElement("label", {
+    htmlFor: "expiration-date",
+    className: "block text-sm font-medium text-gray-700"
+  }, "Expiration date (MM/YY)"), react_1["default"].createElement("div", {
+    className: "mt-1"
+  }, react_1["default"].createElement("input", {
+    type: "text",
+    name: "expiration-date",
+    id: "expiration-date",
+    autoComplete: "cc-exp",
+    className: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+  }))), react_1["default"].createElement("div", null, react_1["default"].createElement("label", {
+    htmlFor: "cvc",
+    className: "block text-sm font-medium text-gray-700"
+  }, "CVC"), react_1["default"].createElement("div", {
+    className: "mt-1"
+  }, react_1["default"].createElement("input", {
+    type: "text",
+    name: "cvc",
+    id: "cvc",
+    autoComplete: "csc",
+    className: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+  })))))), react_1["default"].createElement("div", {
+    className: "mt-10 lg:mt-0"
+  }, react_1["default"].createElement("h2", {
+    className: "text-lg font-medium text-gray-900"
+  }, "Order summary"), react_1["default"].createElement("div", {
+    className: "mt-4 rounded-lg border border-gray-200 bg-white shadow-sm"
+  }, react_1["default"].createElement("h3", {
+    className: "sr-only"
+  }, "Items in your cart"), react_1["default"].createElement("ul", {
+    role: "list",
+    className: "divide-y divide-gray-200"
+  }, products.map(function (product) {
+    return react_1["default"].createElement("li", {
+      key: product.id,
+      className: "flex py-6 px-4 sm:px-6"
+    }, react_1["default"].createElement("div", {
+      className: "flex-shrink-0"
+    }, react_1["default"].createElement("img", {
+      src: product.imageSrc,
+      alt: product.imageAlt,
+      className: "w-20 rounded-md"
+    })), react_1["default"].createElement("div", {
+      className: "ml-6 flex flex-1 flex-col"
+    }, react_1["default"].createElement("div", {
+      className: "flex"
+    }, react_1["default"].createElement("div", {
+      className: "min-w-0 flex-1"
+    }, react_1["default"].createElement("h4", {
+      className: "text-sm"
+    }, react_1["default"].createElement("a", {
+      href: product.href,
+      className: "font-medium text-gray-700 hover:text-gray-800"
+    }, product.title)), react_1["default"].createElement("p", {
+      className: "mt-1 text-sm text-gray-500"
+    }, product.color), react_1["default"].createElement("p", {
+      className: "mt-1 text-sm text-gray-500"
+    }, product.size)), react_1["default"].createElement("div", {
+      className: "ml-4 flow-root flex-shrink-0"
+    }, react_1["default"].createElement("button", {
+      type: "button",
+      className: "-m-2.5 flex items-center justify-center bg-white p-2.5 text-gray-400 hover:text-gray-500"
+    }, react_1["default"].createElement("span", {
+      className: "sr-only"
+    }, "Remove"), react_1["default"].createElement(solid_1.TrashIcon, {
+      className: "h-5 w-5",
+      "aria-hidden": "true"
+    })))), react_1["default"].createElement("div", {
+      className: "flex flex-1 items-end justify-between pt-2"
+    }, react_1["default"].createElement("p", {
+      className: "mt-1 text-sm font-medium text-gray-900"
+    }, product.price), react_1["default"].createElement("div", {
+      className: "ml-4"
+    }, react_1["default"].createElement("label", {
+      htmlFor: "quantity",
+      className: "sr-only"
+    }, "Quantity"), react_1["default"].createElement("select", {
+      id: "quantity",
+      name: "quantity",
+      className: "rounded-md border border-gray-300 text-left text-base font-medium text-gray-700 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm"
+    }, react_1["default"].createElement("option", {
+      value: 1
+    }, "1"), react_1["default"].createElement("option", {
+      value: 2
+    }, "2"), react_1["default"].createElement("option", {
+      value: 3
+    }, "3"), react_1["default"].createElement("option", {
+      value: 4
+    }, "4"), react_1["default"].createElement("option", {
+      value: 5
+    }, "5"), react_1["default"].createElement("option", {
+      value: 6
+    }, "6"), react_1["default"].createElement("option", {
+      value: 7
+    }, "7"), react_1["default"].createElement("option", {
+      value: 8
+    }, "8"))))));
+  })), react_1["default"].createElement("dl", {
+    className: "space-y-6 border-t border-gray-200 py-6 px-4 sm:px-6"
+  }, react_1["default"].createElement("div", {
+    className: "flex items-center justify-between"
+  }, react_1["default"].createElement("dt", {
+    className: "text-sm"
+  }, "Subtotal"), react_1["default"].createElement("dd", {
+    className: "text-sm font-medium text-gray-900"
+  }, "$64.00")), react_1["default"].createElement("div", {
+    className: "flex items-center justify-between"
+  }, react_1["default"].createElement("dt", {
+    className: "text-sm"
+  }, "Shipping"), react_1["default"].createElement("dd", {
+    className: "text-sm font-medium text-gray-900"
+  }, "$5.00")), react_1["default"].createElement("div", {
+    className: "flex items-center justify-between"
+  }, react_1["default"].createElement("dt", {
+    className: "text-sm"
+  }, "Taxes"), react_1["default"].createElement("dd", {
+    className: "text-sm font-medium text-gray-900"
+  }, "$5.52")), react_1["default"].createElement("div", {
+    className: "flex items-center justify-between border-t border-gray-200 pt-6"
+  }, react_1["default"].createElement("dt", {
+    className: "text-base font-medium"
+  }, "Total"), react_1["default"].createElement("dd", {
+    className: "text-base font-medium text-gray-900"
+  }, "$75.52"))), react_1["default"].createElement("div", {
+    className: "border-t border-gray-200 py-6 px-4 sm:px-6"
+  }, react_1["default"].createElement("button", {
+    type: "submit",
+    className: "w-full rounded-md border border-transparent bg-indigo-600 py-3 px-4 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
+  }, "Confirm order"))))))));
+};
+
+exports.CheckoutAnonymous = CheckoutAnonymous;
+
+/***/ }),
+
+/***/ "./resources/js/ui/views/User/OrderConfirmation.tsx":
+/*!**********************************************************!*\
+  !*** ./resources/js/ui/views/User/OrderConfirmation.tsx ***!
+  \**********************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.OrderConfirmation = void 0;
+
+var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var products = [{
+  id: 1,
+  name: 'Cold Brew Bottle',
+  description: 'This glass bottle comes with a mesh insert for steeping tea or cold-brewing coffee. Pour from any angle and remove the top for easy cleaning.',
+  href: '#',
+  quantity: 1,
+  price: '$32.00',
+  imageSrc: 'https://tailwindui.com/img/ecommerce-images/confirmation-page-05-product-01.jpg',
+  imageAlt: 'Glass bottle with black plastic pour top and mesh insert.'
+}];
+
+var OrderConfirmation = function OrderConfirmation() {
+  return react_1["default"].createElement("main", {
+    className: "bg-white px-4 pt-16 pb-24 sm:px-6 sm:pt-24 lg:px-8 lg:py-32"
+  }, react_1["default"].createElement("div", {
+    className: "mx-auto max-w-3xl"
+  }, react_1["default"].createElement("div", {
+    className: "max-w-xl"
+  }, react_1["default"].createElement("h1", {
+    className: "text-base font-medium text-indigo-600"
+  }, "Thank you!"), react_1["default"].createElement("p", {
+    className: "mt-2 text-4xl font-bold tracking-tight"
+  }, "It's on the way!"), react_1["default"].createElement("p", {
+    className: "mt-2 text-base text-gray-500"
+  }, "Your order #14034056 has shipped and will be with you soon."), react_1["default"].createElement("dl", {
+    className: "mt-12 text-sm font-medium"
+  }, react_1["default"].createElement("dt", {
+    className: "text-gray-900"
+  }, "Tracking number"), react_1["default"].createElement("dd", {
+    className: "mt-2 text-indigo-600"
+  }, "51547878755545848512"))), react_1["default"].createElement("section", {
+    "aria-labelledby": "order-heading",
+    className: "mt-10 border-t border-gray-200"
+  }, react_1["default"].createElement("h2", {
+    id: "order-heading",
+    className: "sr-only"
+  }, "Your order"), react_1["default"].createElement("h3", {
+    className: "sr-only"
+  }, "Items"), products.map(function (product) {
+    return react_1["default"].createElement("div", {
+      key: product.id,
+      className: "flex space-x-6 border-b border-gray-200 py-10"
+    }, react_1["default"].createElement("img", {
+      src: product.imageSrc,
+      alt: product.imageAlt,
+      className: "h-20 w-20 flex-none rounded-lg bg-gray-100 object-cover object-center sm:h-40 sm:w-40"
+    }), react_1["default"].createElement("div", {
+      className: "flex flex-auto flex-col"
+    }, react_1["default"].createElement("div", null, react_1["default"].createElement("h4", {
+      className: "font-medium text-gray-900"
+    }, react_1["default"].createElement("a", {
+      href: product.href
+    }, product.name)), react_1["default"].createElement("p", {
+      className: "mt-2 text-sm text-gray-600"
+    }, product.description)), react_1["default"].createElement("div", {
+      className: "mt-6 flex flex-1 items-end"
+    }, react_1["default"].createElement("dl", {
+      className: "flex space-x-4 divide-x divide-gray-200 text-sm sm:space-x-6"
+    }, react_1["default"].createElement("div", {
+      className: "flex"
+    }, react_1["default"].createElement("dt", {
+      className: "font-medium text-gray-900"
+    }, "Quantity"), react_1["default"].createElement("dd", {
+      className: "ml-2 text-gray-700"
+    }, product.quantity)), react_1["default"].createElement("div", {
+      className: "flex pl-4 sm:pl-6"
+    }, react_1["default"].createElement("dt", {
+      className: "font-medium text-gray-900"
+    }, "Price"), react_1["default"].createElement("dd", {
+      className: "ml-2 text-gray-700"
+    }, product.price))))));
+  }), react_1["default"].createElement("div", {
+    className: "sm:ml-40 sm:pl-6"
+  }, react_1["default"].createElement("h3", {
+    className: "sr-only"
+  }, "Your information"), react_1["default"].createElement("h4", {
+    className: "sr-only"
+  }, "Addresses"), react_1["default"].createElement("dl", {
+    className: "grid grid-cols-2 gap-x-6 py-10 text-sm"
+  }, react_1["default"].createElement("div", null, react_1["default"].createElement("dt", {
+    className: "font-medium text-gray-900"
+  }, "Shipping address"), react_1["default"].createElement("dd", {
+    className: "mt-2 text-gray-700"
+  }, react_1["default"].createElement("address", {
+    className: "not-italic"
+  }, react_1["default"].createElement("span", {
+    className: "block"
+  }, "Kristin Watson"), react_1["default"].createElement("span", {
+    className: "block"
+  }, "7363 Cynthia Pass"), react_1["default"].createElement("span", {
+    className: "block"
+  }, "Toronto, ON N3Y 4H8")))), react_1["default"].createElement("div", null, react_1["default"].createElement("dt", {
+    className: "font-medium text-gray-900"
+  }, "Billing address"), react_1["default"].createElement("dd", {
+    className: "mt-2 text-gray-700"
+  }, react_1["default"].createElement("address", {
+    className: "not-italic"
+  }, react_1["default"].createElement("span", {
+    className: "block"
+  }, "Kristin Watson"), react_1["default"].createElement("span", {
+    className: "block"
+  }, "7363 Cynthia Pass"), react_1["default"].createElement("span", {
+    className: "block"
+  }, "Toronto, ON N3Y 4H8"))))), react_1["default"].createElement("h4", {
+    className: "sr-only"
+  }, "Payment"), react_1["default"].createElement("dl", {
+    className: "grid grid-cols-2 gap-x-6 border-t border-gray-200 py-10 text-sm"
+  }, react_1["default"].createElement("div", null, react_1["default"].createElement("dt", {
+    className: "font-medium text-gray-900"
+  }, "Payment method"), react_1["default"].createElement("dd", {
+    className: "mt-2 text-gray-700"
+  }, react_1["default"].createElement("p", null, "Apple Pay"), react_1["default"].createElement("p", null, "Mastercard"), react_1["default"].createElement("p", null, react_1["default"].createElement("span", {
+    "aria-hidden": "true"
+  }, "\u2022\u2022\u2022\u2022"), react_1["default"].createElement("span", {
+    className: "sr-only"
+  }, "Ending in "), "1545"))), react_1["default"].createElement("div", null, react_1["default"].createElement("dt", {
+    className: "font-medium text-gray-900"
+  }, "Shipping method"), react_1["default"].createElement("dd", {
+    className: "mt-2 text-gray-700"
+  }, react_1["default"].createElement("p", null, "DHL"), react_1["default"].createElement("p", null, "Takes up to 3 working days")))), react_1["default"].createElement("h3", {
+    className: "sr-only"
+  }, "Summary"), react_1["default"].createElement("dl", {
+    className: "space-y-6 border-t border-gray-200 pt-10 text-sm"
+  }, react_1["default"].createElement("div", {
+    className: "flex justify-between"
+  }, react_1["default"].createElement("dt", {
+    className: "font-medium text-gray-900"
+  }, "Subtotal"), react_1["default"].createElement("dd", {
+    className: "text-gray-700"
+  }, "$36.00")), react_1["default"].createElement("div", {
+    className: "flex justify-between"
+  }, react_1["default"].createElement("dt", {
+    className: "flex font-medium text-gray-900"
+  }, "Discount", react_1["default"].createElement("span", {
+    className: "ml-2 rounded-full bg-gray-200 py-0.5 px-2 text-xs text-gray-600"
+  }, "STUDENT50")), react_1["default"].createElement("dd", {
+    className: "text-gray-700"
+  }, "-$18.00 (50%)")), react_1["default"].createElement("div", {
+    className: "flex justify-between"
+  }, react_1["default"].createElement("dt", {
+    className: "font-medium text-gray-900"
+  }, "Shipping"), react_1["default"].createElement("dd", {
+    className: "text-gray-700"
+  }, "$5.00")), react_1["default"].createElement("div", {
+    className: "flex justify-between"
+  }, react_1["default"].createElement("dt", {
+    className: "font-medium text-gray-900"
+  }, "Total"), react_1["default"].createElement("dd", {
+    className: "text-gray-900"
+  }, "$23.00")))))));
+};
+
+exports.OrderConfirmation = OrderConfirmation;
+
+/***/ }),
+
+/***/ "./resources/js/ui/views/User/OrderDetails.tsx":
+/*!*****************************************************!*\
+  !*** ./resources/js/ui/views/User/OrderDetails.tsx ***!
+  \*****************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  var desc = Object.getOwnPropertyDescriptor(m, k);
+
+  if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+    desc = {
+      enumerable: true,
+      get: function get() {
+        return m[k];
+      }
+    };
+  }
+
+  Object.defineProperty(o, k2, desc);
+} : function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  o[k2] = m[k];
+});
+
+var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
+  Object.defineProperty(o, "default", {
+    enumerable: true,
+    value: v
+  });
+} : function (o, v) {
+  o["default"] = v;
+});
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+  }
+
+  __setModuleDefault(result, mod);
+
+  return result;
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.OrderDetails = void 0;
+
+var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var order = {
+  status: 'Shipped',
+  step: 0,
+  date: 'March 23, 2021',
+  datetime: '2021-03-23'
+};
+var products = [{
+  id: 1,
+  name: 'Nomad Tumbler',
+  description: 'This durable and portable insulated tumbler will keep your beverage at the perfect temperature during your next adventure.',
+  href: '#',
+  price: '35.00',
+  address: ['Floyd Miles', '7363 Cynthia Pass', 'Toronto, ON N3Y 4H8'],
+  email: 'f•••@example.com',
+  phone: '1•••••••••40',
+  imageSrc: 'https://tailwindui.com/img/ecommerce-images/confirmation-page-03-product-01.jpg',
+  imageAlt: 'Insulated bottle with white base and black snap lid.'
+}, {
+  id: 2,
+  name: 'Minimalist Wristwatch',
+  description: 'This contemporary wristwatch has a clean, minimalist look and high quality components.',
+  href: '#',
+  price: '149.00',
+  address: ['Floyd Miles', '7363 Cynthia Pass', 'Toronto, ON N3Y 4H8'],
+  email: 'f•••@example.com',
+  phone: '1•••••••••40',
+  imageSrc: 'https://tailwindui.com/img/ecommerce-images/confirmation-page-03-product-02.jpg',
+  imageAlt: 'Arm modeling wristwatch with black leather band, white watch face, thin watch hands, and fine time markings.'
+} // More products...
+];
+
+function classNames() {
+  for (var _len = arguments.length, classes = new Array(_len), _key = 0; _key < _len; _key++) {
+    classes[_key] = arguments[_key];
+  }
+
+  return classes.filter(Boolean).join(' ');
+}
+
+var OrderDetails = function OrderDetails() {
+  var _ref = (0, react_1.useState)(false),
+      _ref2 = _slicedToArray(_ref, 2),
+      open = _ref2[0],
+      setOpen = _ref2[1];
+
+  return react_1["default"].createElement("div", {
+    className: "bg-gray-50"
+  }, react_1["default"].createElement("main", {
+    className: "mx-auto max-w-2xl pt-8 pb-24 sm:px-6 sm:pt-16 lg:max-w-7xl lg:px-8"
+  }, react_1["default"].createElement("div", {
+    className: "space-y-2 px-4 sm:flex sm:items-baseline sm:justify-between sm:space-y-0 sm:px-0"
+  }, react_1["default"].createElement("div", {
+    className: "flex sm:items-baseline sm:space-x-4"
+  }, react_1["default"].createElement("h1", {
+    className: "text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl"
+  }, "Order #54879"), react_1["default"].createElement("a", {
+    href: "#",
+    className: "hidden text-sm font-medium text-indigo-600 hover:text-indigo-500 sm:block"
+  }, "View invoice", react_1["default"].createElement("span", {
+    "aria-hidden": "true"
+  }, " \u2192"))), react_1["default"].createElement("p", {
+    className: "text-sm text-gray-600"
+  }, "Order placed", ' ', react_1["default"].createElement("time", {
+    dateTime: "2021-03-22",
+    className: "font-medium text-gray-900"
+  }, "March 22, 2021")), react_1["default"].createElement("a", {
+    href: "#",
+    className: "text-sm font-medium text-indigo-600 hover:text-indigo-500 sm:hidden"
+  }, "View invoice", react_1["default"].createElement("span", {
+    "aria-hidden": "true"
+  }, " \u2192"))), react_1["default"].createElement("div", {
+    className: "bg-white mt-6 border-t border-b border-gray-200 shadow-sm sm:rounded-lg sm:border"
+  }, react_1["default"].createElement("div", {
+    className: "py-6 px-4 sm:px-6 lg:p-8"
+  }, react_1["default"].createElement("h4", {
+    className: "sr-only"
+  }, "Status"), react_1["default"].createElement("p", {
+    className: "text-sm font-medium text-gray-900"
+  }, order.status, " on ", react_1["default"].createElement("time", {
+    dateTime: order.datetime
+  }, order.date)), react_1["default"].createElement("div", {
+    className: "mt-6",
+    "aria-hidden": "true"
+  }, react_1["default"].createElement("div", {
+    className: "overflow-hidden rounded-full bg-gray-200"
+  }, react_1["default"].createElement("div", {
+    className: "h-2 rounded-full bg-indigo-600",
+    style: {
+      width: "calc((".concat(order.step, " * 2 + 1) / 8 * 100%)")
+    }
+  })), react_1["default"].createElement("div", {
+    className: "mt-6 hidden grid-cols-4 text-sm font-medium text-gray-600 sm:grid"
+  }, react_1["default"].createElement("div", {
+    className: "text-indigo-600"
+  }, "Order placed"), react_1["default"].createElement("div", {
+    className: classNames(order.step > 0 ? 'text-indigo-600' : '', 'text-center')
+  }, "Processing"), react_1["default"].createElement("div", {
+    className: classNames(order.step > 1 ? 'text-indigo-600' : '', 'text-center')
+  }, "Shipped"), react_1["default"].createElement("div", {
+    className: classNames(order.step > 2 ? 'text-indigo-600' : '', 'text-right')
+  }, "Delivered"))))), react_1["default"].createElement("section", {
+    "aria-labelledby": "products-heading",
+    className: "mt-6"
+  }, react_1["default"].createElement("h2", {
+    id: "products-heading",
+    className: "sr-only"
+  }, "Products purchased"), react_1["default"].createElement("div", {
+    className: "space-y-8"
+  }, products.map(function (product) {
+    return react_1["default"].createElement("div", {
+      key: product.id,
+      className: "border-t border-b border-gray-200 bg-white shadow-sm sm:rounded-lg sm:border"
+    }, react_1["default"].createElement("div", {
+      className: "py-6 px-4 sm:px-6 lg:grid lg:grid-cols-12 lg:gap-x-8 lg:p-8"
+    }, react_1["default"].createElement("div", {
+      className: "sm:flex lg:col-span-7"
+    }, react_1["default"].createElement("div", {
+      className: "aspect-w-1 aspect-h-1 w-full flex-shrink-0 overflow-hidden rounded-lg sm:aspect-none sm:h-40 sm:w-40"
+    }, react_1["default"].createElement("img", {
+      src: product.imageSrc,
+      alt: product.imageAlt,
+      className: "h-full w-full object-cover object-center sm:h-full sm:w-full"
+    })), react_1["default"].createElement("div", {
+      className: "mt-6 sm:mt-0 sm:ml-6"
+    }, react_1["default"].createElement("h3", {
+      className: "text-base font-medium text-gray-900"
+    }, react_1["default"].createElement("a", {
+      href: product.href
+    }, product.name)), react_1["default"].createElement("p", {
+      className: "mt-2 text-sm font-medium text-gray-900"
+    }, "$", product.price), react_1["default"].createElement("p", {
+      className: "mt-3 text-sm text-gray-500"
+    }, product.description))), react_1["default"].createElement("div", {
+      className: "mt-6 lg:col-span-5 lg:mt-0"
+    }, react_1["default"].createElement("div", {
+      className: "grid grid-cols-2 gap-x-6"
+    }, react_1["default"].createElement("div", {
+      className: "mt-3 font-semibold text-gray-900"
+    }, react_1["default"].createElement("span", {
+      className: "block"
+    }, "Quantity")), react_1["default"].createElement("div", {
+      className: "mt-3 space-y-3 text-gray-500"
+    }, react_1["default"].createElement("p", null, product.id)), react_1["default"].createElement("div", {
+      className: "mt-3 font-semibold text-gray-900"
+    }, react_1["default"].createElement("span", {
+      className: "block"
+    }, "Subtotal")), react_1["default"].createElement("div", {
+      className: "mt-3 space-y-3 text-gray-500"
+    }, react_1["default"].createElement("p", null, "$", product.id * product.price))))));
+  }))), react_1["default"].createElement("section", {
+    "aria-labelledby": "summary-heading",
+    className: "mt-16"
+  }, react_1["default"].createElement("h2", {
+    id: "summary-heading",
+    className: "sr-only"
+  }, "Billing Summary"), react_1["default"].createElement("div", {
+    className: "bg-gray-100 py-6 px-4 sm:rounded-lg sm:px-6 lg:grid lg:grid-cols-12 lg:gap-x-8 lg:px-8 lg:py-8"
+  }, react_1["default"].createElement("dl", {
+    className: "grid grid-cols-2 gap-6 text-sm sm:grid-cols-2 md:gap-x-8 lg:col-span-7"
+  }, react_1["default"].createElement("div", null, react_1["default"].createElement("dt", {
+    className: "font-medium text-gray-900"
+  }, "Billing address"), react_1["default"].createElement("dd", {
+    className: "mt-3 text-gray-500"
+  }, react_1["default"].createElement("span", {
+    className: "block"
+  }, "Floyd Miles"), react_1["default"].createElement("span", {
+    className: "block"
+  }, "7363 Cynthia Pass"), react_1["default"].createElement("span", {
+    className: "block"
+  }, "Toronto, ON N3Y 4H8"))), react_1["default"].createElement("div", null, react_1["default"].createElement("dt", {
+    className: "font-medium text-gray-900"
+  }, "Shipping address"), react_1["default"].createElement("dd", {
+    className: "mt-3 text-gray-500"
+  }, react_1["default"].createElement("span", {
+    className: "block"
+  }, "Floyd Miles"), react_1["default"].createElement("span", {
+    className: "block"
+  }, "7363 Cynthia Pass"), react_1["default"].createElement("span", {
+    className: "block"
+  }, "Toronto, ON N3Y 4H8"))), react_1["default"].createElement("div", {
+    className: "pt-10"
+  }, react_1["default"].createElement("dt", {
+    className: "font-medium text-gray-900"
+  }, "Shipping method"), react_1["default"].createElement("dd", {
+    className: "mt-2 text-gray-700"
+  }, react_1["default"].createElement("p", null, "DHL"), react_1["default"].createElement("p", null, "Takes up to 3 working days"))), react_1["default"].createElement("div", {
+    className: "pt-10"
+  }, react_1["default"].createElement("dt", {
+    className: "font-medium text-gray-900"
+  }, "Payment information"), react_1["default"].createElement("dd", {
+    className: "-ml-4 -mt-1 flex flex-wrap"
+  }, react_1["default"].createElement("div", {
+    className: "ml-4 mt-4 flex-shrink-0"
+  }, react_1["default"].createElement("svg", {
+    "aria-hidden": "true",
+    width: 36,
+    height: 24,
+    viewBox: "0 0 36 24",
+    xmlns: "http://www.w3.org/2000/svg",
+    className: "h-6 w-auto"
+  }, react_1["default"].createElement("rect", {
+    width: 36,
+    height: 24,
+    rx: 4,
+    fill: "#224DBA"
+  }), react_1["default"].createElement("path", {
+    d: "M10.925 15.673H8.874l-1.538-6c-.073-.276-.228-.52-.456-.635A6.575 6.575 0 005 8.403v-.231h3.304c.456 0 .798.347.855.75l.798 4.328 2.05-5.078h1.994l-3.076 7.5zm4.216 0h-1.937L14.8 8.172h1.937l-1.595 7.5zm4.101-5.422c.057-.404.399-.635.798-.635a3.54 3.54 0 011.88.346l.342-1.615A4.808 4.808 0 0020.496 8c-1.88 0-3.248 1.039-3.248 2.481 0 1.097.969 1.673 1.653 2.02.74.346 1.025.577.968.923 0 .519-.57.75-1.139.75a4.795 4.795 0 01-1.994-.462l-.342 1.616a5.48 5.48 0 002.108.404c2.108.057 3.418-.981 3.418-2.539 0-1.962-2.678-2.077-2.678-2.942zm9.457 5.422L27.16 8.172h-1.652a.858.858 0 00-.798.577l-2.848 6.924h1.994l.398-1.096h2.45l.228 1.096h1.766zm-2.905-5.482l.57 2.827h-1.596l1.026-2.827z",
+    fill: "#fff"
+  })), react_1["default"].createElement("p", {
+    className: "sr-only"
+  }, "Visa")), react_1["default"].createElement("div", {
+    className: "ml-4 mt-4"
+  }, react_1["default"].createElement("p", {
+    className: "text-gray-900"
+  }, "Ending with 4242"), react_1["default"].createElement("p", {
+    className: "text-gray-600"
+  }, "Expires 02 / 24"))))), react_1["default"].createElement("dl", {
+    className: "mt-8 divide-y divide-gray-200 text-sm lg:col-span-5 lg:mt-0"
+  }, react_1["default"].createElement("div", {
+    className: "flex items-center justify-between pb-4"
+  }, react_1["default"].createElement("dt", {
+    className: "text-gray-600"
+  }, "Subtotal"), react_1["default"].createElement("dd", {
+    className: "font-medium text-gray-900"
+  }, "$72")), react_1["default"].createElement("div", {
+    className: "flex items-center justify-between py-4"
+  }, react_1["default"].createElement("dt", {
+    className: "text-gray-600"
+  }, "Shipping"), react_1["default"].createElement("dd", {
+    className: "font-medium text-gray-900"
+  }, "$5")), react_1["default"].createElement("div", {
+    className: "flex items-center justify-between py-4"
+  }, react_1["default"].createElement("dt", {
+    className: "text-gray-600"
+  }, "Tax"), react_1["default"].createElement("dd", {
+    className: "font-medium text-gray-900"
+  }, "$6.16")), react_1["default"].createElement("div", {
+    className: "flex items-center justify-between pt-4"
+  }, react_1["default"].createElement("dt", {
+    className: "font-medium text-gray-900"
+  }, "Order total"), react_1["default"].createElement("dd", {
+    className: "font-medium text-indigo-600"
+  }, "$83.16")))))));
+};
+
+exports.OrderDetails = OrderDetails;
 
 /***/ }),
 
