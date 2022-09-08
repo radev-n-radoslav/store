@@ -3122,6 +3122,8 @@ var OrderConfirmation_1 = __webpack_require__(/*! ../views/User/OrderConfirmatio
 
 var OrderDetails_1 = __webpack_require__(/*! ../views/User/OrderDetails */ "./resources/js/ui/views/User/OrderDetails.tsx");
 
+var OrderHistory_1 = __webpack_require__(/*! ../views/User/OrderHistory */ "./resources/js/ui/views/User/OrderHistory.tsx");
+
 var Router = function Router() {
   return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement(react_router_dom_1.Routes, null, react_1["default"].createElement(react_router_dom_1.Route, {
     path: '/'
@@ -3154,6 +3156,9 @@ var Router = function Router() {
   }), react_1["default"].createElement(react_router_dom_1.Route, {
     path: "confirmation",
     element: react_1["default"].createElement(OrderConfirmation_1.OrderConfirmation, null)
+  }), react_1["default"].createElement(react_router_dom_1.Route, {
+    path: "user/orders/",
+    element: react_1["default"].createElement(OrderHistory_1.OrderHistory, null)
   }), react_1["default"].createElement(react_router_dom_1.Route, {
     path: "order/:id/details",
     element: react_1["default"].createElement(OrderDetails_1.OrderDetails, null)
@@ -5680,7 +5685,7 @@ var OrderDetails = function OrderDetails() {
       className: "block"
     }, "Subtotal")), react_1["default"].createElement("div", {
       className: "mt-3 space-y-3 text-gray-500"
-    }, react_1["default"].createElement("p", null, "$", product.id * product.price))))));
+    }, react_1["default"].createElement("p", null, "$", product.id * parseFloat(product.price)))))));
   }))), react_1["default"].createElement("section", {
     "aria-labelledby": "summary-heading",
     className: "mt-16"
@@ -5778,6 +5783,226 @@ var OrderDetails = function OrderDetails() {
 };
 
 exports.OrderDetails = OrderDetails;
+
+/***/ }),
+
+/***/ "./resources/js/ui/views/User/OrderHistory.tsx":
+/*!*****************************************************!*\
+  !*** ./resources/js/ui/views/User/OrderHistory.tsx ***!
+  \*****************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  var desc = Object.getOwnPropertyDescriptor(m, k);
+
+  if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+    desc = {
+      enumerable: true,
+      get: function get() {
+        return m[k];
+      }
+    };
+  }
+
+  Object.defineProperty(o, k2, desc);
+} : function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  o[k2] = m[k];
+});
+
+var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
+  Object.defineProperty(o, "default", {
+    enumerable: true,
+    value: v
+  });
+} : function (o, v) {
+  o["default"] = v;
+});
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+  }
+
+  __setModuleDefault(result, mod);
+
+  return result;
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.OrderHistory = void 0;
+
+var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var orders = [{
+  number: 'WU88191111',
+  date: 'January 22, 2021',
+  datetime: '2021-01-22',
+  invoiceHref: '#',
+  total: '$104.00',
+  products: [{
+    id: 1,
+    name: "Men's 3D Glasses Artwork Tee",
+    href: '#',
+    price: '36.00',
+    status: 'Delivered Jan 25, 2021',
+    imageSrc: 'https://tailwindui.com/img/ecommerce-images/order-history-page-04-product-01.jpg',
+    imageAlt: 'Black tee with intersecting red, white, and green curved lines on front.'
+  } // More products...
+  ]
+} // More orders...
+];
+
+function classNames() {
+  for (var _len = arguments.length, classes = new Array(_len), _key = 0; _key < _len; _key++) {
+    classes[_key] = arguments[_key];
+  }
+
+  return classes.filter(Boolean).join(' ');
+}
+
+var OrderHistory = function OrderHistory() {
+  var _ref = (0, react_1.useState)(false),
+      _ref2 = _slicedToArray(_ref, 2),
+      open = _ref2[0],
+      setOpen = _ref2[1];
+
+  return react_1["default"].createElement("div", {
+    className: "bg-white"
+  }, react_1["default"].createElement("main", {
+    className: "mx-auto max-w-7xl py-16 px-4 sm:px-6 lg:px-8 lg:pb-24"
+  }, react_1["default"].createElement("div", {
+    className: "max-w-xl"
+  }, react_1["default"].createElement("h1", {
+    className: "text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl"
+  }, "Order history"), react_1["default"].createElement("p", {
+    className: "mt-1 text-sm text-gray-500"
+  }, "Check the status of recent orders, manage returns, and download invoices.")), react_1["default"].createElement("section", {
+    "aria-labelledby": "recent-heading",
+    className: "mt-16"
+  }, react_1["default"].createElement("h2", {
+    id: "recent-heading",
+    className: "sr-only"
+  }, "Recent orders"), react_1["default"].createElement("div", {
+    className: "space-y-20"
+  }, orders.map(function (order) {
+    return react_1["default"].createElement("div", {
+      key: order.number
+    }, react_1["default"].createElement("h3", {
+      className: "sr-only"
+    }, "Order placed on ", react_1["default"].createElement("time", {
+      dateTime: order.datetime
+    }, order.date)), react_1["default"].createElement("div", {
+      className: "rounded-lg bg-gray-50 py-6 px-4 sm:flex sm:items-center sm:justify-between sm:space-x-6 sm:px-6 lg:space-x-8"
+    }, react_1["default"].createElement("dl", {
+      className: "flex-auto space-y-6 divide-y divide-gray-200 text-sm text-gray-600 sm:grid sm:grid-cols-3 sm:gap-x-6 sm:space-y-0 sm:divide-y-0 lg:w-1/2 lg:flex-none lg:gap-x-8"
+    }, react_1["default"].createElement("div", {
+      className: "flex justify-between sm:block"
+    }, react_1["default"].createElement("dt", {
+      className: "font-medium text-gray-900"
+    }, "Date placed"), react_1["default"].createElement("dd", {
+      className: "sm:mt-1"
+    }, react_1["default"].createElement("time", {
+      dateTime: order.datetime
+    }, order.date))), react_1["default"].createElement("div", {
+      className: "flex justify-between pt-6 sm:block sm:pt-0"
+    }, react_1["default"].createElement("dt", {
+      className: "font-medium text-gray-900"
+    }, "Order number"), react_1["default"].createElement("dd", {
+      className: "sm:mt-1"
+    }, order.number)), react_1["default"].createElement("div", {
+      className: "flex justify-between pt-6 font-medium text-gray-900 sm:block sm:pt-0"
+    }, react_1["default"].createElement("dt", null, "Total amount"), react_1["default"].createElement("dd", {
+      className: "sm:mt-1"
+    }, order.total))), react_1["default"].createElement("a", {
+      href: order.invoiceHref,
+      className: "mt-6 flex w-full items-center justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:w-auto"
+    }, "View Invoice", react_1["default"].createElement("span", {
+      className: "sr-only"
+    }, "for order ", order.number)), react_1["default"].createElement("a", {
+      href: order.invoiceHref,
+      className: "mt-6 flex w-full items-center justify-center rounded-md border border-gray-300 bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:w-auto"
+    }, "View Order", react_1["default"].createElement("span", {
+      className: "sr-only"
+    }, "for order ", order.number))), react_1["default"].createElement("table", {
+      className: "mt-4 w-full text-gray-500 sm:mt-6"
+    }, react_1["default"].createElement("caption", {
+      className: "sr-only"
+    }, "Products"), react_1["default"].createElement("thead", {
+      className: "text-left text-sm text-gray-500"
+    }, react_1["default"].createElement("tr", null, react_1["default"].createElement("th", {
+      scope: "col",
+      className: "py-3 pr-8 font-normal sm:w-2/5 lg:w-1/3"
+    }, "Product"), react_1["default"].createElement("th", {
+      scope: "col",
+      className: "hidden w-1/5 py-3 pr-8 font-normal sm:table-cell"
+    }, "Price"), react_1["default"].createElement("th", {
+      scope: "col",
+      className: "hidden py-3 pr-8 font-normal sm:table-cell"
+    }, "Quantity"), react_1["default"].createElement("th", {
+      scope: "col",
+      className: "hidden py-3 pr-8 font-normal sm:table-cell"
+    }, "Subtotal"), react_1["default"].createElement("th", {
+      scope: "col",
+      className: "w-0 py-3 text-right font-normal"
+    }, "Info"))), react_1["default"].createElement("tbody", {
+      className: "divide-y divide-gray-200 border-b border-gray-200 text-sm sm:border-t"
+    }, order.products.map(function (product) {
+      return react_1["default"].createElement("tr", {
+        key: product.id
+      }, react_1["default"].createElement("td", {
+        className: "py-6 pr-8"
+      }, react_1["default"].createElement("div", {
+        className: "flex items-center"
+      }, react_1["default"].createElement("img", {
+        src: product.imageSrc,
+        alt: product.imageAlt,
+        className: "mr-6 h-16 w-16 rounded object-cover object-center"
+      }), react_1["default"].createElement("div", null, react_1["default"].createElement("div", {
+        className: "font-medium text-gray-900"
+      }, product.name), react_1["default"].createElement("div", {
+        className: "mt-1 sm:hidden"
+      }, "$", product.price)))), react_1["default"].createElement("td", {
+        className: "hidden py-6 pr-8 sm:table-cell"
+      }, "$", product.price), react_1["default"].createElement("td", {
+        className: "hidden py-6 pr-8 sm:table-cell"
+      }, 2), react_1["default"].createElement("td", {
+        className: "hidden py-6 pr-8 sm:table-cell"
+      }, "$", 2 * parseFloat(product.price)), react_1["default"].createElement("td", {
+        className: "whitespace-nowrap py-6 text-right font-medium"
+      }, react_1["default"].createElement("a", {
+        href: product.href,
+        className: "text-indigo-600"
+      }, "View", react_1["default"].createElement("span", {
+        className: "hidden lg:inline"
+      }, "Product"), react_1["default"].createElement("span", {
+        className: "sr-only"
+      }, ", ", product.name))));
+    }))));
+  })))));
+};
+
+exports.OrderHistory = OrderHistory;
 
 /***/ }),
 

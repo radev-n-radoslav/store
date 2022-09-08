@@ -12,6 +12,7 @@ import { Checkout } from "../views/User/Checkout";
 import { CheckoutAnonymous } from "../views/User/CheckoutAnonymous";
 import { OrderConfirmation } from "../views/User/OrderConfirmation";
 import { OrderDetails } from "../views/User/OrderDetails";
+import { OrderHistory } from "../views/User/OrderHistory";
 
 export const Router = () => {
     return (
@@ -29,6 +30,7 @@ export const Router = () => {
                     <Route path="checkout" element={<Checkout />} />
                     <Route path="nologin/checkout" element={<CheckoutAnonymous />} />
                     <Route path="confirmation" element={<OrderConfirmation />} />
+                    <Route path="user/orders/" element={<OrderHistory />} />
                     <Route path="order/:id/details" element={<OrderDetails />} />
                     <Route path="contacts" element={<Home />} />
                     <Route path="*" element={<NoPage />} />

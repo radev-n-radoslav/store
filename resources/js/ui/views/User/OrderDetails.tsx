@@ -139,7 +139,7 @@ export const OrderDetails = () => {
                                                 <span className="block">Subtotal</span>
                                             </div>
                                             <div className="mt-3 space-y-3 text-gray-500">
-                                                <p>${product.id * product.price}</p>
+                                                <p>${product.id * parseFloat(product.price)}</p>
                                             </div>
                                         </div>
                                     </div>
