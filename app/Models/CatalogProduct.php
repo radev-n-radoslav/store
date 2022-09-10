@@ -32,6 +32,16 @@ class CatalogProduct extends Model
     }
 
     /**
+     * Return pivot rows for the categories, to which product belongs to
+     * 
+     * @return Illuminate\Database\Eloquent\Collection
+     */
+    public function categoriesRaw()
+    {
+        return $this->hasMany('App\Models\CatalogProductCategory', 'product_id');
+    }
+
+    /**
      * Return the categories, to which the product belongs to
      * 
      * @return Illuminate\Database\Eloquent\Collection

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Admin\Accounts\Users;
+namespace App\Http\Requests\Admin\Catalog\Categories;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ResetPasswordRequest extends FormRequest
+class IndexRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -51,6 +52,16 @@ class CatalogCategory extends Model
     {
         return $this->hasMany('App\Models\CatalogCategory', 'parent_id', 'id')
             ->orderBy('order_place', 'DESC');
+    }
+
+    /**
+     * Return pivot rows for products that belong to this category
+     * 
+     * @return Illuminate\Database\Eloquent\Collection
+     */
+    public function productsRaw()
+    {
+        return $this->hasMany('App\Models\CatalogProductCategories', 'category_id');
     }
 
     /**

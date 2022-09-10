@@ -38,14 +38,11 @@ class CategoriesController extends Controller
     }
 
     /**
-     * Store an category
+     * Store a category
      */
-    public function store($id, StoreRequest $request)
+    public function store(StoreRequest $request)
     {
-        $data = $request->toArray();
-        $data['category_id'] = $id;
-
-        $category = BlogCategory::create($data);
+        $category = BlogCategory::create($request->toArray());
 
         return response([
             'data' => $category
@@ -53,7 +50,7 @@ class CategoriesController extends Controller
     }
     
     /**
-     * Update an category
+     * Update a category
      */
     public function update($id, UpdateRequest $request)
     {
@@ -67,7 +64,7 @@ class CategoriesController extends Controller
     }
 
     /**
-     * Delete an category
+     * Delete a category
      */
     public function delete($id, DeleteRequest $request)
     {
