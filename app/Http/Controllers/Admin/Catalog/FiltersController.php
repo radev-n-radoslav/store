@@ -15,7 +15,7 @@ class FiltersController extends Controller
     /**
      * Get all Category filters
      */
-    public function index(IndexRequest $request)
+    public function index($id, IndexRequest $request)
     {
         $filters = CatalogCategoryFilter::where('category_id', $id)
             ->orderBy('created_at', 'DESC')
