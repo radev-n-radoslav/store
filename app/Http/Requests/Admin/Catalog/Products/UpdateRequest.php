@@ -24,7 +24,11 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|text',
+            'sku' => 'string|nullable|max:255',
+            'quantity' => 'required|nullable',
+            'gross_price' => 'required|regex:/^\d+(\.\d{1,2})?$/'
         ];
     }
 }

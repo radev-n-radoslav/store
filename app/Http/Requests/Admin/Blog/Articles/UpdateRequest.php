@@ -24,7 +24,9 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title' => 'required|string|max:255',
+            'content' => 'text|nullable',
+            'thumbnail_url' => 'string|max:8192|nullable'
         ];
     }
 }

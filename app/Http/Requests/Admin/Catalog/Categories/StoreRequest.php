@@ -24,7 +24,10 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|string|max:255',
+            'description' => 'string|nullable|max:1024',
+            'parent_id' => 'required|integer|min:0',
+            'order_place' => 'required|integer'
         ];
     }
 }
