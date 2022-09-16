@@ -11,14 +11,16 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.ts('resources/js/admin/app.tsx', 'public/js/admin.js')
+mix.ts('resources/js/admin/index.tsx', 'public/js/admin.js')
 	.react()
     .postCss('resources/css/admin/app.css', 'public/css/admin.css', [
         require('tailwindcss'),
-    ]);
+    ])
+    .version();
 
 mix.ts('resources/js/ui/index.tsx', 'public/js/ui.js')
 	.react()
     .postCss('resources/css/ui/app.css', 'public/css/ui.css', [
         require('tailwindcss'),
-    ]);
+    ])
+    .version();
