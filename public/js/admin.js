@@ -2054,9 +2054,9 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./resources/js/admin/App.tsx":
+/***/ "./resources/js/admin/app.tsx":
 /*!************************************!*\
-  !*** ./resources/js/admin/App.tsx ***!
+  !*** ./resources/js/admin/app.tsx ***!
   \************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
@@ -2502,13 +2502,13 @@ var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/r
 
 var client_1 = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
 
-var App_1 = __webpack_require__(/*! ./App */ "./resources/js/admin/App.tsx");
+var app_1 = __webpack_require__(/*! ./app */ "./resources/js/admin/app.tsx");
 
 var react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
 
 var container = document.getElementById("app");
 var root = (0, client_1.createRoot)(container);
-root.render(react_1["default"].createElement(react_1["default"].StrictMode, null, react_1["default"].createElement(react_router_dom_1.BrowserRouter, null, react_1["default"].createElement(App_1.App, null))));
+root.render(react_1["default"].createElement(react_1["default"].StrictMode, null, react_1["default"].createElement(react_router_dom_1.BrowserRouter, null, react_1["default"].createElement(app_1.App, null))));
 
 /***/ }),
 
