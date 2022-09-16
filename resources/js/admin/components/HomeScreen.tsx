@@ -4,6 +4,7 @@ import { Bars3CenterLeftIcon, BellIcon, XMarkIcon } from '@heroicons/react/24/ou
 import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 import { Navigation, PageStaticData } from '../App.d';
 import { Router } from '../router/index';
+import { Link } from "react-router-dom";
 
 function classNames(...classes: any) {
     return classes.filter(Boolean).join(' ')
@@ -74,9 +75,9 @@ export const HomeScreen = (props: any) => {
                                     >
                                         <div className="space-y-1 px-2">
                                             {pageStaticData.navigation.map((item: Navigation) => (
-                                                <a
+                                                <Link
                                                     key={item.name}
-                                                    href={item.href}
+                                                    to={item.href}
                                                     className={classNames(
                                                         item.current
                                                             ? 'bg-cyan-800 text-white'
@@ -87,20 +88,20 @@ export const HomeScreen = (props: any) => {
                                                 >
                                                     <i className={item.icon + " mr-4 fa-lg flex-shrink-0 text-cyan-200"} aria-hidden="true"></i>
                                                     {item.name}
-                                                </a>
+                                                </Link>
                                             ))}
                                         </div>
                                         <div className="mt-6 pt-6">
                                             <div className="space-y-1 px-2">
                                                 {pageStaticData.secondaryNavigation.map((item: Navigation) => (
-                                                    <a
+                                                    <Link
                                                         key={item.name}
-                                                        href={item.href}
+                                                        to={item.href}
                                                         className="group flex items-center rounded-md px-2 py-2 text-base font-medium text-cyan-100 hover:bg-cyan-600 hover:text-white"
                                                     >
                                                         <i className={item.icon + " mr-4 fa-lg text-cyan-200"} aria-hidden="true"></i>
                                                         {item.name}
-                                                    </a>
+                                                    </Link>
                                                 ))}
                                             </div>
                                         </div>
@@ -128,9 +129,9 @@ export const HomeScreen = (props: any) => {
                         <nav className="mt-5 flex flex-1 flex-col divide-y divide-cyan-800 overflow-y-auto" aria-label="Sidebar">
                             <div className="space-y-1 px-2">
                                 {pageStaticData.navigation.map((item: Navigation) => (
-                                    <a
+                                    <Link
                                         key={item.name}
-                                        href={item.href}
+                                        to={item.href}
                                         className={classNames(
                                             item.current ? 'bg-cyan-800 text-white' : 'text-cyan-100 hover:text-white hover:bg-cyan-600',
                                             'group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md'
@@ -139,20 +140,20 @@ export const HomeScreen = (props: any) => {
                                     >
                                         <i className={item.icon + " mr-4 fa-lg flex-shrink-0 text-cyan-200"} aria-hidden="true"></i>
                                         {item.name}
-                                    </a>
+                                    </Link>
                                 ))}
                             </div>
                             <div className="mt-6 pt-6">
                                 <div className="space-y-1 px-2">
                                     {pageStaticData.secondaryNavigation.map((item: Navigation) => (
-                                        <a
+                                        <Link
                                             key={item.name}
-                                            href={item.href}
+                                            to={item.href}
                                             className="group flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6 text-cyan-100 hover:bg-cyan-600 hover:text-white"
                                         >
                                             <i className={item.icon + " mr-4 fa-lg text-cyan-200"} aria-hidden="true"></i>
                                             {item.name}
-                                        </a>
+                                        </Link>
                                     ))}
                                 </div>
                             </div>
@@ -226,32 +227,32 @@ export const HomeScreen = (props: any) => {
                                         <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                                             <Menu.Item>
                                                 {({ active }) => (
-                                                    <a
-                                                        href="#"
+                                                    <Link
+                                                        to="#"
                                                         className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                                                     >
                                                         Your Profile
-                                                    </a>
+                                                    </Link>
                                                 )}
                                             </Menu.Item>
                                             <Menu.Item>
                                                 {({ active }) => (
-                                                    <a
-                                                        href="#"
+                                                    <Link
+                                                        to="#"
                                                         className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                                                     >
                                                         Settings
-                                                    </a>
+                                                    </Link>
                                                 )}
                                             </Menu.Item>
                                             <Menu.Item>
                                                 {({ active }) => (
-                                                    <a
-                                                        href="#"
+                                                    <Link
+                                                        to="#"
                                                         className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                                                     >
                                                         Logout
-                                                    </a>
+                                                    </Link>
                                                 )}
                                             </Menu.Item>
                                         </Menu.Items>
@@ -260,7 +261,9 @@ export const HomeScreen = (props: any) => {
                             </div>
                         </div>
                     </div>
-                    <Router />
+                    <div className="pt-6">
+                        <Router />
+                    </div>
                 </div>
             </div>
         </>

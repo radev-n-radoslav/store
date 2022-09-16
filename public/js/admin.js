@@ -2232,6 +2232,8 @@ var solid_1 = __webpack_require__(/*! @heroicons/react/20/solid */ "./node_modul
 
 var index_1 = __webpack_require__(/*! ../router/index */ "./resources/js/admin/router/index.tsx");
 
+var react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+
 function classNames() {
   for (var _len = arguments.length, classes = new Array(_len), _key = 0; _key < _len; _key++) {
     classes[_key] = arguments[_key];
@@ -2315,9 +2317,9 @@ var HomeScreen = function HomeScreen(props) {
   }, react_1["default"].createElement("div", {
     className: "space-y-1 px-2"
   }, pageStaticData.navigation.map(function (item) {
-    return react_1["default"].createElement("a", {
+    return react_1["default"].createElement(react_router_dom_1.Link, {
       key: item.name,
-      href: item.href,
+      to: item.href,
       className: classNames(item.current ? 'bg-cyan-800 text-white' : 'text-cyan-100 hover:text-white hover:bg-cyan-600', 'group flex items-center px-2 py-2 text-base font-medium rounded-md'),
       "aria-current": item.current ? 'page' : undefined
     }, react_1["default"].createElement("i", {
@@ -2329,9 +2331,9 @@ var HomeScreen = function HomeScreen(props) {
   }, react_1["default"].createElement("div", {
     className: "space-y-1 px-2"
   }, pageStaticData.secondaryNavigation.map(function (item) {
-    return react_1["default"].createElement("a", {
+    return react_1["default"].createElement(react_router_dom_1.Link, {
       key: item.name,
-      href: item.href,
+      to: item.href,
       className: "group flex items-center rounded-md px-2 py-2 text-base font-medium text-cyan-100 hover:bg-cyan-600 hover:text-white"
     }, react_1["default"].createElement("i", {
       className: item.icon + " mr-4 fa-lg text-cyan-200",
@@ -2356,9 +2358,9 @@ var HomeScreen = function HomeScreen(props) {
   }, react_1["default"].createElement("div", {
     className: "space-y-1 px-2"
   }, pageStaticData.navigation.map(function (item) {
-    return react_1["default"].createElement("a", {
+    return react_1["default"].createElement(react_router_dom_1.Link, {
       key: item.name,
-      href: item.href,
+      to: item.href,
       className: classNames(item.current ? 'bg-cyan-800 text-white' : 'text-cyan-100 hover:text-white hover:bg-cyan-600', 'group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md'),
       "aria-current": item.current ? 'page' : undefined
     }, react_1["default"].createElement("i", {
@@ -2370,9 +2372,9 @@ var HomeScreen = function HomeScreen(props) {
   }, react_1["default"].createElement("div", {
     className: "space-y-1 px-2"
   }, pageStaticData.secondaryNavigation.map(function (item) {
-    return react_1["default"].createElement("a", {
+    return react_1["default"].createElement(react_router_dom_1.Link, {
       key: item.name,
-      href: item.href,
+      to: item.href,
       className: "group flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6 text-cyan-100 hover:bg-cyan-600 hover:text-white"
     }, react_1["default"].createElement("i", {
       className: item.icon + " mr-4 fa-lg text-cyan-200",
@@ -2454,23 +2456,25 @@ var HomeScreen = function HomeScreen(props) {
     className: "absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
   }, react_1["default"].createElement(react_2.Menu.Item, null, function (_ref5) {
     var active = _ref5.active;
-    return react_1["default"].createElement("a", {
-      href: "#",
+    return react_1["default"].createElement(react_router_dom_1.Link, {
+      to: "#",
       className: classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')
     }, "Your Profile");
   }), react_1["default"].createElement(react_2.Menu.Item, null, function (_ref6) {
     var active = _ref6.active;
-    return react_1["default"].createElement("a", {
-      href: "#",
+    return react_1["default"].createElement(react_router_dom_1.Link, {
+      to: "#",
       className: classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')
     }, "Settings");
   }), react_1["default"].createElement(react_2.Menu.Item, null, function (_ref7) {
     var active = _ref7.active;
-    return react_1["default"].createElement("a", {
-      href: "#",
+    return react_1["default"].createElement(react_router_dom_1.Link, {
+      to: "#",
       className: classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')
     }, "Logout");
-  }))))))), react_1["default"].createElement(index_1.Router, null))));
+  }))))))), react_1["default"].createElement("div", {
+    className: "pt-6"
+  }, react_1["default"].createElement(index_1.Router, null)))));
 };
 
 exports.HomeScreen = HomeScreen;
@@ -2540,12 +2544,17 @@ var Dashboard_1 = __webpack_require__(/*! ../views/Dashboard */ "./resources/js/
 
 var NoPage_1 = __webpack_require__(/*! ../views/NoPage */ "./resources/js/admin/views/NoPage.tsx");
 
+var Home_1 = __webpack_require__(/*! ../views/Users/Customers/Home */ "./resources/js/admin/views/Users/Customers/Home.tsx");
+
 var Router = function Router() {
   return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement(react_router_dom_1.Routes, null, react_1["default"].createElement(react_router_dom_1.Route, {
-    path: '/'
+    path: '/admin'
   }, react_1["default"].createElement(react_router_dom_1.Route, {
     index: true,
     element: react_1["default"].createElement(Dashboard_1.Dashboard, null)
+  }), react_1["default"].createElement(react_router_dom_1.Route, {
+    path: "customers",
+    element: react_1["default"].createElement(Home_1.CustomersHome, null)
   }), react_1["default"].createElement(react_router_dom_1.Route, {
     path: "*",
     element: react_1["default"].createElement(NoPage_1.NoPage, null)
@@ -2579,7 +2588,9 @@ exports.Dashboard = void 0;
 var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
 var Dashboard = function Dashboard() {
-  return react_1["default"].createElement(react_1["default"].Fragment, null, "YES");
+  return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("div", {
+    className: "bg-white h-full"
+  }, "dsadsa"));
 };
 
 exports.Dashboard = Dashboard;
@@ -2637,6 +2648,198 @@ var NoPage = function NoPage() {
 };
 
 exports.NoPage = NoPage;
+
+/***/ }),
+
+/***/ "./resources/js/admin/views/Users/Customers/Home.tsx":
+/*!***********************************************************!*\
+  !*** ./resources/js/admin/views/Users/Customers/Home.tsx ***!
+  \***********************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  var desc = Object.getOwnPropertyDescriptor(m, k);
+
+  if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+    desc = {
+      enumerable: true,
+      get: function get() {
+        return m[k];
+      }
+    };
+  }
+
+  Object.defineProperty(o, k2, desc);
+} : function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  o[k2] = m[k];
+});
+
+var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
+  Object.defineProperty(o, "default", {
+    enumerable: true,
+    value: v
+  });
+} : function (o, v) {
+  o["default"] = v;
+});
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+  }
+
+  __setModuleDefault(result, mod);
+
+  return result;
+};
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.CustomersHome = void 0;
+
+var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var axios_1 = __importDefault(__webpack_require__(/*! axios */ "./node_modules/axios/index.js"));
+
+var react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+
+var CustomersHome = function CustomersHome() {
+  var _ref = (0, react_1.useState)([]),
+      _ref2 = _slicedToArray(_ref, 2),
+      customers = _ref2[0],
+      setCustomers = _ref2[1];
+
+  var fetchUsers = function fetchUsers() {
+    axios_1["default"].get('/admin/accounts/users').then(function (response) {
+      setCustomers(response.data.data);
+    })["catch"](function (errors) {});
+  };
+
+  (0, react_1.useEffect)(function () {
+    fetchUsers();
+  }, []);
+
+  var getActivityBadge = function getActivityBadge(entity) {
+    if (entity.deleted_at) {
+      return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("span", {
+        className: "inline-flex rounded-full bg-red-400 px-2 text-xs font-semibold leading-5 text-white"
+      }, "Disabled"));
+    } else {
+      return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("span", {
+        className: "inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800"
+      }, "Active"));
+    }
+  };
+
+  return react_1["default"].createElement("div", {
+    className: "px-4 sm:px-6 lg:px-8"
+  }, react_1["default"].createElement("div", {
+    className: "sm:flex sm:items-center"
+  }, react_1["default"].createElement("div", {
+    className: "sm:flex-auto"
+  }, react_1["default"].createElement("h1", {
+    className: "text-xl font-semibold text-gray-900"
+  }, "Customers"), react_1["default"].createElement("p", {
+    className: "mt-2 text-sm text-gray-700"
+  }, "A list of all customers.")), react_1["default"].createElement("div", {
+    className: "mt-4 sm:mt-0 sm:ml-16 sm:flex-none"
+  }, react_1["default"].createElement(react_router_dom_1.Link, {
+    to: '/admin/customers/create'
+  }, react_1["default"].createElement("button", {
+    type: "button",
+    className: "inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto"
+  }, "Add customer")))), react_1["default"].createElement("div", {
+    className: "mt-8 flex flex-col"
+  }, react_1["default"].createElement("div", {
+    className: "-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8"
+  }, react_1["default"].createElement("div", {
+    className: "inline-block min-w-full py-2 align-middle md:px-6 lg:px-8"
+  }, react_1["default"].createElement("div", {
+    className: "overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg"
+  }, react_1["default"].createElement("table", {
+    className: "min-w-full divide-y divide-gray-300"
+  }, react_1["default"].createElement("thead", {
+    className: "bg-gray-50"
+  }, react_1["default"].createElement("tr", null, react_1["default"].createElement("th", {
+    scope: "col",
+    className: "py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"
+  }, "Name"), react_1["default"].createElement("th", {
+    scope: "col",
+    className: "px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+  }, "Contacts"), react_1["default"].createElement("th", {
+    scope: "col",
+    className: "px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+  }, "Activity status"), react_1["default"].createElement("th", {
+    scope: "col",
+    className: "relative py-3.5 pl-3 pr-4 sm:pr-6"
+  }, react_1["default"].createElement("span", {
+    className: "sr-only"
+  }, "Action")))), react_1["default"].createElement("tbody", {
+    className: "divide-y divide-gray-200 bg-white"
+  }, customers.map(function (customer) {
+    return react_1["default"].createElement("tr", {
+      key: customer.email
+    }, react_1["default"].createElement("td", {
+      className: "whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6"
+    }, react_1["default"].createElement("div", {
+      className: "flex items-center"
+    }, react_1["default"].createElement("div", {
+      className: "font-medium text-gray-900"
+    }, customer.name + ' ' + customer.surname))), react_1["default"].createElement("td", {
+      className: "whitespace-nowrap px-3 py-4 text-sm text-gray-500"
+    }, react_1["default"].createElement("div", {
+      className: "text-gray-900"
+    }, customer.email), react_1["default"].createElement("div", {
+      className: "text-gray-500"
+    }, customer.phone)), react_1["default"].createElement("td", {
+      className: "whitespace-nowrap px-3 py-4 text-sm text-gray-500"
+    }, getActivityBadge(customer)), react_1["default"].createElement("td", {
+      className: "relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6 space-x-3"
+    }, react_1["default"].createElement(react_router_dom_1.Link, {
+      to: "/admin/customers/details/" + customer.id,
+      className: "text-indigo-600 hover:text-indigo-900"
+    }, react_1["default"].createElement("i", {
+      className: "fa fa-eye text-blue-600"
+    }), " Details", react_1["default"].createElement("span", {
+      className: "sr-only"
+    }, ", ", customer.name)), react_1["default"].createElement(react_router_dom_1.Link, {
+      to: "/admin/customers/edit/" + customer.id,
+      className: "text-indigo-600 hover:text-indigo-900"
+    }, react_1["default"].createElement("i", {
+      className: "fa fa-edit text-green-600"
+    }), " Edit", react_1["default"].createElement("span", {
+      className: "sr-only"
+    }, ", ", customer.name))));
+  }))))))));
+};
+
+exports.CustomersHome = CustomersHome;
 
 /***/ }),
 

@@ -4,7 +4,9 @@ export const Dashboard = () => {
 
     return (
         <>
-            YES
+            <div className="bg-white h-full">
+                dsadsa
+            </div>
         </>
     );
 }
