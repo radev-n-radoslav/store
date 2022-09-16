@@ -1,62 +1,36 @@
-/* This example requires Tailwind CSS v2.0+ */
-import { ChevronRightIcon } from '@heroicons/react/20/solid'
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-
-const links = [
-    { title: 'Catalog', description: 'Take a look at our products', href: '/catalog', icon: "fas fa-shopping-cart" },
-    { title: 'Blog', description: 'Read about the latest news & guides', href: '/blog', icon: "far fa-newspaper" },
-    { title: 'Contacts', description: 'Don\'t hesitate to contact us!', href: '/contacts', icon: "fa fa-wpforms" },
-]
+import React from 'react';
 
 export const NoPage = () => {
-    return (
-        <div className="bg-white">
-            <main className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div className="mx-auto max-w-xl py-16 sm:py-24">
-                    <div className="text-center">
-                        <p className="text-4xl font-semibold text-indigo-600">404</p>
-                        <h1 className="mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
-                            This page does not exist.
-                        </h1>
-                        <p className="mt-2 text-lg text-gray-500">The page you are looking for could not be found.</p>
-                    </div>
-                    <div className="mt-12">
-                        <h2 className="text-base font-semibold text-gray-500">Popular pages</h2>
-                        <ul role="list" className="mt-4 divide-y divide-gray-200 border-t border-b border-gray-200">
-                            {links.map((link, linkIdx) => (
-                                <li key={linkIdx} className="relative flex items-start space-x-4 py-6">
-                                    <div className="flex-shrink-0">
-                                        <span className="flex h-12 w-12 items-center justify-center rounded-lg bg-indigo-50">
-                                            <i className={link.icon + " h-6 w-6 text-indigo-700 text-center fa-lg pt-1"} aria-hidden="true"></i>
-                                        </span>
-                                    </div>
-                                    <div className="min-w-0 flex-1">
-                                        <h3 className="text-base font-medium text-gray-900">
-                                            <span className="rounded-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2">
-                                                <Link to={ link.href } className="focus:outline-none">
-                                                    <span className="absolute inset-0" aria-hidden="true" />
-                                                    {link.title}
-                                                </Link>
-                                            </span>
-                                        </h3>
-                                        <p className="text-base text-gray-500">{link.description}</p>
-                                    </div>
-                                    <div className="flex-shrink-0 self-center">
-                                        <ChevronRightIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
-                                    </div>
-                                </li>
-                            ))}
-                        </ul>
-                        <div className="mt-8">
-                            <Link to="/" className="text-base font-medium text-indigo-600 hover:text-indigo-500">
-                                Or go back home
-                                <span aria-hidden="true"> &rarr;</span>
-                            </Link>
-                        </div>
+        return (
+            <>
+                <div className="min-h-screen bg-white px-4 py-16 sm:px-6 sm:py-24 md:grid md:place-items-center lg:px-8">
+                    <div className="mx-auto max-w-max">
+                        <main className="sm:flex">
+                            <p className="text-4xl font-bold tracking-tight text-indigo-600 sm:text-5xl">404</p>
+                            <div className="sm:ml-6">
+                                <div className="sm:border-l sm:border-gray-200 sm:pl-6">
+                                    <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">Page not found</h1>
+                                    <p className="mt-1 text-base text-gray-500">Please check the URL in the address bar and try again.</p>
+                                </div>
+                                <div className="mt-10 flex space-x-3 sm:border-l sm:border-transparent sm:pl-6">
+                                    <a
+                                        href="#"
+                                        className="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                                    >
+                                        Go back home
+                                    </a>
+                                    <a
+                                        href="#"
+                                        className="inline-flex items-center rounded-md border border-transparent bg-indigo-100 px-4 py-2 text-sm font-medium text-indigo-700 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                                    >
+                                        Contact support
+                                    </a>
+                                </div>
+                            </div>
+                        </main>
                     </div>
                 </div>
-            </main>
-        </div>
-    )
-}
+            </>
+        )
+    }
+    

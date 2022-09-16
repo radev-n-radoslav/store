@@ -1,10 +1,12 @@
-export interface StaticPages {
-    name: String,
-    href: String,
-    icon: String
+export interface Navigation {
+    name: string,
+    href: string,
+    icon: string,
+    current: boolean
 }
 
 export interface PageStaticData {
-    logo: String,
-    pages: StaticPages[]
+    logo: string,
+    navigation: Navigation[],
+    secondaryNavigation: Navigation[]
 }

@@ -1,8 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from "react";
-import { Router } from './router/index';
 import { PageStaticData } from './App.d';
-import { Navbar } from './components/Navbar/Navbar';
+import { HomeScreen } from './components/HomeScreen';
 
 export const App = () => {
 
@@ -19,21 +18,13 @@ export const App = () => {
     };
 
     useEffect(() => {
-        getPageStatics();
-    });
-
+        return getPageStatics();
+    }, []);
+    
     return (
         <>
             {typeof pageStatics != 'undefined' ? (
-                // <Navbar logo={pageStatics?.logo} footer={pageStatics?.footer}/>
-                <Navbar />
-            ): (
-                <div></div>
-            )}
-            <Router />
-            {typeof pageStatics != 'undefined' ? (
-                <div></div>
-                // <Footer logo={pageStatics?.logo} footer={pageStatics?.footer}/>
+                <HomeScreen pageStaticData={pageStatics} />
             ): (
                 <div></div>
             )}
