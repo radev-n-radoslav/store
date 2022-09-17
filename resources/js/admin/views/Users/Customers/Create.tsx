@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { InputSettings } from '../../../partials/Input.d';
 import { Input } from '../../../partials/Input';
 import { Card } from '../../../partials/Card';
@@ -50,7 +51,7 @@ export const CustomerCreate = () => {
                     <div className="col-span-12 lg:col-span-4"></div>
                     <div className="col-span-12 lg:col-span-4">
                         <button className="text-white bg-blue-600 hover:bg-blue-800 px-3 py-3 rounded w-full">
-                            Save
+                            <i className="fa fa-save"></i> Save
                         </button>
                     </div>
                 </div>
@@ -63,7 +64,11 @@ export const CustomerCreate = () => {
             <div className="px-4">
                 <Card
                     title='Create a customer account'
-                    description=''
+                    description={
+                        <Link to="/admin/customers" className="pt-4">
+                            <i className="fa fa-arrow-left"></i> Return back to customers
+                        </Link>
+                    }
                     content={renderPage()}
                 />
             </div>

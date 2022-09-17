@@ -2,7 +2,7 @@ import React from 'react';
 
 export interface CardProps {
     title?: string,
-    description?: string,
+    description?: any,
     actions?: any,
     content?: any
 }

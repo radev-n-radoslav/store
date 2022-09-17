@@ -2481,6 +2481,162 @@ exports.HomeScreen = HomeScreen;
 
 /***/ }),
 
+/***/ "./resources/js/admin/components/PageHeading.tsx":
+/*!*******************************************************!*\
+  !*** ./resources/js/admin/components/PageHeading.tsx ***!
+  \*******************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  var desc = Object.getOwnPropertyDescriptor(m, k);
+
+  if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+    desc = {
+      enumerable: true,
+      get: function get() {
+        return m[k];
+      }
+    };
+  }
+
+  Object.defineProperty(o, k2, desc);
+} : function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  o[k2] = m[k];
+});
+
+var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
+  Object.defineProperty(o, "default", {
+    enumerable: true,
+    value: v
+  });
+} : function (o, v) {
+  o["default"] = v;
+});
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+  }
+
+  __setModuleDefault(result, mod);
+
+  return result;
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.PageHeading = void 0;
+
+var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+
+var solid_1 = __webpack_require__(/*! @heroicons/react/20/solid */ "./node_modules/@heroicons/react/20/solid/esm/index.js");
+
+var PageHeading = function PageHeading(props) {
+  var pagePath = (0, react_router_dom_1.useLocation)();
+
+  var _ref = (0, react_1.useState)([]),
+      _ref2 = _slicedToArray(_ref, 2),
+      breadcrumbs = _ref2[0],
+      setBreadcrumbs = _ref2[1];
+
+  var getBreadcrumbs = function getBreadcrumbs() {
+    var path = pagePath.pathname.substring(7);
+    var elements = path.split(/\//);
+    var crumbs = [];
+    elements.map(function (element, index) {
+      if (index == 0) {
+        crumbs.push({
+          title: element.charAt(0).toUpperCase() + element.slice(1),
+          link: '/admin/' + element
+        });
+        return;
+      }
+
+      if (!Number.isNaN(Number(element))) {
+        return;
+      }
+
+      crumbs.push({
+        title: element.charAt(0).toUpperCase() + element.slice(1),
+        link: crumbs[index - 1].link + '/' + element
+      });
+    });
+    setBreadcrumbs(crumbs);
+    console.log(crumbs);
+  };
+
+  (0, react_1.useEffect)(function () {
+    getBreadcrumbs();
+  }, []);
+
+  var renderCrumb = function renderCrumb(element, index) {
+    return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("div", {
+      className: "flex" + (index != 0 ? ' items-center' : '')
+    }, index != 0 ? react_1["default"].createElement(solid_1.ChevronRightIcon, {
+      className: "h-5 w-5 flex-shrink-0 text-gray-400",
+      "aria-hidden": "true"
+    }) : '', react_1["default"].createElement(react_router_dom_1.Link, {
+      to: index + 1 == breadcrumbs.length ? '#' : element.link,
+      className: (index != 0 ? 'ml-4 ' : '') + "text-sm font-medium text-gray-500 hover:text-gray-700"
+    }, element.title)));
+  };
+
+  return react_1["default"].createElement("div", null, react_1["default"].createElement("div", null, react_1["default"].createElement("nav", {
+    className: "sm:hidden",
+    "aria-label": "Back"
+  }, react_1["default"].createElement(react_router_dom_1.Link, {
+    to: 'breadcrumbs[breadcrumbs.length - 1].link',
+    className: "flex items-center text-sm font-medium text-gray-500 hover:text-gray-700"
+  }, react_1["default"].createElement(solid_1.ChevronLeftIcon, {
+    className: "-ml-1 mr-1 h-5 w-5 flex-shrink-0 text-gray-400",
+    "aria-hidden": "true"
+  }), "Back")), react_1["default"].createElement("nav", {
+    className: "hidden sm:flex",
+    "aria-label": "Breadcrumb"
+  }, react_1["default"].createElement("ol", {
+    role: "list",
+    className: "flex items-center space-x-4"
+  }, breadcrumbs.map(function (element, index) {
+    return react_1["default"].createElement("li", {
+      key: element.title
+    }, renderCrumb(element, index));
+  })))), react_1["default"].createElement("div", {
+    className: "mt-2 md:flex md:items-center md:justify-between"
+  }, react_1["default"].createElement("div", {
+    className: "min-w-0 flex-1"
+  }, react_1["default"].createElement("h2", {
+    className: "text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight"
+  }, props.title)), react_1["default"].createElement("div", {
+    className: "mt-4 flex flex-shrink-0 md:mt-0 md:ml-4"
+  }, props.actions)));
+};
+
+exports.PageHeading = PageHeading;
+
+/***/ }),
+
 /***/ "./resources/js/admin/index.tsx":
 /*!**************************************!*\
   !*** ./resources/js/admin/index.tsx ***!
@@ -2718,10 +2874,10 @@ var Router = function Router() {
     path: "customers/create",
     element: react_1["default"].createElement(Create_1.CustomerCreate, null)
   }), react_1["default"].createElement(react_router_dom_1.Route, {
-    path: "customers/:id/details",
+    path: "customers/details/:id",
     element: react_1["default"].createElement(Details_1.CustomerDetails, null)
   }), react_1["default"].createElement(react_router_dom_1.Route, {
-    path: "customers/:id/edit",
+    path: "customers/edit/:id",
     element: react_1["default"].createElement(Edit_1.CustomerEdit, null)
   }), react_1["default"].createElement(react_router_dom_1.Route, {
     path: "*",
@@ -2841,6 +2997,8 @@ exports.CustomerCreate = void 0;
 
 var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
+var react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+
 var Input_1 = __webpack_require__(/*! ../../../partials/Input */ "./resources/js/admin/partials/Input.tsx");
 
 var Card_1 = __webpack_require__(/*! ../../../partials/Card */ "./resources/js/admin/partials/Card.tsx");
@@ -2896,14 +3054,21 @@ var CustomerCreate = function CustomerCreate() {
       className: "col-span-12 lg:col-span-4"
     }, react_1["default"].createElement("button", {
       className: "text-white bg-blue-600 hover:bg-blue-800 px-3 py-3 rounded w-full"
-    }, "Save"))));
+    }, react_1["default"].createElement("i", {
+      className: "fa fa-save"
+    }), " Save"))));
   };
 
   return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("div", {
     className: "px-4"
   }, react_1["default"].createElement(Card_1.Card, {
     title: 'Create a customer account',
-    description: '',
+    description: react_1["default"].createElement(react_router_dom_1.Link, {
+      to: "/admin/customers",
+      className: "pt-4"
+    }, react_1["default"].createElement("i", {
+      className: "fa fa-arrow-left"
+    }), " Return back to customers"),
     content: renderPage()
   })));
 };
@@ -2921,6 +3086,58 @@ exports.CustomerCreate = CustomerCreate;
 "use strict";
 
 
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  var desc = Object.getOwnPropertyDescriptor(m, k);
+
+  if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+    desc = {
+      enumerable: true,
+      get: function get() {
+        return m[k];
+      }
+    };
+  }
+
+  Object.defineProperty(o, k2, desc);
+} : function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  o[k2] = m[k];
+});
+
+var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
+  Object.defineProperty(o, "default", {
+    enumerable: true,
+    value: v
+  });
+} : function (o, v) {
+  o["default"] = v;
+});
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+  }
+
+  __setModuleDefault(result, mod);
+
+  return result;
+};
+
 var __importDefault = this && this.__importDefault || function (mod) {
   return mod && mod.__esModule ? mod : {
     "default": mod
@@ -2932,10 +3149,54 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports.CustomerDetails = void 0;
 
-var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
-var CustomerDetails = function CustomerDetails() {
-  return react_1["default"].createElement(react_1["default"].Fragment, null);
+var react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+
+var axios_1 = __importDefault(__webpack_require__(/*! axios */ "./node_modules/axios/index.js"));
+
+var PageHeading_1 = __webpack_require__(/*! ../../../components/PageHeading */ "./resources/js/admin/components/PageHeading.tsx");
+
+var CustomerDetails = function CustomerDetails(props) {
+  var customerId = (0, react_router_dom_1.useParams)().id;
+
+  var _ref = (0, react_1.useState)(),
+      _ref2 = _slicedToArray(_ref, 2),
+      customerData = _ref2[0],
+      setCustomerData = _ref2[1];
+
+  var fetchCustomerDetails = function fetchCustomerDetails() {
+    axios_1["default"].get('/admin/accounts/users/details/' + customerId).then(function (response) {
+      setCustomerData(response.data.data);
+    })["catch"](function (errors) {});
+  };
+
+  (0, react_1.useEffect)(function () {
+    fetchCustomerDetails();
+  }, []);
+
+  var renderActions = function renderActions() {
+    return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("button", {
+      className: "inline-flex items-center text-white bg-green-500 hover:bg-green-600 px-4 py-3 w-full rounded mr-4"
+    }, react_1["default"].createElement("i", {
+      className: "fa fa-edit pr-4"
+    }), " Edit"), react_1["default"].createElement("button", {
+      className: "inline-flex items-center text-white bg-red-500 hover:bg-red-600 px-4 py-3 w-full rounded ml-4"
+    }, react_1["default"].createElement("i", {
+      className: "fa fa-trash pr-4"
+    }), " Disable"));
+  };
+
+  var renderContent = function renderContent() {
+    return react_1["default"].createElement(react_1["default"].Fragment, null);
+  };
+
+  return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("div", {
+    className: "px-4 sm:px-6 lg:px-8"
+  }, react_1["default"].createElement(PageHeading_1.PageHeading, {
+    title: "Customer details",
+    actions: renderActions()
+  })));
 };
 
 exports.CustomerDetails = CustomerDetails;

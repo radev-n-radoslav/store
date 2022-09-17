@@ -15,8 +15,8 @@ export const Router = () => {
                     <Route index element={<Dashboard />} />
                     <Route path="customers" element={<CustomersHome />} />
                     <Route path="customers/create" element={<CustomerCreate />} />
-                    <Route path="customers/:id/details" element={<CustomerDetails />} />
-                    <Route path="customers/:id/edit" element={<CustomerEdit />} />
+                    <Route path="customers/details/:id" element={<CustomerDetails />} />
+                    <Route path="customers/edit/:id" element={<CustomerEdit />} />
                     <Route path="*" element={<NoPage />} />
                 </Route>
             </Routes>
