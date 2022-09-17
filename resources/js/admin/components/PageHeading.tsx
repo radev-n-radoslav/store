@@ -62,7 +62,7 @@ export const PageHeading = (props: PageHeadingSettings) => {
     }
 
     return (
-        <div>
+        <div className="mb-4">
             <div>
                 <nav className="sm:hidden" aria-label="Back">
                     <Link to={'breadcrumbs[breadcrumbs.length - 1].link'} className="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700">

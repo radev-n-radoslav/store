@@ -3,7 +3,7 @@ export interface Customer {
     name: string,
     surname: string,
     email: string,
-    email_verified_at: boolean,
+    email_verified_at: boolean | string,
     phone: string,
     created_at: string,
     updated_at: string,

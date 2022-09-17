@@ -2156,6 +2156,57 @@ exports.App = App;
 
 /***/ }),
 
+/***/ "./resources/js/admin/components/DescriptionList.tsx":
+/*!***********************************************************!*\
+  !*** ./resources/js/admin/components/DescriptionList.tsx ***!
+  \***********************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.DescriptionList = void 0;
+
+var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var DescriptionList = function DescriptionList(props) {
+  return react_1["default"].createElement("div", {
+    className: "overflow-hidden bg-white shadow sm:rounded-lg"
+  }, react_1["default"].createElement("div", {
+    className: "px-4 py-5 sm:px-6"
+  }, react_1["default"].createElement("h3", {
+    className: "text-lg font-medium leading-6 text-gray-900"
+  }, props.title), react_1["default"].createElement("p", {
+    className: "mt-1 max-w-2xl text-sm text-gray-500"
+  }, props.description)), react_1["default"].createElement("div", {
+    className: "border-t border-gray-200 px-4 py-5 sm:p-0"
+  }, react_1["default"].createElement("dl", {
+    className: "sm:divide-y sm:divide-gray-200"
+  }, props.rows.map(function (element, index) {
+    return react_1["default"].createElement("div", {
+      key: element.title + index,
+      className: "py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6"
+    }, react_1["default"].createElement("dt", {
+      className: "text-sm font-medium text-gray-500"
+    }, element.title), react_1["default"].createElement("dd", {
+      className: "mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"
+    }, element.content));
+  }))));
+};
+
+exports.DescriptionList = DescriptionList;
+
+/***/ }),
+
 /***/ "./resources/js/admin/components/HomeScreen.tsx":
 /*!******************************************************!*\
   !*** ./resources/js/admin/components/HomeScreen.tsx ***!
@@ -2603,7 +2654,9 @@ var PageHeading = function PageHeading(props) {
     }, element.title)));
   };
 
-  return react_1["default"].createElement("div", null, react_1["default"].createElement("div", null, react_1["default"].createElement("nav", {
+  return react_1["default"].createElement("div", {
+    className: "mb-4"
+  }, react_1["default"].createElement("div", null, react_1["default"].createElement("nav", {
     className: "sm:hidden",
     "aria-label": "Back"
   }, react_1["default"].createElement(react_router_dom_1.Link, {
@@ -3157,6 +3210,8 @@ var axios_1 = __importDefault(__webpack_require__(/*! axios */ "./node_modules/a
 
 var PageHeading_1 = __webpack_require__(/*! ../../../components/PageHeading */ "./resources/js/admin/components/PageHeading.tsx");
 
+var DescriptionList_1 = __webpack_require__(/*! ../../../components/DescriptionList */ "./resources/js/admin/components/DescriptionList.tsx");
+
 var CustomerDetails = function CustomerDetails(props) {
   var customerId = (0, react_router_dom_1.useParams)().id;
 
@@ -3169,6 +3224,40 @@ var CustomerDetails = function CustomerDetails(props) {
     axios_1["default"].get('/admin/accounts/users/details/' + customerId).then(function (response) {
       setCustomerData(response.data.data);
     })["catch"](function (errors) {});
+  };
+
+  var formatCustomerDetails = function formatCustomerDetails() {
+    var rows = [{
+      title: 'Name',
+      content: customerData === null || customerData === void 0 ? void 0 : customerData.name
+    }, {
+      title: 'Surname',
+      content: customerData === null || customerData === void 0 ? void 0 : customerData.email
+    }, {
+      title: 'Phone',
+      content: customerData === null || customerData === void 0 ? void 0 : customerData.phone
+    }, {
+      title: 'Email',
+      content: customerData === null || customerData === void 0 ? void 0 : customerData.email
+    }, {
+      title: 'Email verified at',
+      content: String(customerData === null || customerData === void 0 ? void 0 : customerData.email_verified_at)
+    }, {
+      title: 'Created at',
+      content: customerData === null || customerData === void 0 ? void 0 : customerData.created_at
+    }, {
+      title: 'Last updated at',
+      content: customerData === null || customerData === void 0 ? void 0 : customerData.updated_at
+    }];
+
+    if ((customerData === null || customerData === void 0 ? void 0 : customerData.deleted_at) != null) {
+      rows.push({
+        title: 'Disabled at',
+        content: customerData === null || customerData === void 0 ? void 0 : customerData.deleted_at
+      });
+    }
+
+    return rows;
   };
 
   (0, react_1.useEffect)(function () {
@@ -3187,15 +3276,15 @@ var CustomerDetails = function CustomerDetails(props) {
     }), " Disable"));
   };
 
-  var renderContent = function renderContent() {
-    return react_1["default"].createElement(react_1["default"].Fragment, null);
-  };
-
   return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("div", {
     className: "px-4 sm:px-6 lg:px-8"
   }, react_1["default"].createElement(PageHeading_1.PageHeading, {
     title: "Customer details",
     actions: renderActions()
+  }), react_1["default"].createElement(DescriptionList_1.DescriptionList, {
+    title: "Customer information",
+    description: "",
+    rows: formatCustomerDetails()
   })));
 };
 
