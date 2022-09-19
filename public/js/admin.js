@@ -2690,6 +2690,64 @@ exports.PageHeading = PageHeading;
 
 /***/ }),
 
+/***/ "./resources/js/admin/helpers/urlHelpers.tsx":
+/*!***************************************************!*\
+  !*** ./resources/js/admin/helpers/urlHelpers.tsx ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.useCurrentQueryChanged = exports.useCurrentQueryParams = void 0;
+
+var react_1 = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+
+var useCurrentQueryParams = function useCurrentQueryParams() {
+  var _ref = (0, react_router_dom_1.useSearchParams)(),
+      _ref2 = _slicedToArray(_ref, 2),
+      searchParams = _ref2[0],
+      setSearchParams = _ref2[1];
+
+  return {
+    params: Object.fromEntries(new URLSearchParams('?' + searchParams.toString()))
+  };
+};
+
+exports.useCurrentQueryParams = useCurrentQueryParams;
+
+var useCurrentQueryChanged = function useCurrentQueryChanged(callback) {
+  var _ref3 = (0, react_router_dom_1.useSearchParams)(),
+      _ref4 = _slicedToArray(_ref3, 2),
+      searchParams = _ref4[0],
+      setSearchParams = _ref4[1];
+
+  return (0, react_1.useEffect)(function () {
+    callback();
+  }, [searchParams]);
+};
+
+exports.useCurrentQueryChanged = useCurrentQueryChanged;
+
+/***/ }),
+
 /***/ "./resources/js/admin/index.tsx":
 /*!**************************************!*\
   !*** ./resources/js/admin/index.tsx ***!
@@ -2875,6 +2933,170 @@ var Input = function Input(props) {
 };
 
 exports.Input = Input;
+
+/***/ }),
+
+/***/ "./resources/js/admin/partials/Pagination.tsx":
+/*!****************************************************!*\
+  !*** ./resources/js/admin/partials/Pagination.tsx ***!
+  \****************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  var desc = Object.getOwnPropertyDescriptor(m, k);
+
+  if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+    desc = {
+      enumerable: true,
+      get: function get() {
+        return m[k];
+      }
+    };
+  }
+
+  Object.defineProperty(o, k2, desc);
+} : function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  o[k2] = m[k];
+});
+
+var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
+  Object.defineProperty(o, "default", {
+    enumerable: true,
+    value: v
+  });
+} : function (o, v) {
+  o["default"] = v;
+});
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+  }
+
+  __setModuleDefault(result, mod);
+
+  return result;
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.Pagination = void 0;
+
+var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+
+var solid_1 = __webpack_require__(/*! @heroicons/react/20/solid */ "./node_modules/@heroicons/react/20/solid/esm/index.js");
+
+var Pagination = function Pagination(props) {
+  var _ref = (0, react_1.useState)(props.data),
+      _ref2 = _slicedToArray(_ref, 2),
+      data = _ref2[0],
+      setData = _ref2[1];
+
+  var location = (0, react_router_dom_1.useLocation)();
+
+  var _ref3 = (0, react_router_dom_1.useSearchParams)(),
+      _ref4 = _slicedToArray(_ref3, 2),
+      searchParams = _ref4[0],
+      setSearchParams = _ref4[1]; // Feed the initial data needed for rendering
+
+
+  (0, react_1.useEffect)(function () {
+    if ((data === null || data === void 0 ? void 0 : data.currentPage) == undefined) {
+      setData(props.data);
+    } else {
+      return;
+    }
+  }); // Watch props update
+
+  (0, react_1.useEffect)(function () {
+    setData(props.data);
+  }, [props]); // Set pagination buttons
+
+  var getButtons = function getButtons() {
+    var neededCount = (data === null || data === void 0 ? void 0 : data.total) / (data === null || data === void 0 ? void 0 : data.perPage);
+    var roundedCount = Math.round(neededCount);
+    neededCount = roundedCount < neededCount ? neededCount + 1 : roundedCount;
+    var buttons = new Array();
+
+    for (var index = 0; index < neededCount; index++) {
+      searchParams.set('page', String(index + 1));
+      buttons.push([index + 1, searchParams.toString()]);
+    }
+
+    return buttons;
+  };
+
+  return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("div", {
+    className: "flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6"
+  }, react_1["default"].createElement("div", {
+    className: "flex flex-1 justify-between sm:hidden"
+  }, react_1["default"].createElement(react_router_dom_1.Link, {
+    to: String(data === null || data === void 0 ? void 0 : data.prevPageUrl),
+    className: "relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+  }, "Previous"), react_1["default"].createElement(react_router_dom_1.Link, {
+    to: String(data === null || data === void 0 ? void 0 : data.nextPageUrl),
+    className: "relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+  }, "Next")), react_1["default"].createElement("div", {
+    className: "hidden sm:flex sm:flex-1 sm:items-center sm:justify-between"
+  }, react_1["default"].createElement("div", null, react_1["default"].createElement("p", {
+    className: "text-sm text-gray-700"
+  }, "Showing ", react_1["default"].createElement("span", {
+    className: "font-medium"
+  }, data === null || data === void 0 ? void 0 : data.from), " to ", react_1["default"].createElement("span", {
+    className: "font-medium"
+  }, data === null || data === void 0 ? void 0 : data.to), " of", ' ', react_1["default"].createElement("span", {
+    className: "font-medium"
+  }, data === null || data === void 0 ? void 0 : data.total), " results")), react_1["default"].createElement("div", null, react_1["default"].createElement("nav", {
+    className: "isolate inline-flex -space-x-px rounded-md shadow-sm",
+    "aria-label": "Pagination"
+  }, react_1["default"].createElement(react_router_dom_1.Link, {
+    to: String(data === null || data === void 0 ? void 0 : data.prevPageUrl),
+    className: "relative inline-flex items-center rounded-l-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20"
+  }, react_1["default"].createElement("span", {
+    className: "sr-only"
+  }, "Previous"), react_1["default"].createElement(solid_1.ChevronLeftIcon, {
+    className: "h-5 w-5",
+    "aria-hidden": "true"
+  })), getButtons().map(function (element, index) {
+    return react_1["default"].createElement(react_router_dom_1.Link, {
+      key: index + 1,
+      to: location.pathname + '?' + element[1],
+      className: "relative inline-flex items-center border px-4 py-2 text-sm font-medium focus:z-20" + (data.currentPage == index + 1 ? 'z-10 bg-indigo-50 border-indigo-500 text-indigo-600' : 'bg-white border-gray-300 text-gray-500 hover:bg-gray-50')
+    }, element[0]);
+  }), react_1["default"].createElement(react_router_dom_1.Link, {
+    to: String(data === null || data === void 0 ? void 0 : data.nextPageUrl),
+    className: "relative inline-flex items-center rounded-r-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20"
+  }, react_1["default"].createElement("span", {
+    className: "sr-only"
+  }, "Next"), react_1["default"].createElement(solid_1.ChevronRightIcon, {
+    className: "h-5 w-5",
+    "aria-hidden": "true"
+  })))))));
+};
+
+exports.Pagination = Pagination;
 
 /***/ }),
 
@@ -3400,21 +3622,51 @@ var axios_1 = __importDefault(__webpack_require__(/*! axios */ "./node_modules/a
 
 var react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
 
+var Pagination_1 = __webpack_require__(/*! ../../../partials/Pagination */ "./resources/js/admin/partials/Pagination.tsx");
+
+var urlHelpers_1 = __webpack_require__(/*! ../../../helpers/urlHelpers */ "./resources/js/admin/helpers/urlHelpers.tsx");
+
 var CustomersHome = function CustomersHome() {
   var _ref = (0, react_1.useState)([]),
       _ref2 = _slicedToArray(_ref, 2),
       customers = _ref2[0],
       setCustomers = _ref2[1];
 
+  var _ref3 = (0, react_1.useState)(),
+      _ref4 = _slicedToArray(_ref3, 2),
+      pagination = _ref4[0],
+      setPagination = _ref4[1];
+
+  var urlQuery = (0, urlHelpers_1.useCurrentQueryParams)();
+
   var fetchUsers = function fetchUsers() {
-    axios_1["default"].get('/admin/accounts/users').then(function (response) {
-      setCustomers(response.data.data);
+    axios_1["default"].get('/admin/accounts/users', urlQuery).then(function (response) {
+      var responseData = response.data.data;
+      setPagination({
+        currentPage: responseData.current_page,
+        lastPage: responseData.last_page,
+        from: responseData.from,
+        to: responseData.to,
+        perPage: responseData.per_page,
+        total: responseData.total,
+        firstPageUrl: responseData.first_page_url,
+        lastPageUrl: responseData.last_page_url,
+        nextPageUrl: responseData.next_page_url,
+        prevPageUrl: responseData.prev_page_url,
+        path: responseData.path
+      });
+      setCustomers(responseData.data);
     })["catch"](function (errors) {});
-  };
+  }; // On component mount
+
 
   (0, react_1.useEffect)(function () {
     fetchUsers();
-  }, []);
+  }, []); // Watch if any query params change and update page
+
+  (0, urlHelpers_1.useCurrentQueryChanged)(function () {
+    fetchUsers();
+  });
 
   var getActivityBadge = function getActivityBadge(entity) {
     if (entity.deleted_at) {
@@ -3507,7 +3759,9 @@ var CustomersHome = function CustomersHome() {
     }), " Edit", react_1["default"].createElement("span", {
       className: "sr-only"
     }, ", ", customer.name))));
-  }))))))));
+  }))), react_1["default"].createElement(Pagination_1.Pagination, {
+    data: pagination
+  }))))));
 };
 
 exports.CustomersHome = CustomersHome;

@@ -18,7 +18,7 @@ class UsersController extends Controller
      */
     public function index(IndexRequest $request)
     {
-        $users = User::all();
+        $users = User::paginate(1);
 
         return response([
             'data' => $users

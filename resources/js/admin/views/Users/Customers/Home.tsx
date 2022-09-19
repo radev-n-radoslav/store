@@ -2,23 +2,47 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Customer } from './Customer';
+import { Pagination, PaginationData } from '../../../partials/Pagination';
+import { useCurrentQueryChanged, useCurrentQueryParams } from '../../../helpers/urlHelpers';
 
 export const CustomersHome = () => {
     const [customers, setCustomers] = useState<Customer[]>([]);
-
+    const [pagination, setPagination] = useState<PaginationData>();
+    const urlQuery = useCurrentQueryParams();
+    
     const fetchUsers = () => {
-        axios.get('/admin/accounts/users')
+        axios.get('/admin/accounts/users', urlQuery)
             .then((response) => {
-                setCustomers(response.data.data);
+                let responseData = response.data.data;
+                setPagination({
+                    currentPage: responseData.current_page,
+                    lastPage: responseData.last_page,
+                    from: responseData.from,
+                    to: responseData.to,
+                    perPage: responseData.per_page,
+                    total: responseData.total,
+                    firstPageUrl: responseData.first_page_url,
+                    lastPageUrl: responseData.last_page_url,
+                    nextPageUrl: responseData.next_page_url,
+                    prevPageUrl: responseData.prev_page_url,
+                    path: responseData.path
+                });
+                setCustomers(responseData.data);
             })
             .catch((errors) => {
 
             });
     }
 
+    // On component mount
     useEffect(() => {
         fetchUsers();
     }, []);
+
+    // Watch if any query params change and update page
+    useCurrentQueryChanged(() => {
+        fetchUsers();
+    });
 
     const getActivityBadge = (entity: Customer) => {
         if(entity.deleted_at){
@@ -108,6 +132,7 @@ export const CustomersHome = () => {
                                     ))}
                                 </tbody>
                             </table>
+                            <Pagination data={pagination} />
                         </div>
                     </div>
                 </div>
