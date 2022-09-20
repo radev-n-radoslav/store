@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid'
+import { render } from '../../../../public/js/ui';
 
 export interface PageHeadingSettings {
     title: string,
+    description?: string,
     actions?: any
 }
 
@@ -96,4 +98,21 @@ export const PageHeading = (props: PageHeadingSettings) => {
             </div>
         </div>
     )
+}
+
+export const PageHeadingSimple = (props: PageHeadingSettings) => {
+
+    return (
+        <div className="sm:flex sm:items-center">
+            <div className="sm:flex-auto">
+                <h1 className="text-xl font-semibold text-gray-900">{props.title}</h1>
+                <p className="mt-2 text-sm text-gray-700">
+                    {props.description}
+                </p>
+            </div>
+            <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
+                {props.actions}
+            </div>
+        </div>
+    );
 }

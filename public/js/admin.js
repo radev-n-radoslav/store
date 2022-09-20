@@ -2596,7 +2596,7 @@ var __importStar = this && this.__importStar || function (mod) {
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports.PageHeading = void 0;
+exports.PageHeadingSimple = exports.PageHeading = void 0;
 
 var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
@@ -2687,6 +2687,48 @@ var PageHeading = function PageHeading(props) {
 };
 
 exports.PageHeading = PageHeading;
+
+var PageHeadingSimple = function PageHeadingSimple(props) {
+  return react_1["default"].createElement("div", {
+    className: "sm:flex sm:items-center"
+  }, react_1["default"].createElement("div", {
+    className: "sm:flex-auto"
+  }, react_1["default"].createElement("h1", {
+    className: "text-xl font-semibold text-gray-900"
+  }, props.title), react_1["default"].createElement("p", {
+    className: "mt-2 text-sm text-gray-700"
+  }, props.description)), react_1["default"].createElement("div", {
+    className: "mt-4 sm:mt-0 sm:ml-16 sm:flex-none"
+  }, props.actions));
+};
+
+exports.PageHeadingSimple = PageHeadingSimple;
+
+/***/ }),
+
+/***/ "./resources/js/admin/helpers/styleHelpers.tsx":
+/*!*****************************************************!*\
+  !*** ./resources/js/admin/helpers/styleHelpers.tsx ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.useClassNames = void 0;
+
+var useClassNames = function useClassNames() {
+  for (var _len = arguments.length, classes = new Array(_len), _key = 0; _key < _len; _key++) {
+    classes[_key] = arguments[_key];
+  }
+
+  return classes.filter(Boolean).join(' ');
+};
+
+exports.useClassNames = useClassNames;
 
 /***/ }),
 
@@ -3037,7 +3079,7 @@ var Pagination = function Pagination(props) {
   var getButtons = function getButtons() {
     var neededCount = (data === null || data === void 0 ? void 0 : data.total) / (data === null || data === void 0 ? void 0 : data.perPage);
     var roundedCount = Math.round(neededCount);
-    neededCount = roundedCount < neededCount ? neededCount + 1 : roundedCount;
+    neededCount = roundedCount < neededCount ? roundedCount + 1 : roundedCount;
     var buttons = new Array();
 
     for (var index = 0; index < neededCount; index++) {
@@ -3097,6 +3139,128 @@ var Pagination = function Pagination(props) {
 };
 
 exports.Pagination = Pagination;
+
+/***/ }),
+
+/***/ "./resources/js/admin/partials/Sort.tsx":
+/*!**********************************************!*\
+  !*** ./resources/js/admin/partials/Sort.tsx ***!
+  \**********************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  var desc = Object.getOwnPropertyDescriptor(m, k);
+
+  if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+    desc = {
+      enumerable: true,
+      get: function get() {
+        return m[k];
+      }
+    };
+  }
+
+  Object.defineProperty(o, k2, desc);
+} : function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  o[k2] = m[k];
+});
+
+var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
+  Object.defineProperty(o, "default", {
+    enumerable: true,
+    value: v
+  });
+} : function (o, v) {
+  o["default"] = v;
+});
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+  }
+
+  __setModuleDefault(result, mod);
+
+  return result;
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.Sort = void 0;
+
+var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var react_2 = __webpack_require__(/*! @headlessui/react */ "./node_modules/@headlessui/react/dist/index.cjs");
+
+var solid_1 = __webpack_require__(/*! @heroicons/react/20/solid */ "./node_modules/@heroicons/react/20/solid/esm/index.js");
+
+var styleHelpers_1 = __webpack_require__(/*! ../helpers/styleHelpers */ "./resources/js/admin/helpers/styleHelpers.tsx");
+
+var react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+
+var Sort = function Sort(props) {
+  var _ref = (0, react_1.useState)(props),
+      _ref2 = _slicedToArray(_ref, 2),
+      data = _ref2[0],
+      setData = _ref2[1];
+
+  (0, react_1.useEffect)(function () {
+    setData(props);
+  }, []);
+  return react_1["default"].createElement(react_2.Menu, {
+    as: "div",
+    className: "relative inline-block text-left"
+  }, react_1["default"].createElement("div", null, react_1["default"].createElement(react_2.Menu.Button, {
+    className: "group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900"
+  }, data.title, react_1["default"].createElement(solid_1.ChevronDownIcon, {
+    className: "-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500",
+    "aria-hidden": "true"
+  }))), react_1["default"].createElement(react_2.Transition, {
+    as: react_1.Fragment,
+    enter: "transition ease-out duration-100",
+    enterFrom: "transform opacity-0 scale-95",
+    enterTo: "transform opacity-100 scale-100",
+    leave: "transition ease-in duration-75",
+    leaveFrom: "transform opacity-100 scale-100",
+    leaveTo: "transform opacity-0 scale-95"
+  }, react_1["default"].createElement(react_2.Menu.Items, {
+    className: "absolute left-0 z-10 mt-2 w-40 origin-top-left rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none"
+  }, react_1["default"].createElement("div", {
+    className: "py-1"
+  }, data.options.map(function (option) {
+    return react_1["default"].createElement(react_2.Menu.Item, {
+      key: option.name
+    }, function (_ref3) {
+      var active = _ref3.active;
+      return react_1["default"].createElement(react_router_dom_1.Link, {
+        to: '?' + data.queryParam + '=' + option.queryVal,
+        className: (0, styleHelpers_1.useClassNames)(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm font-medium text-gray-900')
+      }, option.name);
+    });
+  })))));
+};
+
+exports.Sort = Sort;
 
 /***/ }),
 
@@ -3626,6 +3790,10 @@ var Pagination_1 = __webpack_require__(/*! ../../../partials/Pagination */ "./re
 
 var urlHelpers_1 = __webpack_require__(/*! ../../../helpers/urlHelpers */ "./resources/js/admin/helpers/urlHelpers.tsx");
 
+var PageHeading_1 = __webpack_require__(/*! ../../../components/PageHeading */ "./resources/js/admin/components/PageHeading.tsx");
+
+var Sort_1 = __webpack_require__(/*! ../../../partials/Sort */ "./resources/js/admin/partials/Sort.tsx");
+
 var CustomersHome = function CustomersHome() {
   var _ref = (0, react_1.useState)([]),
       _ref2 = _slicedToArray(_ref, 2),
@@ -3682,22 +3850,28 @@ var CustomersHome = function CustomersHome() {
 
   return react_1["default"].createElement("div", {
     className: "px-4 sm:px-6 lg:px-8"
-  }, react_1["default"].createElement("div", {
-    className: "sm:flex sm:items-center"
-  }, react_1["default"].createElement("div", {
-    className: "sm:flex-auto"
-  }, react_1["default"].createElement("h1", {
-    className: "text-xl font-semibold text-gray-900"
-  }, "Customers"), react_1["default"].createElement("p", {
-    className: "mt-2 text-sm text-gray-700"
-  }, "A list of all customers.")), react_1["default"].createElement("div", {
-    className: "mt-4 sm:mt-0 sm:ml-16 sm:flex-none"
-  }, react_1["default"].createElement(react_router_dom_1.Link, {
-    to: '/admin/customers/create'
-  }, react_1["default"].createElement("button", {
-    type: "button",
-    className: "inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto"
-  }, "Add customer")))), react_1["default"].createElement("div", {
+  }, react_1["default"].createElement(PageHeading_1.PageHeadingSimple, {
+    title: "Customers",
+    description: "A list of all customers",
+    actions: react_1["default"].createElement(react_router_dom_1.Link, {
+      to: '/admin/customers/create'
+    }, react_1["default"].createElement("button", {
+      type: "button",
+      className: "inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto"
+    }, "Add customer"))
+  }), react_1["default"].createElement("div", {
+    className: "pt-4"
+  }, react_1["default"].createElement(Sort_1.Sort, {
+    title: "Order by",
+    queryParam: "sort",
+    options: [{
+      name: "Last created",
+      queryVal: "desc"
+    }, {
+      name: "First created",
+      queryVal: 'asc'
+    }]
+  })), react_1["default"].createElement("div", {
     className: "mt-8 flex flex-col"
   }, react_1["default"].createElement("div", {
     className: "-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8"

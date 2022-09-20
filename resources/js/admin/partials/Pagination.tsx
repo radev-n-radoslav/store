@@ -39,7 +39,7 @@ export const Pagination = (props: any) => {
     const getButtons = () => {
         let neededCount = data?.total / data?.perPage;
         let roundedCount = Math.round(neededCount);
-        neededCount = (roundedCount < neededCount ? neededCount + 1 : roundedCount);
+        neededCount = (roundedCount < neededCount ? roundedCount + 1 : roundedCount);
         let buttons = new Array<[number, string]>();
         
         for (let index = 0; index < neededCount; index++) {

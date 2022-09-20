@@ -18,7 +18,8 @@ class UsersController extends Controller
      */
     public function index(IndexRequest $request)
     {
-        $users = User::paginate(1);
+        $users = User::orderBy('id', $request->sort ?? 'desc')
+            ->paginate(10);
 
         return response([
             'data' => $users
