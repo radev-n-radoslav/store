@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\Accounts\Users\DeleteRequest;
 use App\Http\Requests\Admin\Accounts\Users\DetailsRequest;
 use App\Http\Requests\Admin\Accounts\Users\IndexRequest;
 use App\Http\Requests\Admin\Accounts\Users\ResetPasswordRequest;
+use App\Http\Requests\Admin\Accounts\Users\RestoreRequest;
 use App\Http\Requests\Admin\Accounts\Users\StoreRequest;
 use App\Http\Requests\Admin\Accounts\Users\UpdateRequest;
 use App\Models\User;
@@ -27,11 +28,26 @@ class UsersController extends Controller
     }
 
     /**
+     * Get all disabled user accounts
+     */
+    public function indexDelted(IndexRequest $request)
+    {
+        $users = User::withTrashed()
+            ->orderBy('id', $request->sort ?? 'desc')
+            ->paginate(10);
+
+        return response([
+            'data' => $users
+        ], 200);
+    }
+
+    /**
      * Get user details
      */
     public function details($id, DetailsRequest $request)
     {
-        $user = User::findOrFail($id);
+        $user = User::withTrashed()
+            ->findOrFail($id);
 
         return response([
             'data' => $user
@@ -93,6 +109,21 @@ class UsersController extends Controller
         $user = User::findOrFail($id);
 
         $user->delete();
+
+        return response([
+            
+        ], 200);
+    }
+
+    /**
+     * Restore an user
+     */
+    public function restore($id, RestoreRequest $request)
+    {
+        $user = User::withTrashed()
+            ->findOrFail($id);
+
+        $user->restore();
 
         return response([
             

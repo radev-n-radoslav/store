@@ -5,7 +5,7 @@ import { Customer } from './Customer';
 import { Pagination, PaginationData } from '../../../partials/Pagination';
 import { useCurrentQueryChanged, useCurrentQueryParams } from '../../../helpers/urlHelpers';
 import { PageHeadingSimple } from '../../../components/PageHeading';
-import { Sort, SortData } from '../../../partials/Sort';
+import { Sort } from '../../../partials/Sort';
 
 export const CustomersHome = () => {
     const [customers, setCustomers] = useState<Customer[]>([]);

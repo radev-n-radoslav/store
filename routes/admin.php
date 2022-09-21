@@ -15,13 +15,17 @@ Route::group([
     {
         Route::get('/', 'UsersController@index');
 
+        Route::get('/disabled', 'UsersController@indexDeleted');
+
         Route::get('/details/{id}', 'UsersController@details');
 
         Route::post('/store', 'UsersController@store');
 
         Route::put('/update/{id}', 'UsersController@update');
         
-        Route::get('/delete/{id}', 'UsersController@update');
+        Route::delete('/delete/{id}', 'UsersController@delete');
+
+        Route::post('/restore/{id}', 'UsersController@restore');
 
         Route::post('/reset-password/{id}', 'UsersController@resetPassword');
     });

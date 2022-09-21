@@ -43,7 +43,6 @@ export const PageHeading = (props: PageHeadingSettings) => {
         });
 
         setBreadcrumbs(crumbs);
-        console.log(crumbs);
     }
 
     useEffect(() => {

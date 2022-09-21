@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import axios from 'axios';
 import { Customer } from './Customer';
 import { PageHeading } from '../../../components/PageHeading';
@@ -8,6 +8,7 @@ import { DescriptionList, DescriptionListRows } from '../../../components/Descri
 export const CustomerDetails = (props: any) => {
     const customerId = useParams().id;
     const [customerData, setCustomerData] = useState<Customer>();
+    const navigate = useNavigate();
     
     const fetchCustomerDetails = () => {
         axios.get('/admin/accounts/users/details/' + customerId)
@@ -67,15 +68,48 @@ export const CustomerDetails = (props: any) => {
         fetchCustomerDetails();
     }, []);
 
+    const disableUser = () => {
+        axios.delete('/admin/accounts/users/delete/' + customerId)
+            .then((response) => {
+                if (response.status == 200) {
+                    navigate('/admin/customers');
+                }
+            })
+            .catch((error) => {
+
+            });
+    };
+
+    const enableUser = () => {
+        axios.post('/admin/accounts/users/restore/' + customerId)
+            .then((response) => {
+                if(response.status == 200){
+                    navigate(0);
+                }
+            })
+            .catch((error) => {
+
+            });
+    }
+
     const renderActions = () => {
         return (
             <>
-                <button className="inline-flex items-center text-white bg-green-500 hover:bg-green-600 px-4 py-3 w-full rounded mr-4">
-                    <i className="fa fa-edit pr-4"></i> Edit
-                </button>
-                <button className="inline-flex items-center text-white bg-red-500 hover:bg-red-600 px-4 py-3 w-full rounded ml-4">
-                    <i className="fa fa-trash pr-4"></i> Disable
-                </button>
+                <Link to={'/admin/customers/edit/' + customerId}>
+                    <button className="inline-flex items-center text-white bg-green-500 hover:bg-green-600 px-4 py-3 w-full rounded mr-4">
+                        <i className="fa fa-edit pr-4"></i> Edit
+                    </button>
+                </Link>
+                {
+                    !customerData?.deleted_at ? 
+                        <button onClick={() => disableUser()} className="inline-flex items-center text-white bg-red-500 hover:bg-red-600 px-4 py-3 w-full rounded ml-4">
+                            <i className="fa fa-trash pr-4"></i> Disable
+                        </button>
+                    :
+                    <button onClick={() => enableUser()} className="inline-flex items-center text-black bg-yellow-400 hover:bg-yellow-500 px-4 py-3 w-full rounded ml-4">
+                        <i className="fas fa-redo pr-4"></i> Enable
+                    </button>
+                }
             </>
         );
     }
