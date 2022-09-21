@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Create = () => {
+export const ArticlesCreate = () => {
     
     return (
         <>

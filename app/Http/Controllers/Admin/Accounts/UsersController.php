@@ -29,20 +29,6 @@ class UsersController extends Controller
     }
 
     /**
-     * Get all disabled user accounts
-     */
-    public function indexDelted(IndexRequest $request)
-    {
-        $users = User::withTrashed()
-            ->orderBy('id', $request->sort ?? 'desc')
-            ->paginate(10);
-
-        return response([
-            'data' => $users
-        ], 200);
-    }
-
-    /**
      * Get user details
      */
     public function details($id, DetailsRequest $request)

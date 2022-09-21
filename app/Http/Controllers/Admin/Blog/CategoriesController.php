@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Blog\Categories\DeleteRequest;
 use App\Http\Requests\Admin\Blog\Categories\DetailsRequest;
 use App\Http\Requests\Admin\Blog\Categories\IndexRequest;
+use App\Http\Requests\Admin\Blog\Categories\RestoreRequest;
 use App\Http\Requests\Admin\Blog\Categories\StoreRequest;
 use App\Http\Requests\Admin\Blog\Categories\UpdateRequest;
 use App\Models\BlogCategory;
@@ -71,6 +72,21 @@ class CategoriesController extends Controller
         $category = BlogCategory::findOrFail($id);
 
         $category->delete();
+
+        return response([
+            
+        ], 200);
+    }
+
+    /**
+     * Restore a category
+     */
+    public function restore($id, RestoreRequest $request)
+    {
+        $category = BlogCategory::withTrashed()
+            ->findOrFail($id);
+
+        $category->restore();
 
         return response([
             

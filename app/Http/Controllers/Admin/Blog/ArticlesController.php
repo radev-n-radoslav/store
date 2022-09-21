@@ -17,8 +17,14 @@ class ArticlesController extends Controller
      */
     public function index(IndexRequest $request)
     {
-        $articles = BlogArticle::orderBy('created_at', 'DESC')
-            ->get();
+        $articles = BlogArticle::with([
+            'category' => function ($q)
+            {
+                $q->select(['id', 'name']);
+            }
+        ])
+            ->orderBy('id', $request->sort ?? 'desc')
+            ->paginate(10);
         
         return response([
             'data' => $articles
@@ -30,7 +36,13 @@ class ArticlesController extends Controller
      */
     public function details($id, DetailsRequest $request)
     {
-        $article = BlogArticle::findOrFail($id);
+        $article = BlogArticle::with([
+            'category' => function ($q)
+            {
+                $q->select(['id', 'name']);
+            }
+        ])
+            ->findOrFail($id);
 
         return response([
             'data' => $article

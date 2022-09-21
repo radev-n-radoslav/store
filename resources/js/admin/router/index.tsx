@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
+import { ArticlesCreate } from "../views/Blog/Articles/Create";
+import { ArticlesDetails } from "../views/Blog/Articles/Details";
+import { ArticlesEdit } from "../views/Blog/Articles/Edit";
+import { ArticlesHome } from "../views/Blog/Articles/Home";
 import { Dashboard } from '../views/Dashboard';
 import { NoPage } from '../views/NoPage';
 import { AdminsCreate } from "../views/Users/Admins/Create";
@@ -18,6 +22,16 @@ export const Router = () => {
                 <Route path='/admin'>
                     {/* Dashboard routes */}
                     <Route index element={<Dashboard />} />
+                    
+                    {/* Sales routes */}
+
+                    {/* Blog categories routes */}
+
+                    {/* Blog articles routes */}
+                    <Route path="blog/articles" element={<ArticlesHome />} />
+                    <Route path="blog/articles/create" element={<ArticlesCreate />} />
+                    <Route path="blog/articles/details/:id" element={<ArticlesDetails />} />
+                    <Route path="blog/articles/edit/:id" element={<ArticlesEdit />} />
 
                     {/* Admins routes */}
                     <Route path="admins" element={<AdminsHome />} />

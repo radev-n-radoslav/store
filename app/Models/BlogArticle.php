@@ -28,6 +28,6 @@ class BlogArticle extends Model
      */
     public function category()
     {
-        return $this->belongsTo('App/Models/BlogCategory', 'category_id');
+        return $this->belongsTo(BlogCategory::class, 'category_id');
     }
 }

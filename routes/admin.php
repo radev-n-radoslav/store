@@ -5,12 +5,50 @@ use Illuminate\Support\Facades\Route;
 Route::get('/page-statics', 'HomeController@pageStatics');
 
 Route::group([
+    'prefix' => '/blg',
+    'namespace' => 'Blog'
+], function ()
+{
+    Route::group([
+        'prefix' => '/categories'
+    ], function ()
+    {
+        Route::get('/', 'CategoriesController@index');
+    
+        Route::get('/details/{id}', 'CategoriesController@details');
+    
+        Route::post('/store', 'CategoriesController@store');
+    
+        Route::put('/update/{id}', 'CategoriesController@update');
+        
+        Route::delete('/delete/{id}', 'CategoriesController@delete');
+
+        Route::post('/restore/{id}', 'CategoriesController@restore');
+    });
+
+    Route::group([
+        'prefix' => '/articles'
+    ], function ()
+    {
+        Route::get('/', 'ArticlesController@index');
+    
+        Route::get('/details/{id}', 'ArticlesController@details');
+    
+        Route::post('/store', 'ArticlesController@store');
+    
+        Route::put('/update/{id}', 'ArticlesController@update');
+        
+        Route::delete('/delete/{id}', 'ArticlesController@delete');
+    });
+});
+
+Route::group([
     'prefix' => '/accounts',
     'namespace' => 'Accounts'
 ], function ()
 {
     Route::group([
-        'prefix' => 'users'
+        'prefix' => '/users'
     ], function ()
     {
         Route::get('/', 'UsersController@index');
@@ -29,7 +67,7 @@ Route::group([
     });
 
     Route::group([
-        'prefix' => 'admins'
+        'prefix' => '/admins'
     ], function ()
     {
         Route::get('/', 'AdminsController@index');
