@@ -15,8 +15,6 @@ Route::group([
     {
         Route::get('/', 'UsersController@index');
 
-        Route::get('/disabled', 'UsersController@indexDeleted');
-
         Route::get('/details/{id}', 'UsersController@details');
 
         Route::post('/store', 'UsersController@store');
@@ -42,7 +40,9 @@ Route::group([
     
         Route::put('/update/{id}', 'AdminsController@update');
         
-        Route::get('/delete/{id}', 'AdminsController@update');
+        Route::delete('/delete/{id}', 'AdminsController@delete');
+
+        Route::post('/restore/{id}', 'AdminsController@restore');
     
         Route::post('/reset-password/{id}', 'AdminsController@resetPassword');
 

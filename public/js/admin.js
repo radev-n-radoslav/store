@@ -3317,13 +3317,21 @@ var Dashboard_1 = __webpack_require__(/*! ../views/Dashboard */ "./resources/js/
 
 var NoPage_1 = __webpack_require__(/*! ../views/NoPage */ "./resources/js/admin/views/NoPage.tsx");
 
-var Create_1 = __webpack_require__(/*! ../views/Users/Customers/Create */ "./resources/js/admin/views/Users/Customers/Create.tsx");
+var Create_1 = __webpack_require__(/*! ../views/Users/Admins/Create */ "./resources/js/admin/views/Users/Admins/Create.tsx");
 
-var Details_1 = __webpack_require__(/*! ../views/Users/Customers/Details */ "./resources/js/admin/views/Users/Customers/Details.tsx");
+var Details_1 = __webpack_require__(/*! ../views/Users/Admins/Details */ "./resources/js/admin/views/Users/Admins/Details.tsx");
 
-var Edit_1 = __webpack_require__(/*! ../views/Users/Customers/Edit */ "./resources/js/admin/views/Users/Customers/Edit.tsx");
+var Edit_1 = __webpack_require__(/*! ../views/Users/Admins/Edit */ "./resources/js/admin/views/Users/Admins/Edit.tsx");
 
-var Home_1 = __webpack_require__(/*! ../views/Users/Customers/Home */ "./resources/js/admin/views/Users/Customers/Home.tsx");
+var Home_1 = __webpack_require__(/*! ../views/Users/Admins/Home */ "./resources/js/admin/views/Users/Admins/Home.tsx");
+
+var Create_2 = __webpack_require__(/*! ../views/Users/Customers/Create */ "./resources/js/admin/views/Users/Customers/Create.tsx");
+
+var Details_2 = __webpack_require__(/*! ../views/Users/Customers/Details */ "./resources/js/admin/views/Users/Customers/Details.tsx");
+
+var Edit_2 = __webpack_require__(/*! ../views/Users/Customers/Edit */ "./resources/js/admin/views/Users/Customers/Edit.tsx");
+
+var Home_2 = __webpack_require__(/*! ../views/Users/Customers/Home */ "./resources/js/admin/views/Users/Customers/Home.tsx");
 
 var Router = function Router() {
   return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement(react_router_dom_1.Routes, null, react_1["default"].createElement(react_router_dom_1.Route, {
@@ -3332,17 +3340,29 @@ var Router = function Router() {
     index: true,
     element: react_1["default"].createElement(Dashboard_1.Dashboard, null)
   }), react_1["default"].createElement(react_router_dom_1.Route, {
+    path: "admins",
+    element: react_1["default"].createElement(Home_1.AdminsHome, null)
+  }), react_1["default"].createElement(react_router_dom_1.Route, {
+    path: "admins/create",
+    element: react_1["default"].createElement(Create_1.AdminsCreate, null)
+  }), react_1["default"].createElement(react_router_dom_1.Route, {
+    path: "admins/details/:id",
+    element: react_1["default"].createElement(Details_1.AdminDetails, null)
+  }), react_1["default"].createElement(react_router_dom_1.Route, {
+    path: "admins/edit/:id",
+    element: react_1["default"].createElement(Edit_1.AdminsEdit, null)
+  }), react_1["default"].createElement(react_router_dom_1.Route, {
     path: "customers",
-    element: react_1["default"].createElement(Home_1.CustomersHome, null)
+    element: react_1["default"].createElement(Home_2.CustomersHome, null)
   }), react_1["default"].createElement(react_router_dom_1.Route, {
     path: "customers/create",
-    element: react_1["default"].createElement(Create_1.CustomerCreate, null)
+    element: react_1["default"].createElement(Create_2.CustomerCreate, null)
   }), react_1["default"].createElement(react_router_dom_1.Route, {
     path: "customers/details/:id",
-    element: react_1["default"].createElement(Details_1.CustomerDetails, null)
+    element: react_1["default"].createElement(Details_2.CustomerDetails, null)
   }), react_1["default"].createElement(react_router_dom_1.Route, {
     path: "customers/edit/:id",
-    element: react_1["default"].createElement(Edit_1.CustomerEdit, null)
+    element: react_1["default"].createElement(Edit_2.CustomerEdit, null)
   }), react_1["default"].createElement(react_router_dom_1.Route, {
     path: "*",
     element: react_1["default"].createElement(NoPage_1.NoPage, null)
@@ -3473,6 +3493,484 @@ var NoPage = function NoPage() {
 };
 
 exports.NoPage = NoPage;
+
+/***/ }),
+
+/***/ "./resources/js/admin/views/Users/Admins/Create.tsx":
+/*!**********************************************************!*\
+  !*** ./resources/js/admin/views/Users/Admins/Create.tsx ***!
+  \**********************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.AdminsCreate = void 0;
+
+var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var AdminsCreate = function AdminsCreate() {
+  return react_1["default"].createElement(react_1["default"].Fragment, null);
+};
+
+exports.AdminsCreate = AdminsCreate;
+
+/***/ }),
+
+/***/ "./resources/js/admin/views/Users/Admins/Details.tsx":
+/*!***********************************************************!*\
+  !*** ./resources/js/admin/views/Users/Admins/Details.tsx ***!
+  \***********************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  var desc = Object.getOwnPropertyDescriptor(m, k);
+
+  if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+    desc = {
+      enumerable: true,
+      get: function get() {
+        return m[k];
+      }
+    };
+  }
+
+  Object.defineProperty(o, k2, desc);
+} : function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  o[k2] = m[k];
+});
+
+var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
+  Object.defineProperty(o, "default", {
+    enumerable: true,
+    value: v
+  });
+} : function (o, v) {
+  o["default"] = v;
+});
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+  }
+
+  __setModuleDefault(result, mod);
+
+  return result;
+};
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.AdminDetails = void 0;
+
+var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+
+var axios_1 = __importDefault(__webpack_require__(/*! axios */ "./node_modules/axios/index.js"));
+
+var PageHeading_1 = __webpack_require__(/*! ../../../components/PageHeading */ "./resources/js/admin/components/PageHeading.tsx");
+
+var DescriptionList_1 = __webpack_require__(/*! ../../../components/DescriptionList */ "./resources/js/admin/components/DescriptionList.tsx");
+
+var AdminDetails = function AdminDetails(props) {
+  var adminId = (0, react_router_dom_1.useParams)().id;
+
+  var _ref = (0, react_1.useState)(),
+      _ref2 = _slicedToArray(_ref, 2),
+      adminData = _ref2[0],
+      setAdminData = _ref2[1];
+
+  var navigate = (0, react_router_dom_1.useNavigate)();
+
+  var fetchAdminDetails = function fetchAdminDetails() {
+    axios_1["default"].get('/admin/accounts/admins/details/' + adminId).then(function (response) {
+      setAdminData(response.data.data);
+    })["catch"](function (errors) {});
+  };
+
+  var formatAdminDetails = function formatAdminDetails() {
+    var rows = [{
+      title: 'Name',
+      content: adminData === null || adminData === void 0 ? void 0 : adminData.name
+    }, {
+      title: 'Surname',
+      content: adminData === null || adminData === void 0 ? void 0 : adminData.email
+    }, {
+      title: 'Email',
+      content: adminData === null || adminData === void 0 ? void 0 : adminData.email
+    }, {
+      title: 'Created at',
+      content: adminData === null || adminData === void 0 ? void 0 : adminData.created_at
+    }, {
+      title: 'Last updated at',
+      content: adminData === null || adminData === void 0 ? void 0 : adminData.updated_at
+    }];
+
+    if ((adminData === null || adminData === void 0 ? void 0 : adminData.deleted_at) != null) {
+      rows.push({
+        title: 'Disabled at',
+        content: adminData === null || adminData === void 0 ? void 0 : adminData.deleted_at
+      });
+    }
+
+    return rows;
+  };
+
+  (0, react_1.useEffect)(function () {
+    fetchAdminDetails();
+  }, []);
+
+  var disableAdmin = function disableAdmin() {
+    axios_1["default"]["delete"]('/admin/accounts/admins/delete/' + adminId).then(function (response) {
+      if (response.status == 200) {
+        navigate('/admin/admins');
+      }
+    })["catch"](function (error) {});
+  };
+
+  var enableAdmin = function enableAdmin() {
+    axios_1["default"].post('/admin/accounts/admins/restore/' + adminId).then(function (response) {
+      if (response.status == 200) {
+        navigate(0);
+      }
+    })["catch"](function (error) {});
+  };
+
+  var renderActions = function renderActions() {
+    return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement(react_router_dom_1.Link, {
+      to: '/admin/admins/edit/' + adminId
+    }, react_1["default"].createElement("button", {
+      className: "inline-flex items-center text-white bg-green-500 hover:bg-green-600 px-4 py-3 w-full rounded mr-4"
+    }, react_1["default"].createElement("i", {
+      className: "fa fa-edit pr-4"
+    }), " Edit")), !(adminData === null || adminData === void 0 ? void 0 : adminData.deleted_at) ? react_1["default"].createElement("button", {
+      onClick: function onClick() {
+        return disableAdmin();
+      },
+      className: "inline-flex items-center text-white bg-red-500 hover:bg-red-600 px-4 py-3 w-full rounded ml-4"
+    }, react_1["default"].createElement("i", {
+      className: "fa fa-trash pr-4"
+    }), " Disable") : react_1["default"].createElement("button", {
+      onClick: function onClick() {
+        return enableAdmin();
+      },
+      className: "inline-flex items-center text-black bg-yellow-400 hover:bg-yellow-500 px-4 py-3 w-full rounded ml-4"
+    }, react_1["default"].createElement("i", {
+      className: "fas fa-redo pr-4"
+    }), " Enable"));
+  };
+
+  return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("div", {
+    className: "px-4 sm:px-6 lg:px-8"
+  }, react_1["default"].createElement(PageHeading_1.PageHeading, {
+    title: "Admin details",
+    actions: renderActions()
+  }), react_1["default"].createElement(DescriptionList_1.DescriptionList, {
+    title: "Admin information",
+    description: "",
+    rows: formatAdminDetails()
+  })));
+};
+
+exports.AdminDetails = AdminDetails;
+
+/***/ }),
+
+/***/ "./resources/js/admin/views/Users/Admins/Edit.tsx":
+/*!********************************************************!*\
+  !*** ./resources/js/admin/views/Users/Admins/Edit.tsx ***!
+  \********************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.AdminsEdit = void 0;
+
+var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var AdminsEdit = function AdminsEdit() {
+  return react_1["default"].createElement(react_1["default"].Fragment, null);
+};
+
+exports.AdminsEdit = AdminsEdit;
+
+/***/ }),
+
+/***/ "./resources/js/admin/views/Users/Admins/Home.tsx":
+/*!********************************************************!*\
+  !*** ./resources/js/admin/views/Users/Admins/Home.tsx ***!
+  \********************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  var desc = Object.getOwnPropertyDescriptor(m, k);
+
+  if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+    desc = {
+      enumerable: true,
+      get: function get() {
+        return m[k];
+      }
+    };
+  }
+
+  Object.defineProperty(o, k2, desc);
+} : function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  o[k2] = m[k];
+});
+
+var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
+  Object.defineProperty(o, "default", {
+    enumerable: true,
+    value: v
+  });
+} : function (o, v) {
+  o["default"] = v;
+});
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+  }
+
+  __setModuleDefault(result, mod);
+
+  return result;
+};
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.AdminsHome = void 0;
+
+var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var axios_1 = __importDefault(__webpack_require__(/*! axios */ "./node_modules/axios/index.js"));
+
+var react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+
+var Pagination_1 = __webpack_require__(/*! ../../../partials/Pagination */ "./resources/js/admin/partials/Pagination.tsx");
+
+var urlHelpers_1 = __webpack_require__(/*! ../../../helpers/urlHelpers */ "./resources/js/admin/helpers/urlHelpers.tsx");
+
+var PageHeading_1 = __webpack_require__(/*! ../../../components/PageHeading */ "./resources/js/admin/components/PageHeading.tsx");
+
+var Sort_1 = __webpack_require__(/*! ../../../partials/Sort */ "./resources/js/admin/partials/Sort.tsx");
+
+var AdminsHome = function AdminsHome() {
+  var _ref = (0, react_1.useState)([]),
+      _ref2 = _slicedToArray(_ref, 2),
+      admins = _ref2[0],
+      setAdmins = _ref2[1];
+
+  var _ref3 = (0, react_1.useState)(),
+      _ref4 = _slicedToArray(_ref3, 2),
+      pagination = _ref4[0],
+      setPagination = _ref4[1];
+
+  var urlQuery = (0, urlHelpers_1.useCurrentQueryParams)();
+
+  var fetchAdmins = function fetchAdmins() {
+    axios_1["default"].get('/admin/accounts/admins', urlQuery).then(function (response) {
+      var responseData = response.data.data;
+      setPagination({
+        currentPage: responseData.current_page,
+        lastPage: responseData.last_page,
+        from: responseData.from,
+        to: responseData.to,
+        perPage: responseData.per_page,
+        total: responseData.total,
+        firstPageUrl: responseData.first_page_url,
+        lastPageUrl: responseData.last_page_url,
+        nextPageUrl: responseData.next_page_url,
+        prevPageUrl: responseData.prev_page_url,
+        path: responseData.path
+      });
+      setAdmins(responseData.data);
+    })["catch"](function (errors) {});
+  }; // On component mount
+
+
+  (0, react_1.useEffect)(function () {
+    fetchAdmins();
+  }, []); // Watch if any query params change and update page
+
+  (0, urlHelpers_1.useCurrentQueryChanged)(function () {
+    fetchAdmins();
+  });
+
+  var getActivityBadge = function getActivityBadge(entity) {
+    if (entity.deleted_at) {
+      return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("span", {
+        className: "inline-flex rounded-full bg-red-400 px-2 text-xs font-semibold leading-5 text-white"
+      }, "Disabled"));
+    } else {
+      return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("span", {
+        className: "inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800"
+      }, "Active"));
+    }
+  };
+
+  return react_1["default"].createElement("div", {
+    className: "px-4 sm:px-6 lg:px-8"
+  }, react_1["default"].createElement(PageHeading_1.PageHeadingSimple, {
+    title: "Admins",
+    description: "A list of all admins",
+    actions: react_1["default"].createElement(react_router_dom_1.Link, {
+      to: '/admin/admins/create'
+    }, react_1["default"].createElement("button", {
+      type: "button",
+      className: "inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto"
+    }, "Add admin"))
+  }), react_1["default"].createElement("div", {
+    className: "pt-4"
+  }, react_1["default"].createElement(Sort_1.Sort, {
+    title: "Order by",
+    queryParam: "sort",
+    options: [{
+      name: "Last created",
+      queryVal: "desc"
+    }, {
+      name: "First created",
+      queryVal: 'asc'
+    }]
+  })), react_1["default"].createElement("div", {
+    className: "mt-8 flex flex-col"
+  }, react_1["default"].createElement("div", {
+    className: "-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8"
+  }, react_1["default"].createElement("div", {
+    className: "inline-block min-w-full py-2 align-middle md:px-6 lg:px-8"
+  }, react_1["default"].createElement("div", {
+    className: "overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg"
+  }, react_1["default"].createElement("table", {
+    className: "min-w-full divide-y divide-gray-300"
+  }, react_1["default"].createElement("thead", {
+    className: "bg-gray-50"
+  }, react_1["default"].createElement("tr", null, react_1["default"].createElement("th", {
+    scope: "col",
+    className: "py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"
+  }, "Name"), react_1["default"].createElement("th", {
+    scope: "col",
+    className: "px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+  }, "Contacts"), react_1["default"].createElement("th", {
+    scope: "col",
+    className: "px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+  }, "Activity status"), react_1["default"].createElement("th", {
+    scope: "col",
+    className: "relative py-3.5 pl-3 pr-4 sm:pr-6"
+  }, react_1["default"].createElement("span", {
+    className: "sr-only"
+  }, "Action")))), react_1["default"].createElement("tbody", {
+    className: "divide-y divide-gray-200 bg-white"
+  }, admins.map(function (admin) {
+    return react_1["default"].createElement("tr", {
+      key: admin.email
+    }, react_1["default"].createElement("td", {
+      className: "whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6"
+    }, react_1["default"].createElement("div", {
+      className: "flex items-center"
+    }, react_1["default"].createElement("div", {
+      className: "font-medium text-gray-900"
+    }, admin.name))), react_1["default"].createElement("td", {
+      className: "whitespace-nowrap px-3 py-4 text-sm text-gray-500"
+    }, react_1["default"].createElement("div", {
+      className: "text-gray-900"
+    }, admin.email)), react_1["default"].createElement("td", {
+      className: "whitespace-nowrap px-3 py-4 text-sm text-gray-500"
+    }, getActivityBadge(admin)), react_1["default"].createElement("td", {
+      className: "relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6 space-x-3"
+    }, react_1["default"].createElement(react_router_dom_1.Link, {
+      to: "/admin/admins/details/" + admin.id,
+      className: "text-indigo-600 hover:text-indigo-900"
+    }, react_1["default"].createElement("i", {
+      className: "fa fa-eye text-blue-600"
+    }), " Details", react_1["default"].createElement("span", {
+      className: "sr-only"
+    }, ", ", admin.name)), react_1["default"].createElement(react_router_dom_1.Link, {
+      to: "/admin/admins/edit/" + admin.id,
+      className: "text-indigo-600 hover:text-indigo-900"
+    }, react_1["default"].createElement("i", {
+      className: "fa fa-edit text-green-600"
+    }), " Edit", react_1["default"].createElement("span", {
+      className: "sr-only"
+    }, ", ", admin.name))));
+  }))), react_1["default"].createElement(Pagination_1.Pagination, {
+    data: pagination
+  }))))));
+};
+
+exports.AdminsHome = AdminsHome;
 
 /***/ }),
 

@@ -19,7 +19,8 @@ class UsersController extends Controller
      */
     public function index(IndexRequest $request)
     {
-        $users = User::orderBy('id', $request->sort ?? 'desc')
+        $users = User::withTrashed()
+            ->orderBy('id', $request->sort ?? 'desc')
             ->paginate(10);
 
         return response([
