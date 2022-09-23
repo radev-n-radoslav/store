@@ -17,7 +17,7 @@ class CategoriesController extends Controller
      */
     public function index(IndexRequest $request)
     {
-        $categories = CatalogCategory::orderBy('created_at', 'DESC')
+        $categories = CatalogCategory::orderBy('id', $request->sort ?? 'desc')
             ->get();
         
         return response([

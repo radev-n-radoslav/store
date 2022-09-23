@@ -121,7 +121,7 @@ export const CatalogRecommendedProductsHome = () => {
                                             <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6">
                                                 <div className="flex items-center">
                                                     <img 
-                                                        src={recommendation.product?.name} 
+                                                        src={recommendation.product?.thumbnail.url} 
                                                         className="max-w-full max-h-16"
                                                         alt="Category thumbnail" 
                                                     />

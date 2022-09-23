@@ -14,7 +14,7 @@ class OrderNoteFactory extends Factory
     public function definition()
     {
         return [
-            'content' => $this->faker->senteces(rand(3, 7), true)
+            'content' => $this->faker->sentences(rand(3, 7), true)
         ];
     }
 

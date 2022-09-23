@@ -2859,10 +2859,56 @@ root.render(react_1["default"].createElement(react_1["default"].StrictMode, null
 "use strict";
 
 
-var __importDefault = this && this.__importDefault || function (mod) {
-  return mod && mod.__esModule ? mod : {
-    "default": mod
-  };
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  var desc = Object.getOwnPropertyDescriptor(m, k);
+
+  if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+    desc = {
+      enumerable: true,
+      get: function get() {
+        return m[k];
+      }
+    };
+  }
+
+  Object.defineProperty(o, k2, desc);
+} : function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  o[k2] = m[k];
+});
+
+var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
+  Object.defineProperty(o, "default", {
+    enumerable: true,
+    value: v
+  });
+} : function (o, v) {
+  o["default"] = v;
+});
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+  }
+
+  __setModuleDefault(result, mod);
+
+  return result;
 };
 
 Object.defineProperty(exports, "__esModule", ({
@@ -2870,9 +2916,17 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports.Card = void 0;
 
-var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
 var Card = function Card(props) {
+  var _ref = (0, react_1.useState)(props),
+      _ref2 = _slicedToArray(_ref, 2),
+      data = _ref2[0],
+      setData = _ref2[1];
+
+  (0, react_1.useEffect)(function () {
+    setData(props);
+  }, [props]);
   return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("div", {
     className: "border-b border-gray-200 bg-white px-4 py-5 sm:px-6 rounded-t"
   }, react_1["default"].createElement("div", {
@@ -2881,13 +2935,13 @@ var Card = function Card(props) {
     className: "ml-4 mt-4"
   }, react_1["default"].createElement("h3", {
     className: "text-lg font-medium leading-6 text-gray-900"
-  }, props.title), react_1["default"].createElement("p", {
+  }, data.title), react_1["default"].createElement("p", {
     className: "mt-1 text-sm text-gray-500"
-  }, props.description)), react_1["default"].createElement("div", {
+  }, data.description)), react_1["default"].createElement("div", {
     className: "ml-4 mt-4 flex-shrink-0"
-  }, props.actions))), react_1["default"].createElement("div", {
+  }, data.actions))), react_1["default"].createElement("div", {
     className: "bg-white px-4 py-5 sm:px-6 rounded-b"
-  }, props.content));
+  }, data.content));
 };
 
 exports.Card = Card;
@@ -4884,6 +4938,58 @@ exports.CatalogProductsCreate = CatalogProductsCreate;
 "use strict";
 
 
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  var desc = Object.getOwnPropertyDescriptor(m, k);
+
+  if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+    desc = {
+      enumerable: true,
+      get: function get() {
+        return m[k];
+      }
+    };
+  }
+
+  Object.defineProperty(o, k2, desc);
+} : function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  o[k2] = m[k];
+});
+
+var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
+  Object.defineProperty(o, "default", {
+    enumerable: true,
+    value: v
+  });
+} : function (o, v) {
+  o["default"] = v;
+});
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+  }
+
+  __setModuleDefault(result, mod);
+
+  return result;
+};
+
 var __importDefault = this && this.__importDefault || function (mod) {
   return mod && mod.__esModule ? mod : {
     "default": mod
@@ -4895,10 +5001,160 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports.CatalogProductsDetails = void 0;
 
-var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
-var CatalogProductsDetails = function CatalogProductsDetails() {
-  return react_1["default"].createElement(react_1["default"].Fragment, null);
+var react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+
+var axios_1 = __importDefault(__webpack_require__(/*! axios */ "./node_modules/axios/index.js"));
+
+var PageHeading_1 = __webpack_require__(/*! ../../../components/PageHeading */ "./resources/js/admin/components/PageHeading.tsx");
+
+var DescriptionList_1 = __webpack_require__(/*! ../../../components/DescriptionList */ "./resources/js/admin/components/DescriptionList.tsx");
+
+var Card_1 = __webpack_require__(/*! ../../../partials/Card */ "./resources/js/admin/partials/Card.tsx");
+
+var CatalogProductsDetails = function CatalogProductsDetails(props) {
+  var productId = (0, react_router_dom_1.useParams)().id;
+
+  var _ref = (0, react_1.useState)(),
+      _ref2 = _slicedToArray(_ref, 2),
+      productData = _ref2[0],
+      setProductData = _ref2[1];
+
+  var _ref3 = (0, react_1.useState)(),
+      _ref4 = _slicedToArray(_ref3, 2),
+      images = _ref4[0],
+      setImages = _ref4[1];
+
+  var navigate = (0, react_router_dom_1.useNavigate)();
+
+  var fetchProductDetails = function fetchProductDetails() {
+    axios_1["default"].get('/admin/v1/catalog/products/details/' + productId).then(function (response) {
+      setProductData(response.data.data);
+    })["catch"](function (errors) {});
+  };
+
+  var formatProductDetails = function formatProductDetails() {
+    var rows = [{
+      title: 'Name',
+      content: productData === null || productData === void 0 ? void 0 : productData.name
+    }, {
+      title: 'Description',
+      content: productData === null || productData === void 0 ? void 0 : productData.description
+    }, {
+      title: 'SKU',
+      content: productData === null || productData === void 0 ? void 0 : productData.sku
+    }, {
+      title: 'Quantity',
+      content: String(productData === null || productData === void 0 ? void 0 : productData.quantity)
+    }, {
+      title: 'Created at',
+      content: productData === null || productData === void 0 ? void 0 : productData.created_at
+    }, {
+      title: 'Last updated at',
+      content: productData === null || productData === void 0 ? void 0 : productData.updated_at
+    }];
+
+    if ((productData === null || productData === void 0 ? void 0 : productData.deleted_at) != null) {
+      rows.push({
+        title: 'Disabled at',
+        content: productData === null || productData === void 0 ? void 0 : productData.deleted_at
+      });
+    }
+
+    return rows;
+  };
+
+  var formatProductCategories = function formatProductCategories() {
+    var rows = [];
+    productData === null || productData === void 0 ? void 0 : productData.categories.map(function (category) {
+      rows.push({
+        title: 'Name',
+        content: category.name
+      });
+    });
+    return rows;
+  };
+
+  (0, react_1.useEffect)(function () {
+    fetchProductDetails();
+  }, []);
+
+  var disableProduct = function disableProduct() {
+    axios_1["default"]["delete"]('/admin/v1/catalog/products/delete/' + productId).then(function (response) {
+      if (response.status == 200) {
+        navigate('/admin/catalog/products');
+      }
+    })["catch"](function (error) {});
+  };
+
+  var enableProduct = function enableProduct() {
+    axios_1["default"].post('/admin/v1/catalog/products/restore/' + productId).then(function (response) {
+      if (response.status == 200) {
+        navigate(0);
+      }
+    })["catch"](function (error) {});
+  };
+
+  var renderActions = function renderActions() {
+    return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement(react_router_dom_1.Link, {
+      to: '/admin/products/edit/' + productId
+    }, react_1["default"].createElement("button", {
+      className: "inline-flex items-center text-white bg-green-500 hover:bg-green-600 px-4 py-3 w-full rounded mr-4"
+    }, react_1["default"].createElement("i", {
+      className: "fa fa-edit pr-4"
+    }), " Edit")), !(productData === null || productData === void 0 ? void 0 : productData.deleted_at) ? react_1["default"].createElement("button", {
+      onClick: function onClick() {
+        return disableProduct();
+      },
+      className: "inline-flex items-center text-white bg-red-500 hover:bg-red-600 px-4 py-3 w-full rounded ml-4"
+    }, react_1["default"].createElement("i", {
+      className: "fa fa-trash pr-4"
+    }), " Delete") : react_1["default"].createElement("button", {
+      onClick: function onClick() {
+        return enableProduct();
+      },
+      className: "inline-flex items-center text-black bg-yellow-400 hover:bg-yellow-500 px-4 py-3 w-full rounded ml-4"
+    }, react_1["default"].createElement("i", {
+      className: "fas fa-redo pr-4"
+    }), " Restore"));
+  };
+
+  var renderImages = function renderImages() {
+    return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("div", {
+      className: "grid grid-cols-12"
+    }, react_1["default"].createElement(react_1["default"].Fragment, null, productData === null || productData === void 0 ? void 0 : productData.images.map(function (image, index) {
+      react_1["default"].createElement("div", {
+        className: "col-span-12 md:col-span-6 lg:col-span-12"
+      }, react_1["default"].createElement("img", {
+        src: image.url,
+        className: "max-w-full max-h-16"
+      }));
+    }))));
+  };
+
+  return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("div", {
+    className: "px-4 sm:px-6 lg:px-8"
+  }, react_1["default"].createElement(PageHeading_1.PageHeading, {
+    title: "Product details",
+    actions: renderActions()
+  }), react_1["default"].createElement(DescriptionList_1.DescriptionList, {
+    title: "Product information",
+    description: "",
+    rows: formatProductDetails()
+  }), react_1["default"].createElement("div", {
+    className: "my-4"
+  }), react_1["default"].createElement(Card_1.Card, {
+    title: "Images",
+    description: "All images associated with the product",
+    content: renderImages()
+  }), react_1["default"].createElement("div", {
+    className: "my-4"
+  }), react_1["default"].createElement(DescriptionList_1.DescriptionList, {
+    title: "Parent categories",
+    description: "Categories which include this product",
+    rows: formatProductCategories()
+  })));
 };
 
 exports.CatalogProductsDetails = CatalogProductsDetails;
@@ -4944,6 +5200,58 @@ exports.CatalogProductsEdit = CatalogProductsEdit;
 "use strict";
 
 
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  var desc = Object.getOwnPropertyDescriptor(m, k);
+
+  if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+    desc = {
+      enumerable: true,
+      get: function get() {
+        return m[k];
+      }
+    };
+  }
+
+  Object.defineProperty(o, k2, desc);
+} : function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  o[k2] = m[k];
+});
+
+var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
+  Object.defineProperty(o, "default", {
+    enumerable: true,
+    value: v
+  });
+} : function (o, v) {
+  o["default"] = v;
+});
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+  }
+
+  __setModuleDefault(result, mod);
+
+  return result;
+};
+
 var __importDefault = this && this.__importDefault || function (mod) {
   return mod && mod.__esModule ? mod : {
     "default": mod
@@ -4955,10 +5263,160 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports.CatalogProductsHome = void 0;
 
-var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var axios_1 = __importDefault(__webpack_require__(/*! axios */ "./node_modules/axios/index.js"));
+
+var react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+
+var Pagination_1 = __webpack_require__(/*! ../../../partials/Pagination */ "./resources/js/admin/partials/Pagination.tsx");
+
+var urlHelpers_1 = __webpack_require__(/*! ../../../helpers/urlHelpers */ "./resources/js/admin/helpers/urlHelpers.tsx");
+
+var PageHeading_1 = __webpack_require__(/*! ../../../components/PageHeading */ "./resources/js/admin/components/PageHeading.tsx");
+
+var Sort_1 = __webpack_require__(/*! ../../../partials/Sort */ "./resources/js/admin/partials/Sort.tsx");
 
 var CatalogProductsHome = function CatalogProductsHome() {
-  return react_1["default"].createElement(react_1["default"].Fragment, null);
+  var _ref = (0, react_1.useState)([]),
+      _ref2 = _slicedToArray(_ref, 2),
+      products = _ref2[0],
+      setProducts = _ref2[1];
+
+  var _ref3 = (0, react_1.useState)(),
+      _ref4 = _slicedToArray(_ref3, 2),
+      pagination = _ref4[0],
+      setPagination = _ref4[1];
+
+  var urlQuery = (0, urlHelpers_1.useCurrentQueryParams)();
+
+  var fetchProducts = function fetchProducts() {
+    axios_1["default"].get('/admin/v1/catalog/products', urlQuery).then(function (response) {
+      var responseData = response.data.data;
+      setPagination({
+        currentPage: responseData.current_page,
+        lastPage: responseData.last_page,
+        from: responseData.from,
+        to: responseData.to,
+        perPage: responseData.per_page,
+        total: responseData.total,
+        firstPageUrl: responseData.first_page_url,
+        lastPageUrl: responseData.last_page_url,
+        nextPageUrl: responseData.next_page_url,
+        prevPageUrl: responseData.prev_page_url,
+        path: responseData.path
+      });
+      setProducts(responseData.data);
+    })["catch"](function (errors) {});
+  }; // On component mount
+
+
+  (0, react_1.useEffect)(function () {
+    fetchProducts();
+  }, []); // Watch if any query params change and update page
+
+  (0, urlHelpers_1.useCurrentQueryChanged)(function () {
+    fetchProducts();
+  });
+  return react_1["default"].createElement("div", {
+    className: "px-4 sm:px-6 lg:px-8"
+  }, react_1["default"].createElement(PageHeading_1.PageHeadingSimple, {
+    title: "Products",
+    description: "A list of all products",
+    actions: react_1["default"].createElement(react_router_dom_1.Link, {
+      to: '/admin/catalog/products/create'
+    }, react_1["default"].createElement("button", {
+      type: "button",
+      className: "inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto"
+    }, "Add product"))
+  }), react_1["default"].createElement("div", {
+    className: "pt-4"
+  }, react_1["default"].createElement(Sort_1.Sort, {
+    title: "Order by",
+    queryParam: "sort",
+    options: [{
+      name: "Last created",
+      queryVal: "desc"
+    }, {
+      name: "First created",
+      queryVal: 'asc'
+    }]
+  })), react_1["default"].createElement("div", {
+    className: "mt-8 flex flex-col"
+  }, react_1["default"].createElement("div", {
+    className: "-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8"
+  }, react_1["default"].createElement("div", {
+    className: "inline-block min-w-full py-2 align-middle md:px-6 lg:px-8"
+  }, react_1["default"].createElement("div", {
+    className: "overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg"
+  }, react_1["default"].createElement("table", {
+    className: "min-w-full divide-y divide-gray-300"
+  }, react_1["default"].createElement("thead", {
+    className: "bg-gray-50"
+  }, react_1["default"].createElement("tr", null, react_1["default"].createElement("th", {
+    scope: "col",
+    className: "py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"
+  }, "Thumbnail"), react_1["default"].createElement("th", {
+    scope: "col",
+    className: "px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+  }, "Name"), react_1["default"].createElement("th", {
+    scope: "col",
+    className: "px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+  }, "SKU"), react_1["default"].createElement("th", {
+    scope: "col",
+    className: "px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+  }, "Qty"), react_1["default"].createElement("th", {
+    scope: "col",
+    className: "relative py-3.5 pl-3 pr-4 sm:pr-6"
+  }, react_1["default"].createElement("span", {
+    className: "sr-only"
+  }, "Action")))), react_1["default"].createElement("tbody", {
+    className: "divide-y divide-gray-200 bg-white"
+  }, products.map(function (product) {
+    return react_1["default"].createElement("tr", {
+      key: product.name
+    }, react_1["default"].createElement("td", {
+      className: "whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6"
+    }, react_1["default"].createElement("div", {
+      className: "flex items-center"
+    }, react_1["default"].createElement("img", {
+      src: product.thumbnail.url,
+      className: "max-w-full max-h-16",
+      alt: "Product thumbnail"
+    }))), react_1["default"].createElement("td", {
+      className: "whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6"
+    }, react_1["default"].createElement("div", {
+      className: "flex items-center"
+    }, react_1["default"].createElement("div", {
+      className: "font-medium text-gray-900"
+    }, product.name))), react_1["default"].createElement("td", {
+      className: "whitespace-nowrap px-3 py-4 text-sm text-gray-500"
+    }, react_1["default"].createElement("div", {
+      className: "text-gray-900"
+    }, product.sku)), react_1["default"].createElement("td", {
+      className: "whitespace-nowrap px-3 py-4 text-sm text-gray-500"
+    }, react_1["default"].createElement("div", {
+      className: "text-gray-900"
+    }, product.quantity)), react_1["default"].createElement("td", {
+      className: "relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6 space-x-3"
+    }, react_1["default"].createElement(react_router_dom_1.Link, {
+      to: "/admin/catalog/products/details/" + product.id,
+      className: "text-indigo-600 hover:text-indigo-900"
+    }, react_1["default"].createElement("i", {
+      className: "fa fa-eye text-blue-600"
+    }), " Details", react_1["default"].createElement("span", {
+      className: "sr-only"
+    }, ", ", product.name)), react_1["default"].createElement(react_router_dom_1.Link, {
+      to: "/admin/catalog/products/edit/" + product.id,
+      className: "text-indigo-600 hover:text-indigo-900"
+    }, react_1["default"].createElement("i", {
+      className: "fa fa-edit text-green-600"
+    }), " Edit", react_1["default"].createElement("span", {
+      className: "sr-only"
+    }, ", ", product.name))));
+  }))), react_1["default"].createElement(Pagination_1.Pagination, {
+    data: pagination
+  }))))));
 };
 
 exports.CatalogProductsHome = CatalogProductsHome;
@@ -5163,7 +5621,7 @@ var CatalogRecommendedProductsHome = function CatalogRecommendedProductsHome() {
     }, react_1["default"].createElement("div", {
       className: "flex items-center"
     }, react_1["default"].createElement("img", {
-      src: (_a = recommendation.product) === null || _a === void 0 ? void 0 : _a.name,
+      src: (_a = recommendation.product) === null || _a === void 0 ? void 0 : _a.thumbnail.url,
       className: "max-w-full max-h-16",
       alt: "Category thumbnail"
     }))), react_1["default"].createElement("td", {

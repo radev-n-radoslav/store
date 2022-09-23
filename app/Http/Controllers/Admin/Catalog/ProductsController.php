@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Catalog\Products\DeleteRequest;
 use App\Http\Requests\Admin\Catalog\Products\DetailsRequest;
 use App\Http\Requests\Admin\Catalog\Products\IndexRequest;
+use App\Http\Requests\Admin\Catalog\Products\RestoreRequest;
 use App\Http\Requests\Admin\Catalog\Products\StoreRequest;
 use App\Http\Requests\Admin\Catalog\Products\UpdateRequest;
 use App\Models\CatalogCategory;
@@ -19,8 +20,11 @@ class ProductsController extends Controller
      */
     public function index(IndexRequest $request)
     {
-        $products = CatalogProduct::orderBy('created_at', 'DESC')
-            ->get();
+        $products = CatalogProduct::with([
+            'thumbnail'
+        ])
+            ->orderBy('id', $request->sort ?? 'desc')
+            ->paginate(15);
         
         return response([
             'data' => $products
@@ -32,7 +36,12 @@ class ProductsController extends Controller
      */
     public function details($id, DetailsRequest $request)
     {
-        $product = CatalogProduct::findOrFail($id);
+        $product = CatalogProduct::withTrashed()
+            ->with([
+                'images',
+                'categories'
+            ])
+            ->findOrFail($id);
 
         return response([
             'data' => $product
@@ -99,10 +108,22 @@ class ProductsController extends Controller
     public function delete($id, DeleteRequest $request)
     {
         $product = CatalogProduct::findOrFail($id);
-
-        $product->images()->delete();
-        $product->categoriesRaw()->delete();
         $product->delete();
+
+        return response([
+            
+        ], 200);
+    }
+
+    /**
+     * Restore a product
+     */
+    public function restore($id, RestoreRequest $request)
+    {
+        $product = CatalogProduct::withTrashed()
+            ->findOrFail($id);
+
+        $product->restore();
 
         return response([
             

@@ -43,6 +43,8 @@ Route::group([
             Route::put('/update/{id}', 'ProductsController@update');
             
             Route::delete('/delete/{id}', 'ProductsController@delete');
+
+            Route::post('/restore/{id}', 'ProductsController@restore');
         });
         
         Route::group([

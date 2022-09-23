@@ -17,9 +17,9 @@ class RecommendedProductsController extends Controller
     public function index(IndexRequest $request)
     {
         $recommendations = CatalogRecommendedProduct::with([
-            'product'
+            'product.thumbnail'
         ])
-            ->orderBy('created_at', 'DESC')
+            ->orderBy('id', $request->sort ?? 'desc')
             ->paginate(10);
 
         return response([

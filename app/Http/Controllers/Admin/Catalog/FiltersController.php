@@ -19,7 +19,7 @@ class FiltersController extends Controller
     {
         $filters = CatalogCategoryFilter::withTrashed()
             ->where('category_id', $id)
-            ->orderBy('created_at', 'DESC')
+            ->orderBy('id', $request->sort ?? 'desc')
             ->get();
         
         return response([
