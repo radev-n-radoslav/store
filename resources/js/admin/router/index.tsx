@@ -4,6 +4,10 @@ import { ArticlesCreate } from "../views/Blog/Articles/Create";
 import { ArticlesDetails } from "../views/Blog/Articles/Details";
 import { ArticlesEdit } from "../views/Blog/Articles/Edit";
 import { ArticlesHome } from "../views/Blog/Articles/Home";
+import { CategoriesCreate } from "../views/Blog/Categories/Create";
+import { CategoriesDetails } from "../views/Blog/Categories/Details";
+import { CategoriesEdit } from "../views/Blog/Categories/Edit";
+import { CategoriesHome } from "../views/Blog/Categories/Home";
 import { Dashboard } from '../views/Dashboard';
 import { NoPage } from '../views/NoPage';
 import { AdminsCreate } from "../views/Users/Admins/Create";
@@ -26,6 +30,10 @@ export const Router = () => {
                     {/* Sales routes */}
 
                     {/* Blog categories routes */}
+                    <Route path="blog/categories" element={<CategoriesHome />} />
+                    <Route path="blog/categories/create" element={<CategoriesCreate />} />
+                    <Route path="blog/categories/details/:id" element={<CategoriesDetails />} />
+                    <Route path="blog/categories/edit/:id" element={<CategoriesEdit />} />
 
                     {/* Blog articles routes */}
                     <Route path="blog/articles" element={<ArticlesHome />} />

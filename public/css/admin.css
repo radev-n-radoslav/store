@@ -1854,6 +1854,9 @@ select {
 .h-2 {
   height: 0.5rem;
 }
+.max-h-16 {
+  max-height: 4rem;
+}
 .min-h-full {
   min-height: 100%;
 }

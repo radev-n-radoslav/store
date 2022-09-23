@@ -18,8 +18,8 @@ class CategoriesController extends Controller
      */
     public function index(IndexRequest $request)
     {
-        $categories = BlogCategory::orderBy('created_at', 'DESC')
-            ->get();
+        $categories = BlogCategory::orderBy('id', $request->sort ?? 'desc')
+            ->paginate(10);
         
         return response([
             'data' => $categories
@@ -31,7 +31,8 @@ class CategoriesController extends Controller
      */
     public function details($id, DetailsRequest $request)
     {
-        $category = BlogCategory::findOrFail($id);
+        $category = BlogCategory::withTrashed()
+            ->findOrFail($id);
 
         return response([
             'data' => $category

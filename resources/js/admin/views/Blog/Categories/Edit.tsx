@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Edit = () => {
+export const CategoriesEdit = () => {
     
     return (
         <>
