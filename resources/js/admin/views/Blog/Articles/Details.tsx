@@ -11,7 +11,7 @@ export const BlogArticlesDetails = (props: any) => {
     const navigate = useNavigate();
     
     const fetchArticleDetails = () => {
-        axios.get('/admin/blg/articles/details/' + articleId)
+        axios.get('/admin/v1/blog/articles/details/' + articleId)
             .then((response) => {
                 setArticleData(response.data.data);
             })
@@ -60,7 +60,7 @@ export const BlogArticlesDetails = (props: any) => {
     }, []);
 
     const deleteArticle = () => {
-        axios.delete('/admin/blg/articles/delete/' + articleId)
+        axios.delete('/admin/v1/blog/articles/delete/' + articleId)
             .then((response) => {
                 if (response.status == 200) {
                     navigate('/admin/blog/articles');

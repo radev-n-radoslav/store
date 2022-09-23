@@ -13,7 +13,7 @@ export const CustomersHome = () => {
     const urlQuery = useCurrentQueryParams();
     
     const fetchUsers = () => {
-        axios.get('/admin/accounts/users', urlQuery)
+        axios.get('/admin/v1/accounts/users', urlQuery)
             .then((response) => {
                 let responseData = response.data.data;
                 setPagination({

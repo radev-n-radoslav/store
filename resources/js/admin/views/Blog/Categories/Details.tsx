@@ -11,7 +11,7 @@ export const BlogCategoriesDetails = (props: any) => {
     const navigate = useNavigate();
     
     const fetchCategoryDetails = () => {
-        axios.get('/admin/blg/categories/details/' + categoryId)
+        axios.get('/admin/v1/blog/categories/details/' + categoryId)
             .then((response) => {
                 setCategoryData(response.data.data);
             })
@@ -61,7 +61,7 @@ export const BlogCategoriesDetails = (props: any) => {
     }, []);
 
     const disableCategory = () => {
-        axios.delete('/admin/blg/categories/delete/' + categoryId)
+        axios.delete('/admin/v1/blog/categories/delete/' + categoryId)
             .then((response) => {
                 if (response.status == 200) {
                     navigate('/admin/blog/categories');
@@ -73,7 +73,7 @@ export const BlogCategoriesDetails = (props: any) => {
     };
 
     const enableCategory = () => {
-        axios.post('/admin/blg/categories/restore/' + categoryId)
+        axios.post('/admin/v1/blog/categories/restore/' + categoryId)
             .then((response) => {
                 if(response.status == 200){
                     navigate(0);

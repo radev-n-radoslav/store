@@ -11,7 +11,7 @@ export const AdminDetails = (props: any) => {
     const navigate = useNavigate();
     
     const fetchAdminDetails = () => {
-        axios.get('/admin/accounts/admins/details/' + adminId)
+        axios.get('/admin/v1/accounts/admins/details/' + adminId)
             .then((response) => {
                 setAdminData(response.data.data);
             })
@@ -61,7 +61,7 @@ export const AdminDetails = (props: any) => {
     }, []);
 
     const disableAdmin = () => {
-        axios.delete('/admin/accounts/admins/delete/' + adminId)
+        axios.delete('/admin/v1/accounts/admins/delete/' + adminId)
             .then((response) => {
                 if (response.status == 200) {
                     navigate('/admin/admins');
@@ -73,7 +73,7 @@ export const AdminDetails = (props: any) => {
     };
 
     const enableAdmin = () => {
-        axios.post('/admin/accounts/admins/restore/' + adminId)
+        axios.post('/admin/v1/accounts/admins/restore/' + adminId)
             .then((response) => {
                 if(response.status == 200){
                     navigate(0);

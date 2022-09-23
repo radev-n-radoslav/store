@@ -13,7 +13,7 @@ export const BlogCategoriesHome = () => {
     const urlQuery = useCurrentQueryParams();
     
     const fetchCategories = () => {
-        axios.get('/admin/blg/categories', urlQuery)
+        axios.get('/admin/v1/blog/categories', urlQuery)
             .then((response) => {
                 let responseData = response.data.data;
                 setPagination({

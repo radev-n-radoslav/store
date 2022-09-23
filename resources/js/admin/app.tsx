@@ -8,7 +8,7 @@ export const App = () => {
     const [pageStatics, setPageStatics] = useState<PageStaticData>();
     
     const getPageStatics = () => {
-        axios.get('/admin/page-statics')
+        axios.get('/admin/v1/page-statics')
             .then((response) => {
                 setPageStatics(response.data);
             })

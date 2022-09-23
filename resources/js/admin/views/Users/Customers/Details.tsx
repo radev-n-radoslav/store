@@ -11,7 +11,7 @@ export const CustomerDetails = (props: any) => {
     const navigate = useNavigate();
     
     const fetchCustomerDetails = () => {
-        axios.get('/admin/accounts/users/details/' + customerId)
+        axios.get('/admin/v1/accounts/users/details/' + customerId)
             .then((response) => {
                 setCustomerData(response.data.data);
             })
@@ -69,7 +69,7 @@ export const CustomerDetails = (props: any) => {
     }, []);
 
     const disableUser = () => {
-        axios.delete('/admin/accounts/users/delete/' + customerId)
+        axios.delete('/admin/v1/accounts/users/delete/' + customerId)
             .then((response) => {
                 if (response.status == 200) {
                     navigate('/admin/customers');
@@ -81,7 +81,7 @@ export const CustomerDetails = (props: any) => {
     };
 
     const enableUser = () => {
-        axios.post('/admin/accounts/users/restore/' + customerId)
+        axios.post('/admin/v1/accounts/users/restore/' + customerId)
             .then((response) => {
                 if(response.status == 200){
                     navigate(0);
