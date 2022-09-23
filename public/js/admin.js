@@ -3117,38 +3117,39 @@ var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/reac
 var react_hook_form_1 = __webpack_require__(/*! react-hook-form */ "./node_modules/react-hook-form/dist/index.cjs.js");
 
 var Input = function Input(props) {
+  var _a;
+
   var _ref = (0, react_1.useState)(props.settings),
       _ref2 = _slicedToArray(_ref, 2),
       inputSettings = _ref2[0],
       setInputSettings = _ref2[1];
 
-  var _ref3 = (0, react_hook_form_1.useForm)(),
+  var _ref3 = (0, react_hook_form_1.useFormContext)(),
       register = _ref3.register,
       errors = _ref3.formState.errors;
 
-  return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("div", null, react_1["default"].createElement("label", {
+  return react_1["default"].createElement("div", null, react_1["default"].createElement("label", {
     htmlFor: inputSettings.name,
     className: "block text-sm font-medium text-gray-700"
   }, inputSettings.label), react_1["default"].createElement("div", {
     className: "relative mt-1 rounded-md shadow-sm"
   }, react_1["default"].createElement("input", Object.assign({
     type: inputSettings.type,
-    name: inputSettings.name,
     id: inputSettings.id,
     className: "block w-full rounded-md border-red-300 pr-10 text-red-900 placeholder-red-300 focus:border-red-500 focus:outline-none focus:ring-red-500 sm:text-sm",
     placeholder: inputSettings.placeholder,
     defaultValue: inputSettings.defaultValue,
     "aria-invalid": "true",
     "aria-describedby": inputSettings.name + '-error'
-  }, (register(inputSettings.name), inputSettings.validationRules))), react_1["default"].createElement("div", {
+  }, register(inputSettings.name, inputSettings.validationRules))), errors[inputSettings.name] ? react_1["default"].createElement("div", {
     className: "pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
   }, react_1["default"].createElement("i", {
     className: "fa fa-exclamation-circle h-5 w-5 text-red-500",
     "aria-hidden": "true"
-  }))), react_1["default"].createElement("p", {
+  })) : ''), react_1["default"].createElement("p", {
     className: "mt-2 text-sm text-red-600",
     id: inputSettings.name + '-error'
-  })));
+  }, errors[inputSettings.name] ? String((_a = errors[inputSettings.name]) === null || _a === void 0 ? void 0 : _a.message) : ''));
 };
 
 exports.Input = Input;
@@ -5019,8 +5020,15 @@ exports.CatalogProductsCreate = void 0;
 
 var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
+var PageHeading_1 = __webpack_require__(/*! ../../../components/PageHeading */ "./resources/js/admin/components/PageHeading.tsx");
+
 var CatalogProductsCreate = function CatalogProductsCreate() {
-  return react_1["default"].createElement(react_1["default"].Fragment, null);
+  return react_1["default"].createElement("div", {
+    className: "px-4 sm:px-6 lg:px-8"
+  }, react_1["default"].createElement(PageHeading_1.PageHeadingSimple, {
+    title: "Create a product",
+    description: ""
+  }));
 };
 
 exports.CatalogProductsCreate = CatalogProductsCreate;
@@ -6378,7 +6386,15 @@ var Input_1 = __webpack_require__(/*! ../../../partials/Input */ "./resources/js
 
 var Card_1 = __webpack_require__(/*! ../../../partials/Card */ "./resources/js/admin/partials/Card.tsx");
 
+var react_hook_form_1 = __webpack_require__(/*! react-hook-form */ "./node_modules/react-hook-form/dist/index.cjs.js");
+
 var CustomerCreate = function CustomerCreate() {
+  var methods = (0, react_hook_form_1.useForm)();
+
+  var onSubmit = function onSubmit(data) {
+    return console.log(data);
+  };
+
   var firstNameSettings = {
     type: 'text',
     label: 'First name',
@@ -6388,7 +6404,8 @@ var CustomerCreate = function CustomerCreate() {
     defaultValue: '',
     validationRules: {
       required: 'This field is required'
-    }
+    },
+    readonly: false
   };
   var surnameSettings = {
     type: 'text',
@@ -6399,21 +6416,16 @@ var CustomerCreate = function CustomerCreate() {
     defaultValue: '',
     validationRules: {
       required: 'This field is required'
-    }
+    },
+    readonly: false
   };
 
   var renderPage = function renderPage() {
-    return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("div", {
+    return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement(react_hook_form_1.FormProvider, Object.assign({}, methods), react_1["default"].createElement("form", {
+      onSubmit: methods.handleSubmit(onSubmit)
+    }, react_1["default"].createElement("div", {
       className: "grid grid-cols-12"
     }, react_1["default"].createElement("div", {
-      className: "col-span-12 md:col-span-6 mb-4 lg:mr-4"
-    }, react_1["default"].createElement(Input_1.Input, {
-      settings: firstNameSettings
-    })), react_1["default"].createElement("div", {
-      className: "col-span-12 md:col-span-6 mb-4"
-    }, react_1["default"].createElement(Input_1.Input, {
-      settings: surnameSettings
-    })), react_1["default"].createElement("div", {
       className: "col-span-12 md:col-span-6 mb-4 lg:mr-4"
     }, react_1["default"].createElement(Input_1.Input, {
       settings: firstNameSettings
@@ -6428,10 +6440,11 @@ var CustomerCreate = function CustomerCreate() {
     }), react_1["default"].createElement("div", {
       className: "col-span-12 lg:col-span-4"
     }, react_1["default"].createElement("button", {
+      type: "submit",
       className: "text-white bg-blue-600 hover:bg-blue-800 px-3 py-3 rounded w-full"
     }, react_1["default"].createElement("i", {
       className: "fa fa-save"
-    }), " Save"))));
+    }), " Save"))))));
   };
 
   return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("div", {
