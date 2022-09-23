@@ -17,7 +17,8 @@ class FiltersController extends Controller
      */
     public function index($id, IndexRequest $request)
     {
-        $filters = CatalogCategoryFilter::where('category_id', $id)
+        $filters = CatalogCategoryFilter::withTrashed()
+            ->where('category_id', $id)
             ->orderBy('created_at', 'DESC')
             ->get();
         
