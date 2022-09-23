@@ -20,7 +20,7 @@ import { CatalogProductsCreate } from "../views/Catalog/Products/Create";
 import { CatalogProductsDetails } from "../views/Catalog/Products/Details";
 import { CatalogProductsEdit } from "../views/Catalog/Products/Edit";
 import { CatalogProductsHome } from "../views/Catalog/Products/Home";
-import { CatalogRecommendedHome } from "../views/Catalog/Recommended/Home";
+import { CatalogRecommendedProductsHome } from "../views/Catalog/RecommendedProducts/Home";
 import { Dashboard } from '../views/Dashboard';
 import { NoPage } from '../views/NoPage';
 import { AdminsCreate } from "../views/Users/Admins/Create";
@@ -59,7 +59,7 @@ export const Router = () => {
                     <Route path="catalog/filters/edit/:id" element={<CatalogFiltersEdit />} />
 
                     {/* Catalog recommended products routes */}
-                    <Route path="catalog/recommended" element={<CatalogRecommendedHome />} />
+                    <Route path="catalog/recommended" element={<CatalogRecommendedProductsHome />} />
 
                     {/* Sales routes */}
 

@@ -2165,7 +2165,7 @@ var App = function App() {
       setPageStatics = _ref2[1];
 
   var getPageStatics = function getPageStatics() {
-    axios_1["default"].get('/admin/page-statics').then(function (response) {
+    axios_1["default"].get('/admin/v1/page-statics').then(function (response) {
       setPageStatics(response.data);
     })["catch"](function (error) {});
   };
@@ -3353,7 +3353,7 @@ var Edit_5 = __webpack_require__(/*! ../views/Catalog/Products/Edit */ "./resour
 
 var Home_5 = __webpack_require__(/*! ../views/Catalog/Products/Home */ "./resources/js/admin/views/Catalog/Products/Home.tsx");
 
-var Home_6 = __webpack_require__(/*! ../views/Catalog/Recommended/Home */ "./resources/js/admin/views/Catalog/Recommended/Home.tsx");
+var Home_6 = __webpack_require__(/*! ../views/Catalog/RecommendedProducts/Home */ "./resources/js/admin/views/Catalog/RecommendedProducts/Home.tsx");
 
 var Dashboard_1 = __webpack_require__(/*! ../views/Dashboard */ "./resources/js/admin/views/Dashboard.tsx");
 
@@ -3419,7 +3419,7 @@ var Router = function Router() {
     element: react_1["default"].createElement(Edit_4.CatalogFiltersEdit, null)
   }), react_1["default"].createElement(react_router_dom_1.Route, {
     path: "catalog/recommended",
-    element: react_1["default"].createElement(Home_6.CatalogRecommendedHome, null)
+    element: react_1["default"].createElement(Home_6.CatalogRecommendedProductsHome, null)
   }), react_1["default"].createElement(react_router_dom_1.Route, {
     path: "blog/categories",
     element: react_1["default"].createElement(Home_2.BlogCategoriesHome, null)
@@ -3601,7 +3601,7 @@ var BlogArticlesDetails = function BlogArticlesDetails(props) {
   var navigate = (0, react_router_dom_1.useNavigate)();
 
   var fetchArticleDetails = function fetchArticleDetails() {
-    axios_1["default"].get('/admin/blg/articles/details/' + articleId).then(function (response) {
+    axios_1["default"].get('/admin/v1/blog/articles/details/' + articleId).then(function (response) {
       setArticleData(response.data.data);
     })["catch"](function (errors) {});
   };
@@ -3637,7 +3637,7 @@ var BlogArticlesDetails = function BlogArticlesDetails(props) {
   }, []);
 
   var deleteArticle = function deleteArticle() {
-    axios_1["default"]["delete"]('/admin/blg/articles/delete/' + articleId).then(function (response) {
+    axios_1["default"]["delete"]('/admin/v1/blog/articles/delete/' + articleId).then(function (response) {
       if (response.status == 200) {
         navigate('/admin/blog/articles');
       }
@@ -3807,7 +3807,7 @@ var BlogArticlesHome = function BlogArticlesHome() {
   var urlQuery = (0, urlHelpers_1.useCurrentQueryParams)();
 
   var fetchArticles = function fetchArticles() {
-    axios_1["default"].get('/admin/blg/articles', urlQuery).then(function (response) {
+    axios_1["default"].get('/admin/v1/blog/articles', urlQuery).then(function (response) {
       var responseData = response.data.data;
       setPagination({
         currentPage: responseData.current_page,
@@ -4053,7 +4053,7 @@ var BlogCategoriesDetails = function BlogCategoriesDetails(props) {
   var navigate = (0, react_router_dom_1.useNavigate)();
 
   var fetchCategoryDetails = function fetchCategoryDetails() {
-    axios_1["default"].get('/admin/blg/categories/details/' + categoryId).then(function (response) {
+    axios_1["default"].get('/admin/v1/blog/categories/details/' + categoryId).then(function (response) {
       setCategoryData(response.data.data);
     })["catch"](function (errors) {});
   };
@@ -4091,7 +4091,7 @@ var BlogCategoriesDetails = function BlogCategoriesDetails(props) {
   }, []);
 
   var disableCategory = function disableCategory() {
-    axios_1["default"]["delete"]('/admin/blg/categories/delete/' + categoryId).then(function (response) {
+    axios_1["default"]["delete"]('/admin/v1/blog/categories/delete/' + categoryId).then(function (response) {
       if (response.status == 200) {
         navigate('/admin/blog/categories');
       }
@@ -4099,7 +4099,7 @@ var BlogCategoriesDetails = function BlogCategoriesDetails(props) {
   };
 
   var enableCategory = function enableCategory() {
-    axios_1["default"].post('/admin/blg/categories/restore/' + categoryId).then(function (response) {
+    axios_1["default"].post('/admin/v1/blog/categories/restore/' + categoryId).then(function (response) {
       if (response.status == 200) {
         navigate(0);
       }
@@ -4276,7 +4276,7 @@ var BlogCategoriesHome = function BlogCategoriesHome() {
   var urlQuery = (0, urlHelpers_1.useCurrentQueryParams)();
 
   var fetchCategories = function fetchCategories() {
-    axios_1["default"].get('/admin/blg/categories', urlQuery).then(function (response) {
+    axios_1["default"].get('/admin/v1/blog/categories', urlQuery).then(function (response) {
       var responseData = response.data.data;
       setPagination({
         currentPage: responseData.current_page,
@@ -4622,6 +4622,58 @@ exports.CatalogFiltersEdit = CatalogFiltersEdit;
 "use strict";
 
 
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  var desc = Object.getOwnPropertyDescriptor(m, k);
+
+  if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+    desc = {
+      enumerable: true,
+      get: function get() {
+        return m[k];
+      }
+    };
+  }
+
+  Object.defineProperty(o, k2, desc);
+} : function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  o[k2] = m[k];
+});
+
+var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
+  Object.defineProperty(o, "default", {
+    enumerable: true,
+    value: v
+  });
+} : function (o, v) {
+  o["default"] = v;
+});
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+  }
+
+  __setModuleDefault(result, mod);
+
+  return result;
+};
+
 var __importDefault = this && this.__importDefault || function (mod) {
   return mod && mod.__esModule ? mod : {
     "default": mod
@@ -4633,10 +4685,160 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports.CatalogFiltersHome = void 0;
 
-var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var axios_1 = __importDefault(__webpack_require__(/*! axios */ "./node_modules/axios/index.js"));
+
+var react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+
+var Pagination_1 = __webpack_require__(/*! ../../../partials/Pagination */ "./resources/js/admin/partials/Pagination.tsx");
+
+var urlHelpers_1 = __webpack_require__(/*! ../../../helpers/urlHelpers */ "./resources/js/admin/helpers/urlHelpers.tsx");
+
+var PageHeading_1 = __webpack_require__(/*! ../../../components/PageHeading */ "./resources/js/admin/components/PageHeading.tsx");
+
+var Sort_1 = __webpack_require__(/*! ../../../partials/Sort */ "./resources/js/admin/partials/Sort.tsx");
 
 var CatalogFiltersHome = function CatalogFiltersHome() {
-  return react_1["default"].createElement(react_1["default"].Fragment, null);
+  var _ref = (0, react_1.useState)([]),
+      _ref2 = _slicedToArray(_ref, 2),
+      filters = _ref2[0],
+      setFilters = _ref2[1];
+
+  var _ref3 = (0, react_1.useState)(),
+      _ref4 = _slicedToArray(_ref3, 2),
+      pagination = _ref4[0],
+      setPagination = _ref4[1];
+
+  var urlQuery = (0, urlHelpers_1.useCurrentQueryParams)();
+
+  var fetchFilters = function fetchFilters() {
+    axios_1["default"].get('/admin/v1/blog/filters', urlQuery).then(function (response) {
+      var responseData = response.data.data;
+      setPagination({
+        currentPage: responseData.current_page,
+        lastPage: responseData.last_page,
+        from: responseData.from,
+        to: responseData.to,
+        perPage: responseData.per_page,
+        total: responseData.total,
+        firstPageUrl: responseData.first_page_url,
+        lastPageUrl: responseData.last_page_url,
+        nextPageUrl: responseData.next_page_url,
+        prevPageUrl: responseData.prev_page_url,
+        path: responseData.path
+      });
+      setFilters(responseData.data);
+    })["catch"](function (errors) {});
+  }; // On component mount
+
+
+  (0, react_1.useEffect)(function () {
+    fetchFilters();
+  }, []); // Watch if any query params change and update page
+
+  (0, urlHelpers_1.useCurrentQueryChanged)(function () {
+    fetchFilters();
+  });
+  return react_1["default"].createElement("div", {
+    className: "px-4 sm:px-6 lg:px-8"
+  }, react_1["default"].createElement(PageHeading_1.PageHeadingSimple, {
+    title: "Filters",
+    description: "A list of all filters",
+    actions: react_1["default"].createElement(react_router_dom_1.Link, {
+      to: '/admin/catalog/filters/create'
+    }, react_1["default"].createElement("button", {
+      type: "button",
+      className: "inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto"
+    }, "Add filter"))
+  }), react_1["default"].createElement("div", {
+    className: "pt-4"
+  }, react_1["default"].createElement(Sort_1.Sort, {
+    title: "Order by",
+    queryParam: "sort",
+    options: [{
+      name: "Last created",
+      queryVal: "desc"
+    }, {
+      name: "First created",
+      queryVal: 'asc'
+    }]
+  })), react_1["default"].createElement("div", {
+    className: "mt-8 flex flex-col"
+  }, react_1["default"].createElement("div", {
+    className: "-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8"
+  }, react_1["default"].createElement("div", {
+    className: "inline-block min-w-full py-2 align-middle md:px-6 lg:px-8"
+  }, react_1["default"].createElement("div", {
+    className: "overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg"
+  }, react_1["default"].createElement("table", {
+    className: "min-w-full divide-y divide-gray-300"
+  }, react_1["default"].createElement("thead", {
+    className: "bg-gray-50"
+  }, react_1["default"].createElement("tr", null, react_1["default"].createElement("th", {
+    scope: "col",
+    className: "py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"
+  }, "Name"), react_1["default"].createElement("th", {
+    scope: "col",
+    className: "px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+  }, "Is inclusive"), react_1["default"].createElement("th", {
+    scope: "col",
+    className: "px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+  }, "Has multiple"), react_1["default"].createElement("th", {
+    scope: "col",
+    className: "px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+  }, "Parent category"), react_1["default"].createElement("th", {
+    scope: "col",
+    className: "relative py-3.5 pl-3 pr-4 sm:pr-6"
+  }, react_1["default"].createElement("span", {
+    className: "sr-only"
+  }, "Action")))), react_1["default"].createElement("tbody", {
+    className: "divide-y divide-gray-200 bg-white"
+  }, filters.map(function (filter) {
+    return react_1["default"].createElement("tr", {
+      key: filter.name
+    }, react_1["default"].createElement("td", {
+      className: "whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6"
+    }, react_1["default"].createElement("div", {
+      className: "flex items-center"
+    }, react_1["default"].createElement("div", {
+      className: "text-gray-900"
+    }, filter.name))), react_1["default"].createElement("td", {
+      className: "whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6"
+    }, react_1["default"].createElement("div", {
+      className: "flex items-center"
+    }, filter.is_inclusive ? react_1["default"].createElement("i", {
+      className: "fa fa-check text-green-600"
+    }) : react_1["default"].createElement("i", {
+      className: "fa fa-times text-red-600"
+    }))), react_1["default"].createElement("td", {
+      className: "whitespace-nowrap px-3 py-4 text-sm text-gray-500"
+    }, filter.has_multiple ? react_1["default"].createElement("i", {
+      className: "fa fa-check text-green-600"
+    }) : react_1["default"].createElement("i", {
+      className: "fa fa-times text-red-600"
+    })), react_1["default"].createElement("td", {
+      className: "whitespace-nowrap px-3 py-4 text-sm text-gray-500"
+    }, filter.category.name), react_1["default"].createElement("td", {
+      className: "relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6 space-x-3"
+    }, react_1["default"].createElement(react_router_dom_1.Link, {
+      to: "/admin/catalog/filters/details/" + filter.id,
+      className: "text-indigo-600 hover:text-indigo-900"
+    }, react_1["default"].createElement("i", {
+      className: "fa fa-eye text-blue-600"
+    }), " Details", react_1["default"].createElement("span", {
+      className: "sr-only"
+    }, ", ", filter.name)), react_1["default"].createElement(react_router_dom_1.Link, {
+      to: "/admin/catalog/filters/edit/" + filter.id,
+      className: "text-indigo-600 hover:text-indigo-900"
+    }, react_1["default"].createElement("i", {
+      className: "fa fa-edit text-green-600"
+    }), " Edit", react_1["default"].createElement("span", {
+      className: "sr-only"
+    }, ", ", filter.name))));
+  }))), react_1["default"].createElement(Pagination_1.Pagination, {
+    data: pagination
+  }))))));
 };
 
 exports.CatalogFiltersHome = CatalogFiltersHome;
@@ -4763,14 +4965,66 @@ exports.CatalogProductsHome = CatalogProductsHome;
 
 /***/ }),
 
-/***/ "./resources/js/admin/views/Catalog/Recommended/Home.tsx":
-/*!***************************************************************!*\
-  !*** ./resources/js/admin/views/Catalog/Recommended/Home.tsx ***!
-  \***************************************************************/
+/***/ "./resources/js/admin/views/Catalog/RecommendedProducts/Home.tsx":
+/*!***********************************************************************!*\
+  !*** ./resources/js/admin/views/Catalog/RecommendedProducts/Home.tsx ***!
+  \***********************************************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
 
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  var desc = Object.getOwnPropertyDescriptor(m, k);
+
+  if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+    desc = {
+      enumerable: true,
+      get: function get() {
+        return m[k];
+      }
+    };
+  }
+
+  Object.defineProperty(o, k2, desc);
+} : function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  o[k2] = m[k];
+});
+
+var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
+  Object.defineProperty(o, "default", {
+    enumerable: true,
+    value: v
+  });
+} : function (o, v) {
+  o["default"] = v;
+});
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+  }
+
+  __setModuleDefault(result, mod);
+
+  return result;
+};
 
 var __importDefault = this && this.__importDefault || function (mod) {
   return mod && mod.__esModule ? mod : {
@@ -4781,15 +5035,165 @@ var __importDefault = this && this.__importDefault || function (mod) {
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports.CatalogRecommendedHome = void 0;
+exports.CatalogRecommendedProductsHome = void 0;
 
-var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
-var CatalogRecommendedHome = function CatalogRecommendedHome() {
-  return react_1["default"].createElement(react_1["default"].Fragment, null);
+var axios_1 = __importDefault(__webpack_require__(/*! axios */ "./node_modules/axios/index.js"));
+
+var react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+
+var Pagination_1 = __webpack_require__(/*! ../../../partials/Pagination */ "./resources/js/admin/partials/Pagination.tsx");
+
+var urlHelpers_1 = __webpack_require__(/*! ../../../helpers/urlHelpers */ "./resources/js/admin/helpers/urlHelpers.tsx");
+
+var PageHeading_1 = __webpack_require__(/*! ../../../components/PageHeading */ "./resources/js/admin/components/PageHeading.tsx");
+
+var Sort_1 = __webpack_require__(/*! ../../../partials/Sort */ "./resources/js/admin/partials/Sort.tsx");
+
+var CatalogRecommendedProductsHome = function CatalogRecommendedProductsHome() {
+  var _ref = (0, react_1.useState)([]),
+      _ref2 = _slicedToArray(_ref, 2),
+      recommendations = _ref2[0],
+      setRecommendations = _ref2[1];
+
+  var _ref3 = (0, react_1.useState)(),
+      _ref4 = _slicedToArray(_ref3, 2),
+      pagination = _ref4[0],
+      setPagination = _ref4[1];
+
+  var urlQuery = (0, urlHelpers_1.useCurrentQueryParams)();
+
+  var fetchRecommendations = function fetchRecommendations() {
+    axios_1["default"].get('/admin/v1/catalog/recommended-products', urlQuery).then(function (response) {
+      var responseData = response.data.data;
+      setPagination({
+        currentPage: responseData.current_page,
+        lastPage: responseData.last_page,
+        from: responseData.from,
+        to: responseData.to,
+        perPage: responseData.per_page,
+        total: responseData.total,
+        firstPageUrl: responseData.first_page_url,
+        lastPageUrl: responseData.last_page_url,
+        nextPageUrl: responseData.next_page_url,
+        prevPageUrl: responseData.prev_page_url,
+        path: responseData.path
+      });
+      setRecommendations(responseData.data);
+    })["catch"](function (errors) {});
+  }; // On component mount
+
+
+  (0, react_1.useEffect)(function () {
+    fetchRecommendations();
+  }, []); // Watch if any query params change and update page
+
+  (0, urlHelpers_1.useCurrentQueryChanged)(function () {
+    fetchRecommendations();
+  }); // Remove a recommended product
+
+  var removeRecommendation = function removeRecommendation(index) {
+    var id = recommendations[index].id;
+    axios_1["default"]["delete"]('/admin/v1/catalog/recommended-products/delete/' + id).then(function (response) {
+      if (response.status == 200) {
+        fetchRecommendations();
+      }
+    })["catch"](function (errors) {});
+  };
+
+  return react_1["default"].createElement("div", {
+    className: "px-4 sm:px-6 lg:px-8"
+  }, react_1["default"].createElement(PageHeading_1.PageHeadingSimple, {
+    title: "Products",
+    description: "A list of all recommended products",
+    actions: react_1["default"].createElement(react_router_dom_1.Link, {
+      to: '/admin/catalog/recommendations/create'
+    }, react_1["default"].createElement("button", {
+      type: "button",
+      className: "inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto"
+    }, "Add product"))
+  }), react_1["default"].createElement("div", {
+    className: "pt-4"
+  }, react_1["default"].createElement(Sort_1.Sort, {
+    title: "Order by",
+    queryParam: "sort",
+    options: [{
+      name: "Last created",
+      queryVal: "desc"
+    }, {
+      name: "First created",
+      queryVal: 'asc'
+    }]
+  })), react_1["default"].createElement("div", {
+    className: "mt-8 flex flex-col"
+  }, react_1["default"].createElement("div", {
+    className: "-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8"
+  }, react_1["default"].createElement("div", {
+    className: "inline-block min-w-full py-2 align-middle md:px-6 lg:px-8"
+  }, react_1["default"].createElement("div", {
+    className: "overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg"
+  }, react_1["default"].createElement("table", {
+    className: "min-w-full divide-y divide-gray-300"
+  }, react_1["default"].createElement("thead", {
+    className: "bg-gray-50"
+  }, react_1["default"].createElement("tr", null, react_1["default"].createElement("th", {
+    scope: "col",
+    className: "py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"
+  }, "Thumbnail"), react_1["default"].createElement("th", {
+    scope: "col",
+    className: "px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+  }, "Name"), react_1["default"].createElement("th", {
+    scope: "col",
+    className: "px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+  }, "SKU"), react_1["default"].createElement("th", {
+    scope: "col",
+    className: "relative py-3.5 pl-3 pr-4 sm:pr-6"
+  }, react_1["default"].createElement("span", {
+    className: "sr-only"
+  }, "Action")))), react_1["default"].createElement("tbody", {
+    className: "divide-y divide-gray-200 bg-white"
+  }, recommendations.map(function (recommendation, index) {
+    var _a, _b, _c, _d;
+
+    return react_1["default"].createElement("tr", {
+      key: recommendation.id
+    }, react_1["default"].createElement("td", {
+      className: "whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6"
+    }, react_1["default"].createElement("div", {
+      className: "flex items-center"
+    }, react_1["default"].createElement("img", {
+      src: (_a = recommendation.product) === null || _a === void 0 ? void 0 : _a.name,
+      className: "max-w-full max-h-16",
+      alt: "Category thumbnail"
+    }))), react_1["default"].createElement("td", {
+      className: "whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6"
+    }, react_1["default"].createElement("div", {
+      className: "flex items-center"
+    }, react_1["default"].createElement("div", {
+      className: "text-gray-900"
+    }, (_b = recommendation.product) === null || _b === void 0 ? void 0 : _b.name))), react_1["default"].createElement("td", {
+      className: "whitespace-nowrap px-3 py-4 text-sm text-gray-500"
+    }, react_1["default"].createElement("div", {
+      className: "text-gray-900"
+    }, (_c = recommendation.product) === null || _c === void 0 ? void 0 : _c.sku)), react_1["default"].createElement("td", {
+      className: "relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6 space-x-3"
+    }, react_1["default"].createElement("a", {
+      className: "hover:cursor-pointer",
+      onClick: function onClick() {
+        return removeRecommendation(index);
+      }
+    }, react_1["default"].createElement("i", {
+      className: "fa fa-times text-red-600"
+    }), " Remove", react_1["default"].createElement("span", {
+      className: "sr-only"
+    }, ", ", (_d = recommendation.product) === null || _d === void 0 ? void 0 : _d.name))));
+  }))), react_1["default"].createElement(Pagination_1.Pagination, {
+    data: pagination
+  }))))));
 };
 
-exports.CatalogRecommendedHome = CatalogRecommendedHome;
+exports.CatalogRecommendedProductsHome = CatalogRecommendedProductsHome;
 
 /***/ }),
 
@@ -5039,7 +5443,7 @@ var AdminDetails = function AdminDetails(props) {
   var navigate = (0, react_router_dom_1.useNavigate)();
 
   var fetchAdminDetails = function fetchAdminDetails() {
-    axios_1["default"].get('/admin/accounts/admins/details/' + adminId).then(function (response) {
+    axios_1["default"].get('/admin/v1/accounts/admins/details/' + adminId).then(function (response) {
       setAdminData(response.data.data);
     })["catch"](function (errors) {});
   };
@@ -5077,7 +5481,7 @@ var AdminDetails = function AdminDetails(props) {
   }, []);
 
   var disableAdmin = function disableAdmin() {
-    axios_1["default"]["delete"]('/admin/accounts/admins/delete/' + adminId).then(function (response) {
+    axios_1["default"]["delete"]('/admin/v1/accounts/admins/delete/' + adminId).then(function (response) {
       if (response.status == 200) {
         navigate('/admin/admins');
       }
@@ -5085,7 +5489,7 @@ var AdminDetails = function AdminDetails(props) {
   };
 
   var enableAdmin = function enableAdmin() {
-    axios_1["default"].post('/admin/accounts/admins/restore/' + adminId).then(function (response) {
+    axios_1["default"].post('/admin/v1/accounts/admins/restore/' + adminId).then(function (response) {
       if (response.status == 200) {
         navigate(0);
       }
@@ -5262,7 +5666,7 @@ var AdminsHome = function AdminsHome() {
   var urlQuery = (0, urlHelpers_1.useCurrentQueryParams)();
 
   var fetchAdmins = function fetchAdmins() {
-    axios_1["default"].get('/admin/accounts/admins', urlQuery).then(function (response) {
+    axios_1["default"].get('/admin/v1/accounts/admins', urlQuery).then(function (response) {
       var responseData = response.data.data;
       setPagination({
         currentPage: responseData.current_page,
@@ -5589,7 +5993,7 @@ var CustomerDetails = function CustomerDetails(props) {
   var navigate = (0, react_router_dom_1.useNavigate)();
 
   var fetchCustomerDetails = function fetchCustomerDetails() {
-    axios_1["default"].get('/admin/accounts/users/details/' + customerId).then(function (response) {
+    axios_1["default"].get('/admin/v1/accounts/users/details/' + customerId).then(function (response) {
       setCustomerData(response.data.data);
     })["catch"](function (errors) {});
   };
@@ -5633,7 +6037,7 @@ var CustomerDetails = function CustomerDetails(props) {
   }, []);
 
   var disableUser = function disableUser() {
-    axios_1["default"]["delete"]('/admin/accounts/users/delete/' + customerId).then(function (response) {
+    axios_1["default"]["delete"]('/admin/v1/accounts/users/delete/' + customerId).then(function (response) {
       if (response.status == 200) {
         navigate('/admin/customers');
       }
@@ -5641,7 +6045,7 @@ var CustomerDetails = function CustomerDetails(props) {
   };
 
   var enableUser = function enableUser() {
-    axios_1["default"].post('/admin/accounts/users/restore/' + customerId).then(function (response) {
+    axios_1["default"].post('/admin/v1/accounts/users/restore/' + customerId).then(function (response) {
       if (response.status == 200) {
         navigate(0);
       }
@@ -5818,7 +6222,7 @@ var CustomersHome = function CustomersHome() {
   var urlQuery = (0, urlHelpers_1.useCurrentQueryParams)();
 
   var fetchUsers = function fetchUsers() {
-    axios_1["default"].get('/admin/accounts/users', urlQuery).then(function (response) {
+    axios_1["default"].get('/admin/v1/accounts/users', urlQuery).then(function (response) {
       var responseData = response.data.data;
       setPagination({
         currentPage: responseData.current_page,
