@@ -2948,6 +2948,104 @@ exports.Card = Card;
 
 /***/ }),
 
+/***/ "./resources/js/admin/partials/Gallery.tsx":
+/*!*************************************************!*\
+  !*** ./resources/js/admin/partials/Gallery.tsx ***!
+  \*************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  var desc = Object.getOwnPropertyDescriptor(m, k);
+
+  if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+    desc = {
+      enumerable: true,
+      get: function get() {
+        return m[k];
+      }
+    };
+  }
+
+  Object.defineProperty(o, k2, desc);
+} : function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  o[k2] = m[k];
+});
+
+var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
+  Object.defineProperty(o, "default", {
+    enumerable: true,
+    value: v
+  });
+} : function (o, v) {
+  o["default"] = v;
+});
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+  }
+
+  __setModuleDefault(result, mod);
+
+  return result;
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.GallerySimple = void 0;
+
+var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var GallerySimple = function GallerySimple(props) {
+  var _ref = (0, react_1.useState)(props.images),
+      _ref2 = _slicedToArray(_ref, 2),
+      images = _ref2[0],
+      setImages = _ref2[1];
+
+  var imageComponents = images.map(function (image) {
+    return react_1["default"].createElement("div", {
+      className: "flex flex-wrap w-1/3"
+    }, react_1["default"].createElement("div", {
+      className: "w-full p-1 md:p-2"
+    }, react_1["default"].createElement("img", {
+      className: "block object-cover object-center w-full h-full rounded-lg",
+      src: image.url
+    })));
+  });
+  (0, react_1.useEffect)(function () {
+    setImages(props.images);
+  }, [props]);
+  return react_1["default"].createElement("section", {
+    className: "overflow-hidden text-gray-700 "
+  }, react_1["default"].createElement("div", {
+    className: "flex flex-wrap -m-1 md:-m-2"
+  }, imageComponents));
+};
+
+exports.GallerySimple = GallerySimple;
+
+/***/ }),
+
 /***/ "./resources/js/admin/partials/Input.tsx":
 /*!***********************************************!*\
   !*** ./resources/js/admin/partials/Input.tsx ***!
@@ -5013,6 +5111,8 @@ var DescriptionList_1 = __webpack_require__(/*! ../../../components/DescriptionL
 
 var Card_1 = __webpack_require__(/*! ../../../partials/Card */ "./resources/js/admin/partials/Card.tsx");
 
+var Gallery_1 = __webpack_require__(/*! ../../../partials/Gallery */ "./resources/js/admin/partials/Gallery.tsx");
+
 var CatalogProductsDetails = function CatalogProductsDetails(props) {
   var productId = (0, react_router_dom_1.useParams)().id;
 
@@ -5020,11 +5120,6 @@ var CatalogProductsDetails = function CatalogProductsDetails(props) {
       _ref2 = _slicedToArray(_ref, 2),
       productData = _ref2[0],
       setProductData = _ref2[1];
-
-  var _ref3 = (0, react_1.useState)(),
-      _ref4 = _slicedToArray(_ref3, 2),
-      images = _ref4[0],
-      setImages = _ref4[1];
 
   var navigate = (0, react_router_dom_1.useNavigate)();
 
@@ -5120,17 +5215,14 @@ var CatalogProductsDetails = function CatalogProductsDetails(props) {
     }), " Restore"));
   };
 
-  var renderImages = function renderImages() {
-    return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("div", {
-      className: "grid grid-cols-12"
-    }, react_1["default"].createElement(react_1["default"].Fragment, null, productData === null || productData === void 0 ? void 0 : productData.images.map(function (image, index) {
-      react_1["default"].createElement("div", {
-        className: "col-span-12 md:col-span-6 lg:col-span-12"
-      }, react_1["default"].createElement("img", {
-        src: image.url,
-        className: "max-w-full max-h-16"
-      }));
-    }))));
+  var formatImages = function formatImages() {
+    var images = new Array();
+    productData === null || productData === void 0 ? void 0 : productData.images.map(function (image) {
+      images.push({
+        url: image.url
+      });
+    });
+    return images;
   };
 
   return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("div", {
@@ -5146,8 +5238,10 @@ var CatalogProductsDetails = function CatalogProductsDetails(props) {
     className: "my-4"
   }), react_1["default"].createElement(Card_1.Card, {
     title: "Images",
-    description: "All images associated with the product",
-    content: renderImages()
+    description: "All product images",
+    content: react_1["default"].createElement(Gallery_1.GallerySimple, {
+      images: formatImages()
+    })
   }), react_1["default"].createElement("div", {
     className: "my-4"
   }), react_1["default"].createElement(DescriptionList_1.DescriptionList, {

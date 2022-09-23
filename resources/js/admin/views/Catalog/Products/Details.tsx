@@ -6,11 +6,11 @@ import { PageHeading } from '../../../components/PageHeading';
 import { DescriptionList, DescriptionListRows } from '../../../components/DescriptionList';
 import { Card } from '../../../partials/Card';
 import { render } from '../../../../../../public/js/ui';
+import { GalleryImage, GallerySimple } from '../../../partials/Gallery';
 
 export const CatalogProductsDetails = (props: any) => {
     const productId = useParams().id;
     const [productData, setProductData] = useState<Product>();
-    const [images, setImages] = useState();
     const navigate = useNavigate();
     
     const fetchProductDetails = () => {
@@ -125,27 +125,16 @@ export const CatalogProductsDetails = (props: any) => {
         );
     }
 
-    const renderImages = () => {
-        return (
-            <>
-                <div className="grid grid-cols-12">
-                    {
-                        <>
-                            {
-                                productData?.images.map((image, index) => {
-                                    <div className="col-span-12 md:col-span-6 lg:col-span-12">
-                                        <img 
-                                            src={image.url} 
-                                            className="max-w-full max-h-16"
-                                        />
-                                    </div>
-                                })
-                            }
-                        </>
-                    }
-                </div>
-            </>
-        );
+    const formatImages = () => {
+        let images = new Array();
+
+        productData?.images.map((image) => {
+            images.push({
+                url: image.url
+            });
+        });
+
+        return images;
     }
 
     return (
@@ -158,10 +147,10 @@ export const CatalogProductsDetails = (props: any) => {
                     rows={formatProductDetails()}
                 />
                 <div className="my-4"></div>
-                <Card
+                <Card 
                     title="Images"
-                    description="All images associated with the product"
-                    content={renderImages()}
+                    description="All product images"
+                    content={<GallerySimple images={formatImages()} />}
                 />
                 <div className="my-4"></div>
                 <DescriptionList
