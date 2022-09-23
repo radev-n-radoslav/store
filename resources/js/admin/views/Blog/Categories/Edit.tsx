@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const CategoriesEdit = () => {
+export const BlogCategoriesEdit = () => {
     
     return (
         <>

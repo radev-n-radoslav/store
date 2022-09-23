@@ -3329,25 +3329,51 @@ var Edit_2 = __webpack_require__(/*! ../views/Blog/Categories/Edit */ "./resourc
 
 var Home_2 = __webpack_require__(/*! ../views/Blog/Categories/Home */ "./resources/js/admin/views/Blog/Categories/Home.tsx");
 
+var Create_3 = __webpack_require__(/*! ../views/Catalog/Categories/Create */ "./resources/js/admin/views/Catalog/Categories/Create.tsx");
+
+var Details_3 = __webpack_require__(/*! ../views/Catalog/Categories/Details */ "./resources/js/admin/views/Catalog/Categories/Details.tsx");
+
+var Edit_3 = __webpack_require__(/*! ../views/Catalog/Categories/Edit */ "./resources/js/admin/views/Catalog/Categories/Edit.tsx");
+
+var Home_3 = __webpack_require__(/*! ../views/Catalog/Categories/Home */ "./resources/js/admin/views/Catalog/Categories/Home.tsx");
+
+var Create_4 = __webpack_require__(/*! ../views/Catalog/Filters/Create */ "./resources/js/admin/views/Catalog/Filters/Create.tsx");
+
+var Details_4 = __webpack_require__(/*! ../views/Catalog/Filters/Details */ "./resources/js/admin/views/Catalog/Filters/Details.tsx");
+
+var Edit_4 = __webpack_require__(/*! ../views/Catalog/Filters/Edit */ "./resources/js/admin/views/Catalog/Filters/Edit.tsx");
+
+var Home_4 = __webpack_require__(/*! ../views/Catalog/Filters/Home */ "./resources/js/admin/views/Catalog/Filters/Home.tsx");
+
+var Create_5 = __webpack_require__(/*! ../views/Catalog/Products/Create */ "./resources/js/admin/views/Catalog/Products/Create.tsx");
+
+var Details_5 = __webpack_require__(/*! ../views/Catalog/Products/Details */ "./resources/js/admin/views/Catalog/Products/Details.tsx");
+
+var Edit_5 = __webpack_require__(/*! ../views/Catalog/Products/Edit */ "./resources/js/admin/views/Catalog/Products/Edit.tsx");
+
+var Home_5 = __webpack_require__(/*! ../views/Catalog/Products/Home */ "./resources/js/admin/views/Catalog/Products/Home.tsx");
+
+var Home_6 = __webpack_require__(/*! ../views/Catalog/Recommended/Home */ "./resources/js/admin/views/Catalog/Recommended/Home.tsx");
+
 var Dashboard_1 = __webpack_require__(/*! ../views/Dashboard */ "./resources/js/admin/views/Dashboard.tsx");
 
 var NoPage_1 = __webpack_require__(/*! ../views/NoPage */ "./resources/js/admin/views/NoPage.tsx");
 
-var Create_3 = __webpack_require__(/*! ../views/Users/Admins/Create */ "./resources/js/admin/views/Users/Admins/Create.tsx");
+var Create_6 = __webpack_require__(/*! ../views/Users/Admins/Create */ "./resources/js/admin/views/Users/Admins/Create.tsx");
 
-var Details_3 = __webpack_require__(/*! ../views/Users/Admins/Details */ "./resources/js/admin/views/Users/Admins/Details.tsx");
+var Details_6 = __webpack_require__(/*! ../views/Users/Admins/Details */ "./resources/js/admin/views/Users/Admins/Details.tsx");
 
-var Edit_3 = __webpack_require__(/*! ../views/Users/Admins/Edit */ "./resources/js/admin/views/Users/Admins/Edit.tsx");
+var Edit_6 = __webpack_require__(/*! ../views/Users/Admins/Edit */ "./resources/js/admin/views/Users/Admins/Edit.tsx");
 
-var Home_3 = __webpack_require__(/*! ../views/Users/Admins/Home */ "./resources/js/admin/views/Users/Admins/Home.tsx");
+var Home_7 = __webpack_require__(/*! ../views/Users/Admins/Home */ "./resources/js/admin/views/Users/Admins/Home.tsx");
 
-var Create_4 = __webpack_require__(/*! ../views/Users/Customers/Create */ "./resources/js/admin/views/Users/Customers/Create.tsx");
+var Create_7 = __webpack_require__(/*! ../views/Users/Customers/Create */ "./resources/js/admin/views/Users/Customers/Create.tsx");
 
-var Details_4 = __webpack_require__(/*! ../views/Users/Customers/Details */ "./resources/js/admin/views/Users/Customers/Details.tsx");
+var Details_7 = __webpack_require__(/*! ../views/Users/Customers/Details */ "./resources/js/admin/views/Users/Customers/Details.tsx");
 
-var Edit_4 = __webpack_require__(/*! ../views/Users/Customers/Edit */ "./resources/js/admin/views/Users/Customers/Edit.tsx");
+var Edit_7 = __webpack_require__(/*! ../views/Users/Customers/Edit */ "./resources/js/admin/views/Users/Customers/Edit.tsx");
 
-var Home_4 = __webpack_require__(/*! ../views/Users/Customers/Home */ "./resources/js/admin/views/Users/Customers/Home.tsx");
+var Home_8 = __webpack_require__(/*! ../views/Users/Customers/Home */ "./resources/js/admin/views/Users/Customers/Home.tsx");
 
 var Router = function Router() {
   return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement(react_router_dom_1.Routes, null, react_1["default"].createElement(react_router_dom_1.Route, {
@@ -3356,53 +3382,92 @@ var Router = function Router() {
     index: true,
     element: react_1["default"].createElement(Dashboard_1.Dashboard, null)
   }), react_1["default"].createElement(react_router_dom_1.Route, {
+    path: "catalog/categories",
+    element: react_1["default"].createElement(Home_3.CatalogCategoriesHome, null)
+  }), react_1["default"].createElement(react_router_dom_1.Route, {
+    path: "catalog/categories/create",
+    element: react_1["default"].createElement(Create_3.CatalogCategoriesCreate, null)
+  }), react_1["default"].createElement(react_router_dom_1.Route, {
+    path: "catalog/categories/details/:id",
+    element: react_1["default"].createElement(Details_3.CatalogCategoriesDetails, null)
+  }), react_1["default"].createElement(react_router_dom_1.Route, {
+    path: "catalog/categories/edit/:id",
+    element: react_1["default"].createElement(Edit_3.CatalogCategoriesEdit, null)
+  }), react_1["default"].createElement(react_router_dom_1.Route, {
+    path: "catalog/products",
+    element: react_1["default"].createElement(Home_5.CatalogProductsHome, null)
+  }), react_1["default"].createElement(react_router_dom_1.Route, {
+    path: "catalog/products/create",
+    element: react_1["default"].createElement(Create_5.CatalogProductsCreate, null)
+  }), react_1["default"].createElement(react_router_dom_1.Route, {
+    path: "catalog/products/details/:id",
+    element: react_1["default"].createElement(Details_5.CatalogProductsDetails, null)
+  }), react_1["default"].createElement(react_router_dom_1.Route, {
+    path: "catalog/products/edit/:id",
+    element: react_1["default"].createElement(Edit_5.CatalogProductsEdit, null)
+  }), react_1["default"].createElement(react_router_dom_1.Route, {
+    path: "catalog/filters",
+    element: react_1["default"].createElement(Home_4.CatalogFiltersHome, null)
+  }), react_1["default"].createElement(react_router_dom_1.Route, {
+    path: "catalog/filters/create",
+    element: react_1["default"].createElement(Create_4.CatalogFiltersCreate, null)
+  }), react_1["default"].createElement(react_router_dom_1.Route, {
+    path: "catalog/filters/details/:id",
+    element: react_1["default"].createElement(Details_4.CatalogFiltersDetails, null)
+  }), react_1["default"].createElement(react_router_dom_1.Route, {
+    path: "catalog/filters/edit/:id",
+    element: react_1["default"].createElement(Edit_4.CatalogFiltersEdit, null)
+  }), react_1["default"].createElement(react_router_dom_1.Route, {
+    path: "catalog/recommended",
+    element: react_1["default"].createElement(Home_6.CatalogRecommendedHome, null)
+  }), react_1["default"].createElement(react_router_dom_1.Route, {
     path: "blog/categories",
-    element: react_1["default"].createElement(Home_2.CategoriesHome, null)
+    element: react_1["default"].createElement(Home_2.BlogCategoriesHome, null)
   }), react_1["default"].createElement(react_router_dom_1.Route, {
     path: "blog/categories/create",
-    element: react_1["default"].createElement(Create_2.CategoriesCreate, null)
+    element: react_1["default"].createElement(Create_2.BlogCategoriesCreate, null)
   }), react_1["default"].createElement(react_router_dom_1.Route, {
     path: "blog/categories/details/:id",
-    element: react_1["default"].createElement(Details_2.CategoriesDetails, null)
+    element: react_1["default"].createElement(Details_2.BlogCategoriesDetails, null)
   }), react_1["default"].createElement(react_router_dom_1.Route, {
     path: "blog/categories/edit/:id",
-    element: react_1["default"].createElement(Edit_2.CategoriesEdit, null)
+    element: react_1["default"].createElement(Edit_2.BlogCategoriesEdit, null)
   }), react_1["default"].createElement(react_router_dom_1.Route, {
     path: "blog/articles",
-    element: react_1["default"].createElement(Home_1.ArticlesHome, null)
+    element: react_1["default"].createElement(Home_1.BlogArticlesHome, null)
   }), react_1["default"].createElement(react_router_dom_1.Route, {
     path: "blog/articles/create",
-    element: react_1["default"].createElement(Create_1.ArticlesCreate, null)
+    element: react_1["default"].createElement(Create_1.BlogArticlesCreate, null)
   }), react_1["default"].createElement(react_router_dom_1.Route, {
     path: "blog/articles/details/:id",
-    element: react_1["default"].createElement(Details_1.ArticlesDetails, null)
+    element: react_1["default"].createElement(Details_1.BlogArticlesDetails, null)
   }), react_1["default"].createElement(react_router_dom_1.Route, {
     path: "blog/articles/edit/:id",
-    element: react_1["default"].createElement(Edit_1.ArticlesEdit, null)
+    element: react_1["default"].createElement(Edit_1.BlogArticlesEdit, null)
   }), react_1["default"].createElement(react_router_dom_1.Route, {
     path: "admins",
-    element: react_1["default"].createElement(Home_3.AdminsHome, null)
+    element: react_1["default"].createElement(Home_7.AdminsHome, null)
   }), react_1["default"].createElement(react_router_dom_1.Route, {
     path: "admins/create",
-    element: react_1["default"].createElement(Create_3.AdminsCreate, null)
+    element: react_1["default"].createElement(Create_6.AdminsCreate, null)
   }), react_1["default"].createElement(react_router_dom_1.Route, {
     path: "admins/details/:id",
-    element: react_1["default"].createElement(Details_3.AdminDetails, null)
+    element: react_1["default"].createElement(Details_6.AdminDetails, null)
   }), react_1["default"].createElement(react_router_dom_1.Route, {
     path: "admins/edit/:id",
-    element: react_1["default"].createElement(Edit_3.AdminsEdit, null)
+    element: react_1["default"].createElement(Edit_6.AdminsEdit, null)
   }), react_1["default"].createElement(react_router_dom_1.Route, {
     path: "customers",
-    element: react_1["default"].createElement(Home_4.CustomersHome, null)
+    element: react_1["default"].createElement(Home_8.CustomersHome, null)
   }), react_1["default"].createElement(react_router_dom_1.Route, {
     path: "customers/create",
-    element: react_1["default"].createElement(Create_4.CustomerCreate, null)
+    element: react_1["default"].createElement(Create_7.CustomerCreate, null)
   }), react_1["default"].createElement(react_router_dom_1.Route, {
     path: "customers/details/:id",
-    element: react_1["default"].createElement(Details_4.CustomerDetails, null)
+    element: react_1["default"].createElement(Details_7.CustomerDetails, null)
   }), react_1["default"].createElement(react_router_dom_1.Route, {
     path: "customers/edit/:id",
-    element: react_1["default"].createElement(Edit_4.CustomerEdit, null)
+    element: react_1["default"].createElement(Edit_7.CustomerEdit, null)
   }), react_1["default"].createElement(react_router_dom_1.Route, {
     path: "*",
     element: react_1["default"].createElement(NoPage_1.NoPage, null)
@@ -3431,15 +3496,15 @@ var __importDefault = this && this.__importDefault || function (mod) {
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports.ArticlesCreate = void 0;
+exports.BlogArticlesCreate = void 0;
 
 var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
-var ArticlesCreate = function ArticlesCreate() {
+var BlogArticlesCreate = function BlogArticlesCreate() {
   return react_1["default"].createElement(react_1["default"].Fragment, null);
 };
 
-exports.ArticlesCreate = ArticlesCreate;
+exports.BlogArticlesCreate = BlogArticlesCreate;
 
 /***/ }),
 
@@ -3513,7 +3578,7 @@ var __importDefault = this && this.__importDefault || function (mod) {
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports.ArticlesDetails = void 0;
+exports.BlogArticlesDetails = void 0;
 
 var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
@@ -3525,7 +3590,7 @@ var PageHeading_1 = __webpack_require__(/*! ../../../components/PageHeading */ "
 
 var DescriptionList_1 = __webpack_require__(/*! ../../../components/DescriptionList */ "./resources/js/admin/components/DescriptionList.tsx");
 
-var ArticlesDetails = function ArticlesDetails(props) {
+var BlogArticlesDetails = function BlogArticlesDetails(props) {
   var articleId = (0, react_router_dom_1.useParams)().id;
 
   var _ref = (0, react_1.useState)(),
@@ -3608,7 +3673,7 @@ var ArticlesDetails = function ArticlesDetails(props) {
   })));
 };
 
-exports.ArticlesDetails = ArticlesDetails;
+exports.BlogArticlesDetails = BlogArticlesDetails;
 
 /***/ }),
 
@@ -3630,15 +3695,15 @@ var __importDefault = this && this.__importDefault || function (mod) {
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports.ArticlesEdit = void 0;
+exports.BlogArticlesEdit = void 0;
 
 var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
-var ArticlesEdit = function ArticlesEdit() {
+var BlogArticlesEdit = function BlogArticlesEdit() {
   return react_1["default"].createElement(react_1["default"].Fragment, null);
 };
 
-exports.ArticlesEdit = ArticlesEdit;
+exports.BlogArticlesEdit = BlogArticlesEdit;
 
 /***/ }),
 
@@ -3712,7 +3777,7 @@ var __importDefault = this && this.__importDefault || function (mod) {
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports.ArticlesHome = void 0;
+exports.BlogArticlesHome = void 0;
 
 var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
@@ -3728,7 +3793,7 @@ var PageHeading_1 = __webpack_require__(/*! ../../../components/PageHeading */ "
 
 var Sort_1 = __webpack_require__(/*! ../../../partials/Sort */ "./resources/js/admin/partials/Sort.tsx");
 
-var ArticlesHome = function ArticlesHome() {
+var BlogArticlesHome = function BlogArticlesHome() {
   var _ref = (0, react_1.useState)([]),
       _ref2 = _slicedToArray(_ref, 2),
       articles = _ref2[0],
@@ -3861,7 +3926,7 @@ var ArticlesHome = function ArticlesHome() {
   }))))));
 };
 
-exports.ArticlesHome = ArticlesHome;
+exports.BlogArticlesHome = BlogArticlesHome;
 
 /***/ }),
 
@@ -3883,15 +3948,15 @@ var __importDefault = this && this.__importDefault || function (mod) {
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports.CategoriesCreate = void 0;
+exports.BlogCategoriesCreate = void 0;
 
 var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
-var CategoriesCreate = function CategoriesCreate() {
+var BlogCategoriesCreate = function BlogCategoriesCreate() {
   return react_1["default"].createElement(react_1["default"].Fragment, null);
 };
 
-exports.CategoriesCreate = CategoriesCreate;
+exports.BlogCategoriesCreate = BlogCategoriesCreate;
 
 /***/ }),
 
@@ -3965,7 +4030,7 @@ var __importDefault = this && this.__importDefault || function (mod) {
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports.CategoriesDetails = void 0;
+exports.BlogCategoriesDetails = void 0;
 
 var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
@@ -3977,7 +4042,7 @@ var PageHeading_1 = __webpack_require__(/*! ../../../components/PageHeading */ "
 
 var DescriptionList_1 = __webpack_require__(/*! ../../../components/DescriptionList */ "./resources/js/admin/components/DescriptionList.tsx");
 
-var CategoriesDetails = function CategoriesDetails(props) {
+var BlogCategoriesDetails = function BlogCategoriesDetails(props) {
   var categoryId = (0, react_router_dom_1.useParams)().id;
 
   var _ref = (0, react_1.useState)(),
@@ -4077,7 +4142,7 @@ var CategoriesDetails = function CategoriesDetails(props) {
   })));
 };
 
-exports.CategoriesDetails = CategoriesDetails;
+exports.BlogCategoriesDetails = BlogCategoriesDetails;
 
 /***/ }),
 
@@ -4099,15 +4164,15 @@ var __importDefault = this && this.__importDefault || function (mod) {
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports.CategoriesEdit = void 0;
+exports.BlogCategoriesEdit = void 0;
 
 var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
-var CategoriesEdit = function CategoriesEdit() {
+var BlogCategoriesEdit = function BlogCategoriesEdit() {
   return react_1["default"].createElement(react_1["default"].Fragment, null);
 };
 
-exports.CategoriesEdit = CategoriesEdit;
+exports.BlogCategoriesEdit = BlogCategoriesEdit;
 
 /***/ }),
 
@@ -4181,7 +4246,7 @@ var __importDefault = this && this.__importDefault || function (mod) {
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports.CategoriesHome = void 0;
+exports.BlogCategoriesHome = void 0;
 
 var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
@@ -4197,7 +4262,7 @@ var PageHeading_1 = __webpack_require__(/*! ../../../components/PageHeading */ "
 
 var Sort_1 = __webpack_require__(/*! ../../../partials/Sort */ "./resources/js/admin/partials/Sort.tsx");
 
-var CategoriesHome = function CategoriesHome() {
+var BlogCategoriesHome = function BlogCategoriesHome() {
   var _ref = (0, react_1.useState)([]),
       _ref2 = _slicedToArray(_ref, 2),
       categories = _ref2[0],
@@ -4334,7 +4399,397 @@ var CategoriesHome = function CategoriesHome() {
   }))))));
 };
 
-exports.CategoriesHome = CategoriesHome;
+exports.BlogCategoriesHome = BlogCategoriesHome;
+
+/***/ }),
+
+/***/ "./resources/js/admin/views/Catalog/Categories/Create.tsx":
+/*!****************************************************************!*\
+  !*** ./resources/js/admin/views/Catalog/Categories/Create.tsx ***!
+  \****************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.CatalogCategoriesCreate = void 0;
+
+var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var CatalogCategoriesCreate = function CatalogCategoriesCreate() {
+  return react_1["default"].createElement(react_1["default"].Fragment, null);
+};
+
+exports.CatalogCategoriesCreate = CatalogCategoriesCreate;
+
+/***/ }),
+
+/***/ "./resources/js/admin/views/Catalog/Categories/Details.tsx":
+/*!*****************************************************************!*\
+  !*** ./resources/js/admin/views/Catalog/Categories/Details.tsx ***!
+  \*****************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.CatalogCategoriesDetails = void 0;
+
+var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var CatalogCategoriesDetails = function CatalogCategoriesDetails() {
+  return react_1["default"].createElement(react_1["default"].Fragment, null);
+};
+
+exports.CatalogCategoriesDetails = CatalogCategoriesDetails;
+
+/***/ }),
+
+/***/ "./resources/js/admin/views/Catalog/Categories/Edit.tsx":
+/*!**************************************************************!*\
+  !*** ./resources/js/admin/views/Catalog/Categories/Edit.tsx ***!
+  \**************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.CatalogCategoriesEdit = void 0;
+
+var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var CatalogCategoriesEdit = function CatalogCategoriesEdit() {
+  return react_1["default"].createElement(react_1["default"].Fragment, null);
+};
+
+exports.CatalogCategoriesEdit = CatalogCategoriesEdit;
+
+/***/ }),
+
+/***/ "./resources/js/admin/views/Catalog/Categories/Home.tsx":
+/*!**************************************************************!*\
+  !*** ./resources/js/admin/views/Catalog/Categories/Home.tsx ***!
+  \**************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.CatalogCategoriesHome = void 0;
+
+var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var CatalogCategoriesHome = function CatalogCategoriesHome() {
+  return react_1["default"].createElement(react_1["default"].Fragment, null);
+};
+
+exports.CatalogCategoriesHome = CatalogCategoriesHome;
+
+/***/ }),
+
+/***/ "./resources/js/admin/views/Catalog/Filters/Create.tsx":
+/*!*************************************************************!*\
+  !*** ./resources/js/admin/views/Catalog/Filters/Create.tsx ***!
+  \*************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.CatalogFiltersCreate = void 0;
+
+var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var CatalogFiltersCreate = function CatalogFiltersCreate() {
+  return react_1["default"].createElement(react_1["default"].Fragment, null);
+};
+
+exports.CatalogFiltersCreate = CatalogFiltersCreate;
+
+/***/ }),
+
+/***/ "./resources/js/admin/views/Catalog/Filters/Details.tsx":
+/*!**************************************************************!*\
+  !*** ./resources/js/admin/views/Catalog/Filters/Details.tsx ***!
+  \**************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.CatalogFiltersDetails = void 0;
+
+var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var CatalogFiltersDetails = function CatalogFiltersDetails() {
+  return react_1["default"].createElement(react_1["default"].Fragment, null);
+};
+
+exports.CatalogFiltersDetails = CatalogFiltersDetails;
+
+/***/ }),
+
+/***/ "./resources/js/admin/views/Catalog/Filters/Edit.tsx":
+/*!***********************************************************!*\
+  !*** ./resources/js/admin/views/Catalog/Filters/Edit.tsx ***!
+  \***********************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.CatalogFiltersEdit = void 0;
+
+var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var CatalogFiltersEdit = function CatalogFiltersEdit() {
+  return react_1["default"].createElement(react_1["default"].Fragment, null);
+};
+
+exports.CatalogFiltersEdit = CatalogFiltersEdit;
+
+/***/ }),
+
+/***/ "./resources/js/admin/views/Catalog/Filters/Home.tsx":
+/*!***********************************************************!*\
+  !*** ./resources/js/admin/views/Catalog/Filters/Home.tsx ***!
+  \***********************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.CatalogFiltersHome = void 0;
+
+var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var CatalogFiltersHome = function CatalogFiltersHome() {
+  return react_1["default"].createElement(react_1["default"].Fragment, null);
+};
+
+exports.CatalogFiltersHome = CatalogFiltersHome;
+
+/***/ }),
+
+/***/ "./resources/js/admin/views/Catalog/Products/Create.tsx":
+/*!**************************************************************!*\
+  !*** ./resources/js/admin/views/Catalog/Products/Create.tsx ***!
+  \**************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.CatalogProductsCreate = void 0;
+
+var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var CatalogProductsCreate = function CatalogProductsCreate() {
+  return react_1["default"].createElement(react_1["default"].Fragment, null);
+};
+
+exports.CatalogProductsCreate = CatalogProductsCreate;
+
+/***/ }),
+
+/***/ "./resources/js/admin/views/Catalog/Products/Details.tsx":
+/*!***************************************************************!*\
+  !*** ./resources/js/admin/views/Catalog/Products/Details.tsx ***!
+  \***************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.CatalogProductsDetails = void 0;
+
+var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var CatalogProductsDetails = function CatalogProductsDetails() {
+  return react_1["default"].createElement(react_1["default"].Fragment, null);
+};
+
+exports.CatalogProductsDetails = CatalogProductsDetails;
+
+/***/ }),
+
+/***/ "./resources/js/admin/views/Catalog/Products/Edit.tsx":
+/*!************************************************************!*\
+  !*** ./resources/js/admin/views/Catalog/Products/Edit.tsx ***!
+  \************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.CatalogProductsEdit = void 0;
+
+var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var CatalogProductsEdit = function CatalogProductsEdit() {
+  return react_1["default"].createElement(react_1["default"].Fragment, null);
+};
+
+exports.CatalogProductsEdit = CatalogProductsEdit;
+
+/***/ }),
+
+/***/ "./resources/js/admin/views/Catalog/Products/Home.tsx":
+/*!************************************************************!*\
+  !*** ./resources/js/admin/views/Catalog/Products/Home.tsx ***!
+  \************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.CatalogProductsHome = void 0;
+
+var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var CatalogProductsHome = function CatalogProductsHome() {
+  return react_1["default"].createElement(react_1["default"].Fragment, null);
+};
+
+exports.CatalogProductsHome = CatalogProductsHome;
+
+/***/ }),
+
+/***/ "./resources/js/admin/views/Catalog/Recommended/Home.tsx":
+/*!***************************************************************!*\
+  !*** ./resources/js/admin/views/Catalog/Recommended/Home.tsx ***!
+  \***************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.CatalogRecommendedHome = void 0;
+
+var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var CatalogRecommendedHome = function CatalogRecommendedHome() {
+  return react_1["default"].createElement(react_1["default"].Fragment, null);
+};
+
+exports.CatalogRecommendedHome = CatalogRecommendedHome;
 
 /***/ }),
 

@@ -5,7 +5,7 @@ import { Article } from './Article';
 import { PageHeading } from '../../../components/PageHeading';
 import { DescriptionList, DescriptionListRows } from '../../../components/DescriptionList';
 
-export const ArticlesDetails = (props: any) => {
+export const BlogArticlesDetails = (props: any) => {
     const articleId = useParams().id;
     const [articleData, setArticleData] = useState<Article>();
     const navigate = useNavigate();

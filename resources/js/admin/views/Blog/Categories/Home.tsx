@@ -7,7 +7,7 @@ import { useCurrentQueryChanged, useCurrentQueryParams } from '../../../helpers/
 import { PageHeadingSimple } from '../../../components/PageHeading';
 import { Sort } from '../../../partials/Sort';
 
-export const CategoriesHome = () => {
+export const BlogCategoriesHome = () => {
     const [categories, setCategories] = useState<Category[]>([]);
     const [pagination, setPagination] = useState<PaginationData>();
     const urlQuery = useCurrentQueryParams();

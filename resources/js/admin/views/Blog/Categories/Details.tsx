@@ -5,7 +5,7 @@ import { Category } from './Category';
 import { PageHeading } from '../../../components/PageHeading';
 import { DescriptionList, DescriptionListRows } from '../../../components/DescriptionList';
 
-export const CategoriesDetails = (props: any) => {
+export const BlogCategoriesDetails = (props: any) => {
     const categoryId = useParams().id;
     const [categoryData, setCategoryData] = useState<Category>();
     const navigate = useNavigate();

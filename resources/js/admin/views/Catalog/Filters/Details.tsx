@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Details = () => {
+export const CatalogFiltersDetails = () => {
     
     return (
         <>
