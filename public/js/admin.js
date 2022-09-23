@@ -3136,17 +3136,18 @@ var Input = function Input(props) {
   }, react_1["default"].createElement("input", Object.assign({
     type: inputSettings.type,
     id: inputSettings.id,
-    className: "block w-full rounded-md border-red-300 pr-10 text-red-900 placeholder-red-300 focus:border-red-500 focus:outline-none focus:ring-red-500 sm:text-sm",
+    className: "block w-full rounded-md sm:text-sm" + (errors[inputSettings.name] ? ' border-red-300 text-red-900 placeholder-red-300 focus:border-red-500 focus:outline-none focus:ring-red-500 pr-10' : ' border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500' + (inputSettings.icon ? ' pr-10' : '')),
     placeholder: inputSettings.placeholder,
     defaultValue: inputSettings.defaultValue,
     "aria-invalid": "true",
-    "aria-describedby": inputSettings.name + '-error'
-  }, register(inputSettings.name, inputSettings.validationRules))), errors[inputSettings.name] ? react_1["default"].createElement("div", {
-    className: "pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
-  }, react_1["default"].createElement("i", {
+    "aria-describedby": inputSettings.name + '-error',
+    readOnly: inputSettings.readonly
+  }, register(inputSettings.name, inputSettings.validationRules))), react_1["default"].createElement("div", {
+    className: "pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 pt-1"
+  }, errors[inputSettings.name] ? react_1["default"].createElement("i", {
     className: "fa fa-exclamation-circle h-5 w-5 text-red-500",
     "aria-hidden": "true"
-  })) : ''), react_1["default"].createElement("p", {
+  }) : inputSettings.icon ? inputSettings.icon : '')), react_1["default"].createElement("p", {
     className: "mt-2 text-sm text-red-600",
     id: inputSettings.name + '-error'
   }, errors[inputSettings.name] ? String((_a = errors[inputSettings.name]) === null || _a === void 0 ? void 0 : _a.message) : ''));
@@ -6417,7 +6418,10 @@ var CustomerCreate = function CustomerCreate() {
     validationRules: {
       required: 'This field is required'
     },
-    readonly: false
+    readonly: false,
+    icon: react_1["default"].createElement("i", {
+      className: "fa fa-times w-5 h-5 text-blue-500"
+    })
   };
 
   var renderPage = function renderPage() {

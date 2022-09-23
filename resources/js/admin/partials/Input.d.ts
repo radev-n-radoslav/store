@@ -7,5 +7,6 @@ export interface InputSettings{
     defaultValue: string,
     validationRules: object
     readonly: boolean
+    icon?: any,
     rest?: any
 }
