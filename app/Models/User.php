@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
@@ -20,7 +22,9 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'surname',
         'email',
+        'phone',
         'password',
     ];
 
@@ -84,13 +88,24 @@ class User extends Authenticatable
         return $this->hasMany(Order::class, 'user_id');
     }
 
+    /**
+     * Check if user that is currently being created has a password and if not generate one
+     */
+    public function checkGeneratePassword()
+    {
+        if($this->password){
+            return;
+        }
+        $this->password = Hash::make(Str::random(rand(8, 16)));
+    }
+
     public static function boot()
     {
         parent::boot();
 
         static::creating(function ($model)
         {
-
+            $model->checkGeneratePassword();
         });
 
         static::created(function ($model)

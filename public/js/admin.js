@@ -6389,11 +6389,16 @@ var Card_1 = __webpack_require__(/*! ../../../partials/Card */ "./resources/js/a
 
 var react_hook_form_1 = __webpack_require__(/*! react-hook-form */ "./node_modules/react-hook-form/dist/index.cjs.js");
 
+var axios_1 = __importDefault(__webpack_require__(/*! axios */ "./node_modules/axios/index.js"));
+
 var CustomerCreate = function CustomerCreate() {
   var methods = (0, react_hook_form_1.useForm)();
+  var navigate = (0, react_router_dom_1.useNavigate)();
 
-  var onSubmit = function onSubmit(data) {
-    return console.log(data);
+  var storeCustomer = function storeCustomer(data) {
+    axios_1["default"].post('/admin/v1/accounts/users/store', data).then(function (response) {
+      navigate('/admin/customers/details/' + response.data.data.id);
+    })["catch"](function (errors) {});
   };
 
   var firstNameSettings = {
@@ -6420,10 +6425,38 @@ var CustomerCreate = function CustomerCreate() {
     },
     readonly: false
   };
+  var phoneSettings = {
+    type: 'text',
+    label: 'Phone number',
+    name: 'phone',
+    id: 'phone',
+    placeholder: '',
+    defaultValue: '',
+    validationRules: {},
+    icon: react_1["default"].createElement("i", {
+      className: "fa fa-phone h-5 w-5"
+    }),
+    readonly: false
+  };
+  var emailSettings = {
+    type: 'email',
+    label: 'Email',
+    name: 'email',
+    id: 'email',
+    placeholder: '',
+    defaultValue: '',
+    validationRules: {
+      required: 'This field is required'
+    },
+    icon: react_1["default"].createElement("i", {
+      className: "fa far fa-envelope h-5 w-5"
+    }),
+    readonly: false
+  };
 
   var renderPage = function renderPage() {
     return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement(react_hook_form_1.FormProvider, Object.assign({}, methods), react_1["default"].createElement("form", {
-      onSubmit: methods.handleSubmit(onSubmit)
+      onSubmit: methods.handleSubmit(storeCustomer)
     }, react_1["default"].createElement("div", {
       className: "grid grid-cols-12"
     }, react_1["default"].createElement("div", {
@@ -6434,6 +6467,14 @@ var CustomerCreate = function CustomerCreate() {
       className: "col-span-12 md:col-span-6 mb-4"
     }, react_1["default"].createElement(Input_1.Input, {
       settings: surnameSettings
+    })), react_1["default"].createElement("div", {
+      className: "col-span-12 md:col-span-6 mb-4 lg:mr-4"
+    }, react_1["default"].createElement(Input_1.Input, {
+      settings: emailSettings
+    })), react_1["default"].createElement("div", {
+      className: "col-span-12 md:col-span-6 mb-4"
+    }, react_1["default"].createElement(Input_1.Input, {
+      settings: phoneSettings
     }))), react_1["default"].createElement("div", {
       className: "grid grid-cols-12"
     }, react_1["default"].createElement("div", {

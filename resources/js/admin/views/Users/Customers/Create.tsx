@@ -1,14 +1,25 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { InputSettings } from '../../../partials/Input.d';
 import { Input } from '../../../partials/Input';
 import { Card } from '../../../partials/Card';
 import { useForm, FormProvider, useFormContext } from 'react-hook-form';
+import axios from 'axios';
 
 
 export const CustomerCreate = () => {
     const methods = useForm();
-    const onSubmit = (data: any) => console.log(data);
+    const navigate = useNavigate();
+
+    const storeCustomer = (data: any) => {
+        axios.post('/admin/v1/accounts/users/store', data)
+            .then((response) => {
+                navigate('/admin/customers/details/' + response.data.data.id);
+            })
+            .catch((errors) => {
+
+            });
+    }
 
     const firstNameSettings: InputSettings ={
         type: 'text',
@@ -36,17 +47,51 @@ export const CustomerCreate = () => {
         readonly: false
     };
 
+    const phoneSettings: InputSettings ={
+        type: 'text',
+        label: 'Phone number',
+        name: 'phone',
+        id: 'phone',
+        placeholder: '',
+        defaultValue: '',
+        validationRules: {
+            
+        },
+        icon: <i className="fa fa-phone h-5 w-5"></i>,
+        readonly: false
+    };
+
+    const emailSettings: InputSettings ={
+        type: 'email',
+        label: 'Email',
+        name: 'email',
+        id: 'email',
+        placeholder: '',
+        defaultValue: '',
+        validationRules: {
+            required: 'This field is required'
+        },
+        icon: <i className="fa far fa-envelope h-5 w-5"></i>,
+        readonly: false
+    };
+
     const renderPage = () => {
         return (
             <>
                 <FormProvider {...methods}>
-                    <form onSubmit={methods.handleSubmit(onSubmit)}>
+                    <form onSubmit={methods.handleSubmit(storeCustomer)}>
                         <div className="grid grid-cols-12">
                             <div className="col-span-12 md:col-span-6 mb-4 lg:mr-4">
                                 <Input settings={firstNameSettings} />
                             </div>
                             <div className="col-span-12 md:col-span-6 mb-4">
                                 <Input settings={surnameSettings} />
+                            </div>
+                            <div className="col-span-12 md:col-span-6 mb-4 lg:mr-4">
+                                <Input settings={emailSettings} />
+                            </div>
+                            <div className="col-span-12 md:col-span-6 mb-4">
+                                <Input settings={phoneSettings} />
                             </div>
                         </div>
                         <div className="grid grid-cols-12">
