@@ -6418,10 +6418,7 @@ var CustomerCreate = function CustomerCreate() {
     validationRules: {
       required: 'This field is required'
     },
-    readonly: false,
-    icon: react_1["default"].createElement("i", {
-      className: "fa fa-times w-5 h-5 text-blue-500"
-    })
+    readonly: false
   };
 
   var renderPage = function renderPage() {
