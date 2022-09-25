@@ -1646,6 +1646,9 @@ select {
 .col-span-3 {
   grid-column: span 3 / span 3;
 }
+.col-start-3 {
+  grid-column-start: 3;
+}
 .-m-2 {
   margin: -0.5rem;
 }
@@ -2032,6 +2035,9 @@ select {
 .cursor-default {
   cursor: default;
 }
+.cursor-not-allowed {
+  cursor: not-allowed;
+}
 .select-none {
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -2090,6 +2096,9 @@ select {
 }
 .gap-6 {
   gap: 1.5rem;
+}
+.gap-3 {
+  gap: 0.75rem;
 }
 .gap-y-10 {
   row-gap: 2.5rem;
@@ -2809,6 +2818,9 @@ select {
 .opacity-100 {
   opacity: 1;
 }
+.opacity-25 {
+  opacity: 0.25;
+}
 .shadow {
   --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
@@ -3282,6 +3294,14 @@ select {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .sm\:grid-cols-6 {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .sm\:grid-cols-12 {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+
   .sm\:flex-nowrap {
     flex-wrap: nowrap;
   }
@@ -3508,6 +3528,14 @@ select {
 
   .md\:col-span-3 {
     grid-column: span 3 / span 3;
+  }
+
+  .md\:col-span-12 {
+    grid-column: span 12 / span 12;
+  }
+
+  .md\:col-start-3 {
+    grid-column-start: 3;
   }
 
   .md\:-m-2 {

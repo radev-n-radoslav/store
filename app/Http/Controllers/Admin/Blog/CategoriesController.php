@@ -45,9 +45,12 @@ class CategoriesController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        $files = FileStorage::storeFiles($request);
         $requestData = $request->toArray();
-        $requestData['thumbnail_url'] = asset('files/'.$files[0]->path);
+        
+        if ($this->thumbnail) {
+            $files = FileStorage::storeFiles($request);
+            $requestData['thumbnail_url'] = asset('files/'.$files[0]->path);
+        }
 
         $category = BlogCategory::create($requestData);
 

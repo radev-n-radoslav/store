@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { InputSettings } from '../../../partials/Input.d';
 import { Input } from '../../../partials/Input';
@@ -6,17 +6,25 @@ import { Card } from '../../../partials/Card';
 import { useForm, FormProvider } from 'react-hook-form';
 import axios from 'axios';
 import { ImageUploadSingle, ImageUploadSingleSettings } from '../../../partials/ImageUpload';
+import { RadioCardsSmall } from '../../../partials/Radio';
+import { RadioCardsSmallOptions } from '../../../partials/Radio.d';
 
 
 export const BlogCategoriesCreate = () => {
     const methods = useForm();
     const navigate = useNavigate();
+    const [thumbnailType, setThumbnailType] = useState();
 
     const storeCategory = (data: any) => {
         const formData = new FormData();
         formData.append('name', data.name);
         formData.append('description', data.description);
-        formData.append('thumbnail', data.thumbnail[0]);
+        if(thumbnailType == 'upload'){
+            formData.append('thumbnail', data.thumbnail[0]);
+        }else{
+            formData.append('thumbnail_url', data.thumbnail_url);
+        }
+        
 
         axios.post('/admin/v1/blog/categories/store', formData, {
             headers: {
@@ -57,14 +65,45 @@ export const BlogCategoriesCreate = () => {
         readonly: false
     };
 
+    const thumbnailUrlSettings: InputSettings ={
+        type: 'text',
+        label: 'Thumbnail url',
+        name: 'thumbnail_url',
+        id: 'thumbnail_url',
+        placeholder: '',
+        defaultValue: '',
+        validationRules: {
+            required: 'This field is required'
+        },
+        icon: <i className="fas fa-link h-5 w-5"></i>,
+        readonly: false
+    };
+
     const thumbnailSettings: ImageUploadSingleSettings ={
-        label: 'Thumbnail',
+        label: '',
         name: 'thumbnail',
         id: 'thumbnail',
         validationRules: {
             
         }
     };
+
+    const thumbnailUploadTypes: RadioCardsSmallOptions[] = [
+        {
+            label: 'Upload new image',
+            value: 'upload',
+            disabled: false
+        },
+        {
+            label: 'Use a link',
+            value: 'link',
+            disabled: false
+        }
+    ]
+
+    const getSelectedThumbnailType = (selected: any) => {
+        setThumbnailType(selected.value);
+    }
 
     const renderPage = () => {
         return (
@@ -78,9 +117,24 @@ export const BlogCategoriesCreate = () => {
                             <div className="col-span-12 md:col-span-6 mb-4">
                                 <Input settings={descriptionSettings} />
                             </div>
-                            <div className="col-span-12 md:col-span-6">
-                                <ImageUploadSingle settings={thumbnailSettings} />
+                            <div className="col-span-12 md:col-span-12">
+                                <RadioCardsSmall 
+                                    label='Thumbnail'
+                                    options={thumbnailUploadTypes}
+                                    selected={getSelectedThumbnailType}
+                                />
+                                
                             </div>
+                            {
+                                thumbnailType == 'upload' ? 
+                                    <div className="col-span-12 md:col-span-6">
+                                        <ImageUploadSingle settings={thumbnailSettings} />
+                                    </div>
+                                :
+                                <div className="col-span-12 md:col-span-6 mb-4">
+                                    <Input settings={thumbnailUrlSettings} />
+                                </div>
+                            }
                         </div>
                         <div className="grid grid-cols-12">
                             <div className="col-span-12 lg:col-span-4"></div>

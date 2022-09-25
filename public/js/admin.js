@@ -3451,6 +3451,133 @@ exports.Pagination = Pagination;
 
 /***/ }),
 
+/***/ "./resources/js/admin/partials/Radio.tsx":
+/*!***********************************************!*\
+  !*** ./resources/js/admin/partials/Radio.tsx ***!
+  \***********************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  var desc = Object.getOwnPropertyDescriptor(m, k);
+
+  if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+    desc = {
+      enumerable: true,
+      get: function get() {
+        return m[k];
+      }
+    };
+  }
+
+  Object.defineProperty(o, k2, desc);
+} : function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  o[k2] = m[k];
+});
+
+var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
+  Object.defineProperty(o, "default", {
+    enumerable: true,
+    value: v
+  });
+} : function (o, v) {
+  o["default"] = v;
+});
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+  }
+
+  __setModuleDefault(result, mod);
+
+  return result;
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.RadioCardsSmall = void 0;
+
+var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+
+var react_2 = __webpack_require__(/*! @headlessui/react */ "./node_modules/@headlessui/react/dist/index.cjs");
+
+var styleHelpers_1 = __webpack_require__(/*! ../helpers/styleHelpers */ "./resources/js/admin/helpers/styleHelpers.tsx");
+
+var RadioCardsSmall = function RadioCardsSmall(props) {
+  var _a, _b, _c;
+
+  var _ref = (0, react_1.useState)(props),
+      _ref2 = _slicedToArray(_ref, 2),
+      settings = _ref2[0],
+      setSettings = _ref2[1];
+
+  var _ref3 = (0, react_1.useState)(settings["default"] ? settings.options[settings["default"]] : settings.options[0]),
+      _ref4 = _slicedToArray(_ref3, 2),
+      selected = _ref4[0],
+      setSelected = _ref4[1];
+
+  (0, react_1.useEffect)(function () {
+    settings.selected(selected);
+  }, [selected]);
+  return react_1["default"].createElement("div", {
+    className: "mb-4"
+  }, react_1["default"].createElement("div", {
+    className: "flex items-center justify-between"
+  }, react_1["default"].createElement("h2", {
+    className: "text-sm font-medium text-gray-900"
+  }, settings.label), settings.link ? react_1["default"].createElement(react_router_dom_1.Link, {
+    to: (_b = (_a = settings.link) === null || _a === void 0 ? void 0 : _a.path) !== null && _b !== void 0 ? _b : '',
+    className: "text-sm font-medium text-indigo-600 hover:text-indigo-500"
+  }, (_c = settings.link) === null || _c === void 0 ? void 0 : _c.label) : ''), react_1["default"].createElement(react_2.RadioGroup, {
+    value: selected,
+    onChange: setSelected,
+    className: "mt-2"
+  }, react_1["default"].createElement(react_2.RadioGroup.Label, {
+    className: "sr-only"
+  }, " Choose a selectedory option "), react_1["default"].createElement("div", {
+    className: "grid grid-cols-" + (settings.options.length < 12 ? Math.round(settings.options.length / 2) : '12') + " gap-3 sm:grid-cols-" + (settings.options.length < 12 ? settings.options.length : '12')
+  }, settings.options.map(function (option) {
+    return react_1["default"].createElement(react_2.RadioGroup.Option, {
+      key: option.label,
+      value: option,
+      className: function className(_ref5) {
+        var active = _ref5.active,
+            checked = _ref5.checked;
+        return (0, styleHelpers_1.useClassNames)(!option.disabled ? 'cursor-pointer focus:outline-none' : 'opacity-25 cursor-not-allowed', active ? 'ring-2 ring-offset-2 ring-indigo-500' : '', checked ? 'bg-indigo-600 border-transparent text-white hover:bg-indigo-700' : 'bg-white border-gray-200 text-gray-900 hover:bg-gray-50', 'border rounded-md py-3 px-3 flex items-center justify-center text-sm font-medium uppercase sm:flex-1');
+      },
+      disabled: option.disabled
+    }, react_1["default"].createElement(react_2.RadioGroup.Label, {
+      as: "span"
+    }, option.label));
+  }))));
+};
+
+exports.RadioCardsSmall = RadioCardsSmall;
+
+/***/ }),
+
 /***/ "./resources/js/admin/partials/Sort.tsx":
 /*!**********************************************!*\
   !*** ./resources/js/admin/partials/Sort.tsx ***!
@@ -4223,6 +4350,58 @@ exports.BlogArticlesHome = BlogArticlesHome;
 "use strict";
 
 
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  var desc = Object.getOwnPropertyDescriptor(m, k);
+
+  if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+    desc = {
+      enumerable: true,
+      get: function get() {
+        return m[k];
+      }
+    };
+  }
+
+  Object.defineProperty(o, k2, desc);
+} : function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  o[k2] = m[k];
+});
+
+var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
+  Object.defineProperty(o, "default", {
+    enumerable: true,
+    value: v
+  });
+} : function (o, v) {
+  o["default"] = v;
+});
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+  }
+
+  __setModuleDefault(result, mod);
+
+  return result;
+};
+
 var __importDefault = this && this.__importDefault || function (mod) {
   return mod && mod.__esModule ? mod : {
     "default": mod
@@ -4234,7 +4413,7 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports.BlogCategoriesCreate = void 0;
 
-var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
 var react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
 
@@ -4248,15 +4427,28 @@ var axios_1 = __importDefault(__webpack_require__(/*! axios */ "./node_modules/a
 
 var ImageUpload_1 = __webpack_require__(/*! ../../../partials/ImageUpload */ "./resources/js/admin/partials/ImageUpload.tsx");
 
+var Radio_1 = __webpack_require__(/*! ../../../partials/Radio */ "./resources/js/admin/partials/Radio.tsx");
+
 var BlogCategoriesCreate = function BlogCategoriesCreate() {
   var methods = (0, react_hook_form_1.useForm)();
   var navigate = (0, react_router_dom_1.useNavigate)();
+
+  var _ref = (0, react_1.useState)(),
+      _ref2 = _slicedToArray(_ref, 2),
+      thumbnailType = _ref2[0],
+      setThumbnailType = _ref2[1];
 
   var storeCategory = function storeCategory(data) {
     var formData = new FormData();
     formData.append('name', data.name);
     formData.append('description', data.description);
-    formData.append('thumbnail', data.thumbnail[0]);
+
+    if (thumbnailType == 'upload') {
+      formData.append('thumbnail', data.thumbnail[0]);
+    } else {
+      formData.append('thumbnail_url', data.thumbnail_url);
+    }
+
     axios_1["default"].post('/admin/v1/blog/categories/store', formData, {
       headers: {
         "Content-Type": "multipart/form-data"
@@ -4290,11 +4482,39 @@ var BlogCategoriesCreate = function BlogCategoriesCreate() {
     },
     readonly: false
   };
+  var thumbnailUrlSettings = {
+    type: 'text',
+    label: 'Thumbnail url',
+    name: 'thumbnail_url',
+    id: 'thumbnail_url',
+    placeholder: '',
+    defaultValue: '',
+    validationRules: {
+      required: 'This field is required'
+    },
+    icon: react_1["default"].createElement("i", {
+      className: "fas fa-link h-5 w-5"
+    }),
+    readonly: false
+  };
   var thumbnailSettings = {
-    label: 'Thumbnail',
+    label: '',
     name: 'thumbnail',
     id: 'thumbnail',
     validationRules: {}
+  };
+  var thumbnailUploadTypes = [{
+    label: 'Upload new image',
+    value: 'upload',
+    disabled: false
+  }, {
+    label: 'Use a link',
+    value: 'link',
+    disabled: false
+  }];
+
+  var getSelectedThumbnailType = function getSelectedThumbnailType(selected) {
+    setThumbnailType(selected.value);
   };
 
   var renderPage = function renderPage() {
@@ -4311,9 +4531,19 @@ var BlogCategoriesCreate = function BlogCategoriesCreate() {
     }, react_1["default"].createElement(Input_1.Input, {
       settings: descriptionSettings
     })), react_1["default"].createElement("div", {
+      className: "col-span-12 md:col-span-12"
+    }, react_1["default"].createElement(Radio_1.RadioCardsSmall, {
+      label: 'Thumbnail',
+      options: thumbnailUploadTypes,
+      selected: getSelectedThumbnailType
+    })), thumbnailType == 'upload' ? react_1["default"].createElement("div", {
       className: "col-span-12 md:col-span-6"
     }, react_1["default"].createElement(ImageUpload_1.ImageUploadSingle, {
       settings: thumbnailSettings
+    })) : react_1["default"].createElement("div", {
+      className: "col-span-12 md:col-span-6 mb-4"
+    }, react_1["default"].createElement(Input_1.Input, {
+      settings: thumbnailUrlSettings
     }))), react_1["default"].createElement("div", {
       className: "grid grid-cols-12"
     }, react_1["default"].createElement("div", {
