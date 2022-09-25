@@ -1,4 +1,6 @@
 *
+!files/
+!admin/
 !public/
 !.gitignore
 !pageStatics.json

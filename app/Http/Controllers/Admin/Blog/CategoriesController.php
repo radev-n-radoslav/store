@@ -44,6 +44,7 @@ class CategoriesController extends Controller
      */
     public function store(StoreRequest $request)
     {
+        dd($request->toArray());
         $category = BlogCategory::create($request->toArray());
 
         return response([

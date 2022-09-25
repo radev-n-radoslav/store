@@ -1,0 +1,37 @@
+{
+    "logo": "https://galenia.bg/uploaded/files/Logo/logo-transparent.png",
+    "navigation": [
+        {
+            "name": "Dashboard",
+            "href": "/admin",
+            "icon": "fa fa-tachometer"
+        },
+        {
+            "name": "Catalog",
+            "href": "/admin/catalog",
+            "icon": "fa fa-box"
+        },
+        {
+            "name": "Sales",
+            "href": "/admin/sales",
+            "icon": "fa fa-dollar-sign"
+        },
+        {
+            "name": "Blog",
+            "href": "/admin/blog",
+            "icon": "fa fa-newspaper"
+        },
+        {
+            "name": "Users",
+            "href": "/admin/users",
+            "icon": "fa fa-users"
+        }
+    ],
+    "secondaryNavigation": [
+        {
+            "name": "Settings",
+            "href": "/admin/settings",
+            "icon": "fa fa-cog"
+        }
+    ]
+}
