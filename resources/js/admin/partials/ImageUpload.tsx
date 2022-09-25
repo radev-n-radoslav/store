@@ -48,8 +48,12 @@ export const ImageUploadSingle = (props: any) => {
                         type="file"
                         id={settings.id}
                         className='hidden'
-                        {...register(settings.name, settings.validationRules)}
-                        onChange={setThumbnail}
+                        {...register(settings.name, {
+                            ...settings.validationRules,
+                            onChange: (e) => {
+                                setThumbnail(e);
+                            }
+                        })}
                     />
                 </label>
             </div>

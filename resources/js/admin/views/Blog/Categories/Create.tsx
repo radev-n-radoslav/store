@@ -14,7 +14,6 @@ export const BlogCategoriesCreate = () => {
 
     const storeCategory = (data: any) => {
         const formData = new FormData();
-        // return console.log(data.thumbnail[0]);
         formData.append('name', data.name);
         formData.append('description', data.description);
         formData.append('thumbnail', data.thumbnail[0]);

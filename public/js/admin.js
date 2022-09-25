@@ -3165,9 +3165,11 @@ var ImageUploadSingle = function ImageUploadSingle(props) {
     type: "file",
     id: settings.id,
     className: 'hidden'
-  }, register(settings.name, settings.validationRules), {
-    onChange: setThumbnail
-  })))));
+  }, register(settings.name, Object.assign(Object.assign({}, settings.validationRules), {
+    onChange: function onChange(e) {
+      setThumbnail(e);
+    }
+  })))))));
 };
 
 exports.ImageUploadSingle = ImageUploadSingle;
@@ -4251,8 +4253,7 @@ var BlogCategoriesCreate = function BlogCategoriesCreate() {
   var navigate = (0, react_router_dom_1.useNavigate)();
 
   var storeCategory = function storeCategory(data) {
-    var formData = new FormData(); // return console.log(data.thumbnail[0]);
-
+    var formData = new FormData();
     formData.append('name', data.name);
     formData.append('description', data.description);
     formData.append('thumbnail', data.thumbnail[0]);
