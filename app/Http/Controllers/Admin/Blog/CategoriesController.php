@@ -10,6 +10,7 @@ use App\Http\Requests\Admin\Blog\Categories\RestoreRequest;
 use App\Http\Requests\Admin\Blog\Categories\StoreRequest;
 use App\Http\Requests\Admin\Blog\Categories\UpdateRequest;
 use App\Models\BlogCategory;
+use App\Services\FileStorage\FileStorage;
 
 class CategoriesController extends Controller
 {
@@ -44,8 +45,11 @@ class CategoriesController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        dd($request->toArray());
-        $category = BlogCategory::create($request->toArray());
+        $files = FileStorage::storeFiles($request);
+        $requestData = $request->toArray();
+        $requestData['thumbnail_url'] = asset('files/'.$files[0]->path);
+
+        $category = BlogCategory::create($requestData);
 
         return response([
             'data' => $category

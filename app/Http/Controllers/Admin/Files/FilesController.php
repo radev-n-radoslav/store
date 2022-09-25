@@ -10,7 +10,6 @@ use App\Http\Requests\Admin\Files\IndexRequest;
 use App\Http\Requests\Admin\Files\StoreRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Models\File;
-use App\Models\FileType;
 use App\Services\FileStorage\FileStorage;
 
 class FilesController extends Controller

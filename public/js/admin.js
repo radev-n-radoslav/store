@@ -4106,8 +4106,115 @@ exports.BlogCategoriesCreate = void 0;
 
 var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
+var react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+
+var Input_1 = __webpack_require__(/*! ../../../partials/Input */ "./resources/js/admin/partials/Input.tsx");
+
+var Card_1 = __webpack_require__(/*! ../../../partials/Card */ "./resources/js/admin/partials/Card.tsx");
+
+var react_hook_form_1 = __webpack_require__(/*! react-hook-form */ "./node_modules/react-hook-form/dist/index.cjs.js");
+
+var axios_1 = __importDefault(__webpack_require__(/*! axios */ "./node_modules/axios/index.js"));
+
 var BlogCategoriesCreate = function BlogCategoriesCreate() {
-  return react_1["default"].createElement(react_1["default"].Fragment, null);
+  var methods = (0, react_hook_form_1.useForm)();
+  var navigate = (0, react_router_dom_1.useNavigate)();
+
+  var storeCategory = function storeCategory(data) {
+    var formData = new FormData();
+    formData.append('name', data.name);
+    formData.append('description', data.description);
+    formData.append('thumbnail', data.thumbnail[0]);
+    axios_1["default"].post('/admin/v1/blog/categories/store', formData, {
+      headers: {
+        "Content-Type": "multipart/form-data"
+      }
+    }).then(function (response) {
+      navigate('/admin/blog/categories/details/' + response.data.data.id);
+    })["catch"](function (errors) {});
+  };
+
+  var nameSettings = {
+    type: 'text',
+    label: 'Category name',
+    name: 'name',
+    id: 'name',
+    placeholder: '',
+    defaultValue: '',
+    validationRules: {
+      required: 'This field is required'
+    },
+    readonly: false
+  };
+  var descriptionSettings = {
+    type: 'text',
+    label: 'Description',
+    name: 'description',
+    id: 'description',
+    placeholder: '',
+    defaultValue: '',
+    validationRules: {
+      required: 'This field is required'
+    },
+    readonly: false
+  };
+  var thumbnailSettings = {
+    type: 'file',
+    label: 'Thumbnail',
+    name: 'thumbnail',
+    id: 'thumbnail',
+    placeholder: '',
+    defaultValue: '',
+    validationRules: {},
+    icon: react_1["default"].createElement("i", {
+      className: "far fa-file-image h-5 w-5"
+    }),
+    readonly: false
+  };
+
+  var renderPage = function renderPage() {
+    return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement(react_hook_form_1.FormProvider, Object.assign({}, methods), react_1["default"].createElement("form", {
+      onSubmit: methods.handleSubmit(storeCategory)
+    }, react_1["default"].createElement("div", {
+      className: "grid grid-cols-12"
+    }, react_1["default"].createElement("div", {
+      className: "col-span-12 md:col-span-6 mb-4 lg:mr-4"
+    }, react_1["default"].createElement(Input_1.Input, {
+      settings: nameSettings
+    })), react_1["default"].createElement("div", {
+      className: "col-span-12 md:col-span-6 mb-4"
+    }, react_1["default"].createElement(Input_1.Input, {
+      settings: descriptionSettings
+    })), react_1["default"].createElement("div", {
+      className: "col-span-12 md:col-span-6 mb-4 lg:mr-4"
+    }, react_1["default"].createElement(Input_1.Input, {
+      settings: thumbnailSettings
+    }))), react_1["default"].createElement("div", {
+      className: "grid grid-cols-12"
+    }, react_1["default"].createElement("div", {
+      className: "col-span-12 lg:col-span-4"
+    }), react_1["default"].createElement("div", {
+      className: "col-span-12 lg:col-span-4"
+    }, react_1["default"].createElement("button", {
+      type: "submit",
+      className: "text-white bg-blue-600 hover:bg-blue-800 px-3 py-3 rounded w-full"
+    }, react_1["default"].createElement("i", {
+      className: "fa fa-save"
+    }), " Save"))))));
+  };
+
+  return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("div", {
+    className: "px-4"
+  }, react_1["default"].createElement(Card_1.Card, {
+    title: 'Create a blog category',
+    description: react_1["default"].createElement(react_router_dom_1.Link, {
+      to: "/admin/blog/categories",
+      className: "pt-4"
+    }, react_1["default"].createElement("i", {
+      className: "fa fa-arrow-left"
+    }), " Return back to categories"),
+    content: renderPage()
+  })));
 };
 
 exports.BlogCategoriesCreate = BlogCategoriesCreate;

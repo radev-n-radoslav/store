@@ -17,7 +17,7 @@ class FileStorage
 
         foreach($request->files as $key => $fileArr){
             $path = Storage::disk('files')
-                ->putFile($request->file($key));
+                ->putFile('/', $request->file($key));
             
             // Get original file name (as sent by client)
             $fileName = $request->file($key)->getClientOriginalName();
