@@ -4,7 +4,7 @@ export interface InputSettings{
     label: string,
     name: string,
     placeholder: string,
-    defaultValue: string,
+    defaultValue?: string,
     validationRules: object
     readonly: boolean
     icon?: any,
