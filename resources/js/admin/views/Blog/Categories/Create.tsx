@@ -127,11 +127,11 @@ export const BlogCategoriesCreate = () => {
                             </div>
                             {
                                 thumbnailType == 'upload' ? 
-                                    <div className="col-span-12 md:col-span-6">
+                                    <div className="col-span-12 md:col-span-6 md:col-start-4 mb-4">
                                         <ImageUploadSingle settings={thumbnailSettings} />
                                     </div>
                                 :
-                                <div className="col-span-12 md:col-span-6 mb-4">
+                                <div className="col-span-12 md:col-span-6 md:col-start-4 mb-4">
                                     <Input settings={thumbnailUrlSettings} />
                                 </div>
                             }
