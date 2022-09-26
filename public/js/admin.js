@@ -4771,6 +4771,58 @@ exports.BlogCategoriesDetails = BlogCategoriesDetails;
 "use strict";
 
 
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  var desc = Object.getOwnPropertyDescriptor(m, k);
+
+  if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+    desc = {
+      enumerable: true,
+      get: function get() {
+        return m[k];
+      }
+    };
+  }
+
+  Object.defineProperty(o, k2, desc);
+} : function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  o[k2] = m[k];
+});
+
+var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
+  Object.defineProperty(o, "default", {
+    enumerable: true,
+    value: v
+  });
+} : function (o, v) {
+  o["default"] = v;
+});
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+  }
+
+  __setModuleDefault(result, mod);
+
+  return result;
+};
+
 var __importDefault = this && this.__importDefault || function (mod) {
   return mod && mod.__esModule ? mod : {
     "default": mod
@@ -4782,10 +4834,183 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports.BlogCategoriesEdit = void 0;
 
-var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+
+var Input_1 = __webpack_require__(/*! ../../../partials/Input */ "./resources/js/admin/partials/Input.tsx");
+
+var Card_1 = __webpack_require__(/*! ../../../partials/Card */ "./resources/js/admin/partials/Card.tsx");
+
+var react_hook_form_1 = __webpack_require__(/*! react-hook-form */ "./node_modules/react-hook-form/dist/index.cjs.js");
+
+var axios_1 = __importDefault(__webpack_require__(/*! axios */ "./node_modules/axios/index.js"));
+
+var ImageUpload_1 = __webpack_require__(/*! ../../../partials/ImageUpload */ "./resources/js/admin/partials/ImageUpload.tsx");
+
+var Radio_1 = __webpack_require__(/*! ../../../partials/Radio */ "./resources/js/admin/partials/Radio.tsx");
 
 var BlogCategoriesEdit = function BlogCategoriesEdit() {
-  return react_1["default"].createElement(react_1["default"].Fragment, null);
+  var categoryId = (0, react_router_dom_1.useParams)().id;
+  var methods = (0, react_hook_form_1.useForm)();
+  var navigate = (0, react_router_dom_1.useNavigate)();
+
+  var _ref = (0, react_1.useState)(),
+      _ref2 = _slicedToArray(_ref, 2),
+      thumbnailType = _ref2[0],
+      setThumbnailType = _ref2[1];
+
+  var _ref3 = (0, react_1.useState)(),
+      _ref4 = _slicedToArray(_ref3, 2),
+      categoryData = _ref4[0],
+      setCategoryData = _ref4[1];
+
+  var fetchCategoryData = function fetchCategoryData() {
+    axios_1["default"].get('/admin/v1/blog/categories/details/' + categoryId).then(function (response) {
+      nameSettings.defaultValue = response.data.data.name;
+      descriptionSettings.defaultValue = response.data.data.description;
+      thumbnailUrlSettings.defaultValue = response.data.data.thumbnail_url;
+      setCategoryData(response.data.data);
+    })["catch"](function (errors) {});
+  };
+
+  (0, react_1.useEffect)(function () {
+    fetchCategoryData();
+  }, []);
+
+  var updateCategory = function updateCategory(data) {
+    var formData = new FormData();
+    formData.append('name', data.name);
+    formData.append('description', data.description);
+
+    if (thumbnailType == 'upload') {
+      formData.append('thumbnail', data.thumbnail[0]);
+    } else {
+      formData.append('thumbnail_url', data.thumbnail_url);
+    }
+
+    axios_1["default"].post('/admin/v1/blog/categories/update', formData, {
+      headers: {
+        "Content-Type": "multipart/form-data"
+      }
+    }).then(function (response) {
+      navigate('/admin/blog/categories/details/' + response.data.data.id);
+    })["catch"](function (errors) {});
+  };
+
+  var nameSettings = {
+    type: 'text',
+    label: 'Category name',
+    name: 'name',
+    id: 'name',
+    placeholder: '',
+    defaultValue: '',
+    validationRules: {
+      required: 'This field is required'
+    },
+    readonly: false
+  };
+  var descriptionSettings = {
+    type: 'text',
+    label: 'Description',
+    name: 'description',
+    id: 'description',
+    placeholder: '',
+    defaultValue: '',
+    validationRules: {
+      required: 'This field is required'
+    },
+    readonly: false
+  };
+  var thumbnailUrlSettings = {
+    type: 'text',
+    label: 'Thumbnail url',
+    name: 'thumbnail_url',
+    id: 'thumbnail_url',
+    placeholder: '',
+    defaultValue: '',
+    validationRules: {
+      required: 'This field is required'
+    },
+    icon: react_1["default"].createElement("i", {
+      className: "fas fa-link h-5 w-5"
+    }),
+    readonly: false
+  };
+  var thumbnailSettings = {
+    label: '',
+    name: 'thumbnail',
+    id: 'thumbnail',
+    validationRules: {}
+  };
+  var thumbnailUploadTypes = [{
+    label: 'Upload new image',
+    value: 'upload',
+    disabled: false
+  }, {
+    label: 'Use a link',
+    value: 'link',
+    disabled: false
+  }];
+
+  var getSelectedThumbnailType = function getSelectedThumbnailType(selected) {
+    setThumbnailType(selected.value);
+  };
+
+  var renderPage = function renderPage() {
+    return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement(react_hook_form_1.FormProvider, Object.assign({}, methods), react_1["default"].createElement("form", {
+      onSubmit: methods.handleSubmit(updateCategory)
+    }, react_1["default"].createElement("div", {
+      className: "grid grid-cols-12"
+    }, react_1["default"].createElement("div", {
+      className: "col-span-12 md:col-span-6 mb-4 lg:mr-4"
+    }, react_1["default"].createElement(Input_1.Input, {
+      settings: nameSettings
+    })), react_1["default"].createElement("div", {
+      className: "col-span-12 md:col-span-6 mb-4"
+    }, react_1["default"].createElement(Input_1.Input, {
+      settings: descriptionSettings
+    })), react_1["default"].createElement("div", {
+      className: "col-span-12 md:col-span-12"
+    }, react_1["default"].createElement(Radio_1.RadioCardsSmall, {
+      label: 'Thumbnail',
+      options: thumbnailUploadTypes,
+      "default": 1,
+      selected: getSelectedThumbnailType
+    })), thumbnailType == 'upload' ? react_1["default"].createElement("div", {
+      className: "col-span-12 md:col-span-6"
+    }, react_1["default"].createElement(ImageUpload_1.ImageUploadSingle, {
+      settings: thumbnailSettings
+    })) : react_1["default"].createElement("div", {
+      className: "col-span-12 md:col-span-6 mb-4"
+    }, react_1["default"].createElement(Input_1.Input, {
+      settings: thumbnailUrlSettings
+    }))), react_1["default"].createElement("div", {
+      className: "grid grid-cols-12"
+    }, react_1["default"].createElement("div", {
+      className: "col-span-12 lg:col-span-4"
+    }), react_1["default"].createElement("div", {
+      className: "col-span-12 lg:col-span-4"
+    }, react_1["default"].createElement("button", {
+      type: "submit",
+      className: "text-white bg-blue-600 hover:bg-blue-800 px-3 py-3 rounded w-full"
+    }, react_1["default"].createElement("i", {
+      className: "fa fa-save"
+    }), " Save"))))));
+  };
+
+  return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("div", {
+    className: "px-4"
+  }, react_1["default"].createElement(Card_1.Card, {
+    title: 'Create a blog category',
+    description: react_1["default"].createElement(react_router_dom_1.Link, {
+      to: "/admin/blog/categories",
+      className: "pt-4"
+    }, react_1["default"].createElement("i", {
+      className: "fa fa-arrow-left"
+    }), " Return back to categories"),
+    content: renderPage()
+  })));
 };
 
 exports.BlogCategoriesEdit = BlogCategoriesEdit;
