@@ -15,12 +15,19 @@ use App\Services\FileStorage\FileStorage;
 class CategoriesController extends Controller
 {
     /**
-     * Get all categories
+     * Get all categories paginated
      */
     public function index(IndexRequest $request)
     {
-        $categories = BlogCategory::orderBy('id', $request->sort ?? 'desc')
-            ->paginate(10);
+        $categories = BlogCategory::orderBy('id', $request->sort ?? 'desc');
+        if ($request->selectable) {
+            $categories = $categories->get([
+                'id',
+                'name'
+            ]);
+        }else{
+            $categories = $categories->paginate(10);
+        }
         
         return response([
             'data' => $categories
@@ -47,7 +54,7 @@ class CategoriesController extends Controller
     {
         $requestData = $request->toArray();
         
-        if ($this->thumbnail) {
+        if ($request->thumbnail) {
             $files = FileStorage::storeFiles($request);
             $requestData['thumbnail_url'] = asset('files/'.$files[0]->path);
         }

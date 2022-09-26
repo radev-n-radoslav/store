@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { InputSettings } from '../../../partials/Input.d';
 import { Input } from '../../../partials/Input';
@@ -9,17 +9,49 @@ import { ImageUploadSingle, ImageUploadSingleSettings } from '../../../partials/
 import { RadioCardsSmall } from '../../../partials/Radio';
 import { RadioCardsSmallOptions } from '../../../partials/Radio.d';
 import { TinyMCE } from '../../../partials/TinyMCE';
-
+import { ComboBox } from '../../../partials/ComboBox.jsx';
+import { ComboBoxOption } from '../../../partials/ComboBoxI';
+import { Category } from '../Categories/Category';
 
 export const BlogArticlesCreate = () => {
     const methods = useForm();
     const navigate = useNavigate();
     const [thumbnailType, setThumbnailType] = useState();
+    const [blogCategories, setBlogCategories] = useState<ComboBoxOption[]>([]);
+    const [selectedCategory, setSelectedCategory] = useState<ComboBoxOption>();
+    const [editorContents, setEditorContents] = useState<string>();
+
+    const fetchBlogCategories = () => {
+        axios.get('/admin/v1/blog/categories', {
+            params: {
+                selectable: true
+            }
+        })
+            .then((response) => {
+                let categories: ComboBoxOption[] = [];
+                response.data.data.map((category: Category) => {
+                    let option: ComboBoxOption = {
+                        value: String(category.id),
+                        label: category.name
+                    };
+                    categories.push(option);
+                });
+                setBlogCategories(categories);
+            })
+            .catch((errors) => {
+
+            });
+    }
+
+    useEffect(() => {
+        fetchBlogCategories();
+    }, []);
 
     const storeArticle = (data: any) => {
         const formData = new FormData();
-        formData.append('name', data.name);
-        formData.append('description', data.description);
+        formData.append('title', data.title);
+        formData.append('category_id', String(selectedCategory?.value));
+        formData.append('content', String(editorContents));
         if(thumbnailType == 'upload'){
             formData.append('thumbnail', data.thumbnail[0]);
         }else{
@@ -53,8 +85,12 @@ export const BlogArticlesCreate = () => {
         readonly: false
     };
 
+    const getSelectedCategory = (data: any) => {
+        setSelectedCategory(data);
+    }
+
     const getContents = (data: any) => {
-        console.log(data);
+        setEditorContents(data);
     }
 
     const thumbnailUrlSettings: InputSettings ={
@@ -105,6 +141,13 @@ export const BlogArticlesCreate = () => {
                         <div className="grid grid-cols-12">
                             <div className="col-span-12">
                                 <Input settings={titleSettings} />
+                            </div>
+                            <div className="col-span-12">
+                                <ComboBox
+                                    label='Select article category'
+                                    optionsArr={blogCategories}
+                                    getSelected={getSelectedCategory}
+                                />
                             </div>
                             <div className="col-span-12">
                                 <TinyMCE

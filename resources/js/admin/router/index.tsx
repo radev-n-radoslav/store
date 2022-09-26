@@ -39,7 +39,7 @@ export const Router = () => {
                 <Route path='/admin'>
                     {/* Dashboard routes */}
                     <Route index element={<Dashboard />} />
-                    
+                    <Route path="test" element={<Dashboard />} />
                     {/* Catalog categories routes */}
                     <Route path="catalog/categories" element={<CatalogCategoriesHome />} />
                     <Route path="catalog/categories/create" element={<CatalogCategoriesCreate />} />

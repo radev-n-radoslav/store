@@ -30,4 +30,14 @@ class BlogArticle extends Model
     {
         return $this->belongsTo(BlogCategory::class, 'category_id');
     }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model)
+        {
+            $model->views = 0;
+        });
+    }
 }
