@@ -6,13 +6,15 @@ import { useClassNames } from '../helpers/styleHelpers';
 export const ComboBox = ({
     label,
     optionsArr,
+    defaultSelected,
     getSelected
 }) => {
     const [query, setQuery] = useState('');
-    const [selectedOption, setSelectedOption] = useState();
+    const [selectedOption, setSelectedOption] = useState(defaultSelected ?? 0);
     const [options, setOptions] = useState(optionsArr);
 
     useEffect(() => setOptions(optionsArr), [optionsArr]);
+    useEffect(() => setSelectedOption(defaultSelected), [defaultSelected]);
     useEffect(() => getSelected(selectedOption), [selectedOption]);
 
     const filteredOptions =

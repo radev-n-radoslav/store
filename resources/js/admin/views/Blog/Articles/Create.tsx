@@ -147,6 +147,7 @@ export const BlogArticlesCreate = () => {
                                     label='Select article category'
                                     optionsArr={blogCategories}
                                     getSelected={getSelectedCategory}
+                                    defaultSelected={null}
                                 />
                             </div>
                             <div className="col-span-12">
