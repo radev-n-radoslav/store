@@ -67,7 +67,7 @@ export const HomeScreen = (props: any) => {
                                         />
                                     </div>
                                     <nav
-                                        className="mt-5 h-full flex-shrink-0 divide-y-2 divide-cyan-800 overflow-y-auto"
+                                        className="mt-5 h-full flex-shrink-0 divide-y-2 divide-cyan-800 overflow-y-auto no-scrollbar"
                                         aria-label="Sidebar"
                                     >
                                         {pageStaticData.navigation.map((item: Navigation) => {
@@ -137,7 +137,7 @@ export const HomeScreen = (props: any) => {
                 {/* Static sidebar for desktop */}
                 <div className="hidden lg:fixed lg:inset-y-0 lg:flex lg:w-64 lg:flex-col">
                     {/* Sidebar component, swap this element with another sidebar if you like */}
-                    <div className="flex flex-grow flex-col overflow-y-auto bg-cyan-700 pt-5 pb-4">
+                    <div className="flex flex-grow flex-col overflow-y-auto no-scrollbar bg-cyan-700 pt-5 pb-4">
                         <div className="flex flex-shrink-0 items-center px-4">
                             <img
                                 className="h-8 w-auto"
@@ -145,7 +145,7 @@ export const HomeScreen = (props: any) => {
                                 alt="Logo"
                             />
                         </div>
-                        <nav className="mt-5 flex flex-1 flex-col divide-y divide-cyan-800 overflow-y-auto" aria-label="Sidebar">
+                        <nav className="mt-5 flex flex-1 flex-col divide-y divide-cyan-800 overflow-y-auto no-scrollbar" aria-label="Sidebar">
                             {pageStaticData.navigation.map((item: Navigation, index: number) => {
                                 return (
                                     <div key={item.name}>

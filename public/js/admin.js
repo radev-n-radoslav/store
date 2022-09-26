@@ -3106,7 +3106,7 @@ var HomeScreen = function HomeScreen(props) {
     src: pageStaticData.logo,
     alt: "Logo"
   })), react_1["default"].createElement("nav", {
-    className: "mt-5 h-full flex-shrink-0 divide-y-2 divide-cyan-800 overflow-y-auto",
+    className: "mt-5 h-full flex-shrink-0 divide-y-2 divide-cyan-800 overflow-y-auto no-scrollbar",
     "aria-label": "Sidebar"
   }, pageStaticData.navigation.map(function (item) {
     var _a;
@@ -3150,7 +3150,7 @@ var HomeScreen = function HomeScreen(props) {
   })))), react_1["default"].createElement("div", {
     className: "hidden lg:fixed lg:inset-y-0 lg:flex lg:w-64 lg:flex-col"
   }, react_1["default"].createElement("div", {
-    className: "flex flex-grow flex-col overflow-y-auto bg-cyan-700 pt-5 pb-4"
+    className: "flex flex-grow flex-col overflow-y-auto no-scrollbar bg-cyan-700 pt-5 pb-4"
   }, react_1["default"].createElement("div", {
     className: "flex flex-shrink-0 items-center px-4"
   }, react_1["default"].createElement("img", {
@@ -3158,7 +3158,7 @@ var HomeScreen = function HomeScreen(props) {
     src: pageStaticData.logo,
     alt: "Logo"
   })), react_1["default"].createElement("nav", {
-    className: "mt-5 flex flex-1 flex-col divide-y divide-cyan-800 overflow-y-auto",
+    className: "mt-5 flex flex-1 flex-col divide-y divide-cyan-800 overflow-y-auto no-scrollbar",
     "aria-label": "Sidebar"
   }, pageStaticData.navigation.map(function (item, index) {
     var _a;
