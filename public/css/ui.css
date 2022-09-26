@@ -2214,6 +2214,11 @@ select {
   border-right-width: calc(1px * var(--tw-divide-x-reverse));
   border-left-width: calc(1px * calc(1 - var(--tw-divide-x-reverse)));
 }
+.divide-y-2 > :not([hidden]) ~ :not([hidden]) {
+  --tw-divide-y-reverse: 0;
+  border-top-width: calc(2px * calc(1 - var(--tw-divide-y-reverse)));
+  border-bottom-width: calc(2px * var(--tw-divide-y-reverse));
+}
 .divide-cyan-800 > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-opacity: 1;
   border-color: rgb(21 94 117 / var(--tw-divide-opacity));
@@ -2240,6 +2245,9 @@ select {
 }
 .overflow-y-auto {
   overflow-y: auto;
+}
+.overflow-y-hidden {
+  overflow-y: hidden;
 }
 .truncate {
   overflow: hidden;
@@ -2306,6 +2314,9 @@ select {
 }
 .border-dashed {
   border-style: dashed;
+}
+.border-dotted {
+  border-style: dotted;
 }
 .border-gray-200 {
   --tw-border-opacity: 1;
@@ -2620,6 +2631,9 @@ select {
 }
 .pr-2 {
   padding-right: 0.5rem;
+}
+.pt-3 {
+  padding-top: 0.75rem;
 }
 .text-left {
   text-align: left;

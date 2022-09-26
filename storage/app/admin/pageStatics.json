@@ -4,34 +4,78 @@
         {
             "name": "Dashboard",
             "href": "/admin",
-            "icon": "fa fa-tachometer"
+            "icon": "fa fa-tachometer",
+            "pages": []
         },
         {
             "name": "Catalog",
-            "href": "/admin/catalog",
-            "icon": "fa fa-box"
+            "icon": "fa fa-box",
+            "pages": [
+                {
+                    "name": "Categories",
+                    "href": "/admin/catalog/categories",
+                    "icon": "fa fa-boxes"
+                },
+                {
+                    "name": "Products",
+                    "href": "/admin/catalog/products",
+                    "icon": "fa fa-box"
+                }
+            ]
         },
         {
             "name": "Sales",
-            "href": "/admin/sales",
-            "icon": "fa fa-dollar-sign"
+            "icon": "fa fa-dollar-sign",
+            "pages": [
+                {
+                    "name": "Orders",
+                    "href": "/admin/sales/orders",
+                    "icon": "fa fa-cash-register"
+                },
+                {
+                    "name": "Statuses",
+                    "href": "/admin/sales/statuses",
+                    "icon": "fa fa-comment-alt"
+                }
+            ]
         },
         {
             "name": "Blog",
-            "href": "/admin/blog",
-            "icon": "fa fa-newspaper"
+            "icon": "fa fa-newspaper",
+            "pages": [
+                {
+                    "name": "Categories",
+                    "href": "/admin/blog/categories",
+                    "icon": "fa fa-layer-group"
+                },
+                {
+                    "name": "Articles",
+                    "href": "/admin/blog/articles",
+                    "icon": "fa fa-newspaper"
+                }
+            ]
         },
         {
             "name": "Users",
-            "href": "/admin/users",
-            "icon": "fa fa-users"
-        }
-    ],
-    "secondaryNavigation": [
+            "icon": "fa fa-users",
+            "pages": [
+                {
+                    "name": "Customers",
+                    "href": "/admin/customers",
+                    "icon": "fa fa-users"
+                },
+                {
+                    "name": "Admins",
+                    "href": "/admin/admins",
+                    "icon": "fa fa-user-ninja"
+                }
+            ]
+        },
         {
             "name": "Settings",
             "href": "/admin/settings",
-            "icon": "fa fa-cog"
+            "icon": "fa fa-cog",
+            "pages": []
         }
     ]
 }

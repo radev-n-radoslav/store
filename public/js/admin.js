@@ -3034,13 +3034,7 @@ var index_1 = __webpack_require__(/*! ../router/index */ "./resources/js/admin/r
 
 var react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
 
-function classNames() {
-  for (var _len = arguments.length, classes = new Array(_len), _key = 0; _key < _len; _key++) {
-    classes[_key] = arguments[_key];
-  }
-
-  return classes.filter(Boolean).join(' ');
-}
+var styleHelpers_1 = __webpack_require__(/*! ../helpers/styleHelpers */ "./resources/js/admin/helpers/styleHelpers.tsx");
 
 var HomeScreen = function HomeScreen(props) {
   var _ref = (0, react_1.useState)(false),
@@ -3112,34 +3106,45 @@ var HomeScreen = function HomeScreen(props) {
     src: pageStaticData.logo,
     alt: "Logo"
   })), react_1["default"].createElement("nav", {
-    className: "mt-5 h-full flex-shrink-0 divide-y divide-cyan-800 overflow-y-auto",
+    className: "mt-5 h-full flex-shrink-0 divide-y-2 divide-cyan-800 overflow-y-auto",
     "aria-label": "Sidebar"
-  }, react_1["default"].createElement("div", {
-    className: "space-y-1 px-2"
   }, pageStaticData.navigation.map(function (item) {
-    return react_1["default"].createElement(react_router_dom_1.Link, {
-      key: item.name,
-      to: item.href,
-      className: classNames(item.current ? 'bg-cyan-800 text-white' : 'text-cyan-100 hover:text-white hover:bg-cyan-600', 'group flex items-center px-2 py-2 text-base font-medium rounded-md'),
+    var _a;
+
+    return react_1["default"].createElement("div", {
+      key: item.name + '-mobile'
+    }, react_1["default"].createElement("div", null, item.href ? react_1["default"].createElement("div", {
+      className: "space-y-1 px-2"
+    }, react_1["default"].createElement(react_router_dom_1.Link, {
+      to: (_a = item.href) !== null && _a !== void 0 ? _a : '#',
+      className: (0, styleHelpers_1.useClassNames)(item.current ? 'bg-cyan-800 text-white' : 'text-cyan-100 hover:text-white hover:bg-cyan-600', 'group flex items-center px-2 py-2 text-base font-medium rounded-md'),
       "aria-current": item.current ? 'page' : undefined
     }, react_1["default"].createElement("i", {
       className: item.icon + " mr-4 fa-lg flex-shrink-0 text-cyan-200",
       "aria-hidden": "true"
-    }), item.name);
-  })), react_1["default"].createElement("div", {
-    className: "mt-6 pt-6"
-  }, react_1["default"].createElement("div", {
-    className: "space-y-1 px-2"
-  }, pageStaticData.secondaryNavigation.map(function (item) {
-    return react_1["default"].createElement(react_router_dom_1.Link, {
-      key: item.name,
-      to: item.href,
-      className: "group flex items-center rounded-md px-2 py-2 text-base font-medium text-cyan-100 hover:bg-cyan-600 hover:text-white"
+    }), item.name)) : react_1["default"].createElement("div", {
+      className: "space-y-1 px-2"
+    }, react_1["default"].createElement("div", {
+      className: "p-2 text-base leading-6 font-bold text-white text-center pt-3"
     }, react_1["default"].createElement("i", {
-      className: item.icon + " mr-4 fa-lg text-cyan-200",
+      className: item.icon + " mr-4 fa-sm flex-shrink-0",
       "aria-hidden": "true"
-    }), item.name);
-  })))))), react_1["default"].createElement("div", {
+    }), " ", item.name))), item.pages.map(function (page) {
+      return react_1["default"].createElement("div", {
+        className: "pt-3",
+        key: page.name + '-mobile-subpage'
+      }, react_1["default"].createElement("div", {
+        className: "space-y-1 px-2"
+      }, react_1["default"].createElement(react_router_dom_1.Link, {
+        to: page.href,
+        className: (0, styleHelpers_1.useClassNames)(page.current ? 'bg-cyan-800 text-white' : 'text-cyan-100 hover:text-white hover:bg-cyan-600', 'group flex pages-center px-2 py-2 text-base font-medium rounded-md'),
+        "aria-current": page.current ? 'page' : undefined
+      }, react_1["default"].createElement("i", {
+        className: page.icon + " mr-4 fa-lg flex-shrink-0 text-cyan-200",
+        "aria-hidden": "true"
+      }), page.name)));
+    }));
+  })))), react_1["default"].createElement("div", {
     className: "w-14 flex-shrink-0",
     "aria-hidden": "true"
   })))), react_1["default"].createElement("div", {
@@ -3155,32 +3160,45 @@ var HomeScreen = function HomeScreen(props) {
   })), react_1["default"].createElement("nav", {
     className: "mt-5 flex flex-1 flex-col divide-y divide-cyan-800 overflow-y-auto",
     "aria-label": "Sidebar"
-  }, react_1["default"].createElement("div", {
-    className: "space-y-1 px-2"
-  }, pageStaticData.navigation.map(function (item) {
-    return react_1["default"].createElement(react_router_dom_1.Link, {
-      key: item.name,
-      to: item.href,
-      className: classNames(item.current ? 'bg-cyan-800 text-white' : 'text-cyan-100 hover:text-white hover:bg-cyan-600', 'group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md'),
+  }, pageStaticData.navigation.map(function (item, index) {
+    var _a;
+
+    return react_1["default"].createElement("div", {
+      key: item.name
+    }, react_1["default"].createElement("div", null, item.href ? react_1["default"].createElement("div", {
+      className: "space-y-1 px-2"
+    }, react_1["default"].createElement(react_router_dom_1.Link, {
+      to: (_a = item.href) !== null && _a !== void 0 ? _a : '',
+      className: (0, styleHelpers_1.useClassNames)(item.current ? 'bg-cyan-800 text-white' : 'text-cyan-100 hover:text-white hover:bg-cyan-600', 'group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md'),
       "aria-current": item.current ? 'page' : undefined
     }, react_1["default"].createElement("i", {
       className: item.icon + " mr-4 fa-lg flex-shrink-0 text-cyan-200",
       "aria-hidden": "true"
-    }), item.name);
-  })), react_1["default"].createElement("div", {
-    className: "mt-6 pt-6"
-  }, react_1["default"].createElement("div", {
-    className: "space-y-1 px-2"
-  }, pageStaticData.secondaryNavigation.map(function (item) {
-    return react_1["default"].createElement(react_router_dom_1.Link, {
-      key: item.name,
-      to: item.href,
-      className: "group flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6 text-cyan-100 hover:bg-cyan-600 hover:text-white"
+    }), item.name)) : react_1["default"].createElement("div", {
+      className: "space-y-1 px-2"
+    }, react_1["default"].createElement("div", {
+      className: "p-2 text-base leading-6 font-bold text-white text-center pt-3"
     }, react_1["default"].createElement("i", {
-      className: item.icon + " mr-4 fa-lg text-cyan-200",
+      className: item.icon + " mr-4 fa-sm flex-shrink-0",
       "aria-hidden": "true"
-    }), item.name);
-  })))))), react_1["default"].createElement("div", {
+    }), " ", item.name))), pageStaticData.navigation[index].pages.map(function (page) {
+      var _a;
+
+      return react_1["default"].createElement("div", {
+        className: "pt-3",
+        key: page.name + '-subpage'
+      }, react_1["default"].createElement("div", {
+        className: "space-y-1 px-2"
+      }, react_1["default"].createElement(react_router_dom_1.Link, {
+        to: (_a = page.href) !== null && _a !== void 0 ? _a : '',
+        className: (0, styleHelpers_1.useClassNames)(page.current ? 'bg-cyan-800 text-white' : 'text-cyan-100 hover:text-white hover:bg-cyan-600', 'group flex pages-center px-2 py-2 text-sm leading-6 font-medium rounded-md'),
+        "aria-current": page.current ? 'page' : undefined
+      }, react_1["default"].createElement("i", {
+        className: page.icon + " mr-4 fa-lg flex-shrink-0 text-cyan-200",
+        "aria-hidden": "true"
+      }), page.name)));
+    }));
+  })))), react_1["default"].createElement("div", {
     className: "flex flex-1 flex-col lg:pl-64"
   }, react_1["default"].createElement("div", {
     className: "flex h-16 flex-shrink-0 border-b border-gray-200 bg-white lg:border-none"
@@ -3258,19 +3276,7 @@ var HomeScreen = function HomeScreen(props) {
     var active = _ref5.active;
     return react_1["default"].createElement(react_router_dom_1.Link, {
       to: "#",
-      className: classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')
-    }, "Your Profile");
-  }), react_1["default"].createElement(react_2.Menu.Item, null, function (_ref6) {
-    var active = _ref6.active;
-    return react_1["default"].createElement(react_router_dom_1.Link, {
-      to: "#",
-      className: classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')
-    }, "Settings");
-  }), react_1["default"].createElement(react_2.Menu.Item, null, function (_ref7) {
-    var active = _ref7.active;
-    return react_1["default"].createElement(react_router_dom_1.Link, {
-      to: "#",
-      className: classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')
+      className: (0, styleHelpers_1.useClassNames)(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')
     }, "Logout");
   }))))))), react_1["default"].createElement("div", {
     className: "pt-6"

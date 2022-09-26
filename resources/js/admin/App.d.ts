@@ -1,12 +1,19 @@
-export interface Navigation {
+export interface NavigationSubPage {
     name: string,
     href: string,
     icon: string,
-    current: boolean
+    current?: boolean,
+}
+
+export interface Navigation {
+    name: string,
+    href?: string,
+    icon: string,
+    current?: boolean,
+    pages: NavigationSubPage[]
 }
 
 export interface PageStaticData {
     logo: string,
-    navigation: Navigation[],
-    secondaryNavigation: Navigation[]
+    navigation: Navigation[]
 }
