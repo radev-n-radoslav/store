@@ -6,19 +6,28 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Blog\Categories\DeleteRequest;
 use App\Http\Requests\Admin\Blog\Categories\DetailsRequest;
 use App\Http\Requests\Admin\Blog\Categories\IndexRequest;
+use App\Http\Requests\Admin\Blog\Categories\RestoreRequest;
 use App\Http\Requests\Admin\Blog\Categories\StoreRequest;
 use App\Http\Requests\Admin\Blog\Categories\UpdateRequest;
 use App\Models\BlogCategory;
+use App\Services\FileStorage\FileStorage;
 
 class CategoriesController extends Controller
 {
     /**
-     * Get all categories
+     * Get all categories paginated
      */
     public function index(IndexRequest $request)
     {
-        $categories = BlogCategory::orderBy('created_at', 'DESC')
-            ->get();
+        $categories = BlogCategory::orderBy('id', $request->sort ?? 'desc');
+        if ($request->selectable) {
+            $categories = $categories->get([
+                'id',
+                'name'
+            ]);
+        }else{
+            $categories = $categories->paginate(10);
+        }
         
         return response([
             'data' => $categories
@@ -30,7 +39,8 @@ class CategoriesController extends Controller
      */
     public function details($id, DetailsRequest $request)
     {
-        $category = BlogCategory::findOrFail($id);
+        $category = BlogCategory::withTrashed()
+            ->findOrFail($id);
 
         return response([
             'data' => $category
@@ -42,7 +52,14 @@ class CategoriesController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        $category = BlogCategory::create($request->toArray());
+        $requestData = $request->toArray();
+        
+        if ($request->thumbnail) {
+            $files = FileStorage::storeFiles($request);
+            $requestData['thumbnail_url'] = asset('files/'.$files[0]->path);
+        }
+
+        $category = BlogCategory::create($requestData);
 
         return response([
             'data' => $category
@@ -71,6 +88,21 @@ class CategoriesController extends Controller
         $category = BlogCategory::findOrFail($id);
 
         $category->delete();
+
+        return response([
+            
+        ], 200);
+    }
+
+    /**
+     * Restore a category
+     */
+    public function restore($id, RestoreRequest $request)
+    {
+        $category = BlogCategory::withTrashed()
+            ->findOrFail($id);
+
+        $category->restore();
 
         return response([
             

@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\Accounts\Admins\DeleteRequest;
 use App\Http\Requests\Admin\Accounts\Admins\DetailsRequest;
 use App\Http\Requests\Admin\Accounts\Admins\IndexRequest;
 use App\Http\Requests\Admin\Accounts\Admins\ResetPasswordRequest;
+use App\Http\Requests\Admin\Accounts\Admins\RestoreRequest;
 use App\Http\Requests\Admin\Accounts\Admins\StoreRequest;
 use App\Http\Requests\Admin\Accounts\Admins\UpdateRequest;
 use App\Models\Admin;
@@ -18,7 +19,9 @@ class AdminsController extends Controller
      */
     public function index(IndexRequest $request)
     {
-        $admins = Admin::all();
+        $admins = Admin::withTrashed()
+            ->orderBy('id', $request->sort ?? 'desc')
+            ->paginate(10);
 
         return response([
             'data' => $admins
@@ -30,7 +33,8 @@ class AdminsController extends Controller
      */
     public function details($id, DetailsRequest $request)
     {
-        $admin = Admin::findOrFail($id);
+        $admin = Admin::withTrashed()
+            ->findOrFail($id);
 
         return response([
             'data' => $admin
@@ -92,6 +96,21 @@ class AdminsController extends Controller
         $admin = Admin::findOrFail($id);
 
         $admin->delete();
+
+        return response([
+            
+        ], 200);
+    }
+
+    /**
+     * Restore an admin
+     */
+    public function restore($id, RestoreRequest $request)
+    {
+        $admin = Admin::withTrashed()
+            ->findOrFail($id);
+
+        $admin->restore();
 
         return response([
             

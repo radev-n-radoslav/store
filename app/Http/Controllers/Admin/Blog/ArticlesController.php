@@ -9,6 +9,7 @@ use App\Http\Requests\Admin\Blog\Articles\IndexRequest;
 use App\Http\Requests\Admin\Blog\Articles\StoreRequest;
 use App\Http\Requests\Admin\Blog\Articles\UpdateRequest;
 use App\Models\BlogArticle;
+use App\Services\FileStorage\FileStorage;
 
 class ArticlesController extends Controller
 {
@@ -17,8 +18,14 @@ class ArticlesController extends Controller
      */
     public function index(IndexRequest $request)
     {
-        $articles = BlogArticle::orderBy('created_at', 'DESC')
-            ->get();
+        $articles = BlogArticle::with([
+            'category' => function ($q)
+            {
+                $q->select(['id', 'name']);
+            }
+        ])
+            ->orderBy('id', $request->sort ?? 'desc')
+            ->paginate(10);
         
         return response([
             'data' => $articles
@@ -30,7 +37,13 @@ class ArticlesController extends Controller
      */
     public function details($id, DetailsRequest $request)
     {
-        $article = BlogArticle::findOrFail($id);
+        $article = BlogArticle::with([
+            'category' => function ($q)
+            {
+                $q->select(['id', 'name']);
+            }
+        ])
+            ->findOrFail($id);
 
         return response([
             'data' => $article
@@ -40,12 +53,16 @@ class ArticlesController extends Controller
     /**
      * Store an article
      */
-    public function store($id, StoreRequest $request)
+    public function store(StoreRequest $request)
     {
-        $data = $request->toArray();
-        $data['category_id'] = $id;
+        $requestData = $request->toArray();
+        
+        if ($request->thumbnail) {
+            $files = FileStorage::storeFiles($request);
+            $requestData['thumbnail_url'] = asset('files/'.$files[0]->path);
+        }
 
-        $article = BlogArticle::create($data);
+        $article = BlogArticle::create($requestData);
 
         return response([
             'data' => $article

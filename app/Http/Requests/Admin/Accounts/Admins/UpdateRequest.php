@@ -2,12 +2,13 @@
 
 namespace App\Http\Requests\Admin\Accounts\Admins;
 
+use App\Models\Admin;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateRequest extends FormRequest
 {
     /**
-     * Determine if the user is authorized to make this request.
+     * Determine if the admin is authorized to make this request.
      *
      * @return bool
      */
@@ -23,8 +24,11 @@ class UpdateRequest extends FormRequest
      */
     public function rules()
     {
+        $admin = Admin::findOrFail(request()->route('id'));
+
         return [
-            //
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|unique:admins,email,'.$admin->email.',email|max:255',
         ];
     }
 }

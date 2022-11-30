@@ -28,6 +28,16 @@ class BlogArticle extends Model
      */
     public function category()
     {
-        return $this->belongsTo('App/Models/BlogCategory', 'category_id');
+        return $this->belongsTo(BlogCategory::class, 'category_id');
+    }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model)
+        {
+            $model->views = 0;
+        });
     }
 }

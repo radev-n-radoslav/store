@@ -23,10 +23,17 @@ class StoreRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        $rules = [
             'name' => 'required|string|max:255',
             'description' => 'string|nullable|max:2048',
-            'thumbnail_url' => 'string|nullable|max:8192'
         ];
+
+        if ($this->thumbnail_url) {
+            $rules['thumbnail_url'] = 'nullable|string';
+        }else{
+            $rules['thumbnail'] = 'image|nullable|mimes:jpeg,png,jpg,gif|max:2048';
+        }
+
+        return $rules;
     }
 }

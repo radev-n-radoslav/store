@@ -2,12 +2,10 @@ import React, { Fragment, useState } from 'react'
 import { Dialog, Menu, Transition } from '@headlessui/react'
 import { Bars3CenterLeftIcon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid'
-import { Navigation, PageStaticData } from '../App.d';
+import { Navigation, NavigationSubPage, PageStaticData } from '../App.d';
 import { Router } from '../router/index';
-
-function classNames(...classes: any) {
-    return classes.filter(Boolean).join(' ')
-}
+import { Link } from "react-router-dom";
+import { useClassNames } from '../helpers/styleHelpers';
 
 export const HomeScreen = (props: any) => {
     const [sidebarOpen, setSidebarOpen] = useState(false)
@@ -69,41 +67,63 @@ export const HomeScreen = (props: any) => {
                                         />
                                     </div>
                                     <nav
-                                        className="mt-5 h-full flex-shrink-0 divide-y divide-cyan-800 overflow-y-auto"
+                                        className="mt-5 h-full flex-shrink-0 divide-y-2 divide-cyan-800 overflow-y-auto no-scrollbar"
                                         aria-label="Sidebar"
                                     >
-                                        <div className="space-y-1 px-2">
-                                            {pageStaticData.navigation.map((item: Navigation) => (
-                                                <a
-                                                    key={item.name}
-                                                    href={item.href}
-                                                    className={classNames(
-                                                        item.current
-                                                            ? 'bg-cyan-800 text-white'
-                                                            : 'text-cyan-100 hover:text-white hover:bg-cyan-600',
-                                                        'group flex items-center px-2 py-2 text-base font-medium rounded-md'
-                                                    )}
-                                                    aria-current={item.current ? 'page' : undefined}
-                                                >
-                                                    <i className={item.icon + " mr-4 fa-lg flex-shrink-0 text-cyan-200"} aria-hidden="true"></i>
-                                                    {item.name}
-                                                </a>
-                                            ))}
-                                        </div>
-                                        <div className="mt-6 pt-6">
-                                            <div className="space-y-1 px-2">
-                                                {pageStaticData.secondaryNavigation.map((item: Navigation) => (
-                                                    <a
-                                                        key={item.name}
-                                                        href={item.href}
-                                                        className="group flex items-center rounded-md px-2 py-2 text-base font-medium text-cyan-100 hover:bg-cyan-600 hover:text-white"
-                                                    >
-                                                        <i className={item.icon + " mr-4 fa-lg text-cyan-200"} aria-hidden="true"></i>
-                                                        {item.name}
-                                                    </a>
-                                                ))}
-                                            </div>
-                                        </div>
+                                        {pageStaticData.navigation.map((item: Navigation) => {
+                                            return (
+                                                <div key={(item.name + '-mobile')}>
+                                                    <div>
+                                                        {
+                                                            item.href ? 
+                                                            <div className="space-y-1 px-2">
+                                                                <Link
+                                                                    to={(item.href ?? '#')}
+                                                                    className={useClassNames(
+                                                                        item.current
+                                                                            ? 'bg-cyan-800 text-white'
+                                                                            : 'text-cyan-100 hover:text-white hover:bg-cyan-600',
+                                                                        'group flex items-center px-2 py-2 text-base font-medium rounded-md'
+                                                                    )}
+                                                                    aria-current={item.current ? 'page' : undefined}
+                                                                >
+                                                                    <i className={item.icon + " mr-4 fa-lg flex-shrink-0 text-cyan-200"} aria-hidden="true"></i>
+                                                                    {item.name}
+                                                                </Link>
+                                                            </div> : 
+                                                            <div className="space-y-1 px-2">
+                                                                <div className="p-2 text-base leading-6 font-bold text-white text-center pt-3">
+                                                                    <i className={item.icon + " mr-4 fa-sm flex-shrink-0"} aria-hidden="true"></i> {item.name}
+                                                                </div>
+                                                            </div>
+                                                        }
+                                                    </div>
+                                                    {
+                                                        item.pages.map((page) => {
+                                                            return (
+                                                                <div className="pt-3" key={page.name + '-mobile-subpage'}>
+                                                                    <div className="space-y-1 px-2">
+                                                                        <Link
+                                                                            to={page.href}
+                                                                            className={useClassNames(
+                                                                                page.current
+                                                                                    ? 'bg-cyan-800 text-white'
+                                                                                    : 'text-cyan-100 hover:text-white hover:bg-cyan-600',
+                                                                                'group flex pages-center px-2 py-2 text-base font-medium rounded-md'
+                                                                            )}
+                                                                            aria-current={page.current ? 'page' : undefined}
+                                                                        >
+                                                                            <i className={page.icon + " mr-4 fa-lg flex-shrink-0 text-cyan-200"} aria-hidden="true"></i>
+                                                                            {page.name}
+                                                                        </Link>
+                                                                    </div>
+                                                                </div>
+                                                            )
+                                                        })
+                                                    }
+                                                </div>
+                                            )
+                                        })}
                                     </nav>
                                 </Dialog.Panel>
                             </Transition.Child>
@@ -117,7 +137,7 @@ export const HomeScreen = (props: any) => {
                 {/* Static sidebar for desktop */}
                 <div className="hidden lg:fixed lg:inset-y-0 lg:flex lg:w-64 lg:flex-col">
                     {/* Sidebar component, swap this element with another sidebar if you like */}
-                    <div className="flex flex-grow flex-col overflow-y-auto bg-cyan-700 pt-5 pb-4">
+                    <div className="flex flex-grow flex-col overflow-y-auto no-scrollbar bg-cyan-700 pt-5 pb-4">
                         <div className="flex flex-shrink-0 items-center px-4">
                             <img
                                 className="h-8 w-auto"
@@ -125,37 +145,57 @@ export const HomeScreen = (props: any) => {
                                 alt="Logo"
                             />
                         </div>
-                        <nav className="mt-5 flex flex-1 flex-col divide-y divide-cyan-800 overflow-y-auto" aria-label="Sidebar">
-                            <div className="space-y-1 px-2">
-                                {pageStaticData.navigation.map((item: Navigation) => (
-                                    <a
-                                        key={item.name}
-                                        href={item.href}
-                                        className={classNames(
-                                            item.current ? 'bg-cyan-800 text-white' : 'text-cyan-100 hover:text-white hover:bg-cyan-600',
-                                            'group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md'
-                                        )}
-                                        aria-current={item.current ? 'page' : undefined}
-                                    >
-                                        <i className={item.icon + " mr-4 fa-lg flex-shrink-0 text-cyan-200"} aria-hidden="true"></i>
-                                        {item.name}
-                                    </a>
-                                ))}
-                            </div>
-                            <div className="mt-6 pt-6">
-                                <div className="space-y-1 px-2">
-                                    {pageStaticData.secondaryNavigation.map((item: Navigation) => (
-                                        <a
-                                            key={item.name}
-                                            href={item.href}
-                                            className="group flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6 text-cyan-100 hover:bg-cyan-600 hover:text-white"
-                                        >
-                                            <i className={item.icon + " mr-4 fa-lg text-cyan-200"} aria-hidden="true"></i>
-                                            {item.name}
-                                        </a>
-                                    ))}
-                                </div>
-                            </div>
+                        <nav className="mt-5 flex flex-1 flex-col divide-y divide-cyan-800 overflow-y-auto no-scrollbar" aria-label="Sidebar">
+                            {pageStaticData.navigation.map((item: Navigation, index: number) => {
+                                return (
+                                    <div key={item.name}>
+                                        <div>
+                                            {
+                                                item.href ? 
+                                                <div className="space-y-1 px-2">
+                                                    <Link
+                                                        to={(item.href ?? '')}
+                                                        className={useClassNames(
+                                                            item.current ? 'bg-cyan-800 text-white' : 'text-cyan-100 hover:text-white hover:bg-cyan-600',
+                                                            'group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md'
+                                                        )}
+                                                        aria-current={item.current ? 'page' : undefined}
+                                                    >
+                                                        <i className={item.icon + " mr-4 fa-lg flex-shrink-0 text-cyan-200"} aria-hidden="true"></i>
+                                                        {item.name}
+                                                    </Link>
+                                                </div> :
+                                                <div className="space-y-1 px-2">
+                                                    <div className="p-2 text-base leading-6 font-bold text-white text-center pt-3">
+                                                        <i className={item.icon + " mr-4 fa-sm flex-shrink-0"} aria-hidden="true"></i> {item.name}
+                                                    </div>
+                                                </div>
+                                            }
+                                        </div>
+                                        {
+                                            pageStaticData.navigation[index].pages.map((page: NavigationSubPage) => {
+                                                return (
+                                                    <div className="pt-3" key={page.name + '-subpage'}>
+                                                        <div className="space-y-1 px-2">
+                                                            <Link
+                                                                to={(page.href ?? '')}
+                                                                className={useClassNames(
+                                                                    page.current ? 'bg-cyan-800 text-white' : 'text-cyan-100 hover:text-white hover:bg-cyan-600',
+                                                                    'group flex pages-center px-2 py-2 text-sm leading-6 font-medium rounded-md'
+                                                                )}
+                                                                aria-current={page.current ? 'page' : undefined}
+                                                            >
+                                                                <i className={page.icon + " mr-4 fa-lg flex-shrink-0 text-cyan-200"} aria-hidden="true"></i>
+                                                                {page.name}
+                                                            </Link>
+                                                        </div>
+                                                    </div>
+                                                )
+                                            })
+                                        }
+                                    </div>
+                                )
+                            })}
                         </nav>
                     </div>
                 </div>
@@ -226,32 +266,12 @@ export const HomeScreen = (props: any) => {
                                         <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                                             <Menu.Item>
                                                 {({ active }) => (
-                                                    <a
-                                                        href="#"
-                                                        className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                                                    >
-                                                        Your Profile
-                                                    </a>
-                                                )}
-                                            </Menu.Item>
-                                            <Menu.Item>
-                                                {({ active }) => (
-                                                    <a
-                                                        href="#"
-                                                        className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                                                    >
-                                                        Settings
-                                                    </a>
-                                                )}
-                                            </Menu.Item>
-                                            <Menu.Item>
-                                                {({ active }) => (
-                                                    <a
-                                                        href="#"
-                                                        className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                                                    <Link
+                                                        to="#"
+                                                        className={useClassNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                                                     >
                                                         Logout
-                                                    </a>
+                                                    </Link>
                                                 )}
                                             </Menu.Item>
                                         </Menu.Items>
@@ -260,7 +280,9 @@ export const HomeScreen = (props: any) => {
                             </div>
                         </div>
                     </div>
-                    <Router />
+                    <div className="pt-6">
+                        <Router />
+                    </div>
                 </div>
             </div>
         </>

@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CatalogProduct extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     // Table name
     protected $table = 'catalog_products';
@@ -28,7 +29,16 @@ class CatalogProduct extends Model
      */
     public function images()
     {
-        return $this->hasMany('App/Models/CatalogProductImage', 'product_id');
+        return $this->hasMany(CatalogProductImage::class, 'product_id');
+    }
+
+    /**
+     * Return product thumbnail
+     */
+    public function thumbnail()
+    {
+        return $this->hasOne(CatalogProductImage::class, 'product_id')
+            ->where('is_thumbnail', 1);
     }
 
     /**
