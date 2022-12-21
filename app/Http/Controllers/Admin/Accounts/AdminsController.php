@@ -23,9 +23,7 @@ class AdminsController extends Controller
             ->orderBy('id', $request->sort ?? 'desc')
             ->paginate(10);
 
-        return response([
-            'data' => $admins
-        ], 200);
+        return response($admins, 200);
     }
 
     /**
@@ -36,9 +34,7 @@ class AdminsController extends Controller
         $admin = Admin::withTrashed()
             ->findOrFail($id);
 
-        return response([
-            'data' => $admin
-        ], 200);
+        return response($admin, 200);
     }
 
     /**
