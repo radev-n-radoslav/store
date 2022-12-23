@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Models\Traits\SerializeDate;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class CatalogCategoryFilterValue extends Model
 {
-    use HasFactory;
+    use HasFactory, SerializeDate;
 
     // Table name
     protected $table = 'catalog_category_filter_values';

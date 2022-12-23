@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\Traits\SerializeDate;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CatalogProduct extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, SerializeDate;
 
     // Table name
     protected $table = 'catalog_products';

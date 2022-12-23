@@ -7,10 +7,11 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Traits\HashPassword;
+use App\Models\Traits\SerializeDate;
 
 class Admin extends Authenticatable
 {
-    use HasFactory, Notifiable, HashPassword, SoftDeletes;
+    use HasFactory, Notifiable, HashPassword, SoftDeletes, SerializeDate;
 
     protected $table = "admins";
 
