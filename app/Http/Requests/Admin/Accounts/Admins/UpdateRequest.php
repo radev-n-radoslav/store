@@ -24,7 +24,8 @@ class UpdateRequest extends FormRequest
      */
     public function rules()
     {
-        $admin = Admin::findOrFail(request()->route('id'));
+        $admin = Admin::withTrashed()
+            ->findOrFail(request()->route('id'));
 
         return [
             'name' => 'required|string|max:255',

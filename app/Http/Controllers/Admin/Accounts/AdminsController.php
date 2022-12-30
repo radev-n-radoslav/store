@@ -57,9 +57,7 @@ class AdminsController extends Controller
     {
         $admin = Admin::create($request->toArray());
 
-        return response([
-            'data' => $admin
-        ], 200);
+        return response($admin, 200);
     }
 
     /**
@@ -67,7 +65,8 @@ class AdminsController extends Controller
      */
     public function update($id, UpdateRequest $request)
     {
-        $admin = Admin::findOrFail($id);
+        $admin = Admin::withTrashed()
+            ->findOrFail($id);
 
         $admin->update($request->toArray());
 

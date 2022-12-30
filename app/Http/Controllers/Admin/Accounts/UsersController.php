@@ -23,9 +23,7 @@ class UsersController extends Controller
             ->orderBy('id', $request->sort ?? 'desc')
             ->paginate(10);
 
-        return response([
-            'data' => $users
-        ], 200);
+        return response($users, 200);
     }
 
     /**
@@ -36,9 +34,7 @@ class UsersController extends Controller
         $user = User::withTrashed()
             ->findOrFail($id);
 
-        return response([
-            'data' => $user
-        ], 200);
+        return response($user, 200);
     }
 
     /**
@@ -49,9 +45,7 @@ class UsersController extends Controller
         $user = User::where('id', $id)
             ->firstOrFail();
 
-        return response([
-            'data' => $user
-        ], 200);
+        return response($user, 200);
     }
 
     /**
@@ -61,9 +55,7 @@ class UsersController extends Controller
     {
         $user = User::create($request->toArray());
 
-        return response([
-            'data' => $user
-        ], 200);
+        return response($user, 200);
     }
 
     /**
@@ -71,13 +63,12 @@ class UsersController extends Controller
      */
     public function update($id, UpdateRequest $request)
     {
-        $user = User::findOrFail($id);
+        $user = User::withTrashed()
+            ->findOrFail($id);
 
         $user->update($request->toArray());
 
-        return response([
-            'data' => $user
-        ], 200);
+        return response($user, 200);
     }
 
     /**
