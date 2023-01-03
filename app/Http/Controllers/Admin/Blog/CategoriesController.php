@@ -29,9 +29,7 @@ class CategoriesController extends Controller
             $categories = $categories->paginate(10);
         }
         
-        return response([
-            'data' => $categories
-        ], 200);
+        return response($categories, 200);
     }
 
     /**
@@ -42,9 +40,7 @@ class CategoriesController extends Controller
         $category = BlogCategory::withTrashed()
             ->findOrFail($id);
 
-        return response([
-            'data' => $category
-        ], 200);
+        return response($category, 200);
     }
 
     /**
@@ -61,9 +57,7 @@ class CategoriesController extends Controller
 
         $category = BlogCategory::create($requestData);
 
-        return response([
-            'data' => $category
-        ], 200);
+        return response($category, 200);
     }
     
     /**
@@ -75,9 +69,7 @@ class CategoriesController extends Controller
 
         $category->update($request->toArray());
 
-        return response([
-            
-        ], 200);
+        return response($category, 200);
     }
 
     /**
@@ -90,7 +82,7 @@ class CategoriesController extends Controller
         $category->delete();
 
         return response([
-            
+
         ], 200);
     }
 

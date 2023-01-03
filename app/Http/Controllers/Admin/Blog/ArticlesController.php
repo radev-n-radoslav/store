@@ -27,9 +27,7 @@ class ArticlesController extends Controller
             ->orderBy('id', $request->sort ?? 'desc')
             ->paginate(10);
         
-        return response([
-            'data' => $articles
-        ], 200);
+        return response($articles, 200);
     }
 
     /**
@@ -45,9 +43,7 @@ class ArticlesController extends Controller
         ])
             ->findOrFail($id);
 
-        return response([
-            'data' => $article
-        ], 200);
+        return response($article, 200);
     }
 
     /**
@@ -64,9 +60,7 @@ class ArticlesController extends Controller
 
         $article = BlogArticle::create($requestData);
 
-        return response([
-            'data' => $article
-        ], 200);
+        return response($article, 200);
     }
     
     /**
